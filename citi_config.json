@@ -1,0 +1,58 @@
+{
+  "bank_name": "Citigroup",
+  "document_type": "earnings_call_transcript",
+  "metadata": {
+    "date_format": "(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{1,2},\\s+\\d{4}",
+    "heading_format": "T\\s*R\\s*A\\s*N\\s*S\\s*C\\s*R\\s*I\\s*P\\s*T\\s+Citi First Quarter \\d{4} Earnings",
+    "footer_format": "Copyright © \\d{4} Citigroup Inc\\.|^Page \\d+$",
+    "title_format": "Financial results, (\\d)Q (\\d{4})"
+  },
+  "cleaning_rules": {
+    "remove_patterns": [
+      "^T\\s*R\\s*A\\s*N\\s*S\\s*C\\s*R\\s*I\\s*P\\s*T",
+      "^Citi First Quarter \\d{4} Earnings",
+      "^April \\d{1,2}, \\d{4}",
+      "Copyright © \\d{4} Citigroup Inc\\.",
+      "^Page \\d+$",
+      "^\\d+$",
+      "-\\s*$"
+    ],
+    "ignore_sections": [],
+    "keep_sections": [
+      "PRESENTATION",
+      "QUESTION AND ANSWER"
+    ],
+    "disclaimer_patterns": [
+      "Certain statements in this",
+      "forward[- ]looking statements",
+      "Private Securities Litigation Reform Act",
+      "These statements are based on management",
+      "not guarantees of future results",
+      "Risk Factors"
+    ]
+  },
+  "content_extraction": {
+    "speaker_pattern": "([A-Z][A-Z\\s]+):",
+    "speaker_format": "{0}",
+    "section_markers": {
+      "presentation_start": "PRESENTATION",
+      "qa_start": "QUESTION AND ANSWER",
+      "end_marker": "no further questions"
+    },
+    "speaker_name_corrections": {
+      "JENNIFERLANDIS": "JENNIFER LANDIS",
+      "MATT O'CONNOR": "MATT O'CONNOR"
+    }
+  },
+  "processing": {
+    "join_paragraphs": true,
+    "page_transition_markers": [
+      "Copyright © \\d{4} Citigroup Inc\\."
+    ],
+    "special_characters": {
+      "\\u00a0": " "
+    },
+    "paragraph_merge_threshold": 2,
+    "remove_duplicate_headers": true
+  }
+}
