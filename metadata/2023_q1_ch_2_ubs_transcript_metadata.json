@@ -1,0 +1,174 @@
+{
+  "bank_name": "UBS",
+  "call_date": "2023-04-25",
+  "reporting_period": "Q1-2023",
+  "speaker_regex_pattern": "([A-Z][a-zA-Z]+(\\s[A-Z][a-zA-Z\\.]+)*(\\s[A-Z]\\.)?)(\\s[A-Z][a-zA-Z]*)?(,\\s[A-Za-z\\s&]+)?",
+  "participants": [
+    {
+      "speaker_name": "Sergio P. Ermotti",
+      "speaker_misspelled_names": [
+        "Sergio Ermotti"
+      ],
+      "speaker_title": [
+        "Group Chief Executive Officer"
+      ],
+      "speaker_company": [
+        "UBS"
+      ]
+    },
+    {
+      "speaker_name": "Sarah Youngwood",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Group Chief Financial Officer",
+        "CFO"
+      ],
+      "speaker_company": [
+        "UBS"
+      ]
+    },
+    {
+      "speaker_name": "Chris Hallam",
+      "speaker_misspelled_names": [
+        "Chis Hallam"
+      ],
+      "speaker_title": [],
+      "speaker_company": [
+        "Goldman Sachs"
+      ]
+    },
+    {
+      "speaker_name": "Kian Abouhossein",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "JPMorgan"
+      ]
+    },
+    {
+      "speaker_name": "Alastair Ryan",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Bank of America"
+      ]
+    },
+    {
+      "speaker_name": "Flora Bocahut",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Jefferies"
+      ]
+    },
+    {
+      "speaker_name": "Andrew Coombs",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Citi"
+      ]
+    },
+    {
+      "speaker_name": "Adam Terelak",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Mediobanca"
+      ]
+    },
+    {
+      "speaker_name": "Jeremy Sigee",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Exane"
+      ]
+    },
+    {
+      "speaker_name": "Anke Reingen",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "RBC"
+      ]
+    },
+    {
+      "speaker_name": "Amit Goel",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Barclays"
+      ]
+    },
+    {
+      "speaker_name": "Benjamin Goy",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Deutsche Bank"
+      ]
+    },
+    {
+      "speaker_name": "Tom Hallet",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "KBW"
+      ]
+    },
+    {
+      "speaker_name": "Nicholas Payen",
+      "speaker_misspelled_names": [
+        "Nicolas Payen"
+      ],
+      "speaker_title": [],
+      "speaker_company": [
+        "Kepler Cheuvreux"
+      ]
+    },
+    {
+      "speaker_name": "Andrew Lim",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Soci\u00e9t\u00e9 G\u00e9n\u00e9rale"
+      ]
+    }
+  ],
+  "all_document_sections": [
+    "Key Messages",
+    "Our clients turned to us as they searched for stability",
+    "Continued client momentum with positive net new money in all regions",
+    "Enhancing client franchises through the announced acquisition of Credit Suisse",
+    "1Q23 net profit USD 1.0bn; 9.1% RoCET1",
+    "1Q23 total revenues USD 8.7bn",
+    "Net interest income",
+    "Executing our cost strategy",
+    "Global Wealth Management",
+    "Asset Management",
+    "Investment Bank",
+    "Personal & Corporate Banking (CHF)",
+    "We continued to maintain a strong liquidity and capital position",
+    "Common equity tier 1 capital",
+    "Indicative timing of communication related to the acquisition of Credit Suisse",
+    "Key messages",
+    "Analyst Q&A (CEO and CFO)",
+    "Cautionary Statement Regarding Forward-Looking Statements"
+  ],
+  "presentation_section_details": [
+    {
+      "presentation_section_title": "Presentation",
+      "presentation_section_start_page_number": "1",
+      "presentation_section_end_page_number": "8"
+    }
+  ],
+  "question_and_answer_section_details": [
+    {
+      "question_and_answer_section_title": "Analyst Q&A (CEO and CFO)",
+      "question_and_answer_section_start_page_number": "9",
+      "question_and_answer_section_end_page_number": "20"
+    }
+  ],
+  "path_to_transcript_txt": "transcripts_cleantxt/2023_q1_ch_2_ubs_transcript_clean.txt"
+}

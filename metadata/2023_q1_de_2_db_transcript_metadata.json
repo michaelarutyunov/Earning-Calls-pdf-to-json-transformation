@@ -1,0 +1,191 @@
+{
+  "bank_name": "Deutsche Bank AG",
+  "call_date": "2023-04-27",
+  "reporting_period": "Q1-2023",
+  "speaker_regex_pattern": "<MULTISPACE> <LINEBREAK> ([A-Z][a-zA-Z\\s-]+|[A-Z][A-Z\\s-]+) <MULTISPACE> <LINEBREAK>",
+  "participants": [
+    {
+      "speaker_name": "Christian Sewing",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Chief Executive Officer"
+      ],
+      "speaker_company": [
+        "Deutsche Bank AG"
+      ]
+    },
+    {
+      "speaker_name": "James von Moltke",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Chief Financial Officer"
+      ],
+      "speaker_company": [
+        "Deutsche Bank AG"
+      ]
+    },
+    {
+      "speaker_name": "Silke-Nicole Szypa",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Deputy Head of Investor Relations"
+      ],
+      "speaker_company": [
+        "Deutsche Bank AG"
+      ]
+    },
+    {
+      "speaker_name": "Chris Hallam",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Goldman Sachs"
+      ]
+    },
+    {
+      "speaker_name": "Tom Hallett",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "KBW"
+      ]
+    },
+    {
+      "speaker_name": "Anke Reingen",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "RBC"
+      ]
+    },
+    {
+      "speaker_name": "Stuart Graham",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Autonomous"
+      ]
+    },
+    {
+      "speaker_name": "Nicolas Payen",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Kepler Cheuvreux"
+      ]
+    },
+    {
+      "speaker_name": "Adam Terelak",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Mediobanca"
+      ]
+    },
+    {
+      "speaker_name": "Kian Abouhossein",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "JPMorgan"
+      ]
+    },
+    {
+      "speaker_name": "Amit Goel",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Barclays"
+      ]
+    },
+    {
+      "speaker_name": "Jeremy Sigee",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "BNP"
+      ]
+    },
+    {
+      "speaker_name": "Piers Brown",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "HSBC"
+      ]
+    },
+    {
+      "speaker_name": "Jon Peace",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Credit Suisse"
+      ]
+    },
+    {
+      "speaker_name": "Andrew Coombs",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Citi"
+      ]
+    },
+    {
+      "speaker_name": "Vishal Shah",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Morgan Stanley"
+      ]
+    },
+    {
+      "speaker_name": "Andrew Lim",
+      "speaker_misspelled_names": [],
+      "speaker_title": [],
+      "speaker_company": [
+        "Societe Generale"
+      ]
+    }
+  ],
+  "all_document_sections": [
+    "Strong performance in volatile markets",
+    "Continued progress across all divisions",
+    "Balanced portfolio of businesses driving performance",
+    "Reinforcing cost agenda across front office and infrastructure",
+    "Well diversified loan book and deposit base, supported by strong capital and liquidity",
+    "Global Hausbank strategy positioned to support our clients through every cycle",
+    "Accelerated execution of strategic agenda driving returns",
+    "Summary",
+    "Key performance indicators",
+    "Q1 2023 highlights",
+    "Net interest margin (NIM)",
+    "Adjusted costs - Q1 2023 (YoY)",
+    "Provision for credit losses",
+    "Commercial Real Estate (CRE)",
+    "Funding and liquidity",
+    "Capital metrics",
+    "Corporate Bank",
+    "Investment Bank",
+    "Private Bank",
+    "Asset Management",
+    "Corporate & Other",
+    "Outlook",
+    "Question & Answer Session",
+    "Disclaimer"
+  ],
+  "presentation_section_details": [
+    {
+      "presentation_section_title": "Presentation",
+      "presentation_section_start_page_number": "2",
+      "presentation_section_end_page_number": "19"
+    }
+  ],
+  "question_and_answer_section_details": [
+    {
+      "question_and_answer_section_title": "Question & Answer Session",
+      "question_and_answer_section_start_page_number": "19",
+      "question_and_answer_section_end_page_number": "50"
+    }
+  ],
+  "path_to_transcript_txt": "transcripts_cleantxt/2023_q1_de_2_db_transcript_clean.txt"
+}

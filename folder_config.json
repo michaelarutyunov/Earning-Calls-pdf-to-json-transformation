@@ -1,0 +1,12 @@
+{
+    "folder_paths": {
+        "transcripts_pdf_folder": "transcripts_pdf",
+        "transcripts_cleantxt_folder": "transcripts_cleantxt",
+        "metadata_folder": "metadata",
+        "utterances_folder": "utterances"
+    },
+    "test_mode": {
+        "enabled": true,
+        "file_name": "2023_q1_us_3_citi_transcript.pdf"
+    }
+}

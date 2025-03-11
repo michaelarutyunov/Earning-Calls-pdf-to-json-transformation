@@ -1,0 +1,204 @@
+{
+  "bank_name": "Citigroup",
+  "call_date": "2023-04-14",
+  "reporting_period": "Q1-2023",
+  "speaker_regex_pattern": "([A-Z][A-Za-z]+(\\s[A-Z][A-Za-z'\\-]+)+)\\s*:",
+  "participants": [
+    {
+      "speaker_name": "Jennifer Landis",
+      "speaker_misspelled_names": [
+        "JENNIFER LANDIS",
+        "Jenn Landis"
+      ],
+      "speaker_title": [
+        "Head of Citi Investor Relations"
+      ],
+      "speaker_company": [
+        "Citi",
+        "Citigroup",
+        "Citigroup Inc."
+      ]
+    },
+    {
+      "speaker_name": "Jane Fraser",
+      "speaker_misspelled_names": [
+        "JANE FRASER"
+      ],
+      "speaker_title": [
+        "Chief Executive Officer",
+        "Citi Chief Executive Officer"
+      ],
+      "speaker_company": [
+        "Citi",
+        "Citigroup",
+        "Citigroup Inc."
+      ]
+    },
+    {
+      "speaker_name": "Mark Mason",
+      "speaker_misspelled_names": [
+        "MARK MASON"
+      ],
+      "speaker_title": [
+        "Chief Financial Officer",
+        "Citi Chief Financial Officer"
+      ],
+      "speaker_company": [
+        "Citi",
+        "Citigroup",
+        "Citigroup Inc."
+      ]
+    },
+    {
+      "speaker_name": "Glenn Schorr",
+      "speaker_misspelled_names": [
+        "GLENN SCHORR"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "Evercore"
+      ]
+    },
+    {
+      "speaker_name": "Mike Mayo",
+      "speaker_misspelled_names": [
+        "MIKE MAYO"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "Wells Fargo Securities"
+      ]
+    },
+    {
+      "speaker_name": "Betsy Graseck",
+      "speaker_misspelled_names": [
+        "BETSY GRASECK"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "Morgan Stanley"
+      ]
+    },
+    {
+      "speaker_name": "Erika Najarian",
+      "speaker_misspelled_names": [
+        "ERIKA NAJARIAN"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "UBS"
+      ]
+    },
+    {
+      "speaker_name": "Jim Mitchell",
+      "speaker_misspelled_names": [
+        "JIM MITCHELL"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "Seaport Global"
+      ]
+    },
+    {
+      "speaker_name": "Steven Chubak",
+      "speaker_misspelled_names": [
+        "STEVEN CHUBAK"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "Wolfe Research"
+      ]
+    },
+    {
+      "speaker_name": "Ebrahim Poonawala",
+      "speaker_misspelled_names": [
+        "EBRAHIM POONAWALA"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "Bank of America"
+      ]
+    },
+    {
+      "speaker_name": "Matt O'Connor",
+      "speaker_misspelled_names": [
+        "MATT O'CONNOR"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "Deutsche Bank"
+      ]
+    },
+    {
+      "speaker_name": "Gerard Cassidy",
+      "speaker_misspelled_names": [
+        "GERARD CASSIDY"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "RBC Capital Markets"
+      ]
+    },
+    {
+      "speaker_name": "Vivek Juneja",
+      "speaker_misspelled_names": [
+        "VIVEK JUNEJA"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "JPMorgan"
+      ]
+    },
+    {
+      "speaker_name": "Ken Usdin",
+      "speaker_misspelled_names": [
+        "KEN USDIN"
+      ],
+      "speaker_title": [
+        "Not clearly stated"
+      ],
+      "speaker_company": [
+        "Jefferies"
+      ]
+    }
+  ],
+  "all_document_sections": [
+    "PRESENTATION",
+    "QUESTION AND ANSWER"
+  ],
+  "presentation_section_details": [
+    {
+      "presentation_section_title": "PRESENTATION",
+      "presentation_section_start_page_number": "1",
+      "presentation_section_end_page_number": "9"
+    }
+  ],
+  "question_and_answer_section_details": [
+    {
+      "question_and_answer_section_title": "QUESTION AND ANSWER",
+      "question_and_answer_section_start_page_number": "9",
+      "question_and_answer_section_end_page_number": "20"
+    }
+  ],
+  "path_to_transcript_txt": "transcripts_cleantxt/2023_q1_us_3_citi_transcript_clean.txt"
+}
