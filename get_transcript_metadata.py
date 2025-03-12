@@ -112,6 +112,10 @@ def extract_text_from_pdf(path):
 
         text = re.sub(pattern, fix_spaced_header, text)
 
+        # If more than 3 same punctuation characters are found in a row, replace them with a single instance of that punctuation character
+        # text = re.sub(r'\.{3,}', '', text)
+        #text = re.sub(r'(\. ){3,}', '', text)
+
         # Strip leading/trailing whitespace
         text = text.strip()
 

@@ -1,0 +1,164 @@
+{
+  "bank_name": "JPMorgan Chase",
+  "call_date": "2023-04-14",
+  "reporting_period": "Q1-2023",
+  "speaker_regex_pattern": "([A-Z][a-zA-Z]+(\\s[A-Z][a-zA-Z\\.]+)+)\\s*<MULTISPACE>\\s*<LINEBREAK>\\s*([^<]+)\\s*<MULTISPACE>\\s*<LINEBREAK>\\s*([A-Za-z]|[A-Za-z][^<]+)\\s*<MULTISPACE>\\s*<LINEBREAK>",
+  "participants": [
+    {
+      "speaker_name": "Jeremy Barnum",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Chief Financial Officer"
+      ],
+      "speaker_company": [
+        "JPMorgan Chase & Co."
+      ]
+    },
+    {
+      "speaker_name": "Jamie Dimon",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Chairman & Chief Executive Officer"
+      ],
+      "speaker_company": [
+        "JPMorgan Chase & Co."
+      ]
+    },
+    {
+      "speaker_name": "Steven Chubak",
+      "speaker_misspelled_names": [
+        "Steve Chubak"
+      ],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "Wolfe Research LLC"
+      ]
+    },
+    {
+      "speaker_name": "Ken Usdin",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "Jefferies LLC"
+      ]
+    },
+    {
+      "speaker_name": "John McDonald",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "Autonomous Research"
+      ]
+    },
+    {
+      "speaker_name": "Erika Najarian",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "UBS Securities LLC"
+      ]
+    },
+    {
+      "speaker_name": "Jim Mitchell",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "Seaport Global Securities LLC"
+      ]
+    },
+    {
+      "speaker_name": "Gerard Cassidy",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "RBC Capital Markets LLC"
+      ]
+    },
+    {
+      "speaker_name": "Ebrahim Poonawala",
+      "speaker_misspelled_names": [
+        "Ebrahim H. Poonawala"
+      ],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "Bank of America Merrill Lynch"
+      ]
+    },
+    {
+      "speaker_name": "Mike Mayo",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "Wells Fargo Securities LLC"
+      ]
+    },
+    {
+      "speaker_name": "Betsy Graseck",
+      "speaker_misspelled_names": [
+        "Betsy L. Graseck"
+      ],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "Morgan Stanley & Co. LLC"
+      ]
+    },
+    {
+      "speaker_name": "Glenn Schorr",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "Evercore ISI"
+      ]
+    },
+    {
+      "speaker_name": "Matt O'Connor",
+      "speaker_misspelled_names": [],
+      "speaker_title": [
+        "Analyst"
+      ],
+      "speaker_company": [
+        "Deutsche Bank Securities, Inc."
+      ]
+    }
+  ],
+  "all_document_sections": [
+    "MANAGEMENT DISCUSSION SECTION",
+    "QUESTION AND ANSWER SECTION",
+    "Disclaimer"
+  ],
+  "presentation_section_details": [
+    {
+      "presentation_section_title": "MANAGEMENT DISCUSSION SECTION",
+      "presentation_section_start_page_number": "2",
+      "presentation_section_end_page_number": "4"
+    }
+  ],
+  "question_and_answer_section_details": [
+    {
+      "question_and_answer_section_title": "QUESTION AND ANSWER SECTION",
+      "question_and_answer_section_start_page_number": "4",
+      "question_and_answer_section_end_page_number": "17"
+    }
+  ],
+  "path_to_transcript_txt": "transcripts_cleantxt/2023_q1_us_4_jpm_transcript_clean.txt"
+}
