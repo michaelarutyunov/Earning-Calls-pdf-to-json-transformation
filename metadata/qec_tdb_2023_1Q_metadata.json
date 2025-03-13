@@ -1,0 +1,319 @@
+{
+    "bank_name": "TD Bank Group",
+    "call_date": "2023-03-02",
+    "reporting_period": "Q1-2023",
+    "participants": [
+        {
+            "speaker_name": "Bharat Masrani",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group President and CEO"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Bharat Masrani - TD - Group President and CEO <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Ajai Bambawale",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group Head and Chief Risk Officer"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Ajai Bambawale - TD - Group Head and Chief Risk Officer <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Kelvin Tran",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Chief Financial Officer"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Kelvin Tran - TD - Chief Financial Officer <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Michael Rhodes",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group Head, Canadian Personal Banking"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Michael Rhodes - TD - Group Head, Canadian Personal Banking <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Paul Douglas",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group Head, Canadian Business Banking"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Paul Douglas - TD - Group Head, Canadian Business Banking <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Raymond Chun",
+            "speaker_misspelled_names": [
+                "Ray"
+            ],
+            "speaker_title": [
+                "Group Head, Wealth Management and Insurance",
+                "Group Head, Wealth Management & Insurance"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Raymond Chun - TD - Group Head, Wealth Management & Insurance <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Leo Salom",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "President and CEO, TD Bank America's Most Convenient Bank"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Leo Salom - TD - President and CEO, TD Bank America's Most Convenient Bank <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Riaz Ahmed",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group Head, Wholesale Banking"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Riaz Ahmed - TD - Group Head, Wholesale Banking <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Brooke Hales",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Head of Investor Relations"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Brooke Hales - TD - Head of Investor Relations <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Gabriel Dechaine",
+            "speaker_misspelled_names": [
+                "Gabe"
+            ],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "National Bank Financial"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Gabriel Dechaine - National Bank Financial - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Meny Grauman",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Scotia Capital"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Meny Grauman - Scotia Capital - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Paul Holden",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "CIBC World Markets",
+                "CIBC"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Paul Holden - CIBC World Markets - Analyst <LINEBREAK>",
+                "<LINEBREAK> Paul Holden - CIBC - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Doug Young",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Desjardins"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Doug Young - Desjardins - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Lemar Persaud",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Cormark Securities",
+                "Cormark"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Lemar Persaud - Cormark Securities - Analyst <LINEBREAK>",
+                "<LINEBREAK> Lemar Persaud - Cormark - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Sohrab Movahedi",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "BMO Capital Markets",
+                "BMO"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Sohrab Movahedi - BMO Capital Markets - Analyst <LINEBREAK>",
+                "<LINEBREAK> Sohrab Movahedi - BMO - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Joo Ho Kim",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Credit Suisse Securities"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Joo Ho Kim - Credit Suisse Securities - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Mike Rizvanovic",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Keefe, Bruyette & Woods",
+                "KBW"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Mike Rizvanovic - Keefe, Bruyette & Woods - Analyst <LINEBREAK>",
+                "<LINEBREAK> Mike Rizvanovic - KBW - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Scott Chan",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Canaccord Genuity"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Scott Chan - Canaccord Genuity - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Darko Mihelic",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "RBC Capital Markets"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Darko Mihelic - RBC Capital Markets - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Ebrahim Poonawala",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Bank of America Securities",
+                "BofA Securities"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Ebrahim Poonawala - Bank of America Securities - Analyst <LINEBREAK>",
+                "<LINEBREAK> Ebrahim Poonawala - BofA Securities - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Nigel D'Souza",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Veritas Investment Research"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Nigel D'Souza - Veritas Investment Research - Analyst <LINEBREAK>"
+            ]
+        }
+    ],
+    "all_document_sections": [
+        "DISCLAIMER",
+        "FORWARD-LOOKING INFORMATION",
+        "CORPORATE PARTICIPANTS",
+        "CONFERENCE CALL PARTICIPANTS",
+        "PRESENTATION",
+        "QUESTION AND ANSWER"
+    ],
+    "presentation_section_details": [
+        {
+            "presentation_section_title": "PRESENTATION",
+            "presentation_section_start_page_number": "3",
+            "presentation_section_end_page_number": "8"
+        }
+    ],
+    "question_and_answer_section_details": [
+        {
+            "question_and_answer_section_title": "QUESTION AND ANSWER",
+            "question_and_answer_section_start_page_number": "8",
+            "question_and_answer_section_end_page_number": "20"
+        }
+    ],
+    "path_to_transcript_txt": "transcripts_cleantxt/qec_tdb_2023_1Q_clean.txt",
+    "speaker_regex_pattern": "<LINEBREAK>\\s+([^-]+)\\s+-\\s+([^-]+)\\s+-\\s+([^<]+)\\s+<LINEBREAK>"
+}

@@ -1,0 +1,726 @@
+{
+    "bank_name": "TD Bank Group",
+    "call_date": "2023-03-02",
+    "reporting_period": "Q1-2023",
+    "participants": [
+        {
+            "speaker_name": "Bharat Masrani",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group President and CEO"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Bharat Masrani - TD - Group President and CEO <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Ajai Bambawale",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group Head and Chief Risk Officer"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Ajai Bambawale - TD - Group Head and Chief Risk Officer <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Kelvin Tran",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Chief Financial Officer"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Kelvin Tran - TD - Chief Financial Officer <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Michael Rhodes",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group Head, Canadian Personal Banking"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Michael Rhodes - TD - Group Head, Canadian Personal Banking <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Paul Douglas",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group Head, Canadian Business Banking"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Paul Douglas - TD - Group Head, Canadian Business Banking <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Raymond Chun",
+            "speaker_misspelled_names": [
+                "Ray"
+            ],
+            "speaker_title": [
+                "Group Head, Wealth Management and Insurance",
+                "Group Head, Wealth Management & Insurance"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Raymond Chun - TD - Group Head, Wealth Management & Insurance <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Leo Salom",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "President and CEO, TD Bank America's Most Convenient Bank"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Leo Salom - TD - President and CEO, TD Bank America's Most Convenient Bank <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Riaz Ahmed",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Group Head, Wholesale Banking"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Riaz Ahmed - TD - Group Head, Wholesale Banking <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Brooke Hales",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Head of Investor Relations"
+            ],
+            "speaker_company": [
+                "TD Bank Group"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Brooke Hales - TD - Head of Investor Relations <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Gabriel Dechaine",
+            "speaker_misspelled_names": [
+                "Gabe"
+            ],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "National Bank Financial"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Gabriel Dechaine - National Bank Financial - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Meny Grauman",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Scotia Capital"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Meny Grauman - Scotia Capital - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Paul Holden",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "CIBC World Markets",
+                "CIBC"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Paul Holden - CIBC World Markets - Analyst <LINEBREAK>",
+                "<LINEBREAK> Paul Holden - CIBC - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Doug Young",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Desjardins"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Doug Young - Desjardins - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Lemar Persaud",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Cormark Securities",
+                "Cormark"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Lemar Persaud - Cormark Securities - Analyst <LINEBREAK>",
+                "<LINEBREAK> Lemar Persaud - Cormark - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Sohrab Movahedi",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "BMO Capital Markets",
+                "BMO"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Sohrab Movahedi - BMO Capital Markets - Analyst <LINEBREAK>",
+                "<LINEBREAK> Sohrab Movahedi - BMO - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Joo Ho Kim",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Credit Suisse Securities"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Joo Ho Kim - Credit Suisse Securities - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Mike Rizvanovic",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Keefe, Bruyette & Woods",
+                "KBW"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Mike Rizvanovic - Keefe, Bruyette & Woods - Analyst <LINEBREAK>",
+                "<LINEBREAK> Mike Rizvanovic - KBW - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Scott Chan",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Canaccord Genuity"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Scott Chan - Canaccord Genuity - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Darko Mihelic",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "RBC Capital Markets"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Darko Mihelic - RBC Capital Markets - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Ebrahim Poonawala",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Bank of America Securities",
+                "BofA Securities"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Ebrahim Poonawala - Bank of America Securities - Analyst <LINEBREAK>",
+                "<LINEBREAK> Ebrahim Poonawala - BofA Securities - Analyst <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name": "Nigel D'Souza",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Veritas Investment Research"
+            ],
+            "speaker_flags": [
+                "<LINEBREAK> Nigel D'Souza - Veritas Investment Research - Analyst <LINEBREAK>"
+            ]
+        }
+    ],
+    "all_document_sections": [
+        "DISCLAIMER",
+        "FORWARD-LOOKING INFORMATION",
+        "CORPORATE PARTICIPANTS",
+        "CONFERENCE CALL PARTICIPANTS",
+        "PRESENTATION",
+        "QUESTION AND ANSWER"
+    ],
+    "presentation_section_details": [
+        {
+            "presentation_section_title": "PRESENTATION",
+            "presentation_section_start_page_number": "3",
+            "presentation_section_end_page_number": "8"
+        }
+    ],
+    "question_and_answer_section_details": [
+        {
+            "question_and_answer_section_title": "QUESTION AND ANSWER",
+            "question_and_answer_section_start_page_number": "8",
+            "question_and_answer_section_end_page_number": "20"
+        }
+    ],
+    "path_to_transcript_txt": "transcripts_cleantxt/qec_tdb_2023_1Q_clean.txt",
+    "speaker_regex_pattern": "<LINEBREAK>\\s+([^-]+)\\s+-\\s+([^-]+)\\s+-\\s+([^<]+)\\s+<LINEBREAK>",
+    "utterances": [
+        {
+            "uuid": "86e937a2-6901-43e7-8e61-f875307642d1",
+            "speaker": "Nigel D'Souza",
+            "utterance": "Page 3 of 20"
+        },
+        {
+            "uuid": "88ff6ad9-00e9-4761-a4f5-ea71c9fb3327",
+            "speaker": "Brooke Hales",
+            "utterance": "Thank you, operator. Good afternoon and welcome to TD Bank Group's First Quarter 2023 Investor Presentation. Many of us are joining today's meeting from lands across North America. North America is known as Turtle Island by many Indigenous communities. I am currently situated in Toronto. As such, I would like to begin today's meeting by acknowledging that I am on the traditional territory of many nations, including the Mississaugas of the Credit, the Anishnabeg, the Chippewa, the Haudenosaunee and the Wendat peoples, and is now home to many diverse First Nations, Métis and Inuit peoples. We also acknowledge that Toronto is covered by Treaty 13 signed with the Mississaugas of the Credit, and the Williams Treaties signed with multiple Mississaugas and Chippewa bands. We will begin today's presentation with remarks from Bharat Masrani, the Bank's CEO, after which Kelvin Tran, the Bank's CFO, will present our first quarter operating results. Ajai Bambawale, Chief Risk Officer, will then offer comments on credit quality, after which we will invite questions from pre-qualified analysts and investors on the phone. Also present today to answer your questions are Michael Rhodes, Group Head, Canadian Personal Banking; Paul Douglas, Group Head, Canadian Business Banking; Raymond Chun, Group Head, Wealth Management and Insurance; Leo Salom, President and CEO, TD Bank, America's Most Convenient Bank; and Riaz Ahmed, Group Head, Wholesale Banking. Please turn to Slide 2. At this time, I would like to caution our listeners that this presentation contains forward looking statements, that there are risks that actual results could differ materially from what is discussed and that certain material factors or assumptions were applied in making these forward-looking statements. Any forward-looking statements contained in this presentation represent the views of management and are presented for the purpose of assisting the Bank's shareholders and analysts in understanding the Bank's financial position, objectives and priorities, and anticipated financial performance. Forward-looking statements may not be appropriate for other purposes. I would also like to remind listeners that the Bank uses non-GAAP financial measures such as \"adjusted\" results to assess each of its businesses and to measure overall Bank performance. The Bank believes that adjusted results provide readers with a better understanding of how management views the Bank's performance. Bharat will be referring to adjusted results in his remarks. Additional information on items of note, the Bank's use of non-GAAP and other financial measures, the Bank's reported results and factors and assumptions related to forward-looking information are all available in our Q1 2023 Report to"
+        },
+        {
+            "uuid": "d77dd7c8-8bbe-400d-9486-ba6a80e0874f",
+            "speaker": "Bharat Masrani",
+            "utterance": "Thank you, Brooke and thank you everyone for joining us today. To start, I want to express that our thoughts are with all those impacted by the devastating earthquakes in Turkey and Syria, including our colleagues, customers and communities, who have deep ties to these two countries. TD has contributed directly to the relief efforts and enabled customers to do so as well, through branches and online. Together, a collective effort can make a difference and provide some comfort during these terrible hardships. It's been a busy week and before I review our strong quarter and start to the fiscal year, I would like to provide a few strategic updates. As you know on February 9 th , we mutually agreed with First Horizon to extend the close date to May 27 th as provisioned in our contract. Since then, we have come to believe that the deal is not expected to receive regulatory approval in time to close the transaction by that date. Regulatory approval is not within the Bank's control. So, we are doing what is prudent and appropriate - we have opened discussions with First Horizon about a potential additional extension. I cannot speculate on when we will receive approval. I can tell you that we are fully committed to the transaction. We have a robust Community Benefits Plan in place with broad community support across our combined footprint and our teams have made progress on integration plans. This is a great transaction that offers scale and new capabilities to our U.S. franchise. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 4 of 20 - We made another unrelated announcement earlier in the week regarding the Stanford matter. The settlement we announced allows us to avoid the distraction and uncertainty of a long legal proceeding, and is in the best interests of shareholders and the Bank. And of course, yesterday, we closed the Cowen transaction. TD Securities and Cowen are a powerful combination, accelerating our U.S. growth strategy and helping to create an integrated, North American dealer with global reach. The acquisition of Cowen adds key capabilities to our growing global markets platform - in U.S. equity sales and trading and in U.S. equity research. It also adds scale and industry expertise across U.S. capital markets and M&A advisory. Congratulations to everyone on this important milestone, and a very warm welcome to our over 1,500 new colleagues. I know I speak for Riaz and all of TD Securities, when I say we are very excited for what we will accomplish, together. Let me now turn to our first quarter performance. TD delivered a strong Q1. Earnings increased 8% to $4.2 billion, and EPS rose 7% to $2.23. Revenue grew 16% year-over-year, reflecting margin expansion, strong volume growth and our diversified business mix. We took advantage of this environment to continue to invest in our business to drive future growth while delivering robust operating leverage. As expected, we saw some credit normalization this quarter, but credit performance remained strong overall, supported by consistent and disciplined underwriting practices. TD's CET 1 ratio ended the quarter at 15.5% or 15% pro forma for the closing of the Cowen acquisition. With TD's strong internal capital generation capabilities - and the various capital levers available to the Bank, we continue to expect TD's CET 1 ratio to be comfortably above 11% post-closing of the First Horizon transaction. These strong results are matched by a brand that is second to none. TD was recently named one of the 2023 Global Top 500 Most Valuable Brands by Brand Finance, earning the highest ranking in Canada. Across our distribution channels, the Bank delivers personalized, connected, legendary experiences. For the ninth consecutive year, the TD mobile app had the highest number of monthly active mobile users among Canadian banks according to mobile analytics firm data.ai . Let me now turn to each of our businesses and review some highlights from Q1. Our Canadian Personal and Commercial Banking segment delivered record earnings of $1.7 billion, reflecting revenue growth of 17% and significant positive operating leverage. The Personal Bank continued to demonstrate momentum, with sales of our Everyday Banking products up over 20% year over-year and industry-leading market share gains in non-term deposits again this quarter, driven by strength in branch banking. We saw record Q1 acquisition in the New to Canada customer segment and announced an exclusive strategic relationship with CanadaVisa - one of the leading online sources of Canadian immigration information, with over 2 million monthly visits. Through this relationship, TD will help support newcomers as they navigate financial services while settling into their lives in Canada. We also had record Q1 credit card spend and organic loan growth driven by a rebound in travel and our compelling TD Aeroplan offering, coupled with our best ever quarter for digital acquisition for TD cards. In our real estate secured lending business, our teams delivered robust retention rates and enhancements in mobile mortgage specialist productivity, despite a softening housing market. The Business Bank achieved double-digit loan growth for the sixth consecutive quarter. And we were proud to collaborate with the Federation of African Canadian Economics to help black business owners in their entrepreneurial journeys, enabling them to access capital and scale their businesses. Turning to the U.S., our U.S. Retail Bank delivered record earnings of US$1 billion, reflecting revenue growth of 27% and significant positive operating leverage. With the contribution from our investment in Schwab of US$222 million, segment earnings were US$1.2 billion. This quarter, enabled by our investments in event streaming technology, TD launched deposit balance thresholds alerts, the first of several self-serve alerts that will further enhance customer convenience and experience. We delivered strong loan growth year-over-year. Led by 18% growth in mortgages and 9% growth in cards, personal loans were up 11%. And TD demonstrated continued momentum in the middle-market and C&I space, with business loans up 9%, excluding PPP loan forgiveness. Finally, this quarter, we were proud to announce a 20-year extension of our agreement with Delaware North - keeping Boston's beloved landmark arena named as \"TD Garden\" through 2045. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 5 of 20 Our Wealth Management and Insurance segment earned $550 million this quarter. Revenue was up 4%, as higher insurance volumes and the benefit of higher interest rates helped offset a challenging market environment. In TD Direct Investing, we took the #1 spot in the Globe and Mail's annual ranking of digital brokers, and increased market share of new account acquisition quarter-over-quarter. In TD Asset Management, TD regained its position as the #1 money manager for Canadian pension assets, and widened its lead versus competitors as the #1 Canadian institutional asset manager. Highlighting the breadth of our capabilities, several TD Asset Management ETFs and mutual funds - across equities, fixed income, and balanced funds were recognized this quarter with FundGrade A+ awards. On the Insurance side, our expansion into Small Business Insurance will launch in the coming months. As the #1 Direct-to-Consumer insurer in Canada, this is a natural extension for us to leverage our expertise to deliver exceptional insurance experiences for small business owners. In our Wholesale Banking business, we delivered net income of $347 million, with revenues roughly flat year-over-year. The impact of lower underwriting and trading revenues was offset by higher global transaction banking and lending revenues as we continue to support our clients through market cycles. This quarter, TD Securities acted as financial advisor to GIC and Dream Industrial REIT on their acquisition of Summit Industrial Income REIT. Our Wholesale Banking team also acted as joint book runner on the Government of Canada's $500 million Ukraine Sovereignty Bond, to assist the Government of Ukraine in providing essential services to Ukrainians and restoring energy infrastructure. And as I mentioned earlier, Cowen is now part of TD Securities. With robust integration plans in place, work is already underway to tap the combined strengths of the business and extend our competitive advantage in the market. Guided by our purpose, TD is committed to creating value for all our stakeholders. I am proud that the Bank was listed in the DJSI World Index for the ninth consecutive year. TD is one of 6 banks listed in the DJSI North American Index - and the only North American bank included in the World Index. The Bank was also recently recognized with a \"Top 10% S&P Global ESG score\" - again standing out from its peers as the only North American bank to be listed in the top 10%. And, TD Bank, America's Most Convenient Bank was recognized as one of America's Best Employers for Veterans by Forbes for the third consecutive year. This recognition is a reflection of our commitment to the communities we serve. Earlier this week, as part of the TD Ready Challenge, we were pleased to announce a total of $10 million in grants to ten non-profit and charitable organizations that are working on solutions to help those who may be disproportionately affected by climate change and the transition to a low-carbon economy. Later this month, TD will release its 2022 ESG reporting suite, including our Climate Action Plan. We are excited to share the outcomes of a year of effort and accomplishments by thousands of dedicated TD colleagues, who transformed our aspirations into action. Our TD bankers continue to deliver for all of our stakeholders, and it is a privilege to work alongside them every day. I would like to thank them for all they do to make TD the Better Bank. I will end by noting that this is Paul Douglas's last earnings call as Group Head, Canadian Business Banking. Barbara Hooper will assume leadership of this segment. Paul's almost 47-year TD career is filled with remarkable achievements and success. He and his team have built one of Canada's premier business banks, known across the market for their dedication to their customers. Paul has also built the best team of business bankers in the country, and leaves behind a tremendous bench of talent that will continue to drive growth. I have known Paul throughout my entire time at TD and want to thank him for his partnership, support, and significant contributions to the Bank's success over many decades. Paul will assume a newly created position as Chair, Canadian Business Banking and will also serve as a Special Advisor to me. Congratulations to Paul, and I look forward to continuing to benefit from his wise counsel as we build for the future. With that, I'll turn things over to Kelvin. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 6 of 20 - - Kelvin Tran - TD - Chief Financial Officer Thank you, Bharat. Good afternoon, everyone. Please turn to Slide 11. For Q1, the Bank reported earnings of $1.6 billion and EPS of $0.82, down 58% and 59% respectively. Reported earnings include the Stanford litigation settlement, a net loss from mitigation of impact from interest rate volatility to closing capital on the First Horizon acquisition and the recognition of a provision for income taxes in connection with the Canada Recovery Dividend and increase in the Canadian federal tax rate for fiscal 2022. Adjusted earnings were $4.2 billion, and adjusted EPS was $2.23, up 8% and 7%, respectively. Reported revenue increased 8% and includes a net loss from mitigation of impact from interest rate volatility to closing capital on the First Horizon acquisition. Adjusted revenue increased 16% reflecting margin and volume growth in the Personal and Commercial Banking businesses and the impact of FX translation. Provision for credit losses was $690 million, compared with $72 million in the first quarter last year. Reported expenses increased 39% primarily reflecting the Stanford litigation settlement and higher acquisition and integration-related charges. Adjusted expenses increased 11%, driven by higher employee-related expenses, the impact of FX translation, and higher spend supporting business growth. On our Q4 call, I noted that we expected adjusted expense growth excluding FX to moderate in fiscal 2023 on a quarter-over-quarter basis. We saw that this quarter, with adjusted expense growth moderating sequentially as we continue to prioritize our investments. Our goal of delivering positive operating leverage over the medium-term remains unchanged. Absent the retailer partners' net share of the profits from the U.S. strategic card portfolio, adjusted expenses increased 10.4% ex-FX. Reported total bank PTPP was down 26% year-over-year primarily reflecting the Stanford litigation settlement. Consistent with prior quarters, Slide 26 shows how we calculate adjusted total bank PTPP and operating leverage, removing the impact of the U.S. strategic card portfolio, along with the impact of foreign currency translation, and the insurance fair value charge. Adjusted total bank PTPP was up 14% after these modifications. Please turn to Slide 12. Canadian Personal and Commercial Banking net income for the quarter was $1.7 billion, up 7% year over-year. Revenue increased 17%, reflecting higher margins and volume growth. Average loan volumes rose 8%, reflecting 6% growth in personal volumes and 14% growth in business volumes. Average deposits rose 3%, reflecting 8% growth in personal deposits and a 5% decrease in business deposits. Net interest margin was 2.80%, up 10 basis points compared to the prior quarter, primarily due to higher deposit margins reflecting rising interest rates, partially offset by lower loan margins. While many factors can impact margins - including the path of short-term rates, tractor on and off rates, customer activity and competitive market dynamics - and margins may bounce around quarter to quarter, we currently expect net interest margin expansion to moderate for the remainder of fiscal 2023. Total PCL of $327 million increased $98 million sequentially. Total PCL as an annualized percentage of credit volume was 0.25%, up 8 basis points sequentially. Noninterest expenses increased 10% year-over year, reflecting higher spend supporting business growth, including technology and employee-related expenses. Please turn to Slide 13. U.S. Retail segment reported net income for the quarter was US$1.2 billion, up 17% year-over-year. Adjusted net income was US$1.2 billion, up 23% year-over-year. U.S. Retail Bank reported net income was US$955 million, up 18%, primarily reflecting higher revenue, partially offset by higher non-interest expenses including acquisition and integration-related charges for the First Horizon acquisition and higher PCL. U.S. Retail Bank adjusted net income was US$1 billion, up 26%. Revenue increased 27% year over-year, reflecting higher deposit margins and loan volumes, partially offset by lower loan margins and deposit volumes, lower overdraft fees, and lower income from PPP loan forgiveness. Average loan volumes increased 9% year-over-year. Personal loans increased 11%, reflecting strong originations, lower prepayments and higher credit card sale volumes. Business loans increased 6%, reflecting strong originations, new customer growth, higher commercial line utilization and increased customer activity, partially offset by PPP loan forgiveness. Excluding PPP loans, business loans increased 9%. Average deposit volumes, excluding sweep deposits, were down 2% year-over-year. Personal deposits were flat, business deposits declined 4% and sweep deposits decreased 15%. Net interest margin was 3.29%, up 16 basis points sequentially, as higher deposit margins reflecting the rising interest rate environment were partially offset by lower loan margins and negative balance sheet mix. While many factors can impact margins - including the path of short-term rates, tractor on and off rates, customer activity and TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 7 of 20 - - - - competitive market dynamics, margins may bounce around quarter to quarter, we currently expect net interest margin expansion to moderate for the remainder of fiscal 2023. Total PCL was US$149 million, a decrease of US$20 million sequentially. The U.S. Retail net PCL ratio, including only the Bank's share of PCL for the U.S. strategic card portfolio, as an annualized percentage of credit volume was 0.34%, lower by 6 basis points sequentially. Reported expenses increased 22% and include acquisition and integration related charges for the First Horizon acquisition. Adjusted expenses were up 16%, reflecting higher employee-related expenses, credit card growth-related expenses and other business investments. The contribution from TD's investment in Schwab was US$222 million, up 11% from a year ago, reflecting higher net interest income, partially offset by higher expenses, lower asset management fees and lower trading revenue. Please turn to Slide 14. Wealth Management and Insurance net income for the quarter was $550 million, down 14% year-over year. Revenue increased 4%, reflecting higher margins, an increase in fair value of investments supporting claims liabilities and higher insurance volumes, partially offset by lower volumes and lower transaction and fee-based revenue in wealth. Insurance claims increased 29% year-over-year, reflecting the impact of changes in the discount rate which resulted in a similar increase in the fair value of investments supporting claims liabilities reported in non-interest income, increased driving activity and inflationary costs, partially offset by fewer severe weather-related events. Non-interest expenses were flat year-over-year, reflecting higher spend supporting business growth, including higher employee-related expenses and technology costs, partially offset by lower variable compensation. Assets under management decreased 3% year-over-year, reflecting market depreciation. Assets under administration decreased 3% year-over-year, reflecting market depreciation, partially offset by net asset growth. Please turn to Slide 15. Wholesale Banking reported net income for the quarter was $331 million, a decrease of 24% year-over year, reflecting higher non-interest expenses and PCL. Adjusted net income was $347 million, down 20% year-over-year. Revenue was $1.3 billion, largely unchanged year-over-year, reflecting lower trading related revenue and underwriting fees, offset by higher global transaction banking and lending revenue. PCL for the quarter was $32 million, an increase of $6 million from the prior quarter. Reported expenses increased 16% and included acquisition and integration-related charges primarily for the Cowen acquisition. Adjusted expenses increased 13% reflecting continued investments in Wholesale Banking's U.S. dollar strategy, including the hiring of banking, sales and trading, and technology professionals, higher severance, and the impact of foreign exchange translation. Please turn to Slide 16. The Corporate segment reported net loss of $2.6 billion in the quarter, compared with a reported net loss of $227 million in the first quarter last year. The year-over-year increase primarily reflects the Stanford litigation settlement, a net loss from mitigation of impact from interest rate volatility to closing capital on the First Horizon acquisition, the recognition of a provision for income taxes in connection with the Canada Recovery Dividend and increase in the Canadian federal tax rate for fiscal 2022, and higher net corporate expenses. Adjusted net loss for the quarter was $140 million, compared with an adjusted net loss of $127 million in the first quarter last year. Please turn to Slide 17. The Common Equity Tier 1 ratio ended the quarter at 15.5%, down 69 basis points sequentially. We had strong internal capital generation this quarter, which added 42 basis points to CET 1. This was more than offset by an increase in RWA net of FX, which decreased CET 1 by 62 basis points. We saw a 14 basis point increase in CET 1 related to the issuance of common shares under our Dividend Reinvestment Plan. Relating to the First Horizon acquisition, a net loss from the mitigation of impact from interest rate volatility to closing capital decreased CET 1 by 13 basis points and an FX hedge decreased CET1 by 6 basis points. Previously announced regulatory changes also impacted our CET 1 this quarter. We saw a 16 basis point decrease in CET 1 related to the Canada Recovery Dividend and an 8 basis point decrease related to the elimination of the transitional arrangements for expected credit losses. Finally, the previously announced Stanford litigation settlement decreased CET 1 by 23 basis points this quarter. RWA including FX increased 2.8% quarter-over-quarter, reflecting higher Credit Risk RWA. Credit Risk RWA increased $16.8 billion, or 4%, mainly reflecting higher volumes, asset quality reflecting further credit normalization and parameter updates, and methodology changes in preparation for Basel III reforms. Market Risk RWA decreased $3.4 billion, or 15%, reflecting lower exposures and tightening credit spreads. The leverage ratio was 4.8% this quarter, and the LCR ratio was 141%, both well above published regulatory minimums. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 8 of 20"
+        },
+        {
+            "uuid": "5de80acc-e640-430e-a3b8-8afca7d07ee7",
+            "speaker": "Ajai Bambawale",
+            "utterance": "Thank you, Kelvin, and good afternoon, everyone. Please turn to Slide 18. Gross impaired loan formations increased by 2 basis points, to 16 basis points quarter-over-quarter, driven by Canadian Commercial Banking, primarily related to a new formation in the health and social services sector, and some further normalization of credit performance, largely reflected in the Canadian and U.S. consumer lending portfolios. Please turn to Slide 19. Gross impaired loans were stable quarter-over-quarter and remained at cyclically low levels. Please turn to Slide 20. Recall that our presentation reports PCL ratios both gross and net of the partner's share of the U.S. strategic card PCLs. We remind you that U.S. Card PCLs recorded in the Corporate segment are fully absorbed by our partners and do not impact the Bank's net income. The Bank's provision for credit losses increased 3 basis points quarter-over-quarter to 32 basis points. The increase was largely recorded in the Canadian Personal and Commercial Banking segment. Please turn to Slide 21. The Bank's impaired PCL was $553 million, an increase of $99 million quarter-over-quarter and primarily related to some further normalization of credit performance largely reflected in the consumer lending portfolios. The Bank's current quarter impaired PCL rate remained well below 2019 levels. Performing PCL of $137 million this quarter was largely recorded in the Canadian Personal and Commercial Banking and Wholesale Banking segments. Please turn to Slide 22. The allowance for credit losses increased by $113 million quarter-over-quarter, reflecting volume growth"
+        },
+        {
+            "uuid": "d32d3955-f6d8-405b-b837-4b0597a1908d",
+            "speaker": "Meny Grauman",
+            "utterance": "Few questions on First Horizon, Bharat, you addressed it in your opening comments in terms of renegotiating of the contract. I'm just wondering what extension date are you looking for, for that new contract? TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 9 of 20"
+        },
+        {
+            "uuid": "0fcb7cad-0d4f-4289-b867-d5fd40039a9d",
+            "speaker": "Bharat Masrani",
+            "utterance": "Meny, we've just started those conversations. I think it's premature for me to give you any specific dates."
+        },
+        {
+            "uuid": "7324dc35-84ff-4fea-a434-dca1267259fd",
+            "speaker": "Meny Grauman",
+            "utterance": "And just as a follow-up to that, as a result of these negotiations, could the purchase price change? Is that"
+        },
+        {
+            "uuid": "ac803fd1-9652-4711-989b-4e0ce19354ba",
+            "speaker": "Bharat Masrani",
+            "utterance": "Well, we've just initiated the negotiations. And once the negotiations are finalized, we will be sure to give"
+        },
+        {
+            "uuid": "198a6d5d-b7c8-4d7b-a5f8-3b3cfaf09f3a",
+            "speaker": "Meny Grauman",
+            "utterance": "Okay. And then just a final one on the same topic. Just wondering about the nature of the delay given that"
+        },
+        {
+            "uuid": "f576e098-a13c-405a-82e8-efa8cffd4282",
+            "speaker": "Bharat Masrani",
+            "utterance": "As we've discussed previously, we are really excited about this transaction. We worked very hard to date"
+        },
+        {
+            "uuid": "b7c3bc1a-3159-4f07-8a3c-4d0ac26d3bf8",
+            "speaker": "Doug Young",
+            "utterance": "Just a few CET1 related questions. I mean, TD had negative organic capital generation this quarter about"
+        },
+        {
+            "uuid": "a7509599-ce54-4d15-84d6-883b64511765",
+            "speaker": "Ajai Bambawale",
+            "utterance": "Yes, it's Ajai. So let me take asset quality. You would have noticed the increase there is $6.8 billion. And there are really two drivers of that. One is normal course non-retail parameter updates that were"
+        },
+        {
+            "uuid": "cb85b728-03ae-40a3-bc8a-4cc7dccffcdf",
+            "speaker": "Doug Young",
+            "utterance": "It is. Can you split the two in terms of which one was more impactful? TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 10 of 20"
+        },
+        {
+            "uuid": "f41444a1-c608-44c7-8c2e-ec5c3cb7cade",
+            "speaker": "Ajai Bambawale",
+            "utterance": "Yes, I would say about 40% is the parameter updates. The balance is credit migration."
+        },
+        {
+            "uuid": "263dee2e-88f6-4f00-ab49-ba04afbcfedd",
+            "speaker": "Doug Young",
+            "utterance": "Okay. And then second, the CET1 impact from the Basel III changes coming in Q2, it looks like you had parameter updates, because of Basel III that came through in Q1 -- can you talk about is"
+        },
+        {
+            "uuid": "4ec3700f-3a05-46ff-a7ff-db7996300566",
+            "speaker": "Kelvin Tran",
+            "utterance": "It's Kelvin. I'll take that one. Correct. In Q2, we expect the impact of Basel III to be small either way."
+        },
+        {
+            "uuid": "43ec0496-bee4-4c21-9fe3-3dc530f39994",
+            "speaker": "Doug Young",
+            "utterance": "Okay and I know, Bharat, you said this and Kelvin, you said this, I mean with First Horizon, CET1"
+        },
+        {
+            "uuid": "2695cea5-5a36-471b-9618-9b146ca5993f",
+            "speaker": "Bharat Masrani",
+            "utterance": "Well, Doug, let's look at -- and I heard some of the noise around capital. Let's look at what TD's record"
+        },
+        {
+            "uuid": "5a2c6cfd-8ca4-4a9e-b9de-a7a3f368b603",
+            "speaker": "Doug Young",
+            "utterance": "Well, I guess maybe just to ask it another way, is that comfortably above 11% organic?"
+        },
+        {
+            "uuid": "95aa537a-01e8-49cd-b61b-12f87db95c6b",
+            "speaker": "Bharat Masrani",
+            "utterance": "That's my view. Yes, I've said this that we think we're going to be over 11% -- comfortably over 11% and then I gave you some of the calculations as to why it even goes higher over time, so we feel very comfortable with our capital position. And I know, Doug, you didn't ask, but Meny asked me what negotiations would be. And I'm not going to talk about any specific issues on those negotiations with First Horizon. We've just started a discussion. We have a fantastic relationship. It's a great franchise. And so we'll see where we get to. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 11 of 20"
+        },
+        {
+            "uuid": "0bfe7b57-7df8-4579-a349-f1490a6a54e4",
+            "speaker": "Gabriel Dechaine",
+            "utterance": "Well, actually, Doug asked pretty much all the questions I had, but just to put a fine point on that, there's no contemplating doing what you did ahead of the Cowen transaction and selling down any Schwab? You might be confused by the feedback on capital, I guess. But -- it has to do with where you ended up this"
+        },
+        {
+            "uuid": "a0d01a6b-26a7-496a-8242-8ccf395a60f3",
+            "speaker": "Bharat Masrani",
+            "utterance": "I'm not sure how you calculate your numbers, Gabe. So at some point, I'll get a chance to look at your"
+        },
+        {
+            "uuid": "5fae212f-6352-41d8-8b6b-bf8b0da0079e",
+            "speaker": "Gabriel Dechaine",
+            "utterance": "Okay. Well, how about this then? Some recent events in the Canadian banking space have led some banks to target a minimum capital level of 11.5%. Are you suggesting that temporarily, anyway, you would be -- let's say, 11% or just slightly above that. You're fine being at that level and working your way to 12% organically -- post-transaction closing. Is that correct?"
+        },
+        {
+            "uuid": "15cefdb3-e38d-4705-95d9-b7feb107de07",
+            "speaker": "Bharat Masrani",
+            "utterance": "Well, there are a lot of assumptions you are making there. I'm giving you even after closing First Horizon"
+        },
+        {
+            "uuid": "ac29ce91-ef18-49e1-bcc8-1f1272b0b2aa",
+            "speaker": "Gabe",
+            "utterance": "Bharat, just wanted to follow up on the deal. Two questions. One, should we be concerned that"
+        },
+        {
+            "uuid": "e3bd8b78-928b-4a2a-98cb-6c401d9dae0c",
+            "speaker": "Bharat Masrani",
+            "utterance": "Ebrahim, I can't comment on our confidential discussions with our regulators. That is an area that no bank ventures into. But with respect to First Horizon, we continue to work with our regulators as part of our application process, and we continue to do that. I can't comment any further. I think the other questions you're asking me are hypothetical in nature. We continue to grow our bank, Leo does a great job, six new stores were opened and I'm sure Leo would be happy to answer the loan growth we're having and the tremendous momentum we have in the U.S. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 12 of 20"
+        },
+        {
+            "uuid": "d1e45069-bccf-495b-8ebc-21fe42697fbe",
+            "speaker": "Ebrahim Poonawala",
+            "utterance": "Right. No, I think again, Bharat, I'm sure you appreciate we are in uncharted waters here. The only proxy"
+        },
+        {
+            "uuid": "6ff2d18c-3405-421e-b8ae-c8257940cc72",
+            "speaker": "Bharat Masrani",
+            "utterance": "Again, I can't comment on timing but when we announced the deal, the structure we had put in place was"
+        },
+        {
+            "uuid": "fe40508d-7492-4231-ad86-9b94b7240ada",
+            "speaker": "Scott Chan",
+            "utterance": "I'll stay away from First Horizon and maybe concentrate on Cowen. Riaz, on Cowen what are you seeing"
+        },
+        {
+            "uuid": "684fddbb-c5de-424c-844a-1b01535ab8c5",
+            "speaker": "Riaz Ahmed",
+            "utterance": "Scott. Look, first, on the closing yesterday, I cannot demonstrate to you the amount of exuberance that both the TD Securities leadership and folks and Cowen leadership and folks were feeling yesterday. There was just an amazing amount of energy in the room as we announced the closing. We've done a lot of pre-integration work. And coming into the closing, there will be some short period of time, let's say, a few weeks during which we need to continue to operate separately in order to finish all our regulatory and functional and business model organization structures as we bring the broker dealers together. And then we'll lead towards a full integration soon after that. So I'd say people are very excited to go. We've got an early operating model in place, a go-to-market"
+        },
+        {
+            "uuid": "a18ce168-7a9f-44db-9d56-7965a2f28a89",
+            "speaker": "Scott Chan",
+            "utterance": "Have you passed out any cost or revenue synergies over the medium term? I assume it's mostly the latter"
+        },
+        {
+            "uuid": "5e1fe28d-bb1b-4079-b315-38487cfac62c",
+            "speaker": "Riaz Ahmed",
+            "utterance": "Yes. I'd say we're basically at the same place we were at the time when we announced the transaction, Scott, when we talked about having $300 million to $350 million of revenue synergies, and we said that we would add about US$100 million in net income by year three. And as you know, we did not announce any expense synergies at the time of the transaction. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 13 of 20"
+        },
+        {
+            "uuid": "b65bd033-745e-46f2-84f3-3dee7dfea9b2",
+            "speaker": "Paul Holden",
+            "utterance": "I'll limit myself to one question on First Horizon. I want to try something very specific as I understand"
+        },
+        {
+            "uuid": "6e52a565-8c43-4553-8667-9650cc33c8fb",
+            "speaker": "Bharat Masrani",
+            "utterance": "Yes. Let's not talk about the delay in First Horizon, because I think I've said enough on that. Regarding"
+        },
+        {
+            "uuid": "2f2a328a-7708-4dc1-8e0b-8ee6a67d663d",
+            "speaker": "Leo Salom",
+            "utterance": "Yes. And Paul, just to be clear, on an annual basis, the OCC will review an institution on a"
+        },
+        {
+            "uuid": "a5d09f79-e38f-48ee-91d5-15886ebab9e0",
+            "speaker": "Paul Holden",
+            "utterance": "Understand. That's helpful. A question on deposits. We saw a drawdown in average deposit balances in"
+        },
+        {
+            "uuid": "85fc3b91-ade8-46f3-9653-44817fa39f89",
+            "speaker": "Leo Salom",
+            "utterance": "I'll take that one. Thanks for the question. I think what we are seeing, as a result of the increase in rates is just building rate sensitivity. I think earlier over the past two quarters, we were seeing a little bit of the excess savings from the pandemic relief efforts being drawn down or consumed. I think what you're seeing now is just the natural rate sensitivity in terms of where rates are and your more rate-sensitive clients. So think in the consumer side, your mass affluent high net worth clients and on the commercial side, your more institutional clients, looking for either more attractive higher priced deposit solutions or in some cases, off balance sheet investment alternatives. So you're seeing that play out and I would expect as long as rates continue to be where they are and or continue to increase, I think you'll see some degree of rate sensitivity. I will point you though to the composition of the U.S., we are a very liquid institution, our excess deposit position is quite strong and then the composition having a strong core checking account base in our retail and commercial businesses, should make us more resilient over the cycle. So from my standpoint, I think we've got a very strong franchise and we continue to acquire clients at a very healthy clip. Just to give you one final stat, this quarter, just on a year-on-year basis, core checking account"
+        },
+        {
+            "uuid": "eca0dee5-1726-4552-a7d9-a808e7199f34",
+            "speaker": "Paul Holden",
+            "utterance": "That's helpful and then follow-up to that, Leo and this will be my last question, in terms of that movement out of deposits and into wealth products or as you call the off balance sheet, is this an opportunity to grow that wealth franchise in the U.S.? I think it was one of your strategic priorities when you moved down there, are you seeing increasing opportunity? TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 14 of 20"
+        },
+        {
+            "uuid": "8e02f25b-6b62-4875-b726-e2ddf9047c16",
+            "speaker": "Leo Salom",
+            "utterance": "I'll start. I'll certainly ask Ray to chime in. But growing the Wealth franchise in the U.S. is absolutely one of"
+        },
+        {
+            "uuid": "18270644-e9fa-4616-8b6a-4af42840fc7c",
+            "speaker": "Ray",
+            "utterance": "The only thing I'd add, Paul, is in Canada we have figured out a model that generates significant"
+        },
+        {
+            "uuid": "7c945642-8e3e-4daa-b443-33aae9bdccc9",
+            "speaker": "Sohrab Movahedi",
+            "utterance": "Maybe just if we can go to Michael Rhodes and talk about the deposit trends in Canada and what you"
+        },
+        {
+            "uuid": "0a0e880f-30c3-4b52-9dd6-1d15c91b1772",
+            "speaker": "Michael Rhodes",
+            "utterance": "Sure, absolutely. I'll start, I mean, just as Leo mentioned, clearly, rate sensitivity in the higher rate environment is picking up. That being the case, our strategy has been and continues to be gathering core franchise accounts and think of the chequing account as really the anchor of that. We have seen very strong account acquisition over the past quarter, actually recently, and this is being driven by a record number of New to Canada chequing accounts for Q1. And so we are seeing very strong flows coming in. And the result of that is we are seeing that our non-term share of deposits across the industry is actually increasing at a very nice pace - actually on a year-over-year basis of about 90 basis points of share gain for non-term share of deposits. Now the overall industry that you're seeing some mixed shifts, if we were"
+        },
+        {
+            "uuid": "46ffb7f7-692b-4a7a-8e13-060cb5437825",
+            "speaker": "Sohrab Movahedi",
+            "utterance": "Do you expect the competitive dynamics still allow you to exercise that discipline? Or do you think"
+        },
+        {
+            "uuid": "82133d31-2952-4528-8780-b586fa78d7f8",
+            "speaker": "Michael Rhodes",
+            "utterance": "Well, so the competitive dynamic ebbs and flows as you can imagine, week-to-week, month-to-month. And I'd say right now, we have been very disciplined in terms of our pricing and has performed well for us. And I don't see any real changes that are coming in the near term. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 15 of 20"
+        },
+        {
+            "uuid": "cccc8ce2-b87e-4501-9316-4d9be7bcdcfa",
+            "speaker": "Sohrab Movahedi",
+            "utterance": "Kelvin, given the dynamic potential closing timing of First Horizon, does your hedging, whether it's capital"
+        },
+        {
+            "uuid": "9b1f172f-2bda-4bd1-9f11-0f27ffdf35d9",
+            "speaker": "Kelvin Tran",
+            "utterance": "Yes. We will continue to dynamically roll that forward. And as we've talked about earlier, the biggest"
+        },
+        {
+            "uuid": "397a7c09-70ad-4fb5-bb82-f258fc45c8df",
+            "speaker": "Sohrab Movahedi",
+            "utterance": "So no material, incremental or marginal risk -- or cost, sorry -- associated with it?"
+        },
+        {
+            "uuid": "be6c6c8d-9482-4d7c-8797-a6c0bb448981",
+            "speaker": "Kelvin Tran",
+            "utterance": "Right."
+        },
+        {
+            "uuid": "98e0daf8-a80c-45d4-8509-34514d761e9c",
+            "speaker": "Sohrab Movahedi",
+            "utterance": "And just lastly, I mean, Bharat, last quarter I think when you finished off the year, in your remarks you"
+        },
+        {
+            "uuid": "8962402c-ce2f-4571-8f92-75b4d2fd380c",
+            "speaker": "Bharat Masrani",
+            "utterance": "So I think last quarter when I said that, we said given the rate momentum and the anticipated"
+        },
+        {
+            "uuid": "2b539c84-91c1-48b5-ae8c-a792eca0b376",
+            "speaker": "Mike Rizvanovic",
+            "utterance": "I want to ask Michael Rhodes, what is your outlook on the RESL book in Canada. What kind of growth is"
+        },
+        {
+            "uuid": "69dc50a6-c648-4b3b-823d-0f8d3515313c",
+            "speaker": "Michael Rhodes",
+            "utterance": "Great question. Clearly you know that the number of sales and purchases of homes in Canada has gone down, and recent data supports that. As we look across 2023, we'd expect that RESL growth to be in the low- to mid-single digits range for the year. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 16 of 20 - - Mike Rizvanovic - KBW - Analyst Okay, so I guess that's consistent with what we heard from some of the other banks. Just looking at your portfolio, looks like it was down a little bit sequentially or let's just call it, flat quarter-over-quarter. And as I look at some of the large cities that have reported the Fed data for sales, it's still down plus 40% year over-year. I'm wondering where would you see that growth coming from? What's baked into that assessment when you say low to mid-single digit, it seems quite optimistic given the state of the market"
+        },
+        {
+            "uuid": "886eb1e9-c033-4d4f-b713-d200cef2926c",
+            "speaker": "Michael Rhodes",
+            "utterance": "A couple of things that come into play there. You're right, for the quarter, sequentially, we were basically flat. As you look going forward, there are a couple of things. One is the first quarter, of course, is seasonally a relatively low quarter. The second is as I just look into our pipelines on a go-forward basis, I'm feeling more optimistic about things on a go-forward basis. We see our advisers are being quite productive, and we're making some operational enhancements to our processes. And so the data, I look at, gives me some optimism on a go-forward basis, recognizing the market is soft. And if the market"
+        },
+        {
+            "uuid": "f98ba48a-fc4d-4d89-8cfc-e343ede3140c",
+            "speaker": "Mike Rizvanovic",
+            "utterance": "Okay, and Bharat, I just had a really quick follow-up for you on your earlier comment about the 12% CET1 level. I think what you said was the midpoint of 2024. I'm not going to ask you about the First Horizon timing or anything like that. But when you say 12% by middle of next year, is that based on the assumption of TD's normal course, typical environment where you get that 15 to 20 basis points quarter over-quarter sequential organic generation?"
+        },
+        {
+            "uuid": "0a39faa9-a2e7-46cb-a2c2-1ebdba319eea",
+            "speaker": "Bharat Masrani",
+            "utterance": "Yes, Mike."
+        },
+        {
+            "uuid": "d976ca82-adc0-43fc-97bc-33bf5b3d899a",
+            "speaker": "Lemar Persaud",
+            "utterance": "It seems like the Bank is not going to be able to answer most of my questions on First Horizon right"
+        },
+        {
+            "uuid": "df847e56-82d0-4108-80f3-f2727d963114",
+            "speaker": "Bharat Masrani",
+            "utterance": "I think the deal terms are in the document that we filed, and Lemar, best for you to check that as to what"
+        },
+        {
+            "uuid": "73ecd24b-5cec-40dd-aa43-4e2960cafb16",
+            "speaker": "Lemar Persaud",
+            "utterance": "Okay. And then maybe turning to Canadian Personal and Commercial Banking. Can you talk to what's driving the weaker business deposit growth? It looks like it's a drop for two consecutive quarters. Would it be fair to suggest this is just the deployment of some excess COVID deposits? TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 17 of 20"
+        },
+        {
+            "uuid": "28c0dda2-d7c1-47fd-912f-d8bf79772b32",
+            "speaker": "Paul Douglas",
+            "utterance": "Yeah, it's Paul. Thanks, Lemar. If you look back to the early part of the pandemic, you would see that TD"
+        },
+        {
+            "uuid": "b2d07890-101a-4f06-9578-7c3c7398652c",
+            "speaker": "Joo Ho Kim",
+            "utterance": "Just wanted to go back to your net interest margin comment. You had mentioned that it may moderate in terms of improvement from here. And when I look at the results this quarter, you were up 2 basis points sequentially at the all bank level. So I'm curious, is that sort of the improvement that we should think about as we go forward, that maybe 1 to 2 basis points on the low single-digit improvement? Just curious"
+        },
+        {
+            "uuid": "119cbd90-0cc3-481b-a764-94f6bf96a797",
+            "speaker": "Kelvin Tran",
+            "utterance": "It's Kelvin. I'll take that. The 2 basis point quarter-over-quarter that you mentioned, it's the all-inclusive NIM. And so we typically look at non-trading NIM, and when you adjust for that, the quarter-over-quarter expansion is a positive 6 basis points. And so last quarter, in Q4, the margin expansion was 12 basis points and then this quarter, 6 basis points, and you expect that to moderate, and we expect that the margin expansion continues to be positive for the remainder of 2023, but the trend is going to be similar, that it is going to be moderating. What I would like to note though is that a lot of people focus only on short-term rates. And as you know, we had a significant increase in short-term rates over the last few quarters. Forwards would indicate that there's still some to come, but less than before. But I would like to note that the long-term rate also matters. So if you look at Page 27, -- in Canada, the relevant rate is 5 years in the U.S. it is 7 years. These tractors do reprice over time. And the on rate is higher than the off rate. And so what that means is that even if short-term rates do not go up, everything else being equal, the repricing of the tractors will"
+        },
+        {
+            "uuid": "e7d56fea-96fb-49fc-96db-6d685b1a57d9",
+            "speaker": "Nigel D'Souza",
+            "utterance": "The first one I had for you was on your performing credit loss provisions this quarter. I noticed that there"
+        },
+        {
+            "uuid": "ecf8eabf-8307-4029-8a1a-a98ed75d8a2f",
+            "speaker": "Ajai Bambawale",
+            "utterance": "Nigel, it's Ajai. So let me respond to that. What I would say is you've got to look at these trends over a longer period. But if you actually go and look at the year-over-year numbers, you'll find impaired and performing are up both in Canada and the U.S. You're right in pointing out that this quarter, U.S. performing actually came down. There are really two reasons for that. One is we had repayments of some high-risk loans. So the associated allowance got released. And the second reason is we made a methodology update relating to consumer loans, where we found we were over predicting the move from Stage 1 to Stage 2. So we put that correction in which led to a reversal. So if you exclude these two, you would have actually seen a small performing build in the U.S. as well. TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 18 of 20"
+        },
+        {
+            "uuid": "c11c3237-ff28-4743-a103-0f9f4c210656",
+            "speaker": "Nigel D'Souza",
+            "utterance": "That's helpful. And then the last question I had just quickly was on variable rate mortgages. Any update on the portfolio, how it's tracking? And just a question of the monthly mortgage payment. Just trying to understand if the higher rates leads to an immediate pass-through of an increase in the monthly mortgage"
+        },
+        {
+            "uuid": "1088a110-7ff4-4a97-832a-79fbf1c6185d",
+            "speaker": "Ajai Bambawale",
+            "utterance": "I can start generally with credit quality, and then I'll pass it on to Michael Rhodes. So what I would tell you is, generally across the RESL book, our credit quality is strong. So if I look at delinquencies, and I see the quarter-over-quarter change, it's nominal. It's basically one bp of that due to HELOC. Formations, RESL is flat; charge-offs, I would say, near zero."
+        },
+        {
+            "uuid": "2f17ce2a-a80c-4e17-89ab-897cc61d4181",
+            "speaker": "Michael Rhodes",
+            "utterance": "Ajai, I think you touched a bit about the dynamic of how our variable mortgages work in that as rates go"
+        },
+        {
+            "uuid": "ca4b5ce8-2ebb-45aa-b92e-d0339fa9e8e3",
+            "speaker": "Nigel D'Souza",
+            "utterance": "And just to clarify, I assume that trigger point is 105% of some sort of loan balance amount. Is that how it"
+        },
+        {
+            "uuid": "ad556965-eb20-4851-aa90-ac120802576c",
+            "speaker": "Michael Rhodes",
+            "utterance": "It depends if it's a HELOC or if it's a mortgage. For mortgages, it's linked to your loan to value at I think"
+        },
+        {
+            "uuid": "4bd586c9-d09c-41c5-ad1b-463db741efb0",
+            "speaker": "Nigel D'Souza",
+            "utterance": "80% uninsured, I think it's 105% for insured? Or is it the same for both?"
+        },
+        {
+            "uuid": "534c9025-b234-4585-8bde-53d29a648613",
+            "speaker": "Ajai Bambawale",
+            "utterance": "It's 105% for the other one."
+        },
+        {
+            "uuid": "e9bdd777-fe8c-4830-be33-0d86be90ffad",
+            "speaker": "Darko Mihelic",
+            "utterance": "Just a quick numbers question for Leo. I'm looking at the U.S. Retail segment and the noninterest income I realize overdraft fees are significantly lower. But when I look at this quarter's number, is it fair to say, Leo, that this is about the bottom? Or is there still some more downside to this line item? TD Bank Group - Q1 2023 Earnings Call Transcript - March 02, 2023 Page 19 of 20"
+        },
+        {
+            "uuid": "4edb5e90-0320-4e9f-a760-2130fa3c2726",
+            "speaker": "Leo Salom",
+            "utterance": "Darko, thanks for the question. We have fully implemented all the overdraft measures that we identified last year. And so this quarter, you're right to say that you're seeing the full impact of all those changes. And includes the daily limit of overdraft charges, that includes the change in the threshold, which a client begins to incur an overdraft, the 24-hour grace period, the NSF elimination fee, all of those, you've got a"
+        },
+        {
+            "uuid": "7d1cfe76-71a5-48f0-977d-06887bb58058",
+            "speaker": "Darko Mihelic",
+            "utterance": "Okay. Great. That's very helpful. A question for Bharat. You've given us a rough road map to 12%"
+        },
+        {
+            "uuid": "5b643811-a67f-45d9-8228-e04691e07074",
+            "speaker": "Bharat Masrani",
+            "utterance": "We have capability to meet that if that turns out to be the case. But these are hypothetical questions, but"
+        },
+        {
+            "uuid": "75bd76c1-0a31-4395-a3fd-ddb2711fe0e6",
+            "speaker": "Ebrahim Poonawala",
+            "utterance": "Just two quick follow-ups. One, Leo just sticking with the U.S. noninterest income, any sense of the"
+        },
+        {
+            "uuid": "d399eec6-0c1b-4f20-92e8-2034d4e8d0e9",
+            "speaker": "Leo Salom",
+            "utterance": "Yes. Thank you very much, Ebrahim. Obviously, the CFPB has come out with some proposed rulings. It's"
+        },
+        {
+            "uuid": "2b3baa4a-ea4d-4707-9a8e-bf482a48ffa9",
+            "speaker": "Ebrahim Poonawala",
+            "utterance": "That's helpful. And just one quick one, Riaz for you. We've seen a significant growth in the loan book in"
+        },
+        {
+            "uuid": "c1551219-b3a3-46bd-b681-ca93b2ac3113",
+            "speaker": "Riaz Ahmed",
+            "utterance": "Well, Ebrahim as you know, over the course of the last four or five quarters, there's been a lot of loan"
+        },
+        {
+            "uuid": "7a799d03-4ff5-4061-bb64-72d2a185f404",
+            "speaker": "Ebrahim Poonawala",
+            "utterance": "And just on market share, Riaz. It's a difficult period for a bunch of investment banks right now. Is there"
+        },
+        {
+            "uuid": "6c704f9c-f3e5-4658-8f53-71539905ee9e",
+            "speaker": "Riaz Ahmed",
+            "utterance": "I think we have to pace that appropriately with the integration work and bringing the two firms together."
+        },
+        {
+            "uuid": "e5779d8f-a897-44a4-88c7-1c4a1cef8932",
+            "speaker": "Bharat Masrani",
+            "utterance": ""
+        }
+    ]
+}

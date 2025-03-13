@@ -33,7 +33,7 @@ def get_test_mode():
         with open(config_paths, 'r', encoding='utf-8') as f:
             config = json.load(f)
             test_mode = config.get("test_mode", {})
-            return test_mode.get("enabled", False), test_mode.get("file_name", None)
+            return test_mode.get("enabled", False), test_mode.get("file_name", None), test_mode.get("debug_mode", False)
     except FileNotFoundError:
         print(f"Configuration file {config_paths} not found.")
         return False, None
@@ -41,8 +41,12 @@ def get_test_mode():
         print(f"Error decoding JSON from {config_paths}.")
         return False, None
 
-def extract_text_from_pdf(path):
+def extract_text_from_pdf(path, debug_mode):
     """Extract text from PDF file."""
+
+    if debug_mode:
+        print(f"Extracting text...")
+
     doc = pymupdf.open(path)
     print(f"pages found in {path}: {doc.page_count}")
 
@@ -121,6 +125,10 @@ def extract_text_from_pdf(path):
 
         return text
 
+    # Extract text from each page
+    if debug_mode:
+        print(f"Extracting and cleaning text from each page...")
+    
     for page_num in range(doc.page_count):
         page = doc[page_num]
         page_text = page.get_text("text")
@@ -135,8 +143,135 @@ def extract_text_from_pdf(path):
     
     return full_text
 
+def extract_dict_from_pdf(path, debug_mode):
+    """Extract text from PDF file with formatting information (BOLD, ITALIC)."""
 
-def API_call_anthropic(text):
+    if debug_mode:
+        print(f"Extracting text with formatting information...")
+
+    doc = pymupdf.open(path)
+    print(f"pages found in {path}: {doc.page_count}")
+
+    full_text = ""
+
+    def clean_text(text):
+        """Clean text by handling encoding issues and removing problematic characters."""
+        # Handle encoding issues with round-trip conversion
+        try:
+            # Convert to bytes and back with explicit error handling
+            text_bytes = text.encode('utf-8', errors='ignore')
+            text = text_bytes.decode('utf-8', errors='ignore')
+        except (UnicodeError, AttributeError):
+            pass
+
+        # Dictionary of other common substitutions for financial documents
+        replacements = {
+            '�': '',
+            '\ufffd': '',
+            '\u2022': '•',  # bullet point
+            '\u2018': "'",  # left single quote
+            '\u2019': "'",  # right single quote
+            '\u201c': '"',  # left double quote
+            '\u201d': '"',  # right double quote
+            '\u2013': '-',  # en-dash
+            '\u2014': '--',  # em-dash
+            '\u00a0': ' <NBSP> ',  # non-breaking space
+            '\f': ' <PAGEBREAK> ',  # form feed / page break
+            '\n': ' <LINEBREAK> ',  # line break
+            '\t': ' <TAB> ',  # tab
+        }
+
+        # Apply all replacements
+        for char, replacement in replacements.items():
+            text = text.replace(char, replacement)
+
+        # Preserve multiple spaces for regex pattern identification
+        text = re.sub(r'[ ]{2,}', ' <MULTISPACE> ', text)
+
+        # Pattern for spaced headers
+        pattern = r'(?<!\S)([A-Z](\s+)[A-Z](\s+[A-Z])+)(?!\S)'
+
+        def fix_spaced_header(match):
+            # Get the original text with spaces
+            spaced_text = match.group(0)
+
+            # First approach: Split by multiple spaces (2 or more)
+            if re.search(r'\s{2,}', spaced_text):
+                words = re.split(r'\s{2,}', spaced_text)
+                condensed_words = [re.sub(r'\s+', '', word) for word in words]
+                return ' '.join(condensed_words)
+            else:
+                # For headers with single spaces between letters but no clear word boundaries
+                condensed = re.sub(r'\s+', '', spaced_text)
+                spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
+                spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)
+                return spaced
+
+        text = re.sub(pattern, fix_spaced_header, text)
+        text = text.strip()
+        return text
+
+    # Extract text with formatting information
+    for page_num in range(doc.page_count):
+        page = doc[page_num]
+
+        # Instead of getting plain text, get the page as a dictionary
+        # which contains formatting information
+        page_dict = page.get_text("dict")
+        page_text = ""
+
+        # Process each block of text in the page
+        for block in page_dict["blocks"]:
+            if block["type"] == 0:  # Text block
+                for line in block["lines"]:
+                    line_text = ""
+
+                    for span in line["spans"]:
+                        # Get the text content
+                        text = span["text"]
+
+                        # Check for bold formatting
+                        # Bold can be indicated by font name or flags
+                        is_bold = False
+                        if "font" in span:
+                            is_bold = "bold" in span["font"].lower()
+                        if not is_bold and "flags" in span:
+                            # In PyMuPDF, bit 1 (value 2) of flags indicates bold
+                            is_bold = (span["flags"] & 2) > 0
+
+                        # Check for italic formatting
+                        is_italic = False
+                        if "font" in span:
+                            is_italic = "italic" in span["font"].lower()
+                        if not is_italic and "flags" in span:
+                            # In PyMuPDF, bit 2 (value 4) of flags indicates italic
+                            is_italic = (span["flags"] & 4) > 0
+
+                        # Apply formatting tags
+                        if is_bold:
+                            text = f"<BOLD>{text}</BOLD>"
+                        if is_italic:
+                            text = f"<ITALIC>{text}</ITALIC>"
+
+                        line_text += text + " "
+
+                    page_text += line_text.strip() + "\n"
+
+        # Clean the text after all formatting tags have been added
+        if debug_mode:
+            print(f"Cleaning text...")
+        page_text = clean_text(page_text)
+
+        if page_text:
+            full_text += page_text + "\n<PAGE_BREAK>\n"
+        else:
+            print(f"Warning: No text extracted from page {page_num + 1} of {path}")
+
+    doc.close()
+
+    return full_text
+
+def API_call_anthropic(text, debug_mode):
     # Construct the prompt according to the specified format
     prompt = f"""User: You are an AI assistant specialized in extracting specific information from earning call transcripts. Your task is to analyze the following transcript, extract key information according to the guidelines provided, and format it as JSON according to the specified schema.
 
@@ -146,18 +281,20 @@ Here is the transcript to analyze:
 {text}
 </transcript>
 
-The transcript has been preprocessed with special markers:
+The text contains several formatting tags:
 - Multiple spaces are marked as <MULTISPACE>
 - Line breaks are marked as <LINEBREAK>
 - Tab characters are marked as <TAB>
 - Page breaks are marked as <PAGEBREAK>
+- Bold text is marked as <BOLD>
+- Italic text is marked as <ITALIC>
 
 Your goal is to carefully extract the following detailed information and format it into a JSON object:
 1. Bank name
 2. Call date
 3. Reporting period (in Q-YYYY format, e.g., "Q1-2023")
 4. Participants,including full names, misspelled names, title(s) with all variations found in the document, and company(ies) with all variations found in the document
-5. Regular expression pattern for the speaker to separate who is speaking from what they're saying
+5. Participants' speaker flags that show how the speaker is marked in the transcript to attribute the utterance to the correct speaker
 6. All sections in the document in order of appearance
 7. Presentation section details including section title, section start page number, section end page number
 8. Q&A section details including section title, section start page number, section end page number
@@ -168,22 +305,12 @@ Follow these guidelines:
 2. For participants, list out each mention of a participant with their name and title, then synthesize that information.
 3. For participant titles, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
 4. For participant companies, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
+5. For speaker flags, always include the adjacent tags like <LINEBREAK>, <MULTISPACE>, etc.
 5. For sections flow, only include the titles of the sections. Include all section names in order of appearance in the transcript.
 6. For the presentation and q&a sections details, always include the start and end page numbers of the section.
 7. Pay close attention to the formatting requirements, especially for the reporting period.
 8. If any information is unclear or not explicitly stated in the transcript, use "Not clearly stated" as the value.
 9. It should be possible to parse the JSON object from the response.
-
-Guidelines for the speaker_regex_pattern:
-- Regex pattern should reliably identify speaker notations regardless of whether they include company information and job titles.
-- Must match formats: "Name - Company - Title", "Name - Company", "Name - Title", and standalone names
-- Names typically begin with capital letters (e.g., "John Smith") and may appear in ALL UPPERCASE (e.g., "JOHN SMITH")
-- Account for the formatting markers around speaker names
-- Company names and titles may contain a mix of capital and lowercase letters
-- Use flexible spacing around dashes (don't require multiple whitespace)
-- Include support for apostrophes, commas, periods, ampersands, capital letters in all segments
-- Don't require ending colons in the pattern itself
-- Test your pattern against actual examples from the transcript before finalizing
 
 Apply the guidelines and provide only the JSON object as your final response, with no additional markdown, text or explanations.
 
@@ -193,13 +320,13 @@ Here's an example of the expected JSON structure (with generic placeholders):
   "bank_name": "Example Bank",
   "call_date": "YYYY-MM-DD",
   "reporting_period": "QX-YYYY",
-  "speaker_regex_pattern": "EXAMPLE_REGEX_PATTERN",
   "participants": [
     {{
       "speaker_name": "John Doe",
       "speaker_misspelled_names": ["Jon Doe", "John Do"],
       "speaker_title": ["Chief Executive Officer", "CEO"],
-      "speaker_company": ["Example Bank", "Example Bank Inc."]
+      "speaker_company": ["Example Bank", "Example Bank Inc."],
+      "speaker_flags": ["<LINEBREAK> JOHN DOE:", "<LINEBREAK> John Doe - CEO - Example Bank <LINEBREAK>"]
     }}
   ],
   "all_document_sections": ["Presentation", "Question and Answer", "Disclaimer"],
@@ -221,15 +348,20 @@ Here's an example of the expected JSON structure (with generic placeholders):
 
 Please proceed with your analysis and JSON formatting of the transcript information.
 """
+    if debug_mode:
+        print(f"Setting up API call...")
 
     api_key = os.getenv('ANTHROPIC_API_KEY')
     client = anthropic.Anthropic(api_key=api_key)
     unique_prompt = f"{prompt}\n\n[Request timestamp: {time.time()}]"
 
+    if debug_mode:
+        print(f"Running API call...")
+
     try:
         message = client.messages.create(
             model="claude-3-7-sonnet-20250219",
-            max_tokens=2048,
+            max_tokens=4096,
             system="You are a financial expert specializing in formatting earnings call transcripts into a structured JSON object.",
             messages=[
                 {"role": "user", "content": unique_prompt}
@@ -238,6 +370,9 @@ Please proceed with your analysis and JSON formatting of the transcript informat
             top_p=0.7,
             top_k=20
         )
+
+        if debug_mode:
+            print(f"Processing API response...")
 
         # Get token counts from the API response
         input_tokens = message.usage.input_tokens
@@ -347,17 +482,17 @@ if __name__ == "__main__":
 """
 
 
-def test_mode(transcripts_pdf_folder, transcripts_cleantxt_folder, metadata_folder, file_name):
+def test_mode(transcripts_pdf_folder, transcripts_cleantxt_folder, metadata_folder, file_name, debug_mode):
     # test flow
     source_file_path = f"{transcripts_pdf_folder}/{file_name}"
     print(f"Testing with file: {source_file_path}")
     
-    text_markup = extract_text_from_pdf(source_file_path)  # Extract
+    text_markup = extract_dict_from_pdf(source_file_path, debug_mode)
     cleantxt_file_path = f"{transcripts_cleantxt_folder}/{file_name.replace('.pdf', '_clean.txt')}"
     with open(cleantxt_file_path, 'w', encoding='utf-8') as f:
         f.write(text_markup)
 
-    call_response = API_call_anthropic(text_markup)  # API call
+    call_response = API_call_anthropic(text_markup, debug_mode)  # API call
 
     # Check for errors
     if "error" in call_response:
@@ -391,12 +526,12 @@ def test_mode(transcripts_pdf_folder, transcripts_cleantxt_folder, metadata_fold
 
 # Test mode
 
-test_mode_enabled, test_file_name = get_test_mode()
+test_mode_enabled, test_file_name, debug_mode = get_test_mode()
 
 if test_mode_enabled:
     transcripts_pdf_folder = get_folder_paths()["transcripts_pdf_folder"]
     transcripts_cleantxt_folder = get_folder_paths()["transcripts_cleantxt_folder"]
     metadata_folder = get_folder_paths()["metadata_folder"]
-    test_mode(transcripts_pdf_folder, transcripts_cleantxt_folder, metadata_folder, test_file_name)
+    test_mode(transcripts_pdf_folder, transcripts_cleantxt_folder, metadata_folder, test_file_name, debug_mode)
 else:
     print("Test mode is not enabled. Skipping test.")

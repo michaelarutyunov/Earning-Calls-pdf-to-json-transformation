@@ -1,0 +1,233 @@
+{
+    "bank_name": "Citigroup",
+    "call_date": "2023-04-14",
+    "reporting_period": "Q1-2023",
+    "participants": [
+        {
+            "speaker_name": "Jennifer Landis",
+            "speaker_misspelled_names": [
+                "Jenn Landis"
+            ],
+            "speaker_title": [
+                "Head of Citi Investor Relations"
+            ],
+            "speaker_company": [
+                "Citi",
+                "Citigroup Inc."
+            ],
+            "speaker_flags": [
+                "<BOLD>JENNIFER LANDIS: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Jane Fraser",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Citi Chief Executive Officer",
+                "Chief Executive Officer"
+            ],
+            "speaker_company": [
+                "Citi",
+                "Citigroup Inc."
+            ],
+            "speaker_flags": [
+                "<BOLD>JANE FRASER: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Mark Mason",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Citi Chief Financial Officer",
+                "Chief Financial Officer"
+            ],
+            "speaker_company": [
+                "Citi",
+                "Citigroup Inc."
+            ],
+            "speaker_flags": [
+                "<BOLD>MARK MASON: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Glenn Schorr",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Evercore"
+            ],
+            "speaker_flags": [
+                "<BOLD>GLENN SCHORR: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Mike Mayo",
+            "speaker_misspelled_names": [
+                "MIKE MAYO"
+            ],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Wells Fargo Securities"
+            ],
+            "speaker_flags": [
+                "<BOLD>MIKE MAYO: </BOLD>",
+                "<BOLD>MIKE MAYO</BOLD> :"
+            ]
+        },
+        {
+            "speaker_name": "Betsy Graseck",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Morgan Stanley"
+            ],
+            "speaker_flags": [
+                "<BOLD>BETSY GRASECK: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Erika Najarian",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "UBS"
+            ],
+            "speaker_flags": [
+                "<BOLD>ERIKA NAJARIAN: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Jim Mitchell",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Seaport Global"
+            ],
+            "speaker_flags": [
+                "<BOLD>JIM MITCHELL: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Steven Chubak",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Wolfe Research"
+            ],
+            "speaker_flags": [
+                "<BOLD>STEVEN CHUBAK: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Ebrahim Poonawala",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Bank of America"
+            ],
+            "speaker_flags": [
+                "<BOLD>EBRAHIM POONAWALA: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Matt O'Connor",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Deutsche Bank"
+            ],
+            "speaker_flags": [
+                "<BOLD>: </BOLD>",
+                "<BOLD> </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Gerard Cassidy",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "RBC Capital Markets"
+            ],
+            "speaker_flags": [
+                "<BOLD>GERARD CASSIDY: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Vivek Juneja",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "JPMorgan"
+            ],
+            "speaker_flags": [
+                "<BOLD>VIVEK JUNEJA: <MULTISPACE> </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Ken Usdin",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Analyst"
+            ],
+            "speaker_company": [
+                "Jefferies"
+            ],
+            "speaker_flags": [
+                "<BOLD>KEN USDIN: </BOLD>"
+            ]
+        },
+        {
+            "speaker_name": "Operator",
+            "speaker_misspelled_names": [],
+            "speaker_title": [
+                "Operator"
+            ],
+            "speaker_company": [
+                "Not clearly stated"
+            ],
+            "speaker_flags": [
+                "<BOLD>OPERATOR: </BOLD>"
+            ]
+        }
+    ],
+    "all_document_sections": [
+        "PRESENTATION",
+        "QUESTION AND ANSWER"
+    ],
+    "presentation_section_details": [
+        {
+            "presentation_section_title": "PRESENTATION",
+            "presentation_section_start_page_number": "1",
+            "presentation_section_end_page_number": "9"
+        }
+    ],
+    "question_and_answer_section_details": [
+        {
+            "question_and_answer_section_title": "QUESTION AND ANSWER",
+            "question_and_answer_section_start_page_number": "9",
+            "question_and_answer_section_end_page_number": "20"
+        }
+    ],
+    "path_to_transcript_txt": "transcripts_cleantxt/qec_ctg_2023_1Q_clean.txt",
+    "speaker_regex_pattern": "<BOLD>(.*?)(?:\\s*:|\\s*<MULTISPACE>\\s*)?</BOLD>(?:\\s*:)?"
+}

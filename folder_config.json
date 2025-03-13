@@ -7,6 +7,11 @@
     },
     "test_mode": {
         "enabled": true,
-        "file_name": "2023_q1_us_4_jpm_transcript.pdf"
+        "file_name": "qec_ctg_2023_1Q.pdf",
+        "debug_mode": true
+    },
+    "api_setup": {
+        "api_key_file": ".env",
+        "api_key_name": "ANTHROPIC_API_KEY"
     }
 }
