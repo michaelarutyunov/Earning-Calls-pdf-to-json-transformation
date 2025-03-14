@@ -10,10 +10,11 @@ import time
 
 load_dotenv()
 
+
 def get_folder_paths():
     """Get folder paths from folder_config.json."""
     config_paths = "folder_config.json"
-    
+
     try:
         with open(config_paths, 'r', encoding='utf-8') as f:
             config = json.load(f)
@@ -24,6 +25,7 @@ def get_folder_paths():
     except json.JSONDecodeError:
         print(f"Error decoding JSON from {config_paths}.")
         return {}
+
 
 def get_test_mode():
     """Get folder paths from folder_config.json."""
@@ -41,7 +43,99 @@ def get_test_mode():
         print(f"Error decoding JSON from {config_paths}.")
         return False, None
 
-def extract_text_from_pdf(path, debug_mode):
+
+def get_api_setup():
+    """Get API setup from folder_config.json."""
+    config_paths = "folder_config.json"
+
+    try:
+        with open(config_paths, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+            api_setup = config.get("api_setup", {})
+            return api_setup.get("api_key_file", None), api_setup.get("api_key_name", None)
+    except FileNotFoundError:
+        print(f"Configuration file {config_paths} not found.")
+        return None, None
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON from {config_paths}.")
+        return None, None
+
+
+def clean_text(text):
+    """Clean text by handling encoding issues and removing problematic characters."""
+    # Handle encoding issues with round-trip conversion
+    try:
+        # Convert to bytes and back with explicit error handling
+        text_bytes = text.encode('utf-8', errors='ignore')
+        text = text_bytes.decode('utf-8', errors='ignore')
+    except (UnicodeError, AttributeError):
+        pass
+
+    # Dictionary of other common substitutions for financial documents
+    replacements = {
+        '�': '',
+        '\ufffd': '',
+        '\u2022': '•',  # bullet point
+        '\u2018': "'",  # left single quote
+        '\u2019': "'",  # right single quote
+        '\u201c': '"',  # left double quote
+        '\u201d': '"',  # right double quote
+        '\u2013': '-',  # en-dash
+        '\u2014': '--',  # em-dash
+        '\u00a0': ' <NBSP> ',  # non-breaking space
+        '\f': ' <PAGEBREAK> ',  # form feed / page break
+        '\n': ' <LINEBREAK> ',  # line break
+        '\t': ' <TAB> ',  # tab
+    }
+
+    # Apply all replacements
+    for char, replacement in replacements.items():
+        text = text.replace(char, replacement)
+
+    # Preserve multiple spaces for regex pattern identification
+    text = re.sub(r'[ ]{2,}', ' <MULTISPACE> ', text)
+
+    # Pattern for spaced headers
+    pattern = r'(?<!\S)([A-Z](\s+)[A-Z](\s+[A-Z])+)(?!\S)'
+
+    def fix_spaced_header(match):
+        # Get the original text with spaces
+        spaced_text = match.group(0)
+
+        # First approach: Split by multiple spaces (2 or more)
+        if re.search(r'\s{2,}', spaced_text):
+            words = re.split(r'\s{2,}', spaced_text)
+            condensed_words = [re.sub(r'\s+', '', word) for word in words]
+            return ' '.join(condensed_words)
+        else:
+            # For headers with single spaces between letters but no clear word boundaries
+            # Try to identify common words or insert spaces at logical points
+            # Example: "Q 2 2 0 2 3 E A R N I N G S" -> "Q2 2023 EARNINGS"
+            condensed = re.sub(r'\s+', '', spaced_text)
+
+            # Insert spaces before uppercase letters that follow lowercase or numbers
+            # This helps separate words like "EarningsCall" -> "Earnings Call"
+            spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
+
+            # For dates like "2 0 2 3", keep them together
+            # This is a simplified approach and might need adjustment
+            spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)
+
+            return spaced
+
+    text = re.sub(pattern, fix_spaced_header, text)
+
+    # If more than 3 same punctuation characters are found in a row, replace them with a single instance of that punctuation character
+    # text = re.sub(r'\.{3,}', '', text)
+    # text = re.sub(r'(\. ){3,}', '', text)
+
+    # Strip leading/trailing whitespace
+    text = text.strip()
+
+    return text
+
+
+def extract_text_from_pdf(path, debug_mode=False):
     """Extract text from PDF file."""
 
     if debug_mode:
@@ -50,85 +144,12 @@ def extract_text_from_pdf(path, debug_mode):
     doc = pymupdf.open(path)
     print(f"pages found in {path}: {doc.page_count}")
 
-    full_text = ""
-
-    def clean_text(text):
-        """Clean text by handling encoding issues and removing problematic characters."""
-        # Handle encoding issues with round-trip conversion
-        try:
-            # Convert to bytes and back with explicit error handling
-            text_bytes = text.encode('utf-8', errors='ignore')
-            text = text_bytes.decode('utf-8', errors='ignore')
-        except (UnicodeError, AttributeError):
-            pass
-
-        # Dictionary of other common substitutions for financial documents
-        replacements = {
-            '�': '',
-            '\ufffd': '',
-            '\u2022': '•',  # bullet point
-            '\u2018': "'",  # left single quote
-            '\u2019': "'",  # right single quote
-            '\u201c': '"',  # left double quote
-            '\u201d': '"',  # right double quote
-            '\u2013': '-',  # en-dash
-            '\u2014': '--',  # em-dash
-            '\u00a0': ' <NBSP> ',  # non-breaking space
-            '\f': ' <PAGEBREAK> ',  # form feed / page break
-            '\n': ' <LINEBREAK> ',  # line break
-            '\t': ' <TAB> ',  # tab
-        }
-
-        # Apply all replacements
-        for char, replacement in replacements.items():
-            text = text.replace(char, replacement)
-
-        # Preserve multiple spaces for regex pattern identification
-        text = re.sub(r'[ ]{2,}', ' <MULTISPACE> ', text)
-
-        # Pattern for spaced headers
-        pattern = r'(?<!\S)([A-Z](\s+)[A-Z](\s+[A-Z])+)(?!\S)'
-
-        def fix_spaced_header(match):
-            # Get the original text with spaces
-            spaced_text = match.group(0)
-
-            # First approach: Split by multiple spaces (2 or more)
-            if re.search(r'\s{2,}', spaced_text):
-                words = re.split(r'\s{2,}', spaced_text)
-                condensed_words = [re.sub(r'\s+', '', word) for word in words]
-                return ' '.join(condensed_words)
-            else:
-                # For headers with single spaces between letters but no clear word boundaries
-                # Try to identify common words or insert spaces at logical points
-                # Example: "Q 2 2 0 2 3 E A R N I N G S" -> "Q2 2023 EARNINGS"
-                condensed = re.sub(r'\s+', '', spaced_text)
-
-                # Insert spaces before uppercase letters that follow lowercase or numbers
-                # This helps separate words like "EarningsCall" -> "Earnings Call"
-                spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
-
-                # For dates like "2 0 2 3", keep them together
-                # This is a simplified approach and might need adjustment
-                spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)
-
-                return spaced
-
-        text = re.sub(pattern, fix_spaced_header, text)
-
-        # If more than 3 same punctuation characters are found in a row, replace them with a single instance of that punctuation character
-        # text = re.sub(r'\.{3,}', '', text)
-        #text = re.sub(r'(\. ){3,}', '', text)
-
-        # Strip leading/trailing whitespace
-        text = text.strip()
-
-        return text
+    full_text = "" 
 
     # Extract text from each page
     if debug_mode:
         print(f"Extracting and cleaning text from each page...")
-    
+
     for page_num in range(doc.page_count):
         page = doc[page_num]
         page_text = page.get_text("text")
@@ -140,138 +161,82 @@ def extract_text_from_pdf(path, debug_mode):
             print(f"Warning: No text extracted from page {page_num + 1} of {path}")
 
     doc.close()
-    
+
     return full_text
 
-def extract_dict_from_pdf(path, debug_mode):
-    """Extract text from PDF file with formatting information (BOLD, ITALIC)."""
+
+def extract_dict_from_pdf(pdf_path, debug_mode=False):
+    """Extract text with formatting from PDF, including text from images."""
 
     if debug_mode:
-        print(f"Extracting text with formatting information...")
+        print(f"Extracting formatted text with images...")
 
-    doc = pymupdf.open(path)
-    print(f"pages found in {path}: {doc.page_count}")
-
+    doc = pymupdf.open(pdf_path)
     full_text = ""
 
-    def clean_text(text):
-        """Clean text by handling encoding issues and removing problematic characters."""
-        # Handle encoding issues with round-trip conversion
-        try:
-            # Convert to bytes and back with explicit error handling
-            text_bytes = text.encode('utf-8', errors='ignore')
-            text = text_bytes.decode('utf-8', errors='ignore')
-        except (UnicodeError, AttributeError):
-            pass
-
-        # Dictionary of other common substitutions for financial documents
-        replacements = {
-            '�': '',
-            '\ufffd': '',
-            '\u2022': '•',  # bullet point
-            '\u2018': "'",  # left single quote
-            '\u2019': "'",  # right single quote
-            '\u201c': '"',  # left double quote
-            '\u201d': '"',  # right double quote
-            '\u2013': '-',  # en-dash
-            '\u2014': '--',  # em-dash
-            '\u00a0': ' <NBSP> ',  # non-breaking space
-            '\f': ' <PAGEBREAK> ',  # form feed / page break
-            '\n': ' <LINEBREAK> ',  # line break
-            '\t': ' <TAB> ',  # tab
-        }
-
-        # Apply all replacements
-        for char, replacement in replacements.items():
-            text = text.replace(char, replacement)
-
-        # Preserve multiple spaces for regex pattern identification
-        text = re.sub(r'[ ]{2,}', ' <MULTISPACE> ', text)
-
-        # Pattern for spaced headers
-        pattern = r'(?<!\S)([A-Z](\s+)[A-Z](\s+[A-Z])+)(?!\S)'
-
-        def fix_spaced_header(match):
-            # Get the original text with spaces
-            spaced_text = match.group(0)
-
-            # First approach: Split by multiple spaces (2 or more)
-            if re.search(r'\s{2,}', spaced_text):
-                words = re.split(r'\s{2,}', spaced_text)
-                condensed_words = [re.sub(r'\s+', '', word) for word in words]
-                return ' '.join(condensed_words)
-            else:
-                # For headers with single spaces between letters but no clear word boundaries
-                condensed = re.sub(r'\s+', '', spaced_text)
-                spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
-                spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)
-                return spaced
-
-        text = re.sub(pattern, fix_spaced_header, text)
-        text = text.strip()
-        return text
-
-    # Extract text with formatting information
     for page_num in range(doc.page_count):
         page = doc[page_num]
 
-        # Instead of getting plain text, get the page as a dictionary
-        # which contains formatting information
-        page_dict = page.get_text("dict")
-        page_text = ""
+        # Get all text including from images
+        complete_text = page.get_text("text")
 
-        # Process each block of text in the page
+        # Get text with formatting information
+        page_dict = page.get_text("dict")
+        formatted_blocks = {}
+
+        # Process each block to capture formatting
         for block in page_dict["blocks"]:
             if block["type"] == 0:  # Text block
                 for line in block["lines"]:
-                    line_text = ""
-
                     for span in line["spans"]:
                         # Get the text content
                         text = span["text"]
+                        if not text.strip():
+                            continue
 
-                        # Check for bold formatting
-                        # Bold can be indicated by font name or flags
+                        # Check for formatting
                         is_bold = False
                         if "font" in span:
                             is_bold = "bold" in span["font"].lower()
                         if not is_bold and "flags" in span:
-                            # In PyMuPDF, bit 1 (value 2) of flags indicates bold
                             is_bold = (span["flags"] & 2) > 0
 
-                        # Check for italic formatting
                         is_italic = False
                         if "font" in span:
                             is_italic = "italic" in span["font"].lower()
                         if not is_italic and "flags" in span:
-                            # In PyMuPDF, bit 2 (value 4) of flags indicates italic
                             is_italic = (span["flags"] & 4) > 0
 
-                        # Apply formatting tags
-                        if is_bold:
-                            text = f"<BOLD>{text}</BOLD>"
-                        if is_italic:
-                            text = f"<ITALIC>{text}</ITALIC>"
+                        # Store formatting info for this text snippet
+                        if is_bold or is_italic:
+                            formatted_blocks[text] = (is_bold, is_italic)
 
-                        line_text += text + " "
+        # Apply formatting to the complete text
+        for text, (is_bold, is_italic) in formatted_blocks.items():
+            # Try to find and replace exact text
+            if text in complete_text:
+                formatted_text = text
+                if is_bold:
+                    formatted_text = f"<BOLD>{formatted_text}</BOLD>"
+                if is_italic:
+                    formatted_text = f"<ITALIC>{formatted_text}</ITALIC>"
+                complete_text = complete_text.replace(text, formatted_text)
 
-                    page_text += line_text.strip() + "\n"
-
-        # Clean the text after all formatting tags have been added
+        # Clean the text
         if debug_mode:
-            print(f"Cleaning text...")
-        page_text = clean_text(page_text)
+            print(f"Cleaning text from page {page_num+1}...")
+        page_text = clean_text(complete_text)
 
         if page_text:
             full_text += page_text + "\n<PAGE_BREAK>\n"
         else:
-            print(f"Warning: No text extracted from page {page_num + 1} of {path}")
+            print(f"Warning: No text extracted from page {page_num + 1} of {pdf_path}")
 
     doc.close()
-
     return full_text
 
-def API_call_anthropic(text, debug_mode):
+
+def API_call_anthropic(text, debug_mode=False):
     # Construct the prompt according to the specified format
     prompt = f"""User: You are an AI assistant specialized in extracting specific information from earning call transcripts. Your task is to analyze the following transcript, extract key information according to the guidelines provided, and format it as JSON according to the specified schema.
 
@@ -282,19 +247,19 @@ Here is the transcript to analyze:
 </transcript>
 
 The text contains several formatting tags:
-- Multiple spaces are marked as <MULTISPACE>
 - Line breaks are marked as <LINEBREAK>
-- Tab characters are marked as <TAB>
-- Page breaks are marked as <PAGEBREAK>
 - Bold text is marked as <BOLD>
 - Italic text is marked as <ITALIC>
+- Multispace is marked as <MULTISPACE>
+- Tab characters are marked as <TAB>
+- Page breaks are marked as <PAGEBREAK>
 
 Your goal is to carefully extract the following detailed information and format it into a JSON object:
 1. Bank name
 2. Call date
 3. Reporting period (in Q-YYYY format, e.g., "Q1-2023")
-4. Participants,including full names, misspelled names, title(s) with all variations found in the document, and company(ies) with all variations found in the document
-5. Participants' speaker flags that show how the speaker is marked in the transcript to attribute the utterance to the correct speaker
+4. Participants' full names, misspelled names, job title(s) with all variations found in the document, and company(ies) with all variations found in the document
+5. Participants' speaker flags that show how the speaker is marked in the transcript to attribute the speech to the correct speaker
 6. All sections in the document in order of appearance
 7. Presentation section details including section title, section start page number, section end page number
 8. Q&A section details including section title, section start page number, section end page number
@@ -302,10 +267,9 @@ Your goal is to carefully extract the following detailed information and format 
 Follow these guidelines:
 
 1. For participant names, use the most frequently used spelling for the "name" field and include all variations, including acronyms, potential misspellings or grammatical errors, in the "misspelled_names" array.
-2. For participants, list out each mention of a participant with their name and title, then synthesize that information.
-3. For participant titles, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
-4. For participant companies, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
-5. For speaker flags, always include the adjacent tags like <LINEBREAK>, <MULTISPACE>, etc.
+2. For participant titles, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
+3. For participant companies, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
+4. For speaker flags, if necessary include the adjacent formatting tags like <LINEBREAK> etc.
 5. For sections flow, only include the titles of the sections. Include all section names in order of appearance in the transcript.
 6. For the presentation and q&a sections details, always include the start and end page numbers of the section.
 7. Pay close attention to the formatting requirements, especially for the reporting period.
@@ -325,8 +289,8 @@ Here's an example of the expected JSON structure (with generic placeholders):
       "speaker_name": "John Doe",
       "speaker_misspelled_names": ["Jon Doe", "John Do"],
       "speaker_title": ["Chief Executive Officer", "CEO"],
-      "speaker_company": ["Example Bank", "Example Bank Inc."],
-      "speaker_flags": ["<LINEBREAK> JOHN DOE:", "<LINEBREAK> John Doe - CEO - Example Bank <LINEBREAK>"]
+      "speaker_company": ["Example Bank", "Example Bank Inc.", "EB"],
+      "speaker_flags": ["<LINEBREAK> JOHN DOE:", "<LINEBREAK> John Doe - CEO - Example Bank <LINEBREAK>", "<LINEBREAK> John Doe - EB - CEO <LINEBREAK>"]
     }}
   ],
   "all_document_sections": ["Presentation", "Question and Answer", "Disclaimer"],
@@ -351,7 +315,8 @@ Please proceed with your analysis and JSON formatting of the transcript informat
     if debug_mode:
         print(f"Setting up API call...")
 
-    api_key = os.getenv('ANTHROPIC_API_KEY')
+    api_key_name, api_key_file = get_api_setup()
+    api_key = os.getenv(api_key_name)
     client = anthropic.Anthropic(api_key=api_key)
     unique_prompt = f"{prompt}\n\n[Request timestamp: {time.time()}]"
 
@@ -392,9 +357,9 @@ Please proceed with your analysis and JSON formatting of the transcript informat
             return {
                 "error": "Empty response from API"
             }
-        
+
         response_text = message.content[0].text
-        
+
         # Try to parse the response as JSON
         try:
             import json
@@ -486,7 +451,7 @@ def test_mode(transcripts_pdf_folder, transcripts_cleantxt_folder, metadata_fold
     # test flow
     source_file_path = f"{transcripts_pdf_folder}/{file_name}"
     print(f"Testing with file: {source_file_path}")
-    
+
     text_markup = extract_dict_from_pdf(source_file_path, debug_mode)
     cleantxt_file_path = f"{transcripts_cleantxt_folder}/{file_name.replace('.pdf', '_clean.txt')}"
     with open(cleantxt_file_path, 'w', encoding='utf-8') as f:
@@ -498,13 +463,13 @@ def test_mode(transcripts_pdf_folder, transcripts_cleantxt_folder, metadata_fold
     if "error" in call_response:
         print(f"Error: {call_response['error']}")
         return
-    
+
     # Print token usage and cost
     print(f"Input tokens: {call_response['token_counts']['input_tokens']}")
     print(f"Output tokens: {call_response['token_counts']['output_tokens']}")
     print(f"Total tokens: {call_response['token_counts']['total_tokens']}")
     print(f"Estimated cost: ${call_response['cost_estimate']['total_cost_usd']:.6f}")
-    
+
     # Save the call_response
     metadata_file_path = f"{metadata_folder}/{file_name.replace('.pdf', '_metadata.json')}"
 
@@ -525,6 +490,7 @@ def test_mode(transcripts_pdf_folder, transcripts_cleantxt_folder, metadata_fold
         print(f"Raw response saved to {metadata_file_path.replace('.json', '_raw.txt')}")
 
 # Test mode
+
 
 test_mode_enabled, test_file_name, debug_mode = get_test_mode()
 

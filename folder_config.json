@@ -8,7 +8,7 @@
     "test_mode": {
         "enabled": true,
         "file_name": "qec_ctg_2023_1Q.pdf",
-        "debug_mode": true
+        "debug_mode": false
     },
     "api_setup": {
         "api_key_file": ".env",

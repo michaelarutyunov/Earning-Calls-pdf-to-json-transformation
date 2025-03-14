@@ -13,6 +13,7 @@
             ],
             "speaker_company": [
                 "Citi",
+                "Citigroup",
                 "Citigroup Inc."
             ],
             "speaker_flags": [
@@ -28,10 +29,12 @@
             ],
             "speaker_company": [
                 "Citi",
+                "Citigroup",
                 "Citigroup Inc."
             ],
             "speaker_flags": [
-                "<BOLD>JANE FRASER: </BOLD>"
+                "<BOLD>JANE FRASER: </BOLD>",
+                "<BOLD>JANE FRASER<BOLD>: </BOLD></BOLD>"
             ]
         },
         {
@@ -43,17 +46,19 @@
             ],
             "speaker_company": [
                 "Citi",
+                "Citigroup",
                 "Citigroup Inc."
             ],
             "speaker_flags": [
-                "<BOLD>MARK MASON: </BOLD>"
+                "<BOLD>MARK MASON: </BOLD>",
+                "<BOLD>MARK MASON<BOLD>: </BOLD>"
             ]
         },
         {
             "speaker_name": "Glenn Schorr",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "Evercore"
             ],
             "speaker_company": [
                 "Evercore"
@@ -64,25 +69,23 @@
         },
         {
             "speaker_name": "Mike Mayo",
-            "speaker_misspelled_names": [
-                "MIKE MAYO"
-            ],
+            "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "Wells Fargo Securities"
             ],
             "speaker_company": [
                 "Wells Fargo Securities"
             ],
             "speaker_flags": [
                 "<BOLD>MIKE MAYO: </BOLD>",
-                "<BOLD>MIKE MAYO</BOLD> :"
+                "<BOLD>MIKE MAYO</BOLD>:"
             ]
         },
         {
             "speaker_name": "Betsy Graseck",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "Morgan Stanley"
             ],
             "speaker_company": [
                 "Morgan Stanley"
@@ -95,7 +98,7 @@
             "speaker_name": "Erika Najarian",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "UBS"
             ],
             "speaker_company": [
                 "UBS"
@@ -108,7 +111,7 @@
             "speaker_name": "Jim Mitchell",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "Seaport Global"
             ],
             "speaker_company": [
                 "Seaport Global"
@@ -121,7 +124,7 @@
             "speaker_name": "Steven Chubak",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "Wolfe Research"
             ],
             "speaker_company": [
                 "Wolfe Research"
@@ -134,7 +137,7 @@
             "speaker_name": "Ebrahim Poonawala",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "Bank of America"
             ],
             "speaker_company": [
                 "Bank of America"
@@ -147,34 +150,35 @@
             "speaker_name": "Matt O'Connor",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "Deutsche Bank"
             ],
             "speaker_company": [
                 "Deutsche Bank"
             ],
             "speaker_flags": [
-                "<BOLD>: </BOLD>",
-                "<BOLD> </BOLD>"
+                "<BOLD>MATT O'CONNOR: </BOLD>",
+                "MATT O'CONNOR <LINEBREAK> <BOLD>: </BOLD>"
             ]
         },
         {
             "speaker_name": "Gerard Cassidy",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "RBC Capital Markets"
             ],
             "speaker_company": [
                 "RBC Capital Markets"
             ],
             "speaker_flags": [
-                "<BOLD>GERARD CASSIDY: </BOLD>"
+                "<BOLD>GERARD CASSIDY: </BOLD>",
+                "GERARD CASSIDY<BOLD>: </BOLD>"
             ]
         },
         {
             "speaker_name": "Vivek Juneja",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "JPMorgan"
             ],
             "speaker_company": [
                 "JPMorgan"
@@ -187,7 +191,7 @@
             "speaker_name": "Ken Usdin",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Analyst"
+                "Jefferies"
             ],
             "speaker_company": [
                 "Jefferies"
@@ -199,14 +203,11 @@
         {
             "speaker_name": "Operator",
             "speaker_misspelled_names": [],
-            "speaker_title": [
-                "Operator"
-            ],
-            "speaker_company": [
-                "Not clearly stated"
-            ],
+            "speaker_title": [],
+            "speaker_company": [],
             "speaker_flags": [
-                "<BOLD>OPERATOR: </BOLD>"
+                "<BOLD>OPERATOR: </BOLD>",
+                "<BOLD>OPERATOR<BOLD>: </BOLD></BOLD>"
             ]
         }
     ],
@@ -229,5 +230,5 @@
         }
     ],
     "path_to_transcript_txt": "transcripts_cleantxt/qec_ctg_2023_1Q_clean.txt",
-    "speaker_regex_pattern": "<BOLD>(.*?)(?:\\s*:|\\s*<MULTISPACE>\\s*)?</BOLD>(?:\\s*:)?"
+    "speaker_regex_pattern": "<BOLD>([^:<\\n]+)(?:<BOLD>)?:(?:\\s*<MULTISPACE>)?(?:\\s*</BOLD>)?(?:</BOLD>)?"
 }

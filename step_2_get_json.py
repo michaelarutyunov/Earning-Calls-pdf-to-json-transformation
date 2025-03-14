@@ -243,11 +243,7 @@ def get_utterances(metadata_file: str, debug_mode: bool) -> Optional[str]:
         metadata = load_metadata(metadata_file, debug_mode)
         text = load_transcript(metadata['path_to_transcript_txt'], debug_mode)
 
-        speaker_regex_pattern = re.compile(metadata['speaker_regex_pattern'], re.MULTILINE) # escaping sequence issue
-            
-        #pattern_string = metadata['speaker_regex_pattern']
-        #pattern_string = re.sub(r'\\\\(.)', r'\\\1', pattern_string)
-        #speaker_regex_pattern = re.compile(pattern_string, re.MULTILINE)
+        speaker_regex_pattern = re.compile(metadata['speaker_regex_pattern'], re.MULTILINE)
 
         matches = list(speaker_regex_pattern.finditer(text))
     except KeyError as e:

@@ -10,10 +10,11 @@
                 "Group President and CEO"
             ],
             "speaker_company": [
-                "TD Bank Group"
+                "TD Bank Group",
+                "TD"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Bharat Masrani - TD - Group President and CEO <LINEBREAK>"
+                "Bharat Masrani - TD - Group President and CEO <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -23,10 +24,11 @@
                 "Group Head and Chief Risk Officer"
             ],
             "speaker_company": [
-                "TD Bank Group"
+                "TD Bank Group",
+                "TD"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Ajai Bambawale - TD - Group Head and Chief Risk Officer <LINEBREAK>"
+                "Ajai Bambawale - TD - Group Head and Chief Risk Officer <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -36,10 +38,11 @@
                 "Chief Financial Officer"
             ],
             "speaker_company": [
-                "TD Bank Group"
+                "TD Bank Group",
+                "TD"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Kelvin Tran - TD - Chief Financial Officer <LINEBREAK>"
+                "Kelvin Tran - TD - Chief Financial Officer <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -49,10 +52,11 @@
                 "Group Head, Canadian Personal Banking"
             ],
             "speaker_company": [
-                "TD Bank Group"
+                "TD Bank Group",
+                "TD"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Michael Rhodes - TD - Group Head, Canadian Personal Banking <LINEBREAK>"
+                "Michael Rhodes - TD - Group Head, Canadian Personal Banking <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -62,10 +66,11 @@
                 "Group Head, Canadian Business Banking"
             ],
             "speaker_company": [
-                "TD Bank Group"
+                "TD Bank Group",
+                "TD"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Paul Douglas - TD - Group Head, Canadian Business Banking <LINEBREAK>"
+                "Paul Douglas - TD - Group Head, Canadian Business Banking <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -74,14 +79,14 @@
                 "Ray"
             ],
             "speaker_title": [
-                "Group Head, Wealth Management and Insurance",
                 "Group Head, Wealth Management & Insurance"
             ],
             "speaker_company": [
-                "TD Bank Group"
+                "TD Bank Group",
+                "TD"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Raymond Chun - TD - Group Head, Wealth Management & Insurance <LINEBREAK>"
+                "Raymond Chun - TD - Group Head, Wealth Management & Insurance <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -91,10 +96,13 @@
                 "President and CEO, TD Bank America's Most Convenient Bank"
             ],
             "speaker_company": [
-                "TD Bank Group"
+                "TD Bank Group",
+                "TD",
+                "TD Bank America's Most Convenient Bank",
+                "TD AMCB"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Leo Salom - TD - President and CEO, TD Bank America's Most Convenient Bank <LINEBREAK>"
+                "Leo Salom - TD - President and CEO, TD Bank America's Most Convenient Bank <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -104,10 +112,12 @@
                 "Group Head, Wholesale Banking"
             ],
             "speaker_company": [
-                "TD Bank Group"
+                "TD Bank Group",
+                "TD",
+                "TD Securities"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Riaz Ahmed - TD - Group Head, Wholesale Banking <LINEBREAK>"
+                "Riaz Ahmed - TD - Group Head, Wholesale Banking <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -117,10 +127,11 @@
                 "Head of Investor Relations"
             ],
             "speaker_company": [
-                "TD Bank Group"
+                "TD Bank Group",
+                "TD"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Brooke Hales - TD - Head of Investor Relations <LINEBREAK>"
+                "Brooke Hales - TD - Head of Investor Relations <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -135,7 +146,7 @@
                 "National Bank Financial"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Gabriel Dechaine - National Bank Financial - Analyst <LINEBREAK>"
+                "Gabriel Dechaine - National Bank Financial - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -148,7 +159,7 @@
                 "Scotia Capital"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Meny Grauman - Scotia Capital - Analyst <LINEBREAK>"
+                "Meny Grauman - Scotia Capital - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -162,8 +173,8 @@
                 "CIBC"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Paul Holden - CIBC World Markets - Analyst <LINEBREAK>",
-                "<LINEBREAK> Paul Holden - CIBC - Analyst <LINEBREAK>"
+                "Paul Holden - CIBC World Markets - Analyst <MULTISPACE> <LINEBREAK>",
+                "Paul Holden - CIBC - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -176,7 +187,7 @@
                 "Desjardins"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Doug Young - Desjardins - Analyst <LINEBREAK>"
+                "Doug Young - Desjardins - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -190,8 +201,8 @@
                 "Cormark"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Lemar Persaud - Cormark Securities - Analyst <LINEBREAK>",
-                "<LINEBREAK> Lemar Persaud - Cormark - Analyst <LINEBREAK>"
+                "Lemar Persaud - Cormark Securities - Analyst <MULTISPACE> <LINEBREAK>",
+                "Lemar Persaud - Cormark - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -205,8 +216,8 @@
                 "BMO"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Sohrab Movahedi - BMO Capital Markets - Analyst <LINEBREAK>",
-                "<LINEBREAK> Sohrab Movahedi - BMO - Analyst <LINEBREAK>"
+                "Sohrab Movahedi - BMO Capital Markets - Analyst <MULTISPACE> <LINEBREAK>",
+                "Sohrab Movahedi - BMO - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -219,7 +230,7 @@
                 "Credit Suisse Securities"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Joo Ho Kim - Credit Suisse Securities - Analyst <LINEBREAK>"
+                "Joo Ho Kim - Credit Suisse Securities - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -233,8 +244,8 @@
                 "KBW"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Mike Rizvanovic - Keefe, Bruyette & Woods - Analyst <LINEBREAK>",
-                "<LINEBREAK> Mike Rizvanovic - KBW - Analyst <LINEBREAK>"
+                "Mike Rizvanovic - Keefe, Bruyette & Woods - Analyst <MULTISPACE> <LINEBREAK>",
+                "Mike Rizvanovic - KBW - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -247,7 +258,7 @@
                 "Canaccord Genuity"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Scott Chan - Canaccord Genuity - Analyst <LINEBREAK>"
+                "Scott Chan - Canaccord Genuity - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -260,7 +271,7 @@
                 "RBC Capital Markets"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Darko Mihelic - RBC Capital Markets - Analyst <LINEBREAK>"
+                "Darko Mihelic - RBC Capital Markets - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -274,8 +285,8 @@
                 "BofA Securities"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Ebrahim Poonawala - Bank of America Securities - Analyst <LINEBREAK>",
-                "<LINEBREAK> Ebrahim Poonawala - BofA Securities - Analyst <LINEBREAK>"
+                "Ebrahim Poonawala - Bank of America Securities - Analyst <MULTISPACE> <LINEBREAK>",
+                "Ebrahim Poonawala - BofA Securities - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         },
         {
@@ -288,7 +299,7 @@
                 "Veritas Investment Research"
             ],
             "speaker_flags": [
-                "<LINEBREAK> Nigel D'Souza - Veritas Investment Research - Analyst <LINEBREAK>"
+                "Nigel D'Souza - Veritas Investment Research - Analyst <MULTISPACE> <LINEBREAK>"
             ]
         }
     ],
@@ -315,5 +326,5 @@
         }
     ],
     "path_to_transcript_txt": "transcripts_cleantxt/qec_tdb_2023_1Q_clean.txt",
-    "speaker_regex_pattern": "<LINEBREAK>\\s+([^-]+)\\s+-\\s+([^-]+)\\s+-\\s+([^<]+)\\s+<LINEBREAK>"
+    "speaker_regex_pattern": "([A-Za-z\\s\\.']+)\\s+-\\s+([A-Za-z\\s\\.,&']+)\\s+-\\s+([A-Za-z\\s\\.,&']+)\\s+<MULTISPACE>\\s+<LINEBREAK>"
 }
