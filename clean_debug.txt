@@ -1,4 +1,4 @@
-angle_brackets: 2683
-parentheses: 0
+angle_brackets: 1675
+parentheses: 2
 double_slashes: 0
 backslashes: 0

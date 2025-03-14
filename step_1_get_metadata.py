@@ -218,8 +218,8 @@ def extract_dict_from_pdf(pdf_path, debug_mode=False):
                 formatted_text = text
                 if is_bold:
                     formatted_text = f"<BOLD>{formatted_text}</BOLD>"
-                if is_italic:
-                    formatted_text = f"<ITALIC>{formatted_text}</ITALIC>"
+                #if is_italic:
+                #    formatted_text = f"<ITALIC>{formatted_text}</ITALIC>"
                 complete_text = complete_text.replace(text, formatted_text)
 
         # Clean the text
@@ -246,6 +246,7 @@ Here is the transcript to analyze:
 {text}
 </transcript>
 
+<formatting_tags>
 The text contains several formatting tags:
 - Line breaks are marked as <LINEBREAK>
 - Bold text is marked as <BOLD>
@@ -253,19 +254,22 @@ The text contains several formatting tags:
 - Multispace is marked as <MULTISPACE>
 - Tab characters are marked as <TAB>
 - Page breaks are marked as <PAGEBREAK>
+</formatting_tags>
 
-Your goal is to carefully extract the following detailed information and format it into a JSON object:
-1. Bank name
-2. Call date
-3. Reporting period (in Q-YYYY format, e.g., "Q1-2023")
-4. Participants' full names, misspelled names, job title(s) with all variations found in the document, and company(ies) with all variations found in the document
-5. Participants' speaker flags that show how the speaker is marked in the transcript to attribute the speech to the correct speaker
-6. All sections in the document in order of appearance
-7. Presentation section details including section title, section start page number, section end page number
-8. Q&A section details including section title, section start page number, section end page number
+<task>
+Your task is to carefully extract the following detailed information and format it into a JSON object:
+1. Bank name.
+2. Call date.
+3. Reporting period (in Q-YYYY format, e.g., "Q1-2023").
+4. Participants' full names, misspelled names, job title(s) with all variations found in the document, and company(ies) with all variations found in the document.
+5. Participants' speaker flags that show how the speaker is marked in the transcript to attribute the speech to the correct speaker.
+6. All sections in the document in order of appearance.
+7. Presentation section details including section title, section start page number, section end page number.
+8. Q&A section details including section title, section start page number, section end page number.
+</task>
 
+<guidelines>
 Follow these guidelines:
-
 1. For participant names, use the most frequently used spelling for the "name" field and include all variations, including acronyms, potential misspellings or grammatical errors, in the "misspelled_names" array.
 2. For participant titles, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
 3. For participant companies, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
@@ -276,11 +280,12 @@ Follow these guidelines:
 8. Pay close attention to the formatting requirements, especially for the reporting period.
 9. If any information is unclear or not explicitly stated in the transcript, use "Not clearly stated" as the value.
 10. It should be possible to parse the JSON object from the response.
+</guidelines>
 
 Apply the guidelines and provide only the JSON object as your final response, with no additional markdown, text or explanations.
 
 Here's an example of the expected JSON structure (with generic placeholders):
-
+<example>
 {{
   "bank_name": "Example Bank",
   "call_date": "YYYY-MM-DD",
@@ -310,6 +315,7 @@ Here's an example of the expected JSON structure (with generic placeholders):
     }}
   ]
 }}
+</example>
 
 Please proceed with your analysis and JSON formatting of the transcript information.
 """
