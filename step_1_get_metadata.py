@@ -269,12 +269,13 @@ Follow these guidelines:
 1. For participant names, use the most frequently used spelling for the "name" field and include all variations, including acronyms, potential misspellings or grammatical errors, in the "misspelled_names" array.
 2. For participant titles, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
 3. For participant companies, always search and include all variations found in the document, including acronyms, potential misspellings or grammatical errors.
-4. For speaker flags, if necessary include the adjacent formatting tags like <LINEBREAK> etc.
-5. For sections flow, only include the titles of the sections. Include all section names in order of appearance in the transcript.
-6. For the presentation and q&a sections details, always include the start and end page numbers of the section.
-7. Pay close attention to the formatting requirements, especially for the reporting period.
-8. If any information is unclear or not explicitly stated in the transcript, use "Not clearly stated" as the value.
-9. It should be possible to parse the JSON object from the response.
+4. Speaker flag must always include the speaker's name.
+5. For speaker flags, if necessary include the adjacent formatting tags like <LINEBREAK> etc.
+6. For sections flow, only include the titles of the sections. Include all section names in order of appearance in the transcript.
+7. For the presentation and q&a sections details, always include the start and end page numbers of the section.
+8. Pay close attention to the formatting requirements, especially for the reporting period.
+9. If any information is unclear or not explicitly stated in the transcript, use "Not clearly stated" as the value.
+10. It should be possible to parse the JSON object from the response.
 
 Apply the guidelines and provide only the JSON object as your final response, with no additional markdown, text or explanations.
 

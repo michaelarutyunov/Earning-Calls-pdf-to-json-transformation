@@ -7,8 +7,8 @@
     },
     "test_mode": {
         "enabled": true,
-        "file_name": "qec_ctg_2023_1Q.pdf",
-        "debug_mode": false
+        "file_name": "qec_jpm_2023_1Q.pdf",
+        "debug_mode": true
     },
     "api_setup": {
         "api_key_file": ".env",

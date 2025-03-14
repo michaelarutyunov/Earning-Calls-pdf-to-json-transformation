@@ -106,14 +106,21 @@ def create_regex_pattern(metadata_file: str, debug_mode: bool) -> str:
 Your task is to create a regex that can match all the samples included into the list.
 
 Here is the list of samples:
+<data>
 {speaker_flags}
+</data>
 
+<instructions>
 Important requirements:
 1. The regex must include capturing groups (using parentheses) that extract the relevant information.
-2. For examples like "<BOLD>JENNIFER LANDIS: </BOLD>", your regex should capture "JENNIFER LANDIS" as a group.
-3. For examples like "<LINEBREAK> John Doe - CEO - Example Bank <LINEBREAK>", your regex should capture the name, title, and organization in separate groups.
-4. The pattern should match the entire structure but isolate the important information in capture groups.
-5. If multiple formats exist in the samples, create a regex that handles all of them correctly.
+2. The regex MUST capture the speaker's name in the FIRST capturing group.
+3. For examples like "<BOLD>JENNIFER LANDIS: </BOLD>", your regex should capture "JENNIFER LANDIS" as a group.
+4. For examples like "<LINEBREAK> John Doe - CEO - Example Bank <LINEBREAK>", your regex should capture the name, title, and organization in separate groups.
+5. Any HTML tags or formatting elements should NOT be included in the capturing group for the speaker name.
+6. The pattern should match the entire structure but isolate the important information in capture groups.
+7. Do not use unnecessary capturing groups that would shift the speaker name to a group other than group(1).
+8. If multiple formats exist in the samples, create a regex that handles all of them correctly.
+</instructions>
 
 You response should include only regex.
 Do not include comments and analysis into the response.
@@ -286,6 +293,10 @@ def get_utterances(metadata_file: str, debug_mode: bool) -> Optional[str]:
             if match.lastindex is None or match.lastindex < 1:
                 raise ValueError("Regex pattern does not contain a capturing group for the speaker name.")
 
+        if match.group(1) is None:
+            # Handle the case where nothing was captured
+            continue
+
         full_speaker_text = match.group(1).strip().lower()
         match_found = False
 
@@ -308,6 +319,9 @@ def get_utterances(metadata_file: str, debug_mode: bool) -> Optional[str]:
 
     if debug_mode:
         print(f"{len(filtered_matches)} matches contain valid speakers")
+        for i, match in enumerate(matches):
+            print(f"Match {i}: {match.group(0)}")
+            print(f"Group 1: {match.group(1)}")
 
     result = []
     for i in range(len(filtered_matches) - 1):

@@ -24,8 +24,8 @@
             "speaker_name": "Jane Fraser",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Citi Chief Executive Officer",
-                "Chief Executive Officer"
+                "Chief Executive Officer",
+                "Citi Chief Executive Officer"
             ],
             "speaker_company": [
                 "Citi",
@@ -41,8 +41,8 @@
             "speaker_name": "Mark Mason",
             "speaker_misspelled_names": [],
             "speaker_title": [
-                "Citi Chief Financial Officer",
-                "Chief Financial Officer"
+                "Chief Financial Officer",
+                "Citi Chief Financial Officer"
             ],
             "speaker_company": [
                 "Citi",
@@ -230,5 +230,5 @@
         }
     ],
     "path_to_transcript_txt": "transcripts_cleantxt/qec_ctg_2023_1Q_clean.txt",
-    "speaker_regex_pattern": "<BOLD>([^:<\\n]+)(?:<BOLD>)?:(?:\\s*<MULTISPACE>)?(?:\\s*</BOLD>)?(?:</BOLD>)?"
+    "speaker_regex_pattern": "(?:<BOLD>)?(?:\\s*)([A-Z][A-Z\\s']+(?:\\s[A-Z][A-Za-z]+)?)(?:<BOLD>)?(?:\\s*)?:(?:\\s*<\\/BOLD>)?(?:<MULTISPACE>)?(?:\\s*)?(?:<\\/BOLD>)?"
 }
