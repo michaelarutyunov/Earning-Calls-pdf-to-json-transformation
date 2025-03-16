@@ -1,0 +1,204 @@
+{
+    "bank_name": "JPMorgan Chase",
+    "call_date": "2023-04-14",
+    "reporting_period": "1Q23",
+    "participants": [
+        {
+            "speaker_name_variants": [
+                "Operator"
+            ],
+            "speaker_title_variants": [],
+            "speaker_company_variants": [],
+            "speaker_attributions": [
+                "Operator:",
+                "<MULTISPACE> <LINEBREAK> Operator:"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Jeremy Barnum"
+            ],
+            "speaker_title_variants": [
+                "Chief Financial Officer"
+            ],
+            "speaker_company_variants": [
+                "JPMorgan Chase & Co."
+            ],
+            "speaker_attributions": [
+                "Jeremy Barnum <MULTISPACE> <LINEBREAK> Chief Financial Officer, JPMorgan Chase & Co. <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Jamie Dimon"
+            ],
+            "speaker_title_variants": [
+                "Chairman & Chief Executive Officer"
+            ],
+            "speaker_company_variants": [
+                "JPMorgan Chase & Co."
+            ],
+            "speaker_attributions": [
+                "Jamie Dimon <MULTISPACE> <LINEBREAK> Chairman & Chief Executive Officer, JPMorgan Chase & Co. <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Steven Chubak"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "Wolfe Research LLC"
+            ],
+            "speaker_attributions": [
+                "Steven Chubak <MULTISPACE> <LINEBREAK> Analyst, Wolfe Research LLC <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Ken Usdin"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "Jefferies LLC"
+            ],
+            "speaker_attributions": [
+                "Ken Usdin <MULTISPACE> <LINEBREAK> Analyst, Jefferies LLC <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "John McDonald"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "Autonomous Research"
+            ],
+            "speaker_attributions": [
+                "John McDonald <MULTISPACE> <LINEBREAK> Analyst, Autonomous Research <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Erika Najarian"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "UBS Securities LLC"
+            ],
+            "speaker_attributions": [
+                "Erika Najarian <MULTISPACE> <LINEBREAK> Analyst, UBS Securities LLC <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Jim Mitchell"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "Seaport Global Securities LLC"
+            ],
+            "speaker_attributions": [
+                "Jim Mitchell <MULTISPACE> <LINEBREAK> Analyst, Seaport Global Securities LLC <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Gerard Cassidy"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "RBC Capital Markets LLC"
+            ],
+            "speaker_attributions": [
+                "Gerard Cassidy <MULTISPACE> <LINEBREAK> Analyst, RBC Capital Markets LLC <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Ebrahim H. Poonawala",
+                "Ebrahim Poonawala"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "Bank of America Merrill Lynch"
+            ],
+            "speaker_attributions": [
+                "Ebrahim H. Poonawala <MULTISPACE> <LINEBREAK> Analyst, Bank of America Merrill Lynch <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Mike Mayo"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "Wells Fargo Securities LLC"
+            ],
+            "speaker_attributions": [
+                "Mike Mayo <MULTISPACE> <LINEBREAK> Analyst, Wells Fargo Securities LLC <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Betsy L. Graseck",
+                "Betsy Graseck"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "Morgan Stanley & Co. LLC"
+            ],
+            "speaker_attributions": [
+                "Betsy L. Graseck <MULTISPACE> <LINEBREAK> Analyst, Morgan Stanley & Co. LLC <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Glenn Schorr"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "Evercore ISI"
+            ],
+            "speaker_attributions": [
+                "Glenn Schorr <MULTISPACE> <LINEBREAK> Analyst, Evercore ISI <MULTISPACE> <LINEBREAK>"
+            ]
+        },
+        {
+            "speaker_name_variants": [
+                "Matt O'Connor"
+            ],
+            "speaker_title_variants": [
+                "Analyst"
+            ],
+            "speaker_company_variants": [
+                "Deutsche Bank Securities, Inc."
+            ],
+            "speaker_attributions": [
+                "Matt O'Connor <MULTISPACE> <LINEBREAK> Analyst, Deutsche Bank Securities, Inc. <MULTISPACE> <LINEBREAK>"
+            ]
+        }
+    ],
+    "path_to_transcript_txt": "transcripts_cleantxt/qec_jpm_2023_1Q_clean.txt",
+    "speaker_regex_pattern": "(?:<MULTISPACE>\\s*<LINEBREAK>\\s*)?(Operator:|([\\w\\s\\.\\-']+)\\s*<MULTISPACE>\\s*<LINEBREAK>\\s*(?:([\\w\\s\\.\\-&,]+),\\s*([\\w\\s\\.\\-&,]+)\\s*<MULTISPACE>\\s*<LINEBREAK>)?)"
+}

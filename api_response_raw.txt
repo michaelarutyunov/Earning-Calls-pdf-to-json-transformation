@@ -1,0 +1,99 @@
+```json
+{
+  "bank_name": "Citi",
+  "call_date": "2023-04-14",
+  "reporting_period": "Q1-2023",
+  "participants": [
+    {
+      "speaker_name_variants": ["OPERATOR"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [],
+      "speaker_attributions": ["<BOLD>OPERATOR: </BOLD>", "<BOLD>OPERATOR<BOLD>: </BOLD></BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["JENNIFER LANDIS", "Jenn Landis", "Jennifer Landis"],
+      "speaker_title_variants": ["Head of Citi Investor Relations"],
+      "speaker_company_variants": ["Citi"],
+      "speaker_attributions": ["<BOLD>JENNIFER LANDIS: </BOLD>", "<BOLD>Host </BOLD> <LINEBREAK> Jennifer Landis, Head of Citi Investor Relations"]
+    },
+    {
+      "speaker_name_variants": ["JANE FRASER", "Jane Fraser"],
+      "speaker_title_variants": ["Citi Chief Executive Officer", "Chief Executive Officer"],
+      "speaker_company_variants": ["Citi"],
+      "speaker_attributions": ["<BOLD>JANE FRASER: </BOLD>", "<BOLD>JANE FRASER<BOLD>: </BOLD></BOLD>", "<BOLD>Speakers </BOLD> <LINEBREAK> Jane Fraser, Citi Chief Executive Officer"]
+    },
+    {
+      "speaker_name_variants": ["MARK MASON", "Mark Mason"],
+      "speaker_title_variants": ["Citi Chief Financial Officer", "Chief Financial Officer"],
+      "speaker_company_variants": ["Citi"],
+      "speaker_attributions": ["<BOLD>MARK MASON: </BOLD>", "<BOLD>MARK MASON<BOLD>: </BOLD></BOLD>", "<BOLD>Speakers </BOLD> <LINEBREAK> Mark Mason, Citi Chief Financial Officer"]
+    },
+    {
+      "speaker_name_variants": ["GLENN SCHORR"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Evercore"],
+      "speaker_attributions": ["<BOLD>GLENN SCHORR: </BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["MIKE MAYO"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Wells Fargo Securities"],
+      "speaker_attributions": ["<BOLD>MIKE MAYO: </BOLD>", "<BOLD>MIKE MAYO</BOLD>:"]
+    },
+    {
+      "speaker_name_variants": ["BETSY GRASECK"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Morgan Stanley"],
+      "speaker_attributions": ["<BOLD>BETSY GRASECK: </BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["ERIKA NAJARIAN"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["UBS"],
+      "speaker_attributions": ["<BOLD>ERIKA NAJARIAN: </BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["JIM MITCHELL"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Seaport Global"],
+      "speaker_attributions": ["<BOLD>JIM MITCHELL: </BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["STEVEN CHUBAK"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Wolfe Research"],
+      "speaker_attributions": ["<BOLD>STEVEN CHUBAK: </BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["EBRAHIM POONAWALA"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Bank of America"],
+      "speaker_attributions": ["<BOLD>EBRAHIM POONAWALA: </BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["MATT O'CONNOR"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Deutsche Bank"],
+      "speaker_attributions": ["<BOLD>MATT O'CONNOR: </BOLD>", "MATT O'CONNOR <LINEBREAK> <BOLD>: </BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["GERARD CASSIDY"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["RBC Capital Markets"],
+      "speaker_attributions": ["<BOLD>GERARD CASSIDY: </BOLD>", "GERARD CASSIDY<BOLD>: </BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["VIVEK JUNEJA"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["JPMorgan"],
+      "speaker_attributions": ["<BOLD>VIVEK JUNEJA: <MULTISPACE> </BOLD>"]
+    },
+    {
+      "speaker_name_variants": ["KEN USDIN"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Jefferies"],
+      "speaker_attributions": ["<BOLD>KEN USDIN: </BOLD>"]
+    }
+  ]
+}
+```

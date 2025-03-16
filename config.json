@@ -3,19 +3,22 @@
         "transcripts_pdf_folder": "transcripts_pdf",
         "transcripts_cleantxt_folder": "transcripts_cleantxt",
         "metadata_folder": "metadata",
-        "utterances_folder": "utterances"
+        "utterances_folder": "utterances",
+        "final_json_folder": "final_json"
     },
     "test_mode": {
         "enabled": true,
-        "file_name": "qec_jpm_2023_1Q.pdf",
-        "debug_mode": false
+        "file_name": "qec_ctg_2023_1Q.pdf",
+        "debug_mode": true
     },
     "api_setup": {
-        "api_key_file": ".env",
-        "api_key_name": "ANTHROPIC_API_KEY"
+        "api_key_name": "ANTHROPIC_API_KEY",
+        "model": "claude-3-7-sonnet-20250219",
+        "input_cost_per_million": 3.0,
+        "output_cost_per_million": 15.0
     },
     "cleaning_parameters": {
-        "keep_bold_tags": false,
+        "keep_bold_tags": true,
         "keep_italics_tags": false,
         "keep_linebreak_tags": true,
         "keep_multispaces_tags": true,

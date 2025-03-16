@@ -1,0 +1,98 @@
+Total attributions found: 24
+
+Attribution 1:
+  Speaker: OPERATOR
+  Text: <BOLD>OPERATOR: </BOLD>
+
+Attribution 2:
+  Speaker: OPERATOR
+  Text: <BOLD>OPERATOR<BOLD>: </BOLD></BOLD>
+
+Attribution 3:
+  Speaker: JENNIFER LANDIS
+  Text: <BOLD>JENNIFER LANDIS: </BOLD>
+
+Attribution 4:
+  Speaker: JENNIFER LANDIS
+  Text: <BOLD>Host </BOLD> <LINEBREAK> Jennifer Landis, Head of Citi Investor Relations
+
+Attribution 5:
+  Speaker: JANE FRASER
+  Text: <BOLD>JANE FRASER: </BOLD>
+
+Attribution 6:
+  Speaker: JANE FRASER
+  Text: <BOLD>JANE FRASER<BOLD>: </BOLD></BOLD>
+
+Attribution 7:
+  Speaker: JANE FRASER
+  Text: <BOLD>Speakers </BOLD> <LINEBREAK> Jane Fraser, Citi Chief Executive Officer
+
+Attribution 8:
+  Speaker: MARK MASON
+  Text: <BOLD>MARK MASON: </BOLD>
+
+Attribution 9:
+  Speaker: MARK MASON
+  Text: <BOLD>MARK MASON<BOLD>: </BOLD></BOLD>
+
+Attribution 10:
+  Speaker: MARK MASON
+  Text: <BOLD>Speakers </BOLD> <LINEBREAK> Mark Mason, Citi Chief Financial Officer
+
+Attribution 11:
+  Speaker: GLENN SCHORR
+  Text: <BOLD>GLENN SCHORR: </BOLD>
+
+Attribution 12:
+  Speaker: MIKE MAYO
+  Text: <BOLD>MIKE MAYO: </BOLD>
+
+Attribution 13:
+  Speaker: MIKE MAYO
+  Text: <BOLD>MIKE MAYO</BOLD>:
+
+Attribution 14:
+  Speaker: BETSY GRASECK
+  Text: <BOLD>BETSY GRASECK: </BOLD>
+
+Attribution 15:
+  Speaker: ERIKA NAJARIAN
+  Text: <BOLD>ERIKA NAJARIAN: </BOLD>
+
+Attribution 16:
+  Speaker: JIM MITCHELL
+  Text: <BOLD>JIM MITCHELL: </BOLD>
+
+Attribution 17:
+  Speaker: STEVEN CHUBAK
+  Text: <BOLD>STEVEN CHUBAK: </BOLD>
+
+Attribution 18:
+  Speaker: EBRAHIM POONAWALA
+  Text: <BOLD>EBRAHIM POONAWALA: </BOLD>
+
+Attribution 19:
+  Speaker: MATT O'CONNOR
+  Text: <BOLD>MATT O'CONNOR: </BOLD>
+
+Attribution 20:
+  Speaker: MATT O'CONNOR
+  Text: MATT O'CONNOR <LINEBREAK> <BOLD>: </BOLD>
+
+Attribution 21:
+  Speaker: GERARD CASSIDY
+  Text: <BOLD>GERARD CASSIDY: </BOLD>
+
+Attribution 22:
+  Speaker: GERARD CASSIDY
+  Text: GERARD CASSIDY<BOLD>: </BOLD>
+
+Attribution 23:
+  Speaker: VIVEK JUNEJA
+  Text: <BOLD>VIVEK JUNEJA: <MULTISPACE> </BOLD>
+
+Attribution 24:
+  Speaker: KEN USDIN
+  Text: <BOLD>KEN USDIN: </BOLD>
+
