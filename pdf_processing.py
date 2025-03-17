@@ -229,9 +229,6 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
             full_text += page_text + "\n<PAGE_BREAK>\n"
         else:
             print(f"Warning: No text extracted from page {page_num + 1} of {pdf_path}")
-
-    # make whole text lowercase
-    #full_text = full_text.lower()
     
     doc.close()
     return full_text
@@ -250,21 +247,8 @@ def API_call(text, config_data, debug_mode=False):
     Format the results as a json object.
     </task>
 
-    <speaker_attribution_guidelines>
-    Guidelines for speaker attribution:
-    - Speaker attribution always starts with the speaker's name
-    - Speaker's name in the attribution can be in normal or bold text, upper or title case. 
-    - Speaker's name in the attribution can be followed by the speaker's title and company.
-    - If the speaker's name in the attribution is followed by the speaker's title and company, there may be a separator like a dash or a colon between the name and the title/company
-    - Speaker attribution often preceded by a <LINEBREAK> tag.
-    - Speaker attribution may include punctuations marks like a dash, a colon, a period, or an apostrophe. Pay close attention to these punctuations marks and tags around them.
-    - Speaker attribution may multiple different tags, which may appear inconsistently across the attributions. Ensure you capture ALL variations of speaker attributions.
-    - Speaker attributions for the same speaker may appear in inconsistent formats. Ensure you capture ALL variations of speaker attributions, even if they appear only once in the transcript.
-    - Attribution for operator should always contain the word "Operator".
-    </speaker_attribution_guidelines>
-
     <formatting_tags>
-    Here are the formatting tags used in the transcript:
+    Text contains formatting tags that can help identify who is speaking:
     - Line breaks are marked as <LINEBREAK>
     - Bold text is marked as <BOLD>
     - Italic text is marked as <ITALIC>
@@ -272,36 +256,44 @@ def API_call(text, config_data, debug_mode=False):
     - Tab characters are marked as <TAB>
     - Page breaks are marked as <PAGEBREAK>
     </formatting_tags>
+    
+    <speaker_attribution_guidelines>
+    Guidelines for speaker attribution:
+    - Speaker attribution helps identify who is speaking before their statements.
+    - For each speaker, check the whole transcript from start to end for all variations of their speaker attributions.
+    - Speaker attribution always starts with the speaker's name.
+    - Speaker's name in the attribution can be followed by the speaker's job title and company.
+    - Speaker's name, job title and company in the attribution can be in normal or bold text, upper or title case, may include punctuations marks like a dash, a colon, a period, or an apostrophe.
+    - Speaker's name, job title and company, may be separated with a dash, a colon, formatting tags.
+    - Pay close attention to the formatting tags around and between speaker's name, job title, company, and puntuation marks.
+    - Speaker attribution is normally preceded by a <LINEBREAK> tag or a combination of <MULTISPACE> and <LINEBREAK> tags.
+    - Speaker attribution often ends with a formatting tag or a punctuation mark. 
+    - Attribution for operator should always contain the word "Operator".
+    </speaker_attribution_guidelines>
 
+    <transcript>    
     Here is the transcript to analyze:
-    <transcript>
     {text}
     </transcript>
 
-    <inconsistent_formatting_examples>
-    Here are some examples of inconsistent formatting:
-    * <BOLD>SPEAKER NAME: </BOLD>
-    * <BOLD>SPEAKER NAME<BOLD>: </BOLD></BOLD>
-    * SPEAKER NAME <LINEBREAK> <BOLD>: </BOLD>
-    * <BOLD>SPEAKER NAME</BOLD> <LINEBREAK> :
-    </inconsistent_formatting_examples>
+    <examples>
+    Here is an example of a speaker attribution with variations in formatting:
+    * name followed by a colon, both in bold: <BOLD>SPEAKER NAME: </BOLD>
+    * name followed by a colon, both in bold: <BOLD>SPEAKER NAME<BOLD>: </BOLD></BOLD>
+    * name followed by a line break, then by a colon in bold: SPEAKER NAME <LINEBREAK> <BOLD>: </BOLD>
+    * name in bold followed by a line break, then by a colon: <BOLD>SPEAKER NAME</BOLD> <LINEBREAK> :
+    If found, all such variations should be included in the output.
+    </examples>
 
-    Follow these guidelines:
     <guidelines>
-    1. Include all speaker attributions found in the transcript even if they appear in inconsistent formats. Do not miss any speakers or attributions even if they appear only once in the transcript.
-    2. Include all variations of speaker names found in the transcript.
-    3. Include all variations of speaker titles found in the transcript.
-    4. Include all variations of speaker companies found in the transcript.
+    Follow these guidelines:
+    1. IMPORTANT: for each speaker, check the whole transcript from start to end for all variations of their speaker attributions.
+    2. Include all speaker attributions found in the transcript.
+    3. Include all variations of speaker names found in the transcript.
+    4. Include all variations of speaker titles found in the transcript.
+    5. Include all variations of speaker companies found in the transcript.
     5. Pay close attention to the formatting requirements, especially for the reporting period (QX-YYYY)
     </guidelines>
-
-    <completeness>
-    Your extraction should be comprehensive - ensure you capture ALL speaker attributions, even if there are more than five variations of the same speaker attribution.
-    </completeness>
-
-    <testing>
-    After extracting all attributions, double-check the transcript for any missed patterns or variations in how speakers are indicated.
-    </testing>
 
     Here's an example of the expected JSON structure (with generic placeholders):
     <jsonexample>

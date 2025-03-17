@@ -8,8 +8,8 @@
     },
     "test_mode": {
         "enabled": true,
-        "file_name": "qec_ctg_2023_1Q.pdf",
-        "debug_mode": true
+        "file_name": "qec_jpm_2023_1Q.pdf",
+        "debug_mode": false
     },
     "api_setup": {
         "api_key_name": "ANTHROPIC_API_KEY",
