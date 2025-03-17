@@ -1,0 +1,99 @@
+{
+  "bank_name": "UBS",
+  "call_date": "2023-04-25",
+  "reporting_period": "Q1-2023",
+  "header_pattern": "<MULTISPACE> <LINEBREAK> Page 1 of 11 <MULTISPACE> <LINEBREAK> First quarter 2023 results <MULTISPACE> <LINEBREAK> 25 April 2023 <MULTISPACE> <LINEBREAK> <MULTISPACE> <LINEBREAK> Speeches by Sergio P. Ermotti, Group Chief Executive Officer, and Sarah <MULTISPACE> <LINEBREAK> Youngwood, Group Chief Financial Officer <MULTISPACE> <LINEBREAK> <MULTISPACE> <LINEBREAK> Including analyst Q&A session <MULTISPACE> <LINEBREAK> <MULTISPACE> <LINEBREAK> <BOLD>Transcript.</BOLD> <MULTISPACE> <LINEBREAK> <BOLD>Numbers for slides refer to the first quarter 2023 results presentation. Materials and a webcast </BOLD> <LINEBREAK> <BOLD>replay are available at</BOLD> <BOLD>www.ubs.com/investors</BOLD>",
+  "footer_pattern": "<BOLD>Cautionary Statement Regarding Forward-Looking Statements |</BOLD> This document contains statements that constitute \"forward-looking statements,\" <MULTISPACE> <LINEBREAK> including but not limited to management's outlook for UBS's financial performance, statements relating to the anticipated effect of transactions and <MULTISPACE> <LINEBREAK> strategic initiatives on UBS's business and future development and goals or intentions to achieve climate, sustainability and other social objectives.",
+  "participants": [
+    {
+      "speaker_name_variants": ["Sergio P. Ermotti"],
+      "speaker_title_variants": ["Group Chief Executive Officer"],
+      "speaker_company_variants": ["UBS"],
+      "speaker_attributions": ["Sergio P. Ermotti <MULTISPACE> <LINEBREAK>", "<BOLD>Sergio P. Ermotti </BOLD> <LINEBREAK>", "Sergio P. Ermotti - closing remarks <MULTISPACE> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Sarah Youngwood"],
+      "speaker_title_variants": ["Group Chief Financial Officer"],
+      "speaker_company_variants": ["UBS"],
+      "speaker_attributions": ["Sarah Youngwood <MULTISPACE> <LINEBREAK>", "<BOLD>Sarah Youngwood </BOLD> <LINEBREAK>", "<BOLD>Sarah Youngwood<MULTISPACE> </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Chis Hallam"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Goldman Sachs"],
+      "speaker_attributions": ["<BOLD>Chis Hallam, Goldman Sachs </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Kian Abouhossein"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["JPMorgan"],
+      "speaker_attributions": ["<BOLD>Kian Abouhossein, JPMorgan <MULTISPACE> </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Alastair Ryan"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Bank of America"],
+      "speaker_attributions": ["<BOLD>Alastair Ryan, Bank of America <MULTISPACE> </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Flora Bocahut"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Jefferies"],
+      "speaker_attributions": ["<BOLD>Flora Bocahut, Jefferies </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Andrew Coombs"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Citi"],
+      "speaker_attributions": ["<BOLD>Andrew Coombs, Citi </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Adam Terelak"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Mediobanca"],
+      "speaker_attributions": ["<BOLD>Adam Terelak, Mediobanca </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Jeremy Sigee"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Exane"],
+      "speaker_attributions": ["<BOLD>Jeremy Sigee, Exane </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Anke Reingen"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["RBC"],
+      "speaker_attributions": ["<BOLD>Anke Reingen, RBC </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Amit Goel"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Barclays"],
+      "speaker_attributions": ["<BOLD>Amit Goel, Barclays </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Benjamin Goy"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Deutsche Bank"],
+      "speaker_attributions": ["<BOLD>Benjamin Goy; Deutsche Bank </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Tom Hallet"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["KBW"],
+      "speaker_attributions": ["<BOLD>Tom Hallet, KBW </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Nicholas Payen"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Kepler Cheuvreux"],
+      "speaker_attributions": ["<BOLD>Nicholas Payen, Kepler Cheuvreux <MULTISPACE> </BOLD> <LINEBREAK>"]
+    },
+    {
+      "speaker_name_variants": ["Andrew Lim"],
+      "speaker_title_variants": [],
+      "speaker_company_variants": ["Société Générale"],
+      "speaker_attributions": ["<BOLD>Andrew Lim, Société Générale </BOLD> <LINEBREAK>"]
+    }
+  ]
+}

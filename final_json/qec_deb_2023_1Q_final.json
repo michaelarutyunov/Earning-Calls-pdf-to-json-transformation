@@ -1,0 +1,611 @@
+{
+  "bank_name": "Deutsche Bank AG",
+  "call_date": "2023-04-27",
+  "reporting_period": "Q1-2023",
+  "header_pattern": "Deutsche Bank AG <MULTISPACE> <LINEBREAK> Deutsche Bank Q1 2023 Analyst Conference Call <MULTISPACE> <LINEBREAK> Thursday, 27 April 2023 | 11:00 CEST <MULTISPACE> <LINEBREAK> <MULTISPACE> <LINEBREAK> Transcript <MULTISPACE> <LINEBREAK>",
+  "footer_pattern": "<BOLD>Disclaimer </BOLD> <LINEBREAK> <BOLD>This transcript contains forward-looking statements. Forward-looking statements are statements </BOLD> <LINEBREAK> <BOLD>that are not historical facts; they include statements about our beliefs and expectations and the </BOLD> <LINEBREAK>",
+  "participants": [
+    {
+      "speaker_name_variants": [
+        "Christian Sewing"
+      ],
+      "speaker_title_variants": [
+        "Chief Executive Officer"
+      ],
+      "speaker_company_variants": [
+        "Deutsche Bank AG",
+        "Deutsche Bank"
+      ],
+      "speaker_attributions": [
+        "CHRISTIAN SEWING <MULTISPACE> <LINEBREAK>",
+        "Christian Sewing <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "James von Moltke"
+      ],
+      "speaker_title_variants": [
+        "Chief Financial Officer"
+      ],
+      "speaker_company_variants": [
+        "Deutsche Bank AG",
+        "Deutsche Bank"
+      ],
+      "speaker_attributions": [
+        "JAMES VON MOLTKE <MULTISPACE> <LINEBREAK>",
+        "James von Moltke <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Silke-Nicole Szypa"
+      ],
+      "speaker_title_variants": [
+        "Deputy Head of Investor Relations"
+      ],
+      "speaker_company_variants": [
+        "Deutsche Bank AG",
+        "Deutsche Bank"
+      ],
+      "speaker_attributions": [
+        "Silke-Nicole Szypa <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Chris Hallam"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Goldman Sachs"
+      ],
+      "speaker_attributions": [
+        "Chris Hallam <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Tom Hallett"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "KBW"
+      ],
+      "speaker_attributions": [
+        "Tom Hallett <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Anke Reingen"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "RBC"
+      ],
+      "speaker_attributions": [
+        "Anke Reingen <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Stuart Graham"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Autonomous"
+      ],
+      "speaker_attributions": [
+        "Stuart Graham <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Nicolas Payen"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Kepler Cheuvreux"
+      ],
+      "speaker_attributions": [
+        "Nicolas Payen <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Adam Terelak"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Mediobanca"
+      ],
+      "speaker_attributions": [
+        "Adam Terelak <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Kian Abouhossein"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "JPMorgan"
+      ],
+      "speaker_attributions": [
+        "Kian Abouhossein <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Jon Peace"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Credit Suisse"
+      ],
+      "speaker_attributions": [
+        "Jon Peace <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Andrew Coombs"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Citi"
+      ],
+      "speaker_attributions": [
+        "Andrew Coombs <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Vishal Shah"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Morgan Stanley"
+      ],
+      "speaker_attributions": [
+        "Vishal Shah <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Andrew Lim"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Societe Generale"
+      ],
+      "speaker_attributions": [
+        "Andrew Lim <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Jeremy Sigee"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "BNP"
+      ],
+      "speaker_attributions": [
+        "Jeremy Sigee <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Piers Brown"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "HSBC"
+      ],
+      "speaker_attributions": [
+        "Piers Brown <MULTISPACE> <LINEBREAK>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Amit Goel"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Barclays"
+      ],
+      "speaker_attributions": [
+        "Amit Goel <MULTISPACE> <LINEBREAK>"
+      ]
+    }
+  ],
+  "utterances": [
+    {
+      "speaker": "Christian Sewing",
+      "utterance": "Slide 1 - Strong performance in volatile markets - Thank you, Silke, and welcome from me, too! - It's a pleasure to discuss our first quarter 2023 results with you today and we are pleased with the progress we continue to make towards our 2025 goals - The first quarter was marked by turbulent conditions in the banking sector, particularly in March, in addition to the macro-economic challenges. However, our transformation has provided us with strong foundations which enabled us to navigate these challenges successfully - We delivered on four critical dimensions - First, profitability: pre-tax profits increased by 12% to 1.9 billion euros, and post-tax profit by 8% to 1.3 billion euros, which on both counts represents our strongest first quarter since 2013 - Our cost/income ratio was 71% this quarter, 2 percentage points better than the prior year, driven by positive operating leverage - We also generated an 8.3% post-tax return on tangible equity this period - As you know, annual bank levies are recognized in the first quarter. Spreading these bank levies equally across the four quarters of the year, our first quarter cost/income ratio would be 67% with a post-tax return on tangible equity of 10% - putting us well on track to our 2025 targets - Second, we proved the strength of our franchise. Our business model is focused on four client-centric businesses which complement each other and provide a well-diversified earnings mix, as this quarter shows. We delivered revenues of 7.7 billion euros, up 5% over the prior year quarter - Third, we again proved our resilience - Our common equity tier 1 capital ratio was 13.6%, up from 13.4% in the previous quarter and 12.8% in the first quarter of last year - Our liquidity reserves were 241 billion euros and our liquidity coverage ratio rose to 143% - Finally, sustainability is an important part of our strategy - As you heard at our Sustainability Deep Dive in March, we have updated our business strategies and policies and expanded on our 3 commitments in several ways to fight climate change. Namely our thermal coal policy and our ambition is to encourage our corporate clients to commit to net zero - This quarter, we made further progress toward our target of 500 billion euros of sustainable financing and investments, excluding DWS, by end-2025; our cumulative volume since January 2020 has grown to 238 billion euros - Let me now turn to slide 2 to discuss the strong performance across our divisions this quarter Slide 2 - Continued progress across all divisions - We saw good momentum across all businesses and delivered on the strategic steps which support our 2025 targets and strengthen our Global Hausbank model - The Corporate Bank showed financial strength with record revenues and good client activity across our main businesses. I am pleased that we are winning mandates with top clients to support working capital and their global value chain - In the Investment Bank, we added talent to support growth and we are expanding our core franchise. We increased our global market share by more than 40 basis points compared to the previous quarter in Origination and Advisory and achieved year-on-year revenue growth in Rates for the 5th consecutive quarter - This reflects our ongoing investments, especially in capital light business areas - The Private Bank produced its best-ever operating revenues, grew assets under management and captured net inflows. We also successfully completed the next wave of the Postbank IT migration at the beginning of April, transferring over 6.5 million contracts from 5 million Postbank clients - this will unlock the 300 million euros of cost efficiencies, as we previously communicated - Asset Management saw inflows of 6 billion euros, and 9 billion euros excluding Cash, despite turbulent markets. Stefan Hoops is progressing with the strategy by investing into transformation to create a stand- alone platform while expanding the product offering. Xtrackers launched the largest ETF of all time in the US of approximately 2 billion US dollars. This is also the single largest climate investing ETF launch - Turning now to the pre-provision profit on slide 3 4 Slide 3 - Balanced portfolio of businesses driving performance - Pre-provision profit for the Group was 2.2 billion euros in the first quarter, up 14% compared to the prior year period - We again achieved positive operating leverage as we grew our revenues and controlled expenses - This quarter underlined how complementary our businesses are and how our strategic transformation has helped us to rebalance our income streams - I am particularly pleased with the performances at the Corporate Bank and Private Bank, which benefited from the normalized rate environment - The contribution from the Corporate Banks and the Private Bank to pre- provision profit increased to almost 60% from 33% compared to the first quarter of last year. The Investment Bank also produced a solid underlying contribution against an exceptionally strong prior year quarter - The rebalancing towards our stable revenue businesses is especially visible when looking at their contribution to the total Group's pre- provision profit on a last-twelve-month basis. The Corporate Bank and Private Bank alone have contributed 70% over this period - You will recall that our Corporate & Other results were negatively impacted by Valuation & Timing in the prior year quarter. We anticipated that these would reverse over time and we are benefiting from this effect this quarter - The momentum and balance we see across our four businesses gives us confidence we have the right business model and a strong platform to further improve returns Slide 4 - Reinforcing cost agenda across front office and infrastructure - In addition to our growth focus, we maintained our discipline on costs as we continue to invest in technology and controls and face inflationary pressures - In February, we said that we were working on additional efficiency measures which we are now implementing, and which are shown on slide 4 5 - The changes we announced to the management board yesterday should support this agenda. The creation of a group chief operating officer will help us to deliver our strategic transformation agenda and drive inefficiencies out of the bank - We are also focused on right-sizing our non-client facing functions. During the second quarter we will begin to reduce our senior non-client facing workforce by 5% and will limit new hiring without compromising our controls - We continue to align our German Private Bank to the current trends and market environment including actions to streamline our mortgage platform - In addition, we are working on a series of productivity measures including sophisticated capacity planning in several areas, including anti-financial crime - Our target is to increase returns over time, and we continue to look for more opportunities to deliver on this, I will speak about this later Slide 5 - Well diversified loan book and deposit base, supported by strong capital and liquidity - Let me now turn to our balance sheet strength and resilient funding profile on slide 5 - Once again, we benefitted from disciplined risk management and our strong and stable balance sheet - Our loan book is well-diversified across businesses and regions. Around 70% of the book is secured or hedged, and almost 80% of our loan portfolio is in stable and mostly lower-risk businesses in the Private Bank and Corporate Bank - Nearly half of our book is based in Germany, and 40% is equally distributed across EMEA and North America with the remainder in APAC - Our deposit base funds about 60% of the net balance sheet and our loan-to-deposit ratio was 82% at quarter end - Over 80% of our deposits are from most stable client segments such as retail, corporates, small and medium-sized enterprises or sovereigns where we have long-standing and deep-rooted client relationships - 77% of our German retail deposits are insured via the statutory protection scheme. In the Corporate Bank, close to three quarters of all 6 deposits are sticky operational and term deposits supporting our clients' daily needs. James will say more on deposits later - Our CET1 ratio strengthened to 13.6%, 250 basis points above the MDA requirement, and our highest level for two years. Our leverage ratio was 4.6% - As I said, our liquidity metrics remained sound, the LCR was 143%, above our target of around 130%, with a buffer of 63 billion euros above regulatory required levels - The net stable funding ratio was 120%, at the high end of the Group's target range of 115-120%, and 100 billion euros above required levels - To summarise, we have solid foundations to navigate through the recent turbulent environment. And importantly, I view the European banking sector as stable, thanks in part to the regulatory efforts of recent years - Moving to slide 6 Slide 6 - Global Hausbank strategy positioned to support our clients through every cycle - The current environment underlines the importance of our Global Hausbank model, which positions us well to serve clients in volatile markets - When we set out our strategy in March last year, we outlined the key themes which underpin these goals and ambitions, and these themes have become even more important in light of the geopolitical and macro-economic upheavals since then - Our first quarter results demonstrate the progress we are making on the path toward our 2025 goals, benefiting from a strategy and business model which are well aligned to market trends - We will leverage the more favorable interest rate environment, deploy our risk management expertise to support clients, and allocate capital to high-return growth opportunities - With sustainability being so important, we will deepen our dialogue with, and support for clients, expand our product range, and broaden our agenda for our own operations - We will also continue to benefit from the investments we are making in technology together with our strategic partners. The investments 7 should accelerate our transition to a digital bank and the benefits should be seen in our efficiency and controls - These technology investments are also designed to create value for our clients - We believe we have the right strategy and the right focus on clients which should allow us to accelerate execution of our strategy, enhance our franchise and drive returns. We see these opportunities on three dimensions which we detail on slide 7 Slide 7 - Accelerated execution of strategic agenda driving returns - We have committed to self-fund our investments and increase operating leverage through efficiencies, and we now see additional scope to do that - We already indicated that we aim to deliver incremental operational efficiencies greater than the two billion euros identified at the 2022 investor deep dive. As discussed, we are in the process of identifying and executing on a further 500 million euros of benefits which we will work to extract - The incremental benefits will come from a strategic review of our entire workforce, further optimizing the distribution networks in the Private Bank. We also expect to see benefits in operations and process automation, and we are excited about the opportunities that should emerge from artificial intelligence and machine learning - Second, we are focusing on capital efficiency. Deploying capital to increase shareholder value has always been our priority and we see opportunities to re-allocate capital - We aim to free up 15 to 20 billion euros of risk weighted assets from reductions in certain sub-hurdle lending and mortgage portfolios, greater utilization of securitization and hedging optimization - These actions are expected to have a minimal impact on revenues but will enable us to increase returns and re-allocate resources to more capital-accretive businesses - We believe that the combination of cost and capital efficiency together with additional opportunities across markets should position us to outperform our existing growth objectives - To support this, we continue to invest into our platforms, and to take opportunities created by current market conditions to attract talent to 8 strengthen advisory capabilities in various businesses and regions, including Asia - We expect these actions to accelerate the execution of our strategy and more importantly, increase returns to shareholders over time - Before I hand over to James, let me summarize our progress on slide 8 Slide 8 - Summary - Our performance in the first quarter demonstrates the strength of Deutsche Bank's franchise, earnings power and balance sheet - Our transformation has given us a strong platform for growth, with a diversified business model providing well-balanced earnings - This provides a strong step-off to accelerate our Global Hausbank ambition through additional actions on the three dimensions we just discussed - We remain fully committed to our capital distribution plan. With a successful first quarter behind us and strong capital we have now initiated the dialog with the supervisors about share buybacks which are expected to take place in the second half of this year - This is line with the promise we made last quarter that we initiate this step once we have greater clarity on a number of issues, including the macro environment - Everything we have seen this quarter supports our view that we are on the right path. The Group is well positioned to capitalize on current trends to drive returns above the cost of equity - With that, let me hand over to James",
+      "uuid": "9153ce5c-e7ae-4487-9e32-30b22d6814da"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Slide 10 - Key performance indicators - Thank you, Christian - Let me start with a few key performance indicators in the first quarter on slide 10, and put them in the context of our 2025 targets - We have strong revenue momentum. A well-balanced business mix enables us to benefit from higher interest rates despite challenging financial markets, delivering revenue growth above our 2025 targeted compounded annual growth rate on a last twelve-month basis 9 - Our post-tax return on tangible equity was 8.3% in the first quarter, or 10% pro-rating bank levies through the year, already in line with our 2025 target - We have made steady progress on our cost/income ratio which was 71% in the quarter, a 4-percentage point improvement on full year 2022. If the bank levies were pro-rated across the year, the cost/income ratio would be 67%. The first quarter performance shows clear progress toward our 2025 target of less than 62.5% - And we demonstrated the strength of our capital and balance sheet, and the quality of our loan book, in challenging conditions. Our capital ratio was 13.6% in the first quarter, in line with our 2025 target of around 13% - With that let me turn to the first-quarter highlights on slide 11 Slide 11 - Q1 2023 highlights - Group revenues were 7.7 billion euros, up 5% on the first quarter of 2022 and with a better balance across our businesses - Noninterest expenses were 5.5 billion euros and adjusted costs of 5.4 billion euros were essentially flat year on year - We booked bank levies of 473 million euros this quarter, down 35% year on year as a result of a reduction in the sector-wide single resolution fund assessment as well as our improved relative sector contribution and an increased use of irrevocable commitments - Our provision for credit losses was 372 million euros or 30 basis points of average loans. Overall, credit losses remained well contained despite a small number of idiosyncratic events - We generated a profit before tax of 1.9 billion euros, up 12%, and net profit of 1.3 billion euros, up 8%, compared to the prior year quarter - Our cost/income ratio came in at 71%, down 2 percentage points versus the prior year period - Diluted earnings per share was 61 cents in the first quarter with an effective tax rate of 29% - Tangible book value per share was 27 euros and 28 cents, up 2% on the fourth quarter of 2022 and up 8% year on year - Now let me turn to some of the drivers of these results, starting with our NIM development on slide 12 10 Slide 12 - Net interest margin - We have continued to benefit from the interest rate environment in the first quarter, as demonstrated by the rise in net interest margin in the Corporate Bank and Private Bank - Group NIM, however, declined due to the accounting treatment of some of our central hedges and balance sheet management activities. This quarter, the accounting effect resulted in a sequential impact on Group NIM of around negative 20 basis points - This effect is held in C&O where it is fully offset by an increase in noninterest revenue and there is no economic loss to the firm or overall impact on group P&L - Realized deposit betas remain favorable when compared to our models but we expect this to partially normalize in the coming quarters as the pace of interest rate rises slows - Average interest earning assets declined modestly driven mainly by our TLTRO prepayments - With that: let's turn to costs, on slide 13 Slide 13 - Adjusted costs - Q1 2023 - Adjusted costs excluding bank levies of 4.9 billion euros were flat sequentially but increased by 5% year on year or 240 million euros - This reflected cumulative investments over the past twelve months in technology, controls and people, together with higher business activity and inflationary pressures - The monthly average run-rate of around 1.63 billion euros is in line with our prior guidance, and we expect to operate at the run-rate of between 1.6 and 1.65 billion euros per month for the rest of the year - Looking at the individual components: - Compensation and benefits costs were essentially flat, as increased fixed remuneration was offset by lower variable remuneration. Ongoing workforce optimization limited the impact of higher headcount - IT costs were up 66 million euros, 8% year on year, reflecting continued investments in technology and innovation - Professional services increased by 25 million euros driven by Business Consulting and Legal fees 11 - And the increase of around 100 million euros in Other costs mainly reflects increasing expenses for banking services and outsourced operations. We also saw a normalization of travel and marketing expenses - Let's now turn to provision for credit losses on slide 14 Slide 14- Provision for credit losses - Provision for credit losses for the first quarter was 30 basis points of average loans, or 372 million euros - Stage 3 provisions increased to 397 million euros, compared to 114 million euros in the prior year quarter. The majority of this increase was driven by the Private Bank and included a small number of idiosyncratic events in the International Private Bank - This was partly offset by a release of 26 million euros in Stages 1 and 2 provisions, partially driven by a slight improvement in the macroeconomic outlook since the fourth quarter of 2022, compared to a charge of 178 million euros in the prior year quarter - We did not see a wider deterioration in the portfolio outside of this small number of specific events, and overall credit quality remains high - For the full year 2023, we reaffirm our previous guidance range of 25 to 30 basis points of average loans Slide 15 - Commercial Real Estate - Let me also cover our Commercial Real Estate portfolio on slide 15 - Our 33-billion-euro CRE focus portfolio represents 7% of our loan book, and as you know it consists of non-recourse lending within the core CRE business units in the Investment Bank and the Corporate Bank - As a reminder, we have provided disclosure on this focus portfolio since the Covid crisis - The portfolio is well diversified across regions and property types - Despite the headwinds facing the sector, we are comfortable with our exposure for several reasons: - First, our loan originations are focused on larger, institutional quality assets in more liquid primary markets and with strong institutional sponsorship 12 - Second, the moderate weighted average LTVs or loan-to-values of 62% in the Investment Bank and 53% in the Corporate Bank provide material cushion against the expected decline of collateral values. Our sponsors typically have significant \"skin in the game\" in the form of cash equity invested in their properties and have invested more equity where needed to ensure the ongoing performance of their assets - However, we recognize the market is under pressure, especially in the US where lending markets have tightened with further uncertainty caused by recent turmoil in the regional banking sector - The US office sector is also facing greater pressure as the office vacancy rate is approaching 20% compared to approximately 7% in Europe - Our exposure in the US office sector is manageable at 4.5 billion euros, less than 1% of our total book - Our office portfolio is high quality with around 80% in Class A properties and we have institutional sponsorship in major markets. The loans are primarily backed by multi-tenant properties in large urban markets and, again, with high quality sponsors - The portfolio has an average LTV of around 64% with a weighted average lease term of 6.7 years which provides relative stability of cash flows - At the same time, only approximately 600 million euros of exposure has final maturities over the course of the year which limits the refinancing risk in a higher rate environment - In the first quarter, provisions related to US office were 16 million euros or just 4% of the first quarter Stage 3 provisions which shows the relative resiliency and quality of this book - Moving to Funding and Liquidity on slide 16 Slide 16 - Funding and liquidity - We ended the quarter with a liquidity coverage ratio of 143%, equivalent to an excess of 63 billion euros above our regulatory requirements. Over time, as market conditions improve, we would look to prudently steer our LCR down towards our 130% target - As Christian outlined, we have a well-diversified deposit base across client segments and regions 13 - Our deposit base of 592 billion euros declined by 5% sequentially, or 4% on an FX adjusted basis, and 2% year on year. The decline in part reflected a normalization from the elevated levels seen in the second half of last year and was broadly in-line with the market - About a third of the reduction in balances came at the end of the quarter as certain clients repositioned parts of their exposures. This constitutes about 1% of our overall deposit portfolio and speaks to the underlying quality of our book - Deposits in the Corporate Bank declined by 7% sequentially or 6% if adjusted for FX, mostly due to normalizations from elevated levels in the last two quarters as well as increased pricing competition - Private Bank deposits declined by 2% in the quarter. Approximately 30% of flows migrated into higher yielding investment products in the Private Bank while the remainder reflected the ongoing inflationary pressures and increasing price competition - Before we move to performance in our businesses, let me turn to capital on slide 17 Slide 17 - Capital metrics - Our Common Equity Tier 1 ratio came in at 13.6%, up by 25 basis points compared to the previous quarter - Net capital build was 30 basis points, reflecting our strong organic capital generation from net income, partially offset by higher equity compensation awards - Risk weighted assets grew modestly, reducing the CET 1 ratio only by 6 basis points - Credit risk weighted assets increased, primarily due to seasonal loan growth in the Investment Bank and Corporate Bank. Market risk RWA declined slightly following ECB approved reduction in our qualitative multiplier add-on - The leverage ratio was 4.6% at quarter end, up 6 basis points on the previous quarter, mainly due to higher retained earnings - And finally, we continue to operate with loss-absorbing capacity, well above our requirements. Our MREL surplus, as our most binding constraint, has increased by 1 billion euros to 19 billion euros over the quarter - Moving to the Corporate Bank on slide 19 14 Slide 19 - Corporate Bank - Corporate Bank revenues in the first quarter of 2 billion euros were 35% higher year on year, driven by increased interest rates and continued pricing discipline. This was the highest quarterly revenue performance since the formation of the Corporate Bank, driven by revenue growth across all regions and business units - However, and as we highlighted at our fourth quarter results, we expect a normalization of our interest revenues in the second half of the year. Our first quarter results were supported by still very benign pass- through rates, which we believe marks the peak revenue impact of this pricing dynamic - Momentum was particularly strong in Cash Management with corporate, institutional and business banking clients as well as in Corporate Trust - Loan volume in the Corporate Bank was 121 billion euros, down by 4 billion euros compared to the prior year quarter, and flat sequentially - Deposits were 269 billion euros, essentially flat compared to the prior year quarter, but down 7% from elevated prior quarter levels as I have just outlined - Credit loss provisions remained contained despite a more challenging macroeconomic environment and were primarily driven by one larger stage 3 event which was offset in revenues by insurance recoveries. Credit loss provisions remained well below the prior year quarter, which was impacted by the start of the war in Ukraine - Noninterest expenses were 1.1 billion euros, an increase of 2% year on year driven by higher internal service cost allocations, partly offset by a lower bank levy contribution - Profit before tax was 822 million euros in the quarter, more than triple the prior year quarter - The cost/income ratio improved to 55% and post-tax return on tangible equity was 18.3%, despite the recognition of bank levies - I'll now turn to the Investment Bank on slide 20 Slide 20 - Investment Bank - Revenues for the first quarter were 19% lower year on year 15 - Revenues in FIC Sales & Trading decreased by 17% in the first quarter compared to a prior year which included approximately 500 million euros of episodic items - Client flows were robust, with institutional activity broadly flat year on year and underlying business performance strong, despite the extreme market volatility in March - Rates revenues were higher compared to a very strong prior year quarter, reflecting improvements across the platform and effective risk management - Credit Trading, Financing and Emerging Markets revenues were lower, principally reflecting the absence of episodic items in the prior year period while underlying performance improved - Foreign Exchange revenues were significantly lower compared to a strong prior period driven by the impact of extreme interest rate volatility and market dislocation during March - Moving to Origination & Advisory, revenues were down 31% in a market which remained challenging. Our performance was in line with the industry fee pool and reflected a market share recovery and a shift in the underlying product mix compared to the fourth quarter of 2022 - Debt Origination revenues were significantly lower. Volumes remain low in leveraged loans, although the market did start to see a partial recovery in High Yield - Investment Grade debt revenues also declined, as did the industry fee pool - Equity Origination revenues were down in a challenging market, with limited issuances - Revenues in Advisory were significantly lower, though by less than the industry fee pool decline - Turning to costs: Both noninterest expenses and adjusted costs were essentially flat versus the prior year, as reduced bank levies were largely offset by investments in technology and our control functions - Loan balances increased year on year driven by higher originations, primarily in the Financing businesses. Quarter-on-quarter balances were essentially flat with lower origination reflecting our selective risk deployment - Provision for credit losses was 41 million euros, or 16 basis points of average loans. A slight increase on the prior year 16 - Profit before tax was 861 million euros in the quarter - Turning to the Private Bank on slide 21 Slide 21 - Private Bank - Private Bank revenues were 2.4 billion euros in the first quarter, up 10% year on year, and marked the highest quarterly revenues since the beginning of our transformation of the Private Bank, excluding specific revenue items - Revenues in the Private Bank Germany increased by 14% to 1.6 billion euros. Higher net interest income from deposits more than compensated for a decline in fee income which reflected changes in contractual and regulatory conditions, market uncertainty and to a lesser extent lower client activity - In the International Private Bank, revenues were up 3%. Revenues in Wealth Management & Bank for Entrepreneurs were up 4% or 7% if adjusted for the impact of the sale of our Financial Advisors business in Italy. Revenues in Premium Banking declined by 1% - Noninterest expenses were up 10%, partly due to the non-recurrence of releases of restructuring provisions which benefitted the prior year quarter. Adjusted costs increased by 5% year on year due to higher internal service cost allocations, higher investment spending including costs related to the Postbank IT migration, and inflation impacts partly offset by lower bank levies and savings from transformation initiatives - Net inflows were 6 billion euros in the quarter, driven by growth in investment products in both Germany and the International Private Bank - Provision for credit losses was 267 million euros, up from 101 million euros in the prior year quarter. The increase was driven mainly by a small number of single name losses in the International Private Bank. Excluding these items, the development of the portfolio continued to reflect the high-quality of the loan book and continued risk discipline - Profit before tax was 280 million euros in the quarter including the full year impact of bank levy charges - Cost income ratio was 78% in the quarter with a post-tax return on tangible equity of 5% 17 Slide 22 - Asset Management - Let me continue with Asset Management on slide 22 - My usual reminder: the Asset Management segment includes certain items that are not part of the DWS stand-alone financials - As you will have seen in their materials, DWS reported a decline in performance compared to the prior year reflecting lower market levels - Sequentially, assets under management increased to 841 billion euros, reflecting 19 billion euros of market appreciation and net inflows. Inflows excluding Cash were nearly 9 billion euros, primarily in Passive and Multi Asset. Flows in Cash products were very volatile throughout the quarter ending with net outflows of 3 billion euros - Revenues declined by 14% versus the prior year quarter. This was predominantly driven by a 8% decline in management fees to 571 million euros which reflected financial market performance during 2022. Performance and transaction fees were also lower year on year, from performance fee recognition and lower real estate transaction fees - Other revenues declined on lower gains from co-investments and a smaller benefit from fair value of guarantees - Noninterest expenses and adjusted costs increased by 3% and 1% respectively - Profit before tax of 115 million euros in the quarter was down 44% compared to the prior year - The cost/income ratio for the quarter was 74% and return on tangible equity was 14% - Moving to Corporate & Other on slide 23 Slide 23 - Corporate & Other - A reminder that Corporate & Other now includes the impact of our legacy portfolios, previously reported as the Capital Release Unit - Corporate & Other reported a pre-tax loss of 226 million euros this quarter, a significant improvement from the pre-tax loss of 677 million euros in the first quarter of 2022 - The year-on-year improvement was principally driven by valuation and timing differences, which were positive 239 million euros in this quarter, compared to negative 184 million in the prior year quarter 18 - The pre-tax loss associated with our legacy portfolios was 130 million euros, an improvement of 166 million euros year on year, primarily driven by lower expenses. Excluding bank levies, adjusted costs associated with these portfolios approximately halved to 66 million euros - Funding and liquidity impacts were negative 106 million euros in the current quarter, versus negative 127 million euros in the prior year quarter - Expenses associated with shareholder activities not allocated to the business divisions, as defined in the OECD Transfer Pricing guidelines, were 124 million in this quarter, essentially flat year on year - The reversal of non-controlling interests in the operating businesses, primarily from DWS, was positive 37 million euros, down from 56 million euros in the prior year quarter - Other impacts reported in the segment aggregated to negative 142 million euros - Risk-weighted assets stood at 43 billion euros at the end of the first quarter, including 19 billion euros of operational risk RWA, representing a 3 billion euros reduction since the fourth quarter of 2022 - Turning to the Group outlook for 2023 on slide 24 Slide 24 - Outlook - We remain focused on delivering positive operating leverage - We expect 2023 revenues around the mid-point of a range between 28 and 29 billion euros - We expect to keep our non-interest expenses broadly flat to 2022. As confirmed earlier, we expect the monthly run-rate of adjusted costs excluding bank levies to be about 1.6 to 1.65 billion euros for the rest of the year - To deliver on the cost reduction measures which Christian outlined, we now expect to record restructuring and severance provisions of approximately 500 million euros in 2023 - In line with our previous guidance, provision for credit losses is expected in the range of 25 to 30 basis points of average loans - Christian mentioned our commitment to capital distributions. Consistent with our path laid out at the investor deep dive last year, we have proposed a cash dividend of 30 euro cents per share for approval 19 at the AGM in May and the dialog with supervisors about share buybacks in the second half of the year has been initiated - We are also committed to maintaining a strong capital position and a solid liquidity and funding base, all of which we demonstrated during turbulent conditions in the first quarter - With that, let me hand back to Silke and we look forward to your questions Question & Answer Session",
+      "uuid": "71b3e0e8-6049-4db4-b760-ee38f3226803"
+    },
+    {
+      "speaker": "Chris Hallam",
+      "utterance": "Good morning, everybody. My first question relates to capital return. Clearly, profitability and capital formation was better than expected in the first quarter. Previously, you've commented that the timing and size of potential share buybacks this year would be dependent on getting clarity on the size of regulatory model headwinds and the macro-outlook. And today, you've said that you've initiated dialogue with the ECB. What updates do you have on those headwinds? How comfortable do you feel on the macro backdrop? And how far are you with those ECB discussions, and what does that all mean for the potential timing and size of share buybacks this year? That's the first question. Then, secondly, perhaps for Christian, coming back to slide 7. If we look across those three pillars, costs, capital and revenues, could you talk a little bit about what these measures really mean incrementally to the 2025 strategy and targets? What are the key timing points regarding progress in those areas and are you in a position to upgrade any of those targets at this point?",
+      "uuid": "9ac7412b-faab-49d2-8887-341bf376c578"
+    },
+    {
+      "speaker": "Christian Sewing",
+      "utterance": "Hey, Chris, it's Christian. Good morning and thank you very much for your question. I'm sure James will jump in, I'm going after both questions and, again, James will contribute. On your first question, I think it was very important for us, for the Management Board and for James and myself, that we wanted to see the first quarter development. And, indeed, this development is not only important, but gives us all the confidence and all the tailwind we need when it comes to the further 20 trajectory of our results. If you really look at the composition of our results, that what makes me so positive and confident, is the stable business development in the Private Bank and in the Corporate Bank. If you then think about that, what James already outlined in the previous calls and what we always refer to, that the real tailwind in the interest rates is coming in the Private Bank only in the outer years, in 2024, 2025. With the momentum that we see right now already in the stable business, that was obviously the right starting point now to change gears and to initiate the discussions on the share buybacks with the ECB. Secondly, to take a step back. I think also in the aftermath, it was right not to do this end of January because we said on purpose, we would like to have better view on the economic development, on the volatility in the market, the turbulence we see. Look, we did not know what happened in March, but you could see that also the way we handled that situation, again, the stability now with the step-off of 13.6% of CET1, not even talking about the strong liquidity number of 143% of LCR, all gives us now the confidence to say this is the right moment to start. Thirdly, I do believe that the environment, the economic outlook for Europe, particularly for Germany, you may have seen the guidance of the German Economic Minister yesterday, and we agree to that. We don't see a recession in Germany coming in 2023. It's slow growth, minimal growth, but actually, far better than that what we thought could happen at the end of 2022 for the year 2023. Also there, clearly better visibility when it comes to the economic outlook. And James will give you more details when it comes to the model changes, but also there we did a lot of progress and have far better visibility what it means. In this regard, we concluded, based on this, in our view, really good quarter numbers, that it's now time to approach the discussions, initiate the discussions with 21 regard to timing. In line with that, what I said on 2 February, we believe that the share buybacks will happen in the second half of 2023. There I used the word optimistic, now I use the words that I'm very confident that this will happen in the second half of 2023. With regard to the amount, I think we need to have the discussions with the ECB, but James and I both believe in consistency. If you think about the increase in the dividends which we propose for the year 2022 versus the previous year, I think for consistent reasons we should also think about such an increase when it comes to share buyback. James, potentially you step in on the model before I take the second question.",
+      "uuid": "d419088d-cdfd-4358-867f-00b6bdc3f65d"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Sure, happy to do that. Chris, remember in the February 2nd call, we were talking about the model impact. There are a number of different items. One big one, which is what we call the wholesale model review, but then many other items, some of which are netting. And so, there is a range of outcomes, but at this point, with better visibility into the discussions, we'd probably say that range is between 40 and 60 basis points of capital. If you take the mid-point of that, which is a pretty good place to be for modelling purposes, that 50 basis points actually represents about the organic capital generation that consensus would suggest we earn in the balance of the year. Now, obviously, we'd like to do better than that, but if you use that, essentially earnings for the rest of the year would offset the model impact. That leaves us a gap to 13.2% CET1 to fund growth, a buyback and any other events during the year, uncertainty is in the first two numbers, which we feel pretty good about. And to give you a sense that, therefore, the range of outcomes that Christian refers to, we think at this point is affordable, based on the information we have.",
+      "uuid": "56e005d2-9871-4b2a-acf0-cf95375c1f43"
+    },
+    {
+      "speaker": "Christian Sewing",
+      "utterance": "To your second question and slide 7. First of all, I really would like to say it's nothing else, Chris, that continuous development of our strategy and the confirmation of the strategy and the trajectory which we have taken over the last years. But of course, when you are in the middle of that, you see the client reaction, you see the 22 momentum I was just talking about before. In the stable business, the foundation and the resilience which we have found in the Investment Bank, then obviously you always reconsider what else can we do. Let me start on the business side, on the right-hand side of the slide. Number one, yes, momentum in the business is so important because it goes back to something which I always try to outline in this call and which I think sometimes gets still underestimated, but that is all about our people. If they see these results, when you think about the momentum, the passion, the spirit in this bank, you can see that in particular now, in Corporate Bank and Private Bank, it goes only into one direction, and that's what we want to build on. We see growth rates, which are higher than what we initially planned. Then there are market opportunities, also as a result of the events which we have seen in our competitive environment, also here in Europe, which obviously we would like to bank on. You've seen the one or the other announcement over the last weeks, that we will start to do some selective hiring. Very important, either in the Corporate Bank platform or in capital-light businesses, like the advisory piece. You also see that we are actually focusing on additional markets. We have hired a team for Latin America in the O&A and Financing business, which is important for us because a lot of German clients, corporate clients, are actually there, who want to have our help. So, market opportunities are there. All that give us the opportunity, again with the momentum we see also when I look forward. Obviously with the tailwind of the interest rates, that we think the revenue growth numbers which we put forward are not only achievable, but we have a real chance to outperform that. Now, secondly, on the cost management side. If you work on those 2 billion euros which we laid out and where we gave details in last year's IDD, and we always reconfirmed the numbers. You then go deeper, you see there is more room and, therefore, we also changed the governance in the 23 management board. We have a clear allocation of cost management now in the management board, front to back, which will create further opportunities. We also don't only think about more long-term cost changes, but the reduction in workforce exercise, which we kicked off in March, which will be fully implemented in Q2, is something which shows you that we see now, with all that has happened, with the sharpening of our businesses, but also implementation of front-to-end processes, that we have more potential than we saw before. Hence, we believe that the additional 500 million euros is a target and a goal which we should achieve. Thirdly, capital efficiency. To be honest, to criticise ourselves, I think we have done a very good capital management, but when it comes to capital efficiency, in each and every sub-businesses, we can further step up. What I like about this exercise, which will in our view bring approximately 15 to 20 billion of risk-weighted assets over the next couple of years in risk-weighted assets reductions, while not losing revenues over that, is actually a more disciplined capital allocation. That is on two or three items. Number one, yes, we will act on items which we see, for instance in the German mortgage business. If the counter-cyclical capital buffer has been increased, like it was, we obviously will act and will move capital out of this business. And either shift it to higher-rewarding businesses or we give it back to the shareholders. Secondly, we have found ways to increase hedging and securitisations. Thirdly, discipline is not only on the cost side, it's in particular on the review of each and every individual reward when it comes to lending, and there we need to step up. I think that there are areas in our banks, also in the Corporate Bank, where we can do better when it comes to risk reward. That will be implemented. James will be all over it. And those three items, on top of that what we have seen in Q1, and I really would like to focus on that again. It's an 8.3% return on equity, but if you quarter-lise, so to say, the 24 SRF we are at 10%. We know exactly what happens with the SRF payments, it will go down. And we still have something in plan for 2024 and 2025, but it will go down. The 10% ROTE in the first quarter is a really good guidance because the first quarter is not an outlier quarter. If you now think about these three items, obviously it is our target to outperform that in 2025. This is the confidence we have and with all that, what we really see in numbers in the first quarter with the old trajectory, I'm really excited about that way and, hence, very positive that we can achieve that outperformance. James, I don't know whether you want to\u2026",
+      "uuid": "c28c2c1e-318b-4d4e-b4c9-4877bd1d7aa7"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "No, nothing to add. Completely agree.",
+      "uuid": "3bffb7d9-978f-4964-9dfd-a23ea331ca7c"
+    },
+    {
+      "speaker": "Chris Hallam",
+      "utterance": "Thanks, that's very comprehensive.",
+      "uuid": "e79a8d24-774d-4e39-97c2-ff2d7c2c75b1"
+    },
+    {
+      "speaker": "Tom Hallett",
+      "utterance": "Morning, a few questions from me, please. Firstly, on deposits. You saw 27 billion euros of outflows, but could you just give us a sense of how that evolves throughout the quarter, particularly in and around that March period? And looking further out, what are you seeing quarter to date and how do you see those deposit trends developing throughout the year? Secondly, you're sticking to your revenue guidance. I'm just wondering, what gives you the confidence that target still holds, given the missing trading, given what we're seeing quarter to date there? Maybe you could just provide us with an update, division, quarter-to-date dynamics, that'll be helpful. And one final quick one. I'm interested in your discussions with regulators around the CDS issues and the banking crisis. Do you envisage any change coming, maybe through things like liquidity coverage ratio, definition changes, or some form of additional levies to ensure a wider scope for deposits? Any sense where you see change would be great. Thank you.",
+      "uuid": "fe603a59-593a-486e-b7a0-b2990404d965"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Sure. Thanks, Tom, it's James. I'll start. Maybe I'll start where you finished and we'll come back to that with the liquidity metrics. Because we manage to the liquidity 25 metrics, rather than to absolute levels of deposits or funding. I think it's important to emphasise, we were able to travel through a difficult quarter, especially March, while maintaining and, in fact, improving both ratios, liquidity coverage ratio and net stable funding ratio. And so, it's important to understand what that means. We ended the quarter in as good or better a position to withstand a 30-day or a one-year stress environment, than we were at year-end, based on that strong deposit base, as well as the secured and unsecured funding position we're in. We think that's a significant achievement for Deutsche Bank, but also for the industry. I'll talk about this when we go to your third question, but I think LCR and these other tools have withstood the test in the month of March. Turning to deposits, you mentioned the reduction in the deposits over the course of the quarter. The average deposits were down a little less than 2% over the quarter. As you've seen, the spot level was down 4%, excluding FX. That, as we look at banks that have reported so far, and some industry data through February, is reasonably in line with what you've seen on both sides of the Atlantic so far. Now as we've talked about, there's a lot going on in the deposit books. Normalisation, in our case, from very high levels of deposits that we finished the year with. There was a run-up in December, which is one of the reasons for the variance between the average and the spot. You've also seen a pickup in competition for liquidity, as central banks drain liquidity from the market and you do see some price-sensitive deposits leaving the bank, we're just disciplined on pricing, so that represents, if you like, a strategy outcome. We have seen clients shift deposits to higher yielding investment alternatives including, but not limited, to money market funds. And some of that, as we've pointed out, was within our own system. So, it didn't leave the bank, it just went from deposits to other products. The other thing that happens in our deposit base is usual moves and flows. If you're a very large cash 26 management bank for corporates and institutions, there's a lot of movement throughout the quarter. Which means that your specific question is a little bit hard to pinpoint. We've talked about two-thirds coming in the first nine or ten weeks of the quarter, and then one third in the last two weeks, including the idiosyncratic noise around our name. We think that 1 or 1.5%, which is what we'd estimate over those last seven or eight business days of the quarter, actually underscores the resilience of the deposit base. And the relative absence of, what I'll call \"hot money\", and DB. Where did you see it? It was in the portfolios that are typically the most price sensitive, and sensitive, if you like, to sentiment. In a sense, it's not surprising to see that amount of reduction. As we come back to your LCR question, I think it proves its value as a tool. Why did the ratios stay constant? We don't apply liquidity value to those funding sources, including deposits, that are most likely to flow out in a stress scenario. If I put that all together, Tom, we feel pretty good about the experience and the way we were able to manage through that environment. And credit to the teams, the communication, the client outreach and engagement, the work that was done in preparation, we feel quite good about performance through that period.",
+      "uuid": "e10e5ba6-3a39-4de1-8945-e488d1f5d4e1"
+    },
+    {
+      "speaker": "Christian Sewing",
+      "utterance": "Tom, to the other question on the revenue guidance. Yes, high confidence in the mid-point of 28 to 29 billion euros. And why? Because I'm really drawing a lot of comfort from the stable business. If there is even room for improvement, it comes from the Private Bank and the Corporate Bank. If I give you my numbers which I have in my head, even if you say the first quarter in the Corporate Bank was a stellar quarter, we're potentially on the deposit better, we may see some reduction. But clearly, the Corporate Bank will be well above 7 billion euros of revenues for the year. We started with the 1.9 billion euros and, again, if I see the forecasts and the momentum we have there, it will be clearly a number well above 7 billion euros. The Private Bank, in my view, is very stable. And again, think about what we always 27 said before, that the real impact of the tailwind is still to come. If I look at last year, if I look at this year, if I look at the first quarter, a number well above 9 billion euros is well achievable in the Private Bank. Asset Management, again a 2.5-billion-euro number was all that I can see, well achievable. So I think the stable business will be well in excess of 19 billion euros. If you then think about the 28.5 billion euros, it's approximately 9 billion euros which we need from the Investment Bank. Now, again, I think James said it in his prepared remarks, very strong business in the Investment Bank. The episodic items which we recorded in the first quarter of 2022, we always knew that this is not repeatable, but the underlying flow in the Investment Bank is strong. I just told you about additional investments which we did in Latin America and so on. I think what we need to achieve just in order to come to the 28.5 billion euros would be something like 9 billion euros of revenues in the Investment Bank. We took 2.7 billion euros in, that would mean on average, 2.1 billion euros quarterly, which we have seen. And where I'm highly confident to get there, again based on the momentum. Hence, the guidance stands and I'm confident.",
+      "uuid": "b2ba034d-bd4c-4b7d-b6ee-58664110eba3"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "On LCR, we'll always back-test. I think the industry, and working with regulators, we'll back-test what we call the outflow assumptions or the liquidity risk drivers. We'll incorporate what we learn into our own internal models and discuss with regulators as an industry whether there are changes to LCR that are necessary. I'll tell you that the experience of the last several years, the COVID crisis in 2020, the impact of the inception of the war in Ukraine last year, now the banking sector turbulence. All of those things have actually proven out, rather than disprove, the severity of the liquidity risk drivers. We feel really good about what the tool tells us. You mentioned the CDS market. We think CDS is an important risk management tool as well, helping banks and counterparties manage credit risk. That said, it's an illiquid market, relatively speaking, and is prone to 28 movements that may not reflect a realistic assessment of default probability. I think it probably does bear some scrutiny, as to how that market works and whether there are ways to improve it. Let's be clear, I think institutionally, and speaking personally, we think short selling is a valuable activity. It provides information to the marketplace and is not something that we would criticise in and of itself. The question is, is there a possibility for cross-talk between different part of the capital structure that really doesn't represent information in the market place? Hence, it's something that does bear some scrutiny. As I say, we went through this period, which was an idiosyncratic focus, I think well. In a sense, we were tested and we showed ourselves to be a strong, stable bank without the vulnerabilities that the market was concerned about. And, in a sense, that's a good thing, that clients and investors and counterparties were able to see that. I'd probably leave it there, Tom.",
+      "uuid": "da7797cf-d6aa-4173-b4cc-09c64a4b6f45"
+    },
+    {
+      "speaker": "Tom Hallett",
+      "utterance": "That's very clear. Thank you.",
+      "uuid": "74dec281-93e0-4782-b3af-442a154b610a"
+    },
+    {
+      "speaker": "Anke Reingen",
+      "utterance": "Thank you very much, good morning, for taking my questions. The first is on costs, if you can talk a bit about the outlook and guidance. First with respect to 2023, Q1 that's running in line with the target of flat adjusted and reported. If we look for the rest of the year, do you see any potential headwinds to your cost target? You mentioned hiring, is there risk that we don't end up on a flat adjusted and reported cost basis? And in that respect, just confirming the 500 million euro restructuring costs are incorporated in your flat cost guidance? Then if we travel from 2023 to 2025, is that an essentially flat trajectory as well or when do the 2.5 billion euro cost savings come through and other 500 million euros, an additional cost saving in your cost path you modelled, or is it basically offsetting additional headwinds you weren't seeing initially? Then the cost/income ratio target, I realise you've made lots of progress, but still, 62.5% looks quite ambitious. What levers do you think you can pull or where is the upside potential from where we stand at the moment? 29 Then second question is on loan losses, unchanged guidance of 25 to 30 basis points. Q1 is already 30 basis points and your assumption is avoiding a recession in Germany, so how confident are you on your loan loss provision guidance? Thank you very much.",
+      "uuid": "ea72be57-01f5-4a2b-bda4-b3572d6e0c3c"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Anke, thank you for the questions. I'll dive in and Christian may want to add. I'll go in reverse order, if I may. As we've talked about, the 372 million euros this quarter is probably higher than we would've expected and, in particular focuses on around 120 million euros that we recognised on these two individual exposures in the IPB. If you take that out, 250 million euros in the quarter is actually a sensible run-rate and would certainly deliver on the range and guidance that we've given. We're not seeing indicators, at this point, of weakness in credit. As we look at the forward-looking indicators, ratings movement, stage two events and all the metrics we look at, we're just not seeing it yet. We are, obviously, mindful of the environment that we're in and watching carefully, but to your question about do the trends support the range, they do. We're comfortable there. The question on the path to 2025, on cost/income ratio. What's the lever? The lever is operating leverage. We highlighted back in February that the cumulative, if you like, the compound rate of operating leverage improvement over the four years from 2018 was 5% a year. Now, we may not achieve that every year, but it doesn't take 5% a year to get us to 62.5% from 67%. And so, that's also why we've defined the strategy as we have and why we define acceleration as we've done. If we can find ways to accelerate revenue growth and at least manage the expense base flat with some of the additional measures that we're taking, at least offsetting additional investments and hopefully brining a little bit more to the bottom line at that time. We think the math to get to 62.5% is very solid. As Christian outlined, we would hope to be able to make that a more easily achievable target and, as I say, potentially create room for re-investment. 30 The 2023 path, as you say, are there headwinds? There are always headwinds. We are making investments, whether it's in technology or controls. We're seeing inflation and we need to work to offset those things. The initiatives we announced today are not that meaningful in terms of 2023, so they might help us to the tune of around 50 million in the back half of the year, but they step up over the next couple of years, and so the run-rate of the various initiatives that we're talking about, should achieve by 2025, or if not, dribbling a little bit into 2026, would be about 250 million euro. We think it's a meaningful contribution to the 500 million euro goal that we have. We're seeing a number of things, obviously, in the expense base we've talked about. We're going to continue to fight through now in the second quarter, work hard to keep the company at that run-rate we've talked about. In the second half we actually start to harvest some benefits of things we've been working on for a while. I think notably, as we complete the Unity integration, while it doesn't immediately happen, we start to harvest the benefits of that investment. We've talked about the linearity and non-linearity of certain elements of the 2 billion euros, so we will continue to work and harvest those. The short answer is, of course it's always challenging to manage a company in an environment like this, with so many moving parts, to a run-rate, but we think we've got the tools and the measures in place to do that and we've got an intense amount of management focus on it. And, as Christian says, even more so with Rebecca's extended responsibilities.",
+      "uuid": "5f99744e-d848-45b0-8fe9-c8f745aee585"
+    },
+    {
+      "speaker": "Christian Sewing",
+      "utterance": "The only point I want to add, James said it all, but potentially a number which helps you is the Q1 loan loss provisions ex these two, in my view, idiosyncratic items in the IPB was actually 21 basis points. That helps you also, something about the robustness and solidity of Deutsche Bank's credit portfolio. With the statements James just made, that also going forward, and the behaviour of our credit portfolios, we cannot 31 really see a negative development or a negative outlook. Hopefully this 21 basis points also gives you a little bit of guidance or comfort for our overall full-year guidance.",
+      "uuid": "a7971aa7-00ba-46ef-8e42-1dd07e944c92"
+    },
+    {
+      "speaker": "Anke Reingen",
+      "utterance": "Thank you. If I may just come back to the cost path, given some of the 2.5 billion euros is more back-end loaded cost savings, the idea is still to be essentially flat over 2023, 2024, 2025? Thank you.",
+      "uuid": "4cb4008a-8786-4e6e-9a28-4c017d36168d"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "That's right. Look, one thing, and I think it was embedded in your question, I apologise. The restructuring and severance is higher than we would've planned for the year, that is true. In a sense, we've had an opportunity arise based on a lower-than-expected single resolution fund assessment. We think we've been given an opportunity, even with that investment, to manage to the original guidance we gave you this year.",
+      "uuid": "3db794ca-55af-4118-a488-c60cd8c62509"
+    },
+    {
+      "speaker": "Anke Reingen",
+      "utterance": "Thank you.",
+      "uuid": "f4a88acf-2989-489d-8ba4-0188f74ae876"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thank you, Anke.",
+      "uuid": "743ec0b8-4b22-4a83-9631-267b91a93107"
+    },
+    {
+      "speaker": "Stuart Graham",
+      "utterance": "Hi. Thanks for taking my question, I have two, please. The first is going back on the LCR. You set the 130% target some time ago, I guess what was a pre-Twitter world. And I think we've all been shocked at how quickly non-sticky retail and corporate deposits can move nowadays. Given the power of social media, don't you think that 130% needs to be higher nowadays? That's' the first question. The second question is on US commercial real estate office exposure. Thank you for the extra granularity on slide 15, that's really, really useful. Could I also ask, how much of that 4.5-billion-euro book is criticised and what your stock of loan loss amounts on that book are, please? Thank you.",
+      "uuid": "7002139a-25e3-4300-859e-d22923915615"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Sure, Stuart. It's early days, with respect to LCR and the items that you mentioned. Yes, we've learnt a painful lesson about the speed at which information and, arguably, in some cases, misinformation travel in a social media world and the relatively frictionless movement of funds that we have. I think the important 32 lesson is confidence in banking institutions is critical. I think that confidence arises from banks getting the basics right, and we think we've got the basics right at Deutsche Bank. Those are stable deposit basis and funding, managing risks carefully, ensuring that you're really adding value for clients, you have a sustainable business model. All of these elements, does it affect how you think about LCR? I think LCR is misunderstood, in the sense that it is very conservative. And because the banks have chosen, since it was introduced to manage to buffers, that there's room in that ratio. I think it's important to understand, if a bank hits 100% that, in our case, we have now 43% margin against the 100%, but at 100% we're still able to withstand a 30-day stress and come out standing. So, it's a conservatively constructed ratio. You have to remember, also, that things that flow off the balance sheet affect both the numerator and the denominator, so you have this dynamic nature of the ratio on the way down. There's a number of interesting features about that tool that would suggest as it is, it's a very powerful stability driver in the industry. That doesn't mean we won't examine it, we won't examine individual risk drivers, but my hope is that a combination of the basics and the tools we have today put us in a good place.",
+      "uuid": "fac62687-119a-4c39-bdb5-8a1341505eb9"
+    },
+    {
+      "speaker": "Stuart Graham",
+      "utterance": "In theory, if the Basel Committee chose to recalibrate it, you could run with a lower buffer, it wouldn't have to be 130%, it might be 110% on a more conservatively stated LCR. I know it's a theoretical discussion.",
+      "uuid": "68cbb2dd-7181-4830-9cac-aa025b02b490"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Theoretically, yes. And we're mindful, Stuart, that there is a cost to holding these buffers. Our shareholders, essentially, are paying for that buffer. It needs to be there, let's be clear. The sustainability of a bank which is engaged in maturity transformation relies on that buffer being there, but you want to calibrate it to a level that protects safety and soundness in essentially all market conditions. But then isn't so inefficient that it's an unreasonable tax on shareholders. That balance is an interesting one and I think we need to continue to 33 examine. In general, by the way, since the crisis, banks have behaviour of preserving buffers. Banks manage now not just with buffers, but with a disincentive to see buffers used. I think that whole edifice in a sense, can be discussed and examined. But, I just want to draw a line under it, in a positive way, the stability and the tools and post-crisis regulation, I think, should be understood as a success based on what we've learned over the past eight weeks, rather than the opposite. Briefly on commercial real estate, we don't actually look at it in US terms around criticised necessarily in our IFRS accounting. But what I can tell you is that 1.6 billion euros, so a little bit more than a third, would be in stages 2 and 3. We're not saying we're immune. We think we're well underwritten, we have a stable portfolio. We think project by project we're in good shape, given the market environment. But there, of course, are loans, maybe 600 million euros of that 1.6 billion euros, that we're looking at carefully and need to work with the sponsors around extension dates and refinancings, to make sure it carries through this market environment, without more scratches and bruises.",
+      "uuid": "3813cb6e-f872-4a91-bc82-9ccdb41f339a"
+    },
+    {
+      "speaker": "Stuart Graham",
+      "utterance": "And the stock of provisions on that book?",
+      "uuid": "7b8c9abb-28b4-408a-9000-590deb0792ba"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Stock of provisions is I think in total around probably 50 million euro against the stage 3, not against the 1.6 billion euro, but against the stage 3.",
+      "uuid": "6f231c12-e63a-4c31-b856-f48b39e7fcfb"
+    },
+    {
+      "speaker": "Stuart Graham",
+      "utterance": "Got it. Thank you very much.",
+      "uuid": "70e6d29f-92a9-4a0c-9668-28870203e258"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thank you, Stuart.",
+      "uuid": "c1fd6903-a55a-49c6-a1ec-d19f55369f02"
+    },
+    {
+      "speaker": "Nicolas Payen",
+      "utterance": "Good morning. Thanks for taking my question, I have two. The first one would be on the revenue path going into 2024. You mentioned that we might have seen the peak in terms of interest rates repricing, you have a bit of deposit shift and increase in beta, as well as slowing growth in mortgages and loans in general. What do you think about revenues going into 2024? The second question, sorry to come back on the idiosyncratic event of March, but as you mentioned, you have a strong liquidity buffer, conservative risk management, and yet, 34 you are one of the most banks under pressure from stock price point of view in March. What can you do to change the perception about the riskiness and the stronger fundamentals of DB? Thank you.",
+      "uuid": "0309472b-707c-4782-8399-f8f067909372"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Revenue path, I'll make a couple of comments, Christian will, I'm sure, add. I'll start with the Investment Bank because that's where investors tend to start. I don't think we're at a point of peak revenue potential in the Investment Bank because just if you think about where we are, for example right now in origination and advisory, that's still recovering. So, we think there's scope to improve there. As Christian mentioned, I think we've got scope to invest in that area and improve our market shares, leave aside the market wallet performance. Financing is doing quite well, both in volume for market opportunity terms and in spreads. Then I think our Markets businesses have been strong performers and also risk managers. Of course, in that business we're going to ride a little bit the volatility and the volume in the marketplace, but we feel good about the way the business has come together under Ram's leadership. All of those things would tell us we can at last sustain and perhaps improve on the Investment Bank. Christian mentioned earlier, the Private Bank still has a way to run, in terms of the momentum that interest rates deliver, let alone assets under management, loan and deposit growth, and in the case of loans, loans outside of mortgages. So we feel comfortable there's a good path there. We're probably past peak lag, but we're not past the generalised improvement in the rate environment in Corporate Bank. Lastly, I think, the Asset Management business, by executing the plan Stefan Hoops has laid out, has a clear path to growth in assets, obviously it will ride the market a little bit, but is also not anywhere near its peak revenue potential. All of those things I think feed into 2024 and then 2025, and there is sustainable momentum built into that. Your second question was liquidity and margin, what can we do? We're acutely aware that, I don't think, we 35 were singled out uniquely, but we were in a group that were potentially perceived as vulnerable to the issues that arose. As I said earlier, it's gratifying that the market can very quickly identify that those vulnerabilities did not exist with us or, frankly, our peers in Europe, that might otherwise have also come into pressure. I think the answer to your question is the more we execute on our strategy, the more we deliver sustainable profitability, but also, the more we put historical issues around control failures and other events in the past, I hope that, what some call muscle memory, will fade in the market, and the beta nature of Deutsche Bank will fade. As a management team, I think we're all very committed to achieving that goal. It lies in our hands, to some extent, around execution, it lies in investors' hands, in terms of their support for our securities.",
+      "uuid": "49ab87cb-fbc5-45f5-864d-d87d527c289b"
+    },
+    {
+      "speaker": "Nicolas Payen",
+      "utterance": "Thank you.",
+      "uuid": "ad52fa85-fc58-484b-9889-beeaed76b3c2"
+    },
+    {
+      "speaker": "Adam Terelak",
+      "utterance": "Morning, thank you for the questions. I have one on NII and one on capital. Could you give us a little bit of update on the NII trajectory? From here, clearly, expectation on rates have gone up, but also, deposit beta seems to be low. Just a bit of colour on both sides of the balance sheet there and what that means for this year's guidance. And just to add, what your deposit assumptions are from here, within that guidance, for full-year 2023 and beyond. Then secondly, on capital. Christian, you mentioned the 15 to 20 billion euro of RWA relief. I just want to understand your guys' thinking on how to redeploy that 2+ billion euros, potentially, of capital unlocked. Whether that's going to go back into the balance sheet, what businesses would be grossed in or what decisions would come to returning that to shareholders, as you mentioned. Finally, just a clarification. On Q4 2022 you were talking about the regulatory inflation to come with offsets. Is the market risk benefit you've taken this quarter the offsetting item that we discussed in previous quarters? 36 Thank you.",
+      "uuid": "e3db3fe9-f6fb-4faf-8f35-d8257d021d60"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Adam, I'm not sure I followed all the questions, but let me start with NII trajectory. What I'd do is refer you back to page 26 of the February 2nd, 2022 materials. We're not going to update the NII trajectory every quarter, but I would say that the assumptions there on page 26 are still pretty good assumptions. There are always movements up and down in how NII will perform. But this idea that we would put on at that time 900 million euros, I think it's actually a little bit better than 900 million euros, given assumptions have improved relative to our expectations at that time, this year, is still a really good assumption. We did 13.65 billion euros of net interest income last year, if that grew by a billion euros or more, that would be a good assumption. There might be a plateau or even a small dip in 2024 and then, as you see, there's another leg up in 2025, as the interest rate characteristics in the Private Bank come through. I think that guidance still holds. Now one thing, just to advise you, if you look at interest income in Q1 and attempt to annualise it, you won't get to that number precisely because, as we highlight, there's been a swing in the characteristic of the revenue recognition. Think of it a little bit like trading NIM in the US banks. More of the revenue were characterised as fair value through P&L in Q1 than would be typical, and we can get into the reasons for that. Don't be concerned that there's any difference in the guidance from that anomaly, we're very comfortable with the guidance that we've given and actually, at the moment we're seeing, based on the curve and the funding profile, a little bit of upside to our earlier guidance.",
+      "uuid": "24b877cf-95d7-4f0e-ab37-c5ffc91d8362"
+    },
+    {
+      "speaker": "Christian Sewing",
+      "utterance": "Adam, on your capital question. One thing is clear, if you see market opportunities, like I tried to describe it, obviously some of the RWA optimisations we would certainly reinvest into the one or the other business. But clearly, we also believe that with the increased profitability which we expect and with that capital efficiency, which we outlined on page seven. And, by 37 the way, again, this has not been only a top-down, but bottom-up analysis, which we even curtailed a bit top down, so there is real potential. Of course, we will think about how much of these additional savings we can also hand back to our shareholders. I think if you ask me today, it will be a combination of a reinvestment into those businesses which are really then capital rewarding and where we have a very good story for our shareholders and investors, but part of that will also be given back to the shareholders.",
+      "uuid": "759fc8b7-d255-4653-8063-a8039f2fbc45"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Maybe just to build on that, what Christian said, to give you a bit more specific guidance. If I look at the consensus RWA number for 2025, which is 422 billion euros, without wanting to get pinned down to specific number because, as Christian says, it's quite dynamic. Think of the 15 to 20 billion euros as being a net reduction from that guidance. We would expect, based on everything we know right now, to be somewhere in the low 400s, 400 to 410 billion euros, so that can give you a sense if you're building your model based on organic revenue generation, the Basel III impact that we've talked about, of about 30 billion euros of RWA, gives you a little bit of a sense of where it can provide, at the very least, additional support for the capital trajectory that we've laid out already.",
+      "uuid": "cf3114f5-21c4-431e-9b42-c0cac01a421d"
+    },
+    {
+      "speaker": "Adam Terelak",
+      "utterance": "Right, thank you. The final point was whether the regulatory tailwind you've had this quarter was the offsetting item we've discussed against the modelling.",
+      "uuid": "82b243dd-7461-4922-925f-46517397d15b"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "No. The one item we talked about was a market risk RWA item. That was in the plan but is not part of the net 40 to 60 basis points that I talked about earlier.",
+      "uuid": "16c8da35-78e0-413d-97ee-90bb3c699800"
+    },
+    {
+      "speaker": "Adam Terelak",
+      "utterance": "Okay, very clear. Thank you.",
+      "uuid": "680a84f3-d978-4b00-b771-07199f7d9dc7"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thanks.",
+      "uuid": "6347fcde-4004-4265-a43d-887bb713c1e2"
+    },
+    {
+      "speaker": "Kian Abouhossein",
+      "utterance": "Thanks for taking my questions. The first one is a general question. If I look at the turnaround of the bank, and I think Berlin should send you two medals, both to Christian and James, the market is clearly thinking differently. You're trading at 0.3 times tangible book, 38 you're trading at five times, roughly, this year's earnings, so there's a disconnect. And I'm just trying to understand how you're going to bridge that disconnect and if there's going to be any change, in the sense that you're going to communicate maybe at an Investor Day or any other measures, that you feel are understood, in particular, that we and investors should be thinking about? The second question is I'm quite interested in some management changes that you have announced. You have Rebecca Short being the COO and also being responsible for cost, besides the transformation. Just wondering if there's any change in your thinking around cost? It feels like there is from the language, but just wondering if there's any, so 500 million euros, but I wonder if there's any change in the way we should think about Deutsche and cost management going forward now, relative to last year?",
+      "uuid": "0960996e-4f78-4a30-be44-8104c942622c"
+    },
+    {
+      "speaker": "Christian Sewing",
+      "utterance": "Thank you, Kian. Let me try to start and James will jump in. It's always hard to talk yourself about why we are perceived in the market as we are perceived. This is actually a question I would like to always hand back to you guys, that you tell us what we can do better in communicating. I give you three items, and one of that is not meant in any defensive way. But I do believe that if you just think 14 months back, where we stood in February 2022 before this awful war broke out. I think at some point in time we were at a share price around 14.30 euros or something like that. Not that this would be our ultimate goal, as you know, but you could see that people started to think that this is going into the right direction. Now I still believe that the overall uncertainty and the geopolitical uncertainty is a drag for us and that we're still suffering from that. That is point number one. Point number two is clearly that we have to show, and we also hear it on this call, I think it's only delivery, but you have two very resilient people here on this call. We will drive this resilience and we will show you, quarter by quarter, week by week, month by month and day by 39 day, that we keep the ship exactly in this direction. But the composition of Deutsche Bank, of the revenues, completely changed. We have 66% of revenue from the Corporate Bank, Private Bank and Asset Management. If you would listen to me for another two hours, I can tell you these revenues in these businesses only have one direction. The 66% will be the ratio, potentially it even goes into an even more favourable number, if you think about a stable versus less stable business, it even goes into an even more favourable number. We have a bank which now that balance, that's stable from a profitability, from a sustainability of revenues, that I'm very, very confident that we can show quarter by quarter a very sustainable development. To the Investment Bank, to be honest, and again potentially we need to do a better job, and I'm the first one who tries to learn, but I think the inner stability of the Investment Bank was all the changes we have done over the last four years is far stronger than potentially the market thinks about it. James just talked about the Financing business, a very stable business. I think it's a Financing business in the Investment Bank which is, in my view, among the top three in the world, also from an underwriting standard. If you think about the value chain, from the first line of defence to the second line of defence, I think it's a business where even others outside of Deutsche Bank are saying, this is top business. That is a business which is continuously above 3 billion euros of revenues. We have re-configurated the trading business Ram Nayak to one of the leading trading businesses. Again, if you look at Q1 and take out the episodic items, I'm just mentioning the ZIM name which we talked about in 2021 and 2022 a lot, which obviously is not something which comes back every quarter. Then the underlying business in the Investment Bank in 2023 in the first quarter was actually even stronger than in the first quarter of 2022, despite it was a very strong quarter. We will see now a comeback in the O&A business in the Investment Bank. We do some selective investments 40 there because we see the market opportunities and we will be awake for these market opportunities, so that I think you have three very stable businesses, with the interest rates still to come in one of our largest businesses, which is the Private Bank, with revenues clearly above 9 billion euros. I think from a pure revenue point of view, this bank is completely turned around and we are playing there where the clients want us to play and where we see the momentum. Secondly, on the cost side, yes, we are now in the second phase, and I'm grateful for your question, Kian, of real cost takeout. That is a cost takeout which now goes, in particular, front to back, that we see the revised processes where we have invested a lot in the front offices, which now need to go into the infrastructure because we need one process from the origination to the infrastructure. And for that, we decided that all COOs in the infrastructure functions are now sub- summarised under Rebecca's lead, so that we can do the changes in one process, from the front office into the various infrastructure functions. Secondly, when you have invested so much into controls, and we keep doing this, at some point in time, obviously automation and machine learning, artificial intelligence, but in particular automation, will also lead over time to reduced costs. Unity will pay off, as we said. What you now see in the second phase of taking costs out, it's not like in the first stage, that we exited businesses and we took those costs out, but it's actually the smart takeout of costs plus a constant review, also of our workforce, where we need to do something. The reduction in force action is something which we have done now and I'm sure we'll do similar things in 2024, 2025 again, that is a constant review of our organisation. That's all now under Rebecca and I think with one person driving that, we will even have more force on it. I think it's a normal development in trends forming in an organisation, but with the robustness and resilience of the revenues and that discipline on the cost management, I do believe that we will show now, 41 quarter by quarter, year by year, that this bank is on the right track. And at some point in time, I'm sure that also the investors will see that. If this is then joined by, hopefully, and this is the most important we should all look at, that this awful war comes to an end at some point in time, I think than also Europe will be seen differently and then later, then we will have relief from that side.",
+      "uuid": "2a4f0c90-8181-4b7f-ab4b-e83ba193dcb4"
+    },
+    {
+      "speaker": "Amit Goel",
+      "utterance": "Hi, thank you. I've got two questions, actually follow- ups. One, I'm just trying to gauge the size of potential share buybacks in the second half. If I use the maths that you were talking about, it suggests 13.6% to 13.2% CET1 ratio, 40 bps, so 1.4 billion euros for buybacks growth and other things. But then obviously the last buyback was about 300 million euros, so I'm just trying to get a sense of your thinking, or have you asked for numbers in the 750 to 1 billion euro range or is it closer to what was previously done? Then the second question, just a follow-up on the LCR ratio. In the end, I'm just wondering, are you going to continue to target 130% and trend down towards that level or are you going to look to keep the LCR similar to where it is today? Do you have a benefit in your plan on revenues for bringing that LCR down to 130%? Thank you.",
+      "uuid": "bf8d33be-80ff-48c9-82fa-09fa70178c46"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thanks, Amit. Your math is right, the 40 basis points would represent something a little shy of 1.5 billion euro, so use 1.5 billion euro. As Christian indicated, we look at last year's buyback at 300 million euro and, given the progress we've made, and, by the way, I don't want to be committed to a specific number, a specific timing, and it's too early, obviously, we need to go through this with the supervisors in presenting a new capital plan. But a step forward on last year's number would be consistent with the guidance or the capital planning that we shared with you back in March of last year. As Christian mentioned, to maybe give you a sense of ranging then, a 50% increase in dividend, if that was mirrored also with the increase of the buyback of a similar amount, it would give you a sense of a range 42 of what we think might be sought by us. I will say that, given the starting point of the 40 basis points, that's why we think this type of ask would be affordable. There's uncertainties in the environment where you would expect us to remain prudent, but as we say, with the buffers we have, we think we have space for something like that. In LCR, we were very conscious as we went through Q1 that we had a high print at the end of December. That was, frankly, and accident. The average last quarter and the average this quarter are both almost exactly where you'd want it to be, in this low 130% range. If we're targeting 130%, then you'd expect us to be a little bit higher than 130%. I think for this quarter, we'd probably target a gentle decline. We are mindful that the risks in the outlook haven't entirely abated, but I wouldn't want you to be surprised if the number started with 130% when we're talking with each other again in July. As to the cost of that buffer, obviously it does play a role, but it is very dynamic, so I wouldn't tie a specific revenue, better or worse, number to a ratio, better or worse, view. I hope that helps.",
+      "uuid": "a448aec6-1236-4b86-a01c-650a71cda137"
+    },
+    {
+      "speaker": "Amit Goel",
+      "utterance": "Thank you. Much appreciated.",
+      "uuid": "8d8417d0-6480-4752-8469-2768bf6a35cb"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thanks, Amit.",
+      "uuid": "af8c3a8f-0699-4732-bee5-c06486d4f126"
+    },
+    {
+      "speaker": "Jeremy Sigee",
+      "utterance": "Thank you. I'll try to be quick, it's a couple of follow-ups on capital management. The first is on balance sheet, which often has grown seasonally in Q1. With full-year results you said that again you expected it to this year, but it hasn't, it shrunk slightly in Q1. I just wondered how much of that was deliberate, deliberately steering the balance sheet smaller in a choppy environment, versus lack of opportunity to deploy. That's my first question. Then my second question, really just on the capital surpluses uses, etc. Is 13% CET1 or 13.2%, is that still the right reference level in a world where the market is nervous? Not just the market, but the world more broadly is nervous around banks. And there's things like 43 Basel IV to be funded, some banks are prefunding that, etc. Is 13% still the right reference level to be talking about for capital?",
+      "uuid": "4e8b2828-fd52-48bb-a6da-cc7f53ed3ed7"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Jeremy, I'll go in reverse order. Remember that in our capital plan we will be building to Basel III final framework. And in this plan, because of the model adjustments, higher LGD floors and various items, that 13.2% has been getting steadily more conservative in how we're capitalising our risks. We do think it's appropriate to continue to target that level. As you say, there'll be a bubble in 2024 that goes away on January 1, 2025, all things equal, that we need to build into our planning. But we feel comfortable with the buffer at 200 basis points above MDA. As I say, it's getting more conservative steadily. On capital management and the deliberate nature, to be fair, it actually wasn't deliberate. Are we looking at risk appetite carefully and extensions of balance sheet in this environment? Of course. But actually, the usual seasonality was a little bit less than we might otherwise have expected, both on leverage exposure and RWA. And we do think loan growth is probably a little slower in the coming quarters than we might've expected, given credit conditions, the possibility of recession and all of the features in the environment today.",
+      "uuid": "8c3f8ac4-7b2c-4756-88ce-7983e3e55820"
+    },
+    {
+      "speaker": "Jeremy Sigee",
+      "utterance": "That's very helpful, thank you.",
+      "uuid": "86db4994-f78b-4b76-abb7-63c542f5f6e7"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thanks, Jeremy.",
+      "uuid": "cba39e57-1099-4e50-8e25-695194f5fc60"
+    },
+    {
+      "speaker": "Piers Brown",
+      "utterance": "Good morning. Just a follow-up on funding, if I may. It's probably more a question for the fixed income call, but I'll ask it anyway. You've given some very good transparency around deposit flows, pre and post the events in March. I wonder if you can just give any commentary on what you see in wholesale funding markets? I think you were saying around the March event's time you had about 50% of the funding planned for this year done, most of that was coming in senior non-preferred and covered bonds, but have you been able to access the markets post those events? And are spreads getting back to some sort of acceptable level? 44 Then, if you've got any thoughts just on longer-term issues around AT1 and the viability of that market, that would be very helpful as well.",
+      "uuid": "58f49419-93a9-4c01-83df-4570a5af34b5"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Piers, happy to take it. Richard is with me in the room here and we look forward to talking with our fixed income investors tomorrow, but nice to have fixed income topics on the equity call. We came into the year, as we mentioned, cautious about the environment. When we saw the market opening in the first few weeks of the year, we decided to move quickly, much quicker than our original funding plan might've suggested. We were pleased to have done all that, not just senior non- preferred, by the way, but we did covered and we did a Tier 2 issue before the end of February. And we'd done an AT1 deal late last year, which might look like expensive capital, but gave us real comfort traveling into an uncertain 2023, that we were making the right decisions for the bank. We haven't really gone to the market since the turbulence started in any meaningful way. I think we may have done a covered bond in the interim. But the reason is not because we don't have access to it, but we don't like the price and pre-funding, therefore, was economically sensible and has actually given us, to the earlier question from Adam on the path of net interest income, I think, a slightly better funding profile for this year and going into 2024, than we might've expected. On AT1, we think the market healed more quickly than we might've expected after that Sunday. The instrument had challenges at inception, as the market was being created, and I think it has now established a good convention with good investor understanding of what the various triggers and what have you are, in it. And I think it'll survive in this form. It conceivably will be a little bit more expensive for banks to issue AT1 securities, and I think it's worth a look at that, but our sense is that it'll continue to be a viable instrument going forward for us. Again, given we were conservative around our issuance profile. We don't have a call date until 2025 and, as I say, we're in a good place 45 on our funding plan for this year. We feel overall very constructive about where we stand and our hope and expectation is spreads will narrow again in the coming months.",
+      "uuid": "641a21e6-5f80-4a17-9a2f-7764722e2506"
+    },
+    {
+      "speaker": "Piers Brown",
+      "utterance": "That's very clear. Thank you very much.",
+      "uuid": "2021fc5d-7f85-49fd-a8aa-f1fe1c979eee"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thanks, Piers.",
+      "uuid": "3cfc5225-ef43-481d-8ccc-3a664979a2dc"
+    },
+    {
+      "speaker": "Jon Peace",
+      "utterance": "Thank you. Just in the interest of time, maybe Christian, I could ask you a high-level question. What would be your view of how regulators respond to the liquidity concerns of March? And would you see a risk of higher for longer deposit guarantee fund contributions? Thanks.",
+      "uuid": "78b5357c-5d2b-41b8-b3ac-c18c1f402dc3"
+    },
+    {
+      "speaker": "Christian Sewing",
+      "utterance": "Always hard to imagine and to think about what a potential reaction could be. But I think, first of all, in particular the European regulators should also think back and look back at the March events and claim that a lot of things they have done, we have done, have been right. Because I think the European banking system showed stability resilience, and I think credit to the regulators for that, what they have done. I think this is for the number one lesson learnt. If you start from that, I think there is no reason to now come up with a, whatever you call it, knee-jerk reaction, to think about further rules. To be very honest, I think the discussions we have also after these events are done in a very constructive way. That everybody looks at potential loopholes still, or weaknesses, that is clear and I think this should be done, like we do it, if something is happening on our side. But I can tell you that these discussions are really constructive and I think regulators, in particular in Europe, should look back and seeing a very stable system. In this regard, I also do hope that from a SRF point of view, from a deposit scheme and from a single resolution fund, that we don't see a different direction. To be honest, I'm not hearing this. Again, one should also not only think about the single resolution fund, but also that we have national schemes which worked in the past. Hence, I think again, I see regulators, 46 politicians being very calm, being very constructive, and I hope it's the case going forward. Hence, I'm calm on this.",
+      "uuid": "a9d5a30e-4a83-4100-a9ae-445eeb59da06"
+    },
+    {
+      "speaker": "Jon Peace",
+      "utterance": "Great. Thank you.",
+      "uuid": "6d770723-a57c-49d0-8d0a-18cdfa95b83c"
+    },
+    {
+      "speaker": "Andrew Coombs",
+      "utterance": "Good morning. One, if I could just come back to the LCR, but just a very simple number of questions. Related to TLTRO, you've obviously prepaid down. Can you tell us how much you paid back, what your outstanding balance is and what the LCR would be on a pro forma basis ex the TLTRO? That's the first question. Second question, some strength in the Corporate Bank, in particular when you look at the strength of CTS and ICS, if you could break down how much of that is purely driven by rates versus how much is momentum on volumes and other initiatives that you're taking? I would love your thoughts there, given the strength in that division this quarter. Thank you.",
+      "uuid": "e2beecc4-ca2c-4e13-ac11-0d21216d2015"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Andrew, on the LCR, I think maybe we'll come back tomorrow in the fixed income call. I think by memory, we paid down seven billion euros of the TLTRO. What happens is TLTRO rolls into the LCR window over time, so it is still there. There's a nuance in it, which has to do with what collateral is posted in the TLTRO programme versus unencumbered. It is a support to ratio, but one that we have a funding plan to wean ourselves off over time. It actually does give us some flexibility in how we manage collateral across the bank. In CB, in round numbers, we were flattish on fees and commission, a little bit up. Volumes were, depending on whether you're looking year-on-year or quarter-on- quarter, flat to up slightly. What you get is right now a significant impact of rates and, within rates, the lag. Obviously, what you'd like to see is growth in both volumes and transactions, if you like, fee and commission, increasing as the lag effect begins to run off.",
+      "uuid": "dec065f1-7917-4848-b58e-323802bae522"
+    },
+    {
+      "speaker": "Andrew Coombs",
+      "utterance": "And presumably, the guidance you gave at Q4 for the 47 Group, where you talked about more significant deposit migration flowing through in 2024 versus 2023, would be very much the same for the Corporate Bank. So, to some extent you're expecting revenues to peak out this year and then stabilise.",
+      "uuid": "1d07ed02-5c2f-4438-a878-177b59711fcf"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Yes, I think that's fair. What remains to be seen is how the fee, commission and volume effect offsets the run- off of the lag benefit and over what period of time. As I think we talked about in February, there's also a hedging benefit in time. As certain hedges roll off there is a step up later in 2024, from particularly dollar hedges rolling off, so there's still some juice in the rate environment for CB as well.",
+      "uuid": "4bda8a7b-0bf0-45e9-9a13-f3fc8622b174"
+    },
+    {
+      "speaker": "Andrew Coombs",
+      "utterance": "Brilliant, thank you.",
+      "uuid": "7f1527ec-3879-4509-a9e0-38750234dc0c"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thanks, Andrew.",
+      "uuid": "7c6556a5-6ba5-4171-9601-525c1cb7b18a"
+    },
+    {
+      "speaker": "Vishal Shah",
+      "utterance": "Hi. Thank you so much for your presentation. I just have a few quick questions. One, can I go back to the CRE exposures. In your previous presentations I also noted you have this additional 15 billion euros in real estate exposures, which is recourse lending. Could you provide some clarity on the nature of that remaining portfolio? Secondly, on the LTVs, could you clarify if these LTVs that you provide in the presentation are origination or are they your assumptions in terms of what they should look like now? Then, lastly, on the deposits, could you talk a bit about how the beta has been evolving between Retail and Corporates, a bit of colour on the mix shifts and also, how is Deutsche Bank reacting to competition in terms of repricing? Thank you so much.",
+      "uuid": "b71d6af1-864c-42b0-b2b6-aaade9d658a2"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Sure, happy, Vishal, to answer the questions. There's a lot in that recourse lending portfolio. There can be, for example, senior revolvers to real estate investment trusts, there can be working capital, sometimes construction lending to corporates that are recourse in nature, but where you have a lien on property. There's a bunch of things there. Also, by the way, wealth 48 management, where you'd be lending to wealthy individuals who are investing in either their own businesses or in commercial real estate investments on their part. In terms of the nature, the riskiness, if you like, and the underlying exposure, it is very different to the non-recourse portfolio. Hence, our own focus versus the rest portfolio distinction. The losses in those portfolios have been negligible, historically, just negligible. On the LTVs, what we provide is the most recent. Our practice is to have external valuations no less frequently than once a year. Our internal views are updated no less frequently than every six months, so you do get, if not a real-time, there's of course a little bit of a lag in that, but you get relatively speaking LTVs that adjust over time. Your beta development question is an interesting one. We look at it both by currency and by portfolio. As you'd expect, the dollar has moved more quickly and I think is catching up with the models more quickly. Getting, I would argue, close on the retail side to what we might've expected, and closer on Corporate. The euro is lagging that in both cases, considerably, based both on the recency of the rate increases and I think just the nature and structure of the European deposit and funding market. The euro continues to outperform, again, across both portfolios. While that data also has a little bit of a lag in it, looking at March right now, the turbulence that the industry went through, I think it had an impact, but I wouldn't say it was a dramatic impact, at least in our estimation, on that beta trajectory.",
+      "uuid": "c4bfd3a6-6d9f-47aa-87fe-ecaae56fe7e0"
+    },
+    {
+      "speaker": "Vishal Shah",
+      "utterance": "Thank you so much.",
+      "uuid": "b266e3d5-5459-4ca3-b460-4dbfabdff8ef"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thanks, Vishal.",
+      "uuid": "3669d281-dbc6-41d5-8723-79e7febe4318"
+    },
+    {
+      "speaker": "Andrew Lim",
+      "utterance": "Hi. Thanks for taking my question. I just have a few quick-fire questions. Firstly, you gave the percentage deposits that are insured for your German retail deposit base. What does that look like on a Group basis, when you take into account the larger, corporate deposits? Then secondly, for your Group NIM, I guess that's 1.6% 49 on an adjusted basis, how does your Group NII, how should that develop with respect to the hedge gains that you've also had in the coming quarters and do you have an expectation for that Group NIM and how that should develop going forward? Then lastly, in a post-TRIM world, why is Deutsche Bank having a 40 to 60 basis point hit on the CET1 ratio, largely due to a review of internal modelling?",
+      "uuid": "0ea93850-c17f-450a-886f-eaa73e271400"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Andrew, thank you for sticking with us. Sorry that the questions are coming so late in the call. Let me start with the NIM. I'm always a little bit cautious about predicting NIMs because there's so many moving parts in it, but in round numbers, if you take our guidance from the beginning of the year, which would've led you to the mid-14s, maybe a little better, and interest earning assets of somewhere a little bit below 1 trillion euros, you'd probably be in the 150 basis point range. Again, subject to some swings on the characterisation that I mentioned. We do provide, as always, the profitability by segments, including both net interest revenues and fair value through profit and loss. So you see that the total profitability, if you like, that the balance sheet produces, with that. In terms of the deposit base, the total deposit base, the numbers we gave you I think were 33% of the total deposit base under statutory insurance, 41% if you exclude banks from that. I think to your question, what is the German deposit base in total, is that right? And that's a number I don't have to hand, I'd have to get back to you on, if that was the question you're after.",
+      "uuid": "01e1d2a9-bc92-47ca-b529-b5c590e18fc3"
+    },
+    {
+      "speaker": "Andrew Lim",
+      "utterance": "It's the total Group deposit base, but I can chase that up with you tomorrow.",
+      "uuid": "6f681627-0f41-4a1c-9c0d-60ec4f91e4f3"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "The total Group deposit base is 33% then and 41% if you exclude banks from that ratio.",
+      "uuid": "c79da4ff-95ae-4ec5-97b3-fa0da19d2cd4"
+    },
+    {
+      "speaker": "Andrew Lim",
+      "utterance": "Great, thanks.",
+      "uuid": "a05b51a3-450c-46aa-8105-37978ad66d3d"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thanks, Andrew.",
+      "uuid": "85af81c5-84d9-4a7f-844d-0dff0fd5d489"
+    },
+    {
+      "speaker": "Andrew Lim",
+      "utterance": "Sorry, lastly, on the impacts due to internal modelling, 50 it's something quite specific to Deutsche Bank, it's maybe surprising in a post-TRIM world.",
+      "uuid": "e2f41109-94b7-47c5-9715-376e0b8ba0aa"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "The post-TRIM world is really characterised by some of the EBA guidance that came out and the implementation of that. And it particularly relates to LGDs, to a lesser extent some of the other factors. It's been rolling through the portfolio, so we did see some in retail last year and, as we've talked about, more next year. It hasn't been uniquely to either the Investment Bank or the Corporate Bank, but it's gone portfolio by portfolio. There will be some implementation of new models in the aftermath of our Unity technology implementation. There's a dependency there, so there will be some adjustments in the models that are implemented then in Q3, also on the Private Bank side. I believe that by the end of the year then, we will have been through the reviews that we need to with the ECB, and implemented what there is to do. 2024 should be a cleaner year and give us the ability to prepare by then for Basel III final framework implementation on January1, 2025.",
+      "uuid": "d94cce91-b4c8-44b8-b7cb-610842aeaed2"
+    },
+    {
+      "speaker": "Andrew Lim",
+      "utterance": "That's great, thank you very much.",
+      "uuid": "41b4a5a5-cb53-4e5f-99f5-5fc9accfd64e"
+    },
+    {
+      "speaker": "James von Moltke",
+      "utterance": "Thanks, Andrew.",
+      "uuid": "a859df5f-9be8-40a5-9c59-5b95b0f5ac34"
+    },
+    {
+      "speaker": "Silke-Nicole Szypa",
+      "utterance": "Thank you very much for your questions. For any follow-up questions, please reach out to Investor Relations. Disclaimer This transcript contains forward-looking statements. Forward-looking statements are statements that are not historical facts; they include statements about our beliefs and expectations and the assumptions underlying them. These statements are based on plans, estimates and projections as they are currently available to the management of Deutsche Bank. Forward-looking statements therefore speak only as of the date they are made, and we undertake no obligation to update publicly any of them in light of new information or future events. By their very nature, forward-looking statements involve risks and uncertainties. A number of important factors could therefore cause actual results to differ materially from those contained in any forward-looking statement. Such factors include the conditions in the financial markets in Germany, in Europe, in the United States and elsewhere from which we derive a substantial portion of our revenues and in which we hold a substantial portion of our assets, the development of asset prices and market volatility, potential defaults of borrowers or trading counterparties, the 51 implementation of our strategic initiatives, the reliability of our risk management policies, procedures and methods, and other risks referenced in our filings with the U.S. Securities and Exchange Commission. Such factors are described in detail in our SEC Form 20-F of 11 March 2022 under the heading \"Risk Factors.\" Copies of this document are readily available upon request or can be downloaded from investor-relations.db.com. This transcript also contains non-IFRS financial measures. For a reconciliation to directly comparable figures reported under IFRS, to the extent such reconciliation is not provided in this transcript, refer to the Q1 2023 Financial Data Supplement, which is available at investor- relations.db.com. This transcript is provided solely for information purposes and shall not be construed as a solicitation of an offer to buy or sell any securities or other financial instruments in any jurisdiction. No investment decision relating to securities of or relating to Deutsche Bank AG or its affiliates should be made on the basis of this document. Please refer to Deutsche Bank's annual and interim reports, ad hoc announcements under Article 17 of Regulation No. 596/2014 and filings with the U.S. Securities Exchange Commission under Form 6-K.",
+      "uuid": "40bc3a1e-9284-47ef-858e-7d2f92d2ff8d"
+    }
+  ]
+}

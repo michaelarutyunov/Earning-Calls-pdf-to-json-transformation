@@ -74,6 +74,7 @@ def get_cleaning_parameters(config_data):
         "keep_italics_tags": cleaning_parameters.get("keep_italics_tags", False),
     }
 
+
 ### TEXT INGESTION ###
 
 def clean_text(text):
@@ -141,7 +142,7 @@ def clean_text(text):
     text = re.sub(pattern, fix_spaced_header, text)
 
     # Remove repeating punctuation characters
-    # First handle cases where punctuation is separated by spaces
+    # Handle cases where punctuation is separated by spaces
     text = re.sub(r'([.!?](\s+))\1{2,}', '', text)
     
     # Handle continuous repeating punctuation (like "............")
@@ -164,15 +165,13 @@ def clean_text(text):
 def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
     """Extract text with formatting from PDF, including text from images."""
 
-    if debug_mode:
-        print(f"Extracting formatted text with images...")
-
     doc = pymupdf.open(pdf_path)
     full_text = ""
 
     cleaning_params = get_cleaning_parameters(config_data)
     keep_bold_tags = cleaning_params["keep_bold_tags"]
     keep_italics_tags = cleaning_params["keep_italics_tags"]
+    keep_underline_tags = cleaning_params.get("keep_underline_tags", True)
     
     for page_num in range(doc.page_count):
         page = doc[page_num]
@@ -207,12 +206,18 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
                         if not is_italic and "flags" in span:
                             is_italic = (span["flags"] & 4) > 0
 
+                        is_underline = False
+                        if "font" in span:
+                            is_underline = "underline" in span["font"].lower()
+                        if not is_underline and "flags" in span:
+                            is_underline = (span["flags"] & 8) > 0
+
                         # Store formatting info for this text snippet
-                        if is_bold or is_italic:
-                            formatted_blocks[text] = (is_bold, is_italic)
+                        if is_bold or is_italic or is_underline:
+                            formatted_blocks[text] = (is_bold, is_italic, is_underline)
 
         # Apply formatting to the complete text
-        for text, (is_bold, is_italic) in formatted_blocks.items():
+        for text, (is_bold, is_italic, is_underline) in formatted_blocks.items():
             # Try to find and replace exact text
             if text in complete_text:
                 formatted_text = text
@@ -220,6 +225,8 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
                     formatted_text = f"<BOLD>{formatted_text}</BOLD>"
                 if keep_italics_tags and is_italic:
                     formatted_text = f"<ITALIC>{formatted_text}</ITALIC>"
+                if keep_underline_tags and is_underline:
+                    formatted_text = f"<UNDERLINE>{formatted_text}</UNDERLINE>"
                 complete_text = complete_text.replace(text, formatted_text)
 
         # Clean the text
@@ -229,9 +236,17 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
             full_text += page_text + "\n<PAGE_BREAK>\n"
         else:
             print(f"Warning: No text extracted from page {page_num + 1} of {pdf_path}")
-    
+
+    if debug_mode:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(script_dir, 'extracted_text.txt')
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(full_text)
+        print(f"Extracted text saved to {file_path}")
+
     doc.close()
     return full_text
+
 
 ### SPEAKER ATTRIBUTION EXTRACTION ###
 
@@ -240,10 +255,12 @@ def API_call(text, config_data, debug_mode=False):
     prompt = f"""User: You are an AI assistant specialized in extracting speaker attributions from earning call transcripts.
 
     <task>
-    Extract all speaker attributions from the following transcript.
+    Extract all speaker attributions from the following transcript.    
     Focus only on the text segments that identify who is speaking before their statements.
     For each speaker attribution, return the speaker's name, their title/role if available, and the company they work for.
+    Always check the WHOLE transcript from start to end for ALL variations of attributions for every speaker.
     Return call details like bank name, call date and reporting period.
+    Return header and footer patterns with formatting tags.
     Format the results as a json object.
     </task>
 
@@ -251,25 +268,30 @@ def API_call(text, config_data, debug_mode=False):
     Text contains formatting tags that can help identify who is speaking:
     - Line breaks are marked as <LINEBREAK>
     - Bold text is marked as <BOLD>
-    - Italic text is marked as <ITALIC>
     - Multispace is marked as <MULTISPACE>
-    - Tab characters are marked as <TAB>
-    - Page breaks are marked as <PAGEBREAK>
     </formatting_tags>
     
-    <speaker_attribution_guidelines>
-    Guidelines for speaker attribution:
-    - Speaker attribution helps identify who is speaking before their statements.
-    - For each speaker, check the whole transcript from start to end for all variations of their speaker attributions.
-    - Speaker attribution always starts with the speaker's name.
-    - Speaker's name in the attribution can be followed by the speaker's job title and company.
-    - Speaker's name, job title and company in the attribution can be in normal or bold text, upper or title case, may include punctuations marks like a dash, a colon, a period, or an apostrophe.
-    - Speaker's name, job title and company, may be separated with a dash, a colon, formatting tags.
-    - Pay close attention to the formatting tags around and between speaker's name, job title, company, and puntuation marks.
+    <attribution_search_guidelines>
+    Guidelines for searching for speaker attribution:
+    - Always check the WHOLE transcript from start to end for ALL variations of attributions for every speaker.
+    - Speaker attribution always starts with the speaker full name.
+    - Speaker's name in the attribution can include speaker's job title and company.
     - Speaker attribution is normally preceded by a <LINEBREAK> tag or a combination of <MULTISPACE> and <LINEBREAK> tags.
-    - Speaker attribution often ends with a formatting tag or a punctuation mark. 
+    - Speaker attribution normally ends with a formatting tag or a punctuation mark.
+    - Speaker attribution NEVER contains a speech.
     - Attribution for operator should always contain the word "Operator".
-    </speaker_attribution_guidelines>
+    </sattribution_search_guidelines>
+
+    <attribution_format_guidelines>
+    Guidelines for formatting speaker attribution:
+    - Speaker's name, job title and company can be in normal, bold, italic, underlined text, upper and title case, may include punctuations marks like a dash, a colon, a period, or an apostrophe.
+    - Speaker's name, job title and company may be separated with a punctuation mark like a dash, a colon, or formatting tags, or a combination of these.
+    - Speaker's name, job title and company cannot be separated by a text segment that is not a formatting tag.
+    - Speaker's name can include middle names and initials.
+    - Speaker's name can be followed by a punctuation and separated from it by a formatting tag or a space.
+    - If speaker's name is separated from the job title or company by a text segment that is not a formatting tag, then only speaker name should be a part of attribution.
+    - If speaker's name is followed by a text segment that is not a formatting tag, then only speaker name should be a part of attribution.
+    </attribution_format_guidelines>
 
     <transcript>    
     Here is the transcript to analyze:
@@ -282,17 +304,30 @@ def API_call(text, config_data, debug_mode=False):
     * name followed by a colon, both in bold: <BOLD>SPEAKER NAME<BOLD>: </BOLD></BOLD>
     * name followed by a line break, then by a colon in bold: SPEAKER NAME <LINEBREAK> <BOLD>: </BOLD>
     * name in bold followed by a line break, then by a colon: <BOLD>SPEAKER NAME</BOLD> <LINEBREAK> :
+    * name in plain text followed by a colon in bold: SPEAKER NAME<BOLD>: </BOLD>
     If found, all such variations should be included in the output.
+
+    Here is an example of a text where the speaker attribution and company are separated by a speech:
+    * <MULTISPACE> <LINEBREAK> Name Surname <MULTISPACE> <LINEBREAK> Good morning, everybody. My first question relates to <MULTISPACE> <LINEBREAK> (Company Name) <MULTISPACE> <LINEBREAK> capital return.
+    In this case the company name should be ignored and only speaker name should be a part of attribution.
+
+    Here is an example variations of the valid speaker name formats for the same speaker:
+    * <LINEBREAK> <BOLD>Name Surname </BOLD> <LINEBREAK>
+    * <LINEBREAK> <BOLD>Name M. Surname </BOLD> <LINEBREAK>
+    * <LINEBREAK> <BOLD>Name Middlename Surname </BOLD> <LINEBREAK>
+    * <LINEBREAK> <BOLD>Name Surname-Surname </BOLD> <LINEBREAK>   
     </examples>
 
     <guidelines>
     Follow these guidelines:
     1. IMPORTANT: for each speaker, check the whole transcript from start to end for all variations of their speaker attributions.
-    2. Include all speaker attributions found in the transcript.
-    3. Include all variations of speaker names found in the transcript.
-    4. Include all variations of speaker titles found in the transcript.
-    5. Include all variations of speaker companies found in the transcript.
-    5. Pay close attention to the formatting requirements, especially for the reporting period (QX-YYYY)
+    2. Check every instance when a full name is mentioned in the transcript and verify if it is a speaker attribution using attribution_search_guidelines.
+    3. Include each and every speaker attribution found in the transcript.
+    4. Include all variations of speaker names found in the transcript.
+    5. Include all variations of speaker titles found in the transcript.
+    6. Include all variations of speaker companies found in the transcript.
+    7. Pay close attention to the formatting requirements, especially for the reporting period (QX-YYYY) and the header and footer of the transcript.
+    8. Include the header and footer patterns with formatting tags in the output.
     </guidelines>
 
     Here's an example of the expected JSON structure (with generic placeholders):
@@ -301,6 +336,8 @@ def API_call(text, config_data, debug_mode=False):
     "bank_name": "Example Bank",
     "call_date": "YYYY-MM-DD",
     "reporting_period": "QX-YYYY",
+    "header_pattern": "HEADER_PATTERN",
+    "footer_pattern": "FOOTER_PATTERN",
     "participants": [
         {{
         "speaker_name_variants": ["John Doe", "Jon Doe", "John Do"],
@@ -428,6 +465,7 @@ def API_call(text, config_data, debug_mode=False):
         return {
             "error": str(e)
         }
+
 
 ### TEXT PARSING ###
 
@@ -590,130 +628,28 @@ def get_utterances(text, api_response, debug_mode=False):
     
     return utterances
 
-def get_utterances_old(metadata_file: str, debug_mode: bool) -> list:
-    """
-    Extract utterances from transcript text using a speaker regex pattern.
-    For each match, extract the text between the current and next match as an utterance.
-    
-    Args:
-        metadata_file (str): Path to the metadata file with the speaker regex pattern
-        
-    Returns:
-        Optional[dict]: Dictionary containing speaker and their utterance, or None if no speaker is found
-        
-    Raises:
-        KeyError: If required metadata fields are missing
-    """
-
-    # Load metadata and transcript
-    try:
-        metadata = load_metadata(metadata_file, debug_mode)
-        text = load_transcript(metadata['path_to_transcript_txt'], debug_mode)
-
-        speaker_regex_pattern = re.compile(metadata['speaker_regex_pattern'], re.MULTILINE)
-
-        matches = list(speaker_regex_pattern.finditer(text))
-    except KeyError as e:
-        raise KeyError(f"Required metadata fields are missing: {str(e)}")
-
-    if not matches:
-        if debug_mode:
-            print("No matches found in get_utterances")
-        return []
-
-    if debug_mode:
-        print(f"get_utterances found {len(matches)} matches")
-
-    # Prepare a set of all possible speaker names (normalized to lowercase)
-    valid_speakers = set()
-    for participant in metadata['participants']:
-        # Add the primary speaker name
-        valid_speakers.add(participant['speaker_name'].lower())
-        # Add any misspelled variations
-        if 'speaker_misspelled_names' in participant and participant['speaker_misspelled_names']:
-            for variant in participant['speaker_misspelled_names']:
-                valid_speakers.add(variant.lower())
-
-    # SAVE VALID SPEAKER SET TO FILE
-    if debug_mode:
-        print("Writing valid speakers to file...")
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(script_dir, 'valid_speakers.txt')
-        with open(file_path, 'w', encoding='utf-8') as f:
-            for speaker in valid_speakers:
-                f.write(speaker + '\n')
-
-    # Filter matches to only include valid speakers and collect the sequence of speakers
-    filtered_matches = []
-    speaker_sequence = []
-
-    for match in matches:
-        if debug_mode:
-            if match.lastindex is None or match.lastindex < 1:
-                raise ValueError("Regex pattern does not contain a capturing group for the speaker name.")
-
-        if match.group(1) is None:
-            # Handle the case where nothing was captured
-            continue
-
-        full_speaker_text = match.group(1).strip().lower()
-        match_found = False
-
-        for valid_name in valid_speakers:
-            if valid_name in full_speaker_text:
-                filtered_matches.append(match)
-                speaker_sequence.append(valid_name)
-                match_found = True
-                break
-
-        if not match_found:
-            for valid_name in valid_speakers:
-                words_in_valid_name = valid_name.split()
-                if all(word in full_speaker_text for word in words_in_valid_name):
-                    filtered_matches.append(match)
-                    speaker_sequence.append(valid_name)
-                    break
-
-    # Extract utterances using the filtered matches
-
-    if debug_mode:
-        print(f"{len(filtered_matches)} matches contain valid speakers")
-        for i, match in enumerate(matches):
-            print(f"Match {i}: {match.group(0)}")
-            print(f"Group 1: {match.group(1)}")
-
-    result = []
-    for i in range(len(filtered_matches) - 1):
-        speaker = speaker_sequence[i].title()
-        start_pos = filtered_matches[i].end()
-        end_pos = filtered_matches[i + 1].start()
-        utterance = text[start_pos:end_pos].strip()
-        utterance_id = str(uuid.uuid4())
-
-        result.append({
-            "uuid": utterance_id,
-            "speaker": speaker,
-            "utterance": utterance
-        })
-
-    if filtered_matches:
-        speaker = speaker_sequence[-1].title()
-        utterance = text[matches[-1].end():].strip()
-        utterance_id = str(uuid.uuid4())
-        result.append({
-            "uuid": utterance_id,
-            "speaker": speaker,
-            "utterance": utterance
-        })
-
-    return result
-
-def clean_utterances(utterances: list, debug_mode: bool) -> list:
+def clean_utterances(utterances: list, api_response: dict) -> list:
     cleaned_utterances = []
 
     # Remove empty utterances
     utterances = [utterance for utterance in utterances if utterance['utterance'].strip()]
 
+    # Remove header from all utterances
+    header_pattern = api_response.get("header_pattern", None) if isinstance(api_response, dict) else None
+    if header_pattern:
+        cleaned_header_pattern = re.sub(r'^(?:<MULTISPACE>|<LINEBREAK>|<BOLD>)+\s*', '', header_pattern)
+        utterances = [utterance for utterance in utterances if not re.search(cleaned_header_pattern, utterance['utterance'], re.IGNORECASE)]
+
+        utterances = [utterance for utterance in utterances if not re.search(cleaned_header_pattern, utterance['utterance'])]
+
+    # Remove footer from all utterances
+    footer_pattern = api_response.get("footer_pattern")
+    if footer_pattern:
+        cleaned_footer_pattern = re.sub(r'^(?:<MULTISPACE>|<LINEBREAK>|<BOLD>)+\s*', '', footer_pattern)
+        utterances = [utterance for utterance in utterances if not re.search(cleaned_footer_pattern, utterance['utterance'], re.IGNORECASE)]
+
+        utterances = [utterance for utterance in utterances if not re.search(cleaned_footer_pattern, utterance['utterance'])]
+    
     debug_counts = {
         'angle_brackets': 0,
         'parentheses': 0,
@@ -762,12 +698,6 @@ def clean_utterances(utterances: list, debug_mode: bool) -> list:
             cleaned_utterance['uuid'] = str(uuid.uuid4())
             
         cleaned_utterances.append(cleaned_utterance)
-
-    if debug_mode:
-        print("Saving debug counts to clean_debug.txt")
-        with open('clean_debug.txt', 'w', encoding='utf-8') as debug_file:
-            for key, count in debug_counts.items():
-                debug_file.write(f"{key}: {count}\n")
 
     return cleaned_utterances
 
@@ -851,18 +781,18 @@ def main():
     
     # Make API call
     print("Sending text to API for analysis...")
-    result = API_call(full_text, config_data, debug_mode)
+    api_response = API_call(full_text, config_data, debug_mode)
     
     # Check for errors in the API call result
-    if "error" in result:
-        print(f"Error: {result['error']}")
+    if "error" in api_response:
+        print(f"Error: {api_response['error']}")
         return
     
     # Get utterances
-    utterances = get_utterances(full_text, result, debug_mode)
+    utterances = get_utterances(full_text, api_response, debug_mode)
     
     # Clean utterances
-    cleaned_utterances = clean_utterances(utterances, debug_mode)
+    cleaned_utterances = clean_utterances(utterances, api_response)
     
     # Determine output path
     if args.output:
@@ -871,14 +801,14 @@ def main():
         output_path = f"{final_json_folder}/{file_name.replace('.pdf', '_final.json')}"
     
     # Create and save final JSON
-    create_and_save_final_json(result, cleaned_utterances, output_path, debug_mode)
+    create_and_save_final_json(api_response, cleaned_utterances, output_path, debug_mode)
 
     # Check if token_counts is available
-    if "token_counts" in result:
-        print(f"Input tokens: {result['token_counts']['input_tokens']}")
-        print(f"Output tokens: {result['token_counts']['output_tokens']}")
-        print(f"Total tokens: {result['token_counts']['total_tokens']}")
-        print(f"Estimated cost: ${result['cost_estimate']['total_cost_usd']:.6f}")
+    if "token_counts" in api_response:
+        print(f"Input tokens: {api_response['token_counts']['input_tokens']}")
+        print(f"Output tokens: {api_response['token_counts']['output_tokens']}")
+        print(f"Total tokens: {api_response['token_counts']['total_tokens']}")
+        print(f"Estimated cost: ${api_response['cost_estimate']['total_cost_usd']:.2f}")
     else:
         print("Token counts not available in the API response.")
 

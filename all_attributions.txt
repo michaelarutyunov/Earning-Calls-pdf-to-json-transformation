@@ -1,0 +1,78 @@
+Total attributions found: 19
+
+Attribution 1:
+  Speaker: Sergio P. Ermotti
+  Text: Sergio P. Ermotti <MULTISPACE> <LINEBREAK>
+
+Attribution 2:
+  Speaker: Sergio P. Ermotti
+  Text: <BOLD>Sergio P. Ermotti </BOLD> <LINEBREAK>
+
+Attribution 3:
+  Speaker: Sergio P. Ermotti
+  Text: Sergio P. Ermotti - closing remarks <MULTISPACE> <LINEBREAK>
+
+Attribution 4:
+  Speaker: Sarah Youngwood
+  Text: Sarah Youngwood <MULTISPACE> <LINEBREAK>
+
+Attribution 5:
+  Speaker: Sarah Youngwood
+  Text: <BOLD>Sarah Youngwood </BOLD> <LINEBREAK>
+
+Attribution 6:
+  Speaker: Sarah Youngwood
+  Text: <BOLD>Sarah Youngwood<MULTISPACE> </BOLD> <LINEBREAK>
+
+Attribution 7:
+  Speaker: Chis Hallam
+  Text: <BOLD>Chis Hallam, Goldman Sachs </BOLD> <LINEBREAK>
+
+Attribution 8:
+  Speaker: Kian Abouhossein
+  Text: <BOLD>Kian Abouhossein, JPMorgan <MULTISPACE> </BOLD> <LINEBREAK>
+
+Attribution 9:
+  Speaker: Alastair Ryan
+  Text: <BOLD>Alastair Ryan, Bank of America <MULTISPACE> </BOLD> <LINEBREAK>
+
+Attribution 10:
+  Speaker: Flora Bocahut
+  Text: <BOLD>Flora Bocahut, Jefferies </BOLD> <LINEBREAK>
+
+Attribution 11:
+  Speaker: Andrew Coombs
+  Text: <BOLD>Andrew Coombs, Citi </BOLD> <LINEBREAK>
+
+Attribution 12:
+  Speaker: Adam Terelak
+  Text: <BOLD>Adam Terelak, Mediobanca </BOLD> <LINEBREAK>
+
+Attribution 13:
+  Speaker: Jeremy Sigee
+  Text: <BOLD>Jeremy Sigee, Exane </BOLD> <LINEBREAK>
+
+Attribution 14:
+  Speaker: Anke Reingen
+  Text: <BOLD>Anke Reingen, RBC </BOLD> <LINEBREAK>
+
+Attribution 15:
+  Speaker: Amit Goel
+  Text: <BOLD>Amit Goel, Barclays </BOLD> <LINEBREAK>
+
+Attribution 16:
+  Speaker: Benjamin Goy
+  Text: <BOLD>Benjamin Goy; Deutsche Bank </BOLD> <LINEBREAK>
+
+Attribution 17:
+  Speaker: Tom Hallet
+  Text: <BOLD>Tom Hallet, KBW </BOLD> <LINEBREAK>
+
+Attribution 18:
+  Speaker: Nicholas Payen
+  Text: <BOLD>Nicholas Payen, Kepler Cheuvreux <MULTISPACE> </BOLD> <LINEBREAK>
+
+Attribution 19:
+  Speaker: Andrew Lim
+  Text: <BOLD>Andrew Lim, Société Générale </BOLD> <LINEBREAK>
+
