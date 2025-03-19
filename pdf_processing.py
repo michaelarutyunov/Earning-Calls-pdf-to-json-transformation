@@ -1,14 +1,14 @@
 ### IMPORTS ###
 
 import argparse
-from logging import config
+#from logging import config
 import pymupdf
 import anthropic
 import copy
 import json
 import os
 import re
-import string
+#import string
 import uuid
 from dotenv import load_dotenv
 
@@ -79,7 +79,7 @@ def get_cleaning_parameters(config_data):
     }
 
 
-### TEXT PRE-PROCESSING ###
+### PDF IMPORT AND TEXT PRE-PROCESSING ###
 
 def normalize_adjacent_uppercase_words(text):
     """Convert likely names (adjacent uppercase words) to Title Case."""
@@ -312,7 +312,7 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
     return full_text
 
 
-### SPEAKER ATTRIBUTION EXTRACTION ###
+### SPEAKER ATTRIBUTION EXTRACTION USING LLM ###
 
 def API_call(text, config_data, debug_mode=False):
     # Construct the prompt according to the specified format
@@ -555,7 +555,7 @@ def API_call(text, config_data, debug_mode=False):
         }
 
 
-### TEXT PARSING ###
+### TEXT PARSING AND CLEANING ###
 
 """
 def remove_unused_sections(metadata_file: str, debug_mode: bool) -> str:
