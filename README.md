@@ -2,25 +2,31 @@
 
 A demonstration of a workflow to transform earning call transcripts into a json object.
 
-Goal: Create a json object that represents the flow of conversation in the presentation and Q&A sections of a transcript.
+**Goal**: Create a json object that represents the flow of conversation in the presentation and Q&A sections of a transcript.
 
-Challenge: Earning call transcripts do not have stardard formatting making regex based extraction difficult.
+**Challenge**: Earning call transcripts do not have stardard formatting making regex based extraction difficult.
 
-Solution: Use LLM to extract most relevant infomation about the transcript.
+**Solution**: Use LLM to extract most relevant infomation about the transcript.
 
-Guardrails: Keep API call costs to a minimum, particularly reduce the count of output tokens.
+**Guardrails**: Keep API call costs to a minimum, particularly reduce the count of output tokens.
 
-Key steps:
+**Key Steps**:
 - Normalization of text imported from PDF
 - Enrichment of the text with formatting tags to help identifying speaker attributions
 - API call to LLM to extract call specs and attributions
 - Creation of a json obejct with clean representation of speakers and utterances
+- Optional: recreate the standardized text file with the content of the json file
 
-Optional:
-- recreate the standardized text file with the content of the json file
+**Files and Folders**
+config.json - configuration for the main script
+pdf_processing.py - main script
+create_standard_text.py - optional script
+transcript_pdf - source documents
+final_json - main script outputs
+standardized_text - optional script outputs
 
-To-dos:
+**To-dos**:
 - Clean up header and footer
 
-Notes:
+**Notes**:
 - Code requires anthropic API to be saved in .env file in the same folder
