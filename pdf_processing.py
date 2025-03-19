@@ -8,6 +8,7 @@ import copy
 import json
 import os
 import re
+import string
 import uuid
 from dotenv import load_dotenv
 
@@ -41,10 +42,10 @@ def get_folder_paths(config_data):
     folder_paths = config_data.get("folder_paths", {})
     return {
         "transcripts_pdf_folder": folder_paths.get("transcripts_pdf_folder", None),
-        "transcripts_cleantxt_folder": folder_paths.get("transcripts_cleantxt_folder", None),
-        "metadata_folder": folder_paths.get("metadata_folder", None),
-        "utterances_folder": folder_paths.get("utterances_folder", None),
-        "final_json_folder": folder_paths.get("final_json_folder", None)
+        #"transcripts_cleantxt_folder": folder_paths.get("transcripts_cleantxt_folder", None),
+        #"metadata_folder": folder_paths.get("metadata_folder", None),
+        #"utterances_folder": folder_paths.get("utterances_folder", None),
+        "final_json_folder": folder_paths.get("final_json_folder", None),
     }
 
 def get_test_mode_info(config_data):
@@ -53,7 +54,8 @@ def get_test_mode_info(config_data):
     return {
         "enabled": test_mode.get("enabled", False),
         "file_name": test_mode.get("file_name", None),
-        "debug_mode": test_mode.get("debug_mode", False)
+        "debug_mode": test_mode.get("debug_mode", False),
+        "diagnostics_folder": test_mode.get("diagnostics_folder", None)
     }
 
 def get_api_setup(config_data):
@@ -72,10 +74,63 @@ def get_cleaning_parameters(config_data):
     return {
         "keep_bold_tags": cleaning_parameters.get("keep_bold_tags", False),
         "keep_italics_tags": cleaning_parameters.get("keep_italics_tags", False),
+        "keep_underline_tags": cleaning_parameters.get("keep_underline_tags", False),
+        "keep_capitalization_tags": cleaning_parameters.get("keep_capitalization_tags", False)
     }
 
 
-### TEXT INGESTION ###
+### TEXT PRE-PROCESSING ###
+
+def normalize_adjacent_uppercase_words(text):
+    """Convert likely names (adjacent uppercase words) to Title Case."""
+    # Pattern for two or more adjacent uppercase words, optionally with a middle initial
+    pattern = r'\b([A-Z][A-Z\'\-]+)(\s+[A-Z]\.?\s+)?(\s+[A-Z][A-Z\'\-]+)\b'
+
+    def convert_to_title(match):
+        first = match.group(1).title()
+        middle = match.group(2) if match.group(2) else ''
+        last = match.group(3).title()
+        return f"{first}{middle}{last}"
+
+    return re.sub(pattern, convert_to_title, text)
+
+def normalize_punctuation(text):
+    """Move punctuation outside of bold tags."""
+
+    # Remove bold tags if they are around punctuation
+    text = re.sub(r'<BOLD->\s*([:,.;?!])\s*<-BOLD>', r' \1 ', text)
+
+    # Remove any tags between words and punctuation
+    text = re.sub(r'(\w+)\s*<[^>]+>\s*([,.;:!?])', r'\1\2', text)
+
+    # Manage colons
+    # text = re.sub(r'(\w):', r'\1 :', text) # add space before colon
+    text = re.sub(r':(\w)', r': \1', text)  # add space after colon
+    text = re.sub(r'(\w+)\s+:', r'\1:', text)  # remove space before colon
+
+    # Strip leading/trailing whitespace
+    text = text.strip()
+    
+    return text
+
+def tags_clean_up(text):
+    """Clean up text by removing formatting tags and punctuation."""
+
+    # Consolidate multiple formatting tags
+    text = re.sub('<-BOLD> <BOLD->', '', text)
+    text = re.sub('<-ITALIC> <ITALIC->', '', text)
+    text = re.sub('<-UNDERLINE> <UNDERLINE->', '', text)
+
+    # Consolidate <MULTI_SPACE> <LINE_BREAK> into <PARAGRAPH_BREAK>
+    text = re.sub(r'<MULTI_SPACE> <LINE_BREAK>', '<PARAGRAPH_BREAK>', text)
+    # text = re.sub(r'<LINE_BREAK> <MULTI_SPACE>', '<PARAGRAPH_BREAK>', text)
+
+    # when there are two or more <TAGS> in a row, keep only one
+    text = re.sub(r'(<PARAGRAPH_BREAK>\s*){2,}', r'\1', text)
+    text = re.sub(r'(<MULTI_SPACE>\s*){2,}', r'\1', text)
+    text = re.sub(r'(<LINE_BREAK>\s*){2,}', r'\1', text)
+    
+    return text
 
 def clean_text(text):
     """Clean text by handling encoding issues and removing problematic characters."""
@@ -98,9 +153,10 @@ def clean_text(text):
         '\u201d': '"',  # right double quote
         '\u2013': '-',  # en-dash
         '\u2014': '--',  # em-dash
+        '\u00a9': '',  # copyright symbol
         '\u00a0': ' <NBSP> ',  # non-breaking space
         '\f': ' <PAGEBREAK> ',  # form feed / page break
-        '\n': ' <LINEBREAK> ',  # line break
+        '\n': ' <LINE_BREAK> ',  # line break
         '\t': ' <TAB> ',  # tab
     }
 
@@ -109,7 +165,7 @@ def clean_text(text):
         text = text.replace(char, replacement)
 
     # Preserve multiple spaces for regex pattern identification
-    text = re.sub(r'[ ]{2,}', ' <MULTISPACE> ', text)
+    text = re.sub(r'[ ]{2,}', ' <MULTI_SPACE> ', text)
 
     # Pattern for spaced headers
     pattern = r'(?<!\S)([A-Z](\s+)[A-Z](\s+[A-Z])+)(?!\S)'
@@ -150,12 +206,6 @@ def clean_text(text):
     
     # Handle cases where dots are mixed with spaces in long sequences
     text = re.sub(r'([.]\s*){2,}', '', text)
-    
-    # Handle other punctuation characters that might repeat
-    # Use re.escape to properly escape special regex characters
-    #for punct in ['-', '=', '*', '/', '\\']:
-    #    escaped_punct = re.escape(punct)
-    #    text = re.sub(r'({0})\1{{2,}}'.format(escaped_punct), punct * 3, text)
 
     # Strip leading/trailing whitespace
     text = text.strip()
@@ -171,7 +221,8 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
     cleaning_params = get_cleaning_parameters(config_data)
     keep_bold_tags = cleaning_params["keep_bold_tags"]
     keep_italics_tags = cleaning_params["keep_italics_tags"]
-    keep_underline_tags = cleaning_params.get("keep_underline_tags", True)
+    keep_underline_tags = cleaning_params["keep_underline_tags"]
+    keep_capitalization_tags = cleaning_params["keep_capitalization_tags"]
     
     for page_num in range(doc.page_count):
         page = doc[page_num]
@@ -179,6 +230,10 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
         # Get all text including from images
         complete_text = page.get_text("text")
 
+        # Pre-tagging cleanup
+        complete_text = clean_text(complete_text) # remove problematic characters and normalize spaces
+        complete_text = re.sub(r'\s+', ' ', complete_text).strip() # remove extra spaces
+        
         # Get text with formatting information
         page_dict = page.get_text("dict")
         formatted_blocks = {}
@@ -216,33 +271,42 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
                         if is_bold or is_italic or is_underline:
                             formatted_blocks[text] = (is_bold, is_italic, is_underline)
 
-        # Apply formatting to the complete text
+        # Apply tags to the complete text
         for text, (is_bold, is_italic, is_underline) in formatted_blocks.items():
             # Try to find and replace exact text
             if text in complete_text:
                 formatted_text = text
                 if keep_bold_tags and is_bold:
-                    formatted_text = f"<BOLD>{formatted_text}</BOLD>"
+                    formatted_text = f" <BOLD-> {formatted_text} <-BOLD> "
                 if keep_italics_tags and is_italic:
-                    formatted_text = f"<ITALIC>{formatted_text}</ITALIC>"
+                    formatted_text = f" <ITALIC-> {formatted_text} <-ITALIC> "
                 if keep_underline_tags and is_underline:
-                    formatted_text = f"<UNDERLINE>{formatted_text}</UNDERLINE>"
+                    formatted_text = f" <UNDERLINE-> {formatted_text} <-UNDERLINE> "
                 complete_text = complete_text.replace(text, formatted_text)
 
-        # Clean the text
-        page_text = clean_text(complete_text)
+        # Post-tagging cleanup      
+        complete_text = normalize_adjacent_uppercase_words(complete_text) # bring all names into title case
+        complete_text = normalize_punctuation(complete_text) # normalize punctuation
+        complete_text = tags_clean_up(complete_text) # remove duplicate tags and remove punctuation from bold tags
+        complete_text = re.sub(r'\s+', ' ', complete_text).strip() # remove extra spaces
+
+        page_text = complete_text
 
         if page_text:
             full_text += page_text + "\n<PAGE_BREAK>\n"
         else:
             print(f"Warning: No text extracted from page {page_num + 1} of {pdf_path}")
 
+    
     if debug_mode:
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(script_dir, 'extracted_text.txt')
+        diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]
+        if not os.path.exists(diagnostics_folder):
+            os.makedirs(diagnostics_folder)
+            print(f"Created directory: {diagnostics_folder}")
+        file_path = os.path.join(diagnostics_folder, 'extracted_text.txt')
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(full_text)
-        print(f"Extracted text saved to {file_path}")
+        print(f"Formatted text saved to {file_path}")
 
     doc.close()
     return full_text
@@ -254,81 +318,104 @@ def API_call(text, config_data, debug_mode=False):
     # Construct the prompt according to the specified format
     prompt = f"""User: You are an AI assistant specialized in extracting speaker attributions from earning call transcripts.
 
+    <goal>
+    Extract all variations of speaker attributions with formatting tags and call details from the transcript.    
+    </goal>
+
+    Here is the transcript to analyze:
+    <transcript>
+    {text}
+    </transcript>
+    
     <task>
-    Extract all speaker attributions from the following transcript.    
-    Focus only on the text segments that identify who is speaking before their statements.
-    For each speaker attribution, return the speaker's name, their title/role if available, and the company they work for.
-    Always check the WHOLE transcript from start to end for ALL variations of attributions for every speaker.
-    Return call details like bank name, call date and reporting period.
-    Return header and footer patterns with formatting tags.
-    Format the results as a json object.
+    Follow these step by step instructions:
+    Step 1: Find the names of all call participants, including their variations.
+    Step 2: For each participant, find their job title and companies, including variations.
+    Step 3: Go through the whole text in small overlapping chunks to idenitify all variants of speaker attributions including leading and tailing tags, names, titles and companies (if available), punctuation marks.
+    Step 4. Go throught the whole text paragraph by paragraph to idenitify speaker attributions that may appear in the middle, end, beginning of the paragraph.
+    Step 5. Identify call details like bank name, call date and reporting period.
+    Step 6. Identify header and footer patterns
+    Step 7. Return results as a json object
     </task>
 
     <formatting_tags>
-    Text contains formatting tags that can help identify who is speaking:
-    - Line breaks are marked as <LINEBREAK>
-    - Bold text is marked as <BOLD>
-    - Multispace is marked as <MULTISPACE>
+    Formatting tags should be treated as text and should be added to the attribution.
+    - Line breaks are marked as <LINE_BREAK>
+    - Bold text is marked as <BOLD-> [speaker attribution or text or punctuation] <-BOLD>
+    - Multispace is marked as <MULTI_SPACE>
+    - Paragraph break is marked as <PARAGRAPH_BREAK>
     </formatting_tags>
+
+    <attribution_description>
+    The speaker attribution includes several elements and always follows this order:
+    1. Always starts with one or two formatting tags.
+    2. Always includes [Speaker Name and Surname] or [Name, Middle Name Initial and Surname].
+    3. Sometimes may include [only job title], [only company], [job title and company] separated from the speaker name and from each other by a punctuation mark or a formatting tag
+    4. Always ends with a punctuation mark or a formatting tag.
+    5. Never includes the text of the speech of the speaker.
+    </attribution_description>
     
     <attribution_search_guidelines>
     Guidelines for searching for speaker attribution:
-    - Always check the WHOLE transcript from start to end for ALL variations of attributions for every speaker.
-    - Speaker attribution always starts with the speaker full name.
-    - Speaker's name in the attribution can include speaker's job title and company.
-    - Speaker attribution is normally preceded by a <LINEBREAK> tag or a combination of <MULTISPACE> and <LINEBREAK> tags.
-    - Speaker attribution normally ends with a formatting tag or a punctuation mark.
-    - Speaker attribution NEVER contains a speech.
-    - Attribution for operator should always contain the word "Operator".
-    </sattribution_search_guidelines>
-
-    <attribution_format_guidelines>
-    Guidelines for formatting speaker attribution:
-    - Speaker's name, job title and company can be in normal, bold, italic, underlined text, upper and title case, may include punctuations marks like a dash, a colon, a period, or an apostrophe.
-    - Speaker's name, job title and company may be separated with a punctuation mark like a dash, a colon, or formatting tags, or a combination of these.
-    - Speaker's name, job title and company cannot be separated by a text segment that is not a formatting tag.
-    - Speaker's name can include middle names and initials.
-    - Speaker's name can be followed by a punctuation and separated from it by a formatting tag or a space.
+    - IMPORTANT: always check the WHOLE transcript from the beginning to the end and look for attributions anywhere in paragraphs, particularly after sentence endings.
+    - IMPORTANT: alwayds include ALL attributions variations even if minor for EVERY name variation of EACH speaker.
+    - Attributions come in a variety of formats and are inconsistent within the same transcript.
+    - Always check variations of leading and trailing formatting tags and punctuation marks to identify the speaker attribution.
+    - Look for text segments anywhere in paragraphs, both at the beginning and at the end of paragraphs, particularly after sentence endings.   
+    - Pay attention to the job title and company name variations.
+    - After speaker attribution there is always a text withthe speaker's speech.
+    - Speaker attributions cannot appear next to each other. If they do, they are not speaker attributions. There should always be a speech between attributions.
+    - There cannot be two consecutive speeches from the same speaker.
+    - Attributions for operator should always contain the word "Operator" and variations of leading and trailing formatting tags.
+    
+    Here are potential variations in speaker's name, job title and company formatting:
+    - can have spelling variations in different parts of the transcript, including with/without middle initials, abbreviated names, inconsistent use of punctuation. 
+    - can be in normal, bold, italic, underlined text, upper and title case.
+    - can include punctuations marks like a dash, a colon, a period, an apostrophe, a a special symbol, formatting tags, or a combination of these.
+    - cannot be separated by a text segment that is not a formatting tag.
+    - can be followed by a punctuation and can be separated from it by a formatting tag or a space.
+    
+    Additionally:
     - If speaker's name is separated from the job title or company by a text segment that is not a formatting tag, then only speaker name should be a part of attribution.
     - If speaker's name is followed by a text segment that is not a formatting tag, then only speaker name should be a part of attribution.
-    </attribution_format_guidelines>
+    </attribution_search_guidelines>
+   
+    IMPORTANT: ALL variations of the attribution for all speakers should be included in the output.
+    <examples>    
+    Basic Speaker Attribution in different formats:
+    * "(attribution begins here) <PARAGRAPH_BREAK> John Smith: (speaker text begins here) Hello everyone, thank you for joining today's call."
+    * "(attribution begins here) <PARAGRAPH_BREAK> John Smith <LINE_BREAK> (speaker text begins here) Hello everyone, thank you for joining today's call."
+    * "(attribution begins here) <LINE_BREAK> <BOLD-> Mary Johnson : <-BOLD> (speaker text begins here) Thank you, John. I'd like to present our quarterly results."
+    * "(attribution begins here) <LINE_BREAK> <BOLD-> ROBERT JONES <-BOLD> - CEO, TechCorp: (speaker text begins here) We're pleased to announce our newest product line."
+    * "(attribution begins here) <LINE_BREAK> <BOLD-> Sarah Williams, CFO: <-BOLD> (speaker text begins here) The financial outlook remains strong despite market challenges."
+    * "(attribution begins here) <LINE_BREAK> <BOLD-> Thomas O'Hara • Senior VP: <-BOLD> (speaker text begins here) The merger will be finalized next month."
+    * "(attribution begins here) <PARAGRAPH_BREAK> Tom O'Hara <PARAGRAPH_BREAK> (speaker text begins here) As I previously stated, we expect synergies to be realized by Q4."
+    
+    Inconsistent leading tags for the same speaker:
+    * "<LINE_BREAK> <LINE_BREAK> Thomas O'Hara:"
+    * "<LINE_BREAK> <BOLD-> Thomas O'Hara:"
+    * "<PARAGRAPH_BREAK> Thomas O'Hara:"
+    in this case all three should be included in the output.
 
-    <transcript>    
-    Here is the transcript to analyze:
-    {text}
-    </transcript>
-
-    <examples>
-    Here is an example of a speaker attribution with variations in formatting:
-    * name followed by a colon, both in bold: <BOLD>SPEAKER NAME: </BOLD>
-    * name followed by a colon, both in bold: <BOLD>SPEAKER NAME<BOLD>: </BOLD></BOLD>
-    * name followed by a line break, then by a colon in bold: SPEAKER NAME <LINEBREAK> <BOLD>: </BOLD>
-    * name in bold followed by a line break, then by a colon: <BOLD>SPEAKER NAME</BOLD> <LINEBREAK> :
-    * name in plain text followed by a colon in bold: SPEAKER NAME<BOLD>: </BOLD>
-    If found, all such variations should be included in the output.
-
-    Here is an example of a text where the speaker attribution and company are separated by a speech:
-    * <MULTISPACE> <LINEBREAK> Name Surname <MULTISPACE> <LINEBREAK> Good morning, everybody. My first question relates to <MULTISPACE> <LINEBREAK> (Company Name) <MULTISPACE> <LINEBREAK> capital return.
-    In this case the company name should be ignored and only speaker name should be a part of attribution.
-
-    Here is an example variations of the valid speaker name formats for the same speaker:
-    * <LINEBREAK> <BOLD>Name Surname </BOLD> <LINEBREAK>
-    * <LINEBREAK> <BOLD>Name M. Surname </BOLD> <LINEBREAK>
-    * <LINEBREAK> <BOLD>Name Middlename Surname </BOLD> <LINEBREAK>
-    * <LINEBREAK> <BOLD>Name Surname-Surname </BOLD> <LINEBREAK>   
+    Inconsistent leading and trailing tags for the operator:
+    * "<PARAGRAPH_BREAK> OPERATOR: <MULTI_SPACE>"
+    * "<PARAGRAPH_BREAK> <BOLD-> OPERATOR: <-BOLD>"
+    
+    Spelling and Name Variations:
+    * "(attribution begins here) <PARAGRAPH_BREAK> Michael J. Thompson: <LINE_BREAK> (speaker text begins here) Our research team has made significant progress."
+    * "(attribution begins here) <PARAGRAPH_BREAK> Mike Thompson: <LINE_BREAK> (speaker text begins here) As I mentioned earlier, this breakthrough has been years in the making."
+    
+    Punctuation Inconsistencies:
+    * "(attribution begins here) <PARAGRAPH_BREAK> Dr. Jennifer Lee; Chief Scientific Officer: <LINE_BREAK> (speaker text begins here) The clinical trials show promising results."
+    * "(attribution begins here) <PARAGRAPH_BREAK> Dr. J. Lee: <LINE_BREAK> (speaker text begins here) These findings support our initial hypothesis about the treatment."
+    
+    Job Title Separation:
+    * "(attribution begins here) <PARAGRAPH_BREAK> Amanda Chen: <LINE_BREAK> (speaker text begins here) I'm happy to share our (GlobalBrands) marketing strategy for the upcoming quarter." - Only "Amanda Chen" should be considered attribution.
+    
+    Case Sensitivity and Company Name Variations:
+    * "(attribution begins here) <PARAGRAPH_BREAK> MARK ROBERTSON (Google Cloud): <LINE_BREAK> (speaker text begins here) We're investing heavily in AI infrastructure."
+    * "(attribution begins here) <PARAGRAPH_BREAK> Mark Robertson (GCP): <LINE_BREAK> (speaker text begins here) The capabilities we're building will transform the industry."
     </examples>
-
-    <guidelines>
-    Follow these guidelines:
-    1. IMPORTANT: for each speaker, check the whole transcript from start to end for all variations of their speaker attributions.
-    2. Check every instance when a full name is mentioned in the transcript and verify if it is a speaker attribution using attribution_search_guidelines.
-    3. Include each and every speaker attribution found in the transcript.
-    4. Include all variations of speaker names found in the transcript.
-    5. Include all variations of speaker titles found in the transcript.
-    6. Include all variations of speaker companies found in the transcript.
-    7. Pay close attention to the formatting requirements, especially for the reporting period (QX-YYYY) and the header and footer of the transcript.
-    8. Include the header and footer patterns with formatting tags in the output.
-    </guidelines>
 
     Here's an example of the expected JSON structure (with generic placeholders):
     <jsonexample>
@@ -343,7 +430,7 @@ def API_call(text, config_data, debug_mode=False):
         "speaker_name_variants": ["John Doe", "Jon Doe", "John Do"],
         "speaker_title_variants": ["Chief Executive Officer", "CEO"],
         "speaker_company_variants": ["Example Bank", "Example Bank Inc.", "EB"],
-        "speaker_attributions": ["<LINEBREAK> JOHN DOE:", "<LINEBREAK> John Doe - CEO - Example Bank <LINEBREAK>", "<LINEBREAK> John Doe - EB - CEO <LINEBREAK>"]
+        "speaker_attributions": ["<LINE_BREAK> JOHN DOE:", "<LINE_BREAK> John Doe - CEO - Example Bank <LINE_BREAK>", "<LINE_BREAK> John Doe - EB - CEO <LINE_BREAK>"]
         }}
     ]
     }}
@@ -371,15 +458,15 @@ def API_call(text, config_data, debug_mode=False):
 
     try:
         message = client.messages.create(
-            model="claude-3-7-sonnet-20250219",
+            model="claude-3-7-sonnet-20250219",  # claude-3-opus-20240229 claude-3-7-sonnet-20250219
             max_tokens=4096,
-            system="You are a financial expert specializing in formatting earnings call transcripts into a structured JSON object.",
+            system="You are an expert in finding speaker attributions in the earnings call transcripts.",
             messages=[
                 {"role": "user", "content": prompt}
             ],
             temperature=0,
-            top_p=0.7,
-            top_k=20
+            top_p=0.5,
+            top_k=5
         )
 
         # Get token counts from the API response and calculate cost
@@ -398,11 +485,12 @@ def API_call(text, config_data, debug_mode=False):
             }
 
         response_text = message.content[0].text
+
+        diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]  # always use this folder for diagnostics
         
         # Always save the raw response for debugging
         if debug_mode:
-            script_dir = os.path.dirname(os.path.abspath(__file__))
-            raw_response_path = os.path.join(script_dir, 'api_response_raw.txt')
+            raw_response_path = os.path.join(diagnostics_folder, 'api_response_raw.txt')
             with open(raw_response_path, 'w', encoding='utf-8') as f:
                 f.write(response_text)
             print(f"Raw API response saved to {raw_response_path}")
@@ -418,7 +506,7 @@ def API_call(text, config_data, debug_mode=False):
                     clean_response = response_text[7:end_pos].strip()
                     
                     if debug_mode:
-                        cleaned_path = os.path.join(script_dir, 'api_response_cleaned.txt')
+                        cleaned_path = os.path.join(diagnostics_folder, 'api_response_cleaned.txt')
                         with open(cleaned_path, 'w', encoding='utf-8') as f:
                             f.write(clean_response)
                         print(f"Cleaned API response saved to {cleaned_path}")
@@ -427,7 +515,7 @@ def API_call(text, config_data, debug_mode=False):
             parsed_successfully = True
             
             if debug_mode:
-                parsed_path = os.path.join(script_dir, 'api_response_parsed.json')
+                parsed_path = os.path.join(diagnostics_folder, 'api_response_parsed.json')
                 with open(parsed_path, 'w', encoding='utf-8') as f:
                     json.dump(json_response, f, indent=2)
                 print(f"Parsed JSON saved to {parsed_path}")
@@ -438,7 +526,7 @@ def API_call(text, config_data, debug_mode=False):
             
             if debug_mode:
                 print(f"JSON parsing error: {str(e)}")
-                error_path = os.path.join(script_dir, 'api_response_error.txt')
+                error_path = os.path.join(diagnostics_folder, 'api_response_error.txt')
                 with open(error_path, 'w', encoding='utf-8') as f:
                     f.write(response_text)
                     f.write("\n\n--- JSON PARSE ERROR ---\n")
@@ -508,7 +596,7 @@ def remove_unused_sections(metadata_file: str, debug_mode: bool) -> str:
     return selected_text
 """
 
-def get_utterances(text, api_response, debug_mode=False):
+def get_utterances(text, api_response, config_data, debug_mode=False):
     """
     Extract utterances from transcript text using speaker attributions from API response.
     
@@ -560,8 +648,8 @@ def get_utterances(text, api_response, debug_mode=False):
         print("Writing all attributions to all_attributions.txt...")
         
         # Create a file to save all attributions for debugging
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(script_dir, 'all_attributions.txt')
+        diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]
+        file_path = os.path.join(diagnostics_folder, 'all_attributions.txt')
         
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(f"Total attributions found: {len(all_attributions)}\n\n")
@@ -634,22 +722,7 @@ def clean_utterances(utterances: list, api_response: dict) -> list:
     # Remove empty utterances
     utterances = [utterance for utterance in utterances if utterance['utterance'].strip()]
 
-    # Remove header from all utterances
-    header_pattern = api_response.get("header_pattern", None) if isinstance(api_response, dict) else None
-    if header_pattern:
-        cleaned_header_pattern = re.sub(r'^(?:<MULTISPACE>|<LINEBREAK>|<BOLD>)+\s*', '', header_pattern)
-        utterances = [utterance for utterance in utterances if not re.search(cleaned_header_pattern, utterance['utterance'], re.IGNORECASE)]
-
-        utterances = [utterance for utterance in utterances if not re.search(cleaned_header_pattern, utterance['utterance'])]
-
-    # Remove footer from all utterances
-    footer_pattern = api_response.get("footer_pattern")
-    if footer_pattern:
-        cleaned_footer_pattern = re.sub(r'^(?:<MULTISPACE>|<LINEBREAK>|<BOLD>)+\s*', '', footer_pattern)
-        utterances = [utterance for utterance in utterances if not re.search(cleaned_footer_pattern, utterance['utterance'], re.IGNORECASE)]
-
-        utterances = [utterance for utterance in utterances if not re.search(cleaned_footer_pattern, utterance['utterance'])]
-    
+    # Count for each cleaning type specificed below
     debug_counts = {
         'angle_brackets': 0,
         'parentheses': 0,
@@ -659,6 +732,7 @@ def clean_utterances(utterances: list, api_response: dict) -> list:
         'backslashes': 0
     }
 
+    # This should clear the utterance from all tags
     for utterance in utterances:
         text = utterance['utterance']
 
@@ -698,6 +772,31 @@ def clean_utterances(utterances: list, api_response: dict) -> list:
             cleaned_utterance['uuid'] = str(uuid.uuid4())
             
         cleaned_utterances.append(cleaned_utterance)
+
+    # Remove header pattern from each utterance's text (not removing the whole utterance)
+    header_pattern = api_response.get("header_pattern", None) if isinstance(api_response, dict) else None
+    if header_pattern:  # Only process if header_pattern exists
+        cleaned_header_pattern = re.sub(r'<(?:LINE_BREAK|MULTI_SPACE|PARAGRAPH_BREAK|BOLD-|-BOLD)>', '', header_pattern)
+        for utterance in utterances:
+            # Replace the matching pattern with an empty string, keeping the rest of the text
+            cleaned_text = re.sub(cleaned_header_pattern, '', utterance['utterance'], flags=re.IGNORECASE)
+            # Create a new utterance with the cleaned text
+            cleaned_utterance = utterance.copy()  # Copy to preserve other fields
+            cleaned_utterance['utterance'] = cleaned_text
+            cleaned_utterances.append(cleaned_utterance)
+
+    # Remove footer from all utterances
+    footer_pattern = api_response.get("footer_pattern", None) if isinstance(api_response, dict) else None
+    if footer_pattern:  # Only process if footer_pattern exists
+        cleaned_footer_pattern = re.sub(r'<(?:LINE_BREAK|MULTI_SPACE|PARAGRAPH_BREAK|BOLD-|-BOLD)>', '', footer_pattern)
+        for utterance in utterances:
+            # Replace the matching pattern with an empty string, keeping the rest of the text
+            cleaned_text = re.sub(cleaned_footer_pattern, '', utterance['utterance'], flags=re.IGNORECASE)
+            # Create a new utterance with the cleaned text
+            cleaned_utterance = utterance.copy()  # Copy to preserve other fields
+            cleaned_utterance['utterance'] = cleaned_text
+            cleaned_utterances.append(cleaned_utterance)
+
 
     return cleaned_utterances
 
@@ -789,7 +888,7 @@ def main():
         return
     
     # Get utterances
-    utterances = get_utterances(full_text, api_response, debug_mode)
+    utterances = get_utterances(full_text, api_response, config_data, debug_mode)
     
     # Clean utterances
     cleaned_utterances = clean_utterances(utterances, api_response)

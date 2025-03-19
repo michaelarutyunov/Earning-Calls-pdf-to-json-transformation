@@ -174,4 +174,4 @@ cython_debug/
 
 # Custom
 obsolete/
-valid_speakers.txt
+diagnostics/

@@ -8,8 +8,9 @@
     },
     "test_mode": {
         "enabled": true,
-        "file_name": "qec_ubs_2023_1Q.pdf",
-        "debug_mode": true
+        "file_name": "qec_ctg_2023_1Q.pdf",
+        "debug_mode": true,
+        "diagnostics_folder": "diagnostics"
     },
     "api_setup": {
         "api_key_name": "ANTHROPIC_API_KEY",
@@ -20,6 +21,7 @@
     "cleaning_parameters": {
         "keep_bold_tags": true,
         "keep_italics_tags": false,
-        "keep_underline_tags": true
+        "keep_underline_tags": false,
+        "keep_capitalization_tags": false
     }
 }
