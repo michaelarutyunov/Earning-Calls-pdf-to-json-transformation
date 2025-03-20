@@ -1,14 +1,13 @@
 ### IMPORTS ###
 
+import spacy
 import argparse
-#from logging import config
 import pymupdf
 import anthropic
 import copy
 import json
 import os
 import re
-#import string
 import uuid
 from dotenv import load_dotenv
 
@@ -81,6 +80,113 @@ def get_cleaning_parameters(config_data):
 
 ### PDF IMPORT AND TEXT PRE-PROCESSING ###
 
+# Move punctuation outside of bold tags and adjust colons from "word :" to "word: "
+def normalize_punctuation(text):
+    """Move punctuation outside of bold tags."""
+    # Manage colons
+    # text = re.sub(r'(\w):', r'\1 :', text) # add space before colon
+    text = re.sub(r':(\w)', r': \1', text)  # add space after colon
+    text = re.sub(r'(\w+)\s+:', r'\1:', text)  # remove space before colon
+
+    # Remove isolated punctuation marks like " : "
+    text = re.sub(r'\s+([,.;:!?])\s+', ' ', text)
+    
+    # Strip leading/trailing whitespace
+    text = text.strip()
+    
+    return text
+
+# Optimize TEXT tags (TAG_2, TAG_4, TAG_3)
+def optimize_text_tags(text):
+    """Optimize text tags by removing unnecessary formatting tags."""
+
+    # Remove TEXT tags with single letter, number or punctuation (from "<TAG> [char] <TAG>" to "<TAG>")
+    text = re.sub(r'<TAG_2>\s*[A-Za-z]\s*<TAG_2>', r' <TAG_2> ', text, flags=re.IGNORECASE)
+    text = re.sub(r'<TAG_2>\s*(\d+)\s*<TAG_2>', r' <TAG_2>', text, flags=re.IGNORECASE)
+    text = re.sub(r'<TAG_2>\s*[,.;:!?]\s*<TAG_2>', r' <TAG_2>', text, flags=re.IGNORECASE)
+    text = re.sub(r'<TAG_4>\s*[A-Za-z]\s*<TAG_4>', r' <TAG_4> ', text, flags=re.IGNORECASE)
+    text = re.sub(r'<TAG_4>\s*(\d+)\s*<TAG_4>', r' <TAG_4> ', text, flags=re.IGNORECASE)
+
+    # optimize multiple TEXT tags in a row, keep only one
+    text = re.sub(r'(<TAG_4>\s*){2,}', r'\1', text)
+    text = re.sub(r'(<TAG_3>\s*){2,}', r'\1', text)
+    text = re.sub(r'(<TAG_2>\s*){2,}', r'\1', text)
+
+    # Ensure single space between tags
+    text = re.sub(r'>\s+<', '> <', text)
+    text = re.sub(r'><', '> <', text)
+    
+    return text
+
+# Optimize WORD tags (BOLD, ITALIC, UNDERLINE)
+def optimize_word_tags(text):
+    """Clean up text by removing unnecessary formatting tags."""
+
+    # Remove WORD tags if they are around punctuation, numbers and single letters (from "<BOLD-> [char]] <-BOLD>" to "")
+    text = re.sub(r'<BOLD->\s*([:,.;?!])\s*<-BOLD>', r' \1 ', text)
+    text = re.sub(r'<BOLD->\s*([A-Za-z])\s*<-BOLD>', r' \1 ', text)
+    text = re.sub(r'<BOLD->\s*(\d+)\s*<-BOLD>', r' \1 ', text)
+    
+    # Optimize multiple WORD tags
+    text = re.sub('<-BOLD>\s*<BOLD->', '', text)
+    text = re.sub('<-ITALIC>\s*<ITALIC->', '', text)
+    text = re.sub('<-UNDERLINE>\s*<UNDERLINE->', '', text)
+
+    # Ensure single space between tags
+    text = re.sub(r'>\s+<', '> <', text)
+    text = re.sub(r'><', '> <', text)
+
+    # Normalize spaces
+    text = re.sub(r'\s+', ' ', text).strip()
+    
+    return text
+
+# Format spaced headers (from "Q 2 2 0 2 3 E A R N I N G S" to "Q2 2023 EARNINGS")
+def format_spaced_headers(text):
+    # Pattern to identify spaced headers - letters with spaces between them
+    spaced_header_pattern = r'(?<!\S)(?<!<)([A-Z](\s+[A-Z])+)(?![^<]*>)(?!\S)'
+
+    # Function to process each matched header
+    def process_header(match):
+        spaced_text = match.group(0)
+
+        # First approach: Split by multiple spaces (2 or more)
+        if re.search(r'\s{2,}', spaced_text):
+            words = re.split(r'\s{2,}', spaced_text)
+            condensed_words = [re.sub(r'\s+', '', word) for word in words]
+            return ' '.join(condensed_words)
+        else:
+            # For headers with single spaces between letters but no clear word boundaries
+            condensed = re.sub(r'\s+', '', spaced_text)
+
+            # Insert spaces before uppercase letters that follow lowercase or numbers
+            spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
+
+            # For dates like "2 0 2 3", keep them together
+            spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)
+
+            return spaced
+
+    # Apply the regex substitution with the processing function
+    text = re.sub(spaced_header_pattern, process_header, text)
+
+    return text
+
+# Remove repeating punctuation characters
+def remove_repeating_punctuation(text):
+    """Remove repeating punctuation characters."""
+    # Handle cases where punctuation is separated by spaces
+    text = re.sub(r'([.!?](\s+))\1{2,}', '', text)
+    
+    # Handle continuous repeating punctuation (like "............")
+    text = re.sub(r'([.!?])\1{2,}', '', text)
+    
+    # Handle cases where dots are mixed with spaces in long sequences
+    text = re.sub(r'([.]\s*){2,}', '', text)
+    
+    return text
+
+# Change WORD1 WORD2 into Word1 Word2
 def normalize_adjacent_uppercase_words(text):
     """Convert likely names (adjacent uppercase words) to Title Case."""
     # Pattern for two or more adjacent uppercase words, optionally with a middle initial
@@ -92,47 +198,13 @@ def normalize_adjacent_uppercase_words(text):
         last = match.group(3).title()
         return f"{first}{middle}{last}"
 
+    # Change "OPERATOR" to "Operator"
+    text = re.sub(r'\bOPERATOR\b', 'Operator', text)
+    
     return re.sub(pattern, convert_to_title, text)
 
-def normalize_punctuation(text):
-    """Move punctuation outside of bold tags."""
-
-    # Remove bold tags if they are around punctuation
-    text = re.sub(r'<BOLD->\s*([:,.;?!])\s*<-BOLD>', r' \1 ', text)
-
-    # Remove any tags between words and punctuation
-    text = re.sub(r'(\w+)\s*<[^>]+>\s*([,.;:!?])', r'\1\2', text)
-
-    # Manage colons
-    # text = re.sub(r'(\w):', r'\1 :', text) # add space before colon
-    text = re.sub(r':(\w)', r': \1', text)  # add space after colon
-    text = re.sub(r'(\w+)\s+:', r'\1:', text)  # remove space before colon
-
-    # Strip leading/trailing whitespace
-    text = text.strip()
-    
-    return text
-
-def tags_clean_up(text):
-    """Clean up text by removing formatting tags and punctuation."""
-
-    # Consolidate multiple formatting tags
-    text = re.sub('<-BOLD> <BOLD->', '', text)
-    text = re.sub('<-ITALIC> <ITALIC->', '', text)
-    text = re.sub('<-UNDERLINE> <UNDERLINE->', '', text)
-
-    # Consolidate <MULTI_SPACE> <LINE_BREAK> into <PARAGRAPH_BREAK>
-    text = re.sub(r'<MULTI_SPACE> <LINE_BREAK>', '<PARAGRAPH_BREAK>', text)
-    # text = re.sub(r'<LINE_BREAK> <MULTI_SPACE>', '<PARAGRAPH_BREAK>', text)
-
-    # when there are two or more <TAGS> in a row, keep only one
-    text = re.sub(r'(<PARAGRAPH_BREAK>\s*){2,}', r'\1', text)
-    text = re.sub(r'(<MULTI_SPACE>\s*){2,}', r'\1', text)
-    text = re.sub(r'(<LINE_BREAK>\s*){2,}', r'\1', text)
-    
-    return text
-
-def clean_text(text):
+# Replace special characters, add TEXT tags
+def add_text_tags(text):
     """Clean text by handling encoding issues and removing problematic characters."""
     # Handle encoding issues with round-trip conversion
     try:
@@ -156,7 +228,7 @@ def clean_text(text):
         '\u00a9': '',  # copyright symbol
         '\u00a0': ' <NBSP> ',  # non-breaking space
         '\f': ' <PAGEBREAK> ',  # form feed / page break
-        '\n': ' <LINE_BREAK> ',  # line break
+        '\n': ' <TAG_2> ',  # line break
         '\t': ' <TAB> ',  # tab
     }
 
@@ -165,74 +237,49 @@ def clean_text(text):
         text = text.replace(char, replacement)
 
     # Preserve multiple spaces for regex pattern identification
-    text = re.sub(r'[ ]{2,}', ' <MULTI_SPACE> ', text)
-
-    # Pattern for spaced headers
-    pattern = r'(?<!\S)([A-Z](\s+)[A-Z](\s+[A-Z])+)(?!\S)'
-
-    def fix_spaced_header(match):
-        # Get the original text with spaces
-        spaced_text = match.group(0)
-
-        # First approach: Split by multiple spaces (2 or more)
-        if re.search(r'\s{2,}', spaced_text):
-            words = re.split(r'\s{2,}', spaced_text)
-            condensed_words = [re.sub(r'\s+', '', word) for word in words]
-            return ' '.join(condensed_words)
-        else:
-            # For headers with single spaces between letters but no clear word boundaries
-            # Try to identify common words or insert spaces at logical points
-            # Example: "Q 2 2 0 2 3 E A R N I N G S" -> "Q2 2023 EARNINGS"
-            condensed = re.sub(r'\s+', '', spaced_text)
-
-            # Insert spaces before uppercase letters that follow lowercase or numbers
-            # This helps separate words like "EarningsCall" -> "Earnings Call"
-            spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
-
-            # For dates like "2 0 2 3", keep them together
-            # This is a simplified approach and might need adjustment
-            spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)
-
-            return spaced
-
-    text = re.sub(pattern, fix_spaced_header, text)
-
-    # Remove repeating punctuation characters
-    # Handle cases where punctuation is separated by spaces
-    text = re.sub(r'([.!?](\s+))\1{2,}', '', text)
+    text = re.sub(r'[ ]{2,}', ' <TAG_3> ', text)
     
-    # Handle continuous repeating punctuation (like "............")
-    text = re.sub(r'([.!?])\1{2,}', '', text)
-    
-    # Handle cases where dots are mixed with spaces in long sequences
-    text = re.sub(r'([.]\s*){2,}', '', text)
+    # Consolidate <TAG_3> <TAG_2> into <TAG_4>
+    text = re.sub(r'<TAG_3>\s*<TAG_2>', ' <TAG_4> ', text)
+    # text = re.sub(r'<TAG_2> <TAG_3>', '<TAG_4>', text) # optional
+
+    # Ensure single space between tags
+    text = re.sub(r'>\s+<', '> <', text)
+    text = re.sub(r'><', '> <', text)
+
+    # Normalize spaces
+    text = re.sub(r'\s+', ' ', text).strip()
 
     # Strip leading/trailing whitespace
-    text = text.strip()
+    # text = text.strip()
 
     return text
 
-def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
+# Extract text with formatting from PDF, including text from images
+def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
     """Extract text with formatting from PDF, including text from images."""
 
     doc = pymupdf.open(pdf_path)
     full_text = ""
 
+    # Get cleaning parameters
     cleaning_params = get_cleaning_parameters(config_data)
     keep_bold_tags = cleaning_params["keep_bold_tags"]
     keep_italics_tags = cleaning_params["keep_italics_tags"]
     keep_underline_tags = cleaning_params["keep_underline_tags"]
-    keep_capitalization_tags = cleaning_params["keep_capitalization_tags"]
+    # keep_capitalization_tags = cleaning_params["keep_capitalization_tags"]
     
     for page_num in range(doc.page_count):
         page = doc[page_num]
 
         # Get all text including from images
-        complete_text = page.get_text("text")
+        page_text = page.get_text("text")
 
-        # Pre-tagging cleanup
-        complete_text = clean_text(complete_text) # remove problematic characters and normalize spaces
-        complete_text = re.sub(r'\s+', ' ', complete_text).strip() # remove extra spaces
+        # 1st step: initial cleanup and TEXT tagging
+        page_text = add_text_tags(page_text)  # initial cleanup and TEXT tagging
+        page_text = optimize_text_tags(page_text) # optimize text tags
+        page_text = format_spaced_headers(page_text) # format spaced headers
+        page_text = remove_repeating_punctuation(page_text) # remove repeating punctuation
         
         # Get text with formatting information
         page_dict = page.get_text("dict")
@@ -271,10 +318,10 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
                         if is_bold or is_italic or is_underline:
                             formatted_blocks[text] = (is_bold, is_italic, is_underline)
 
-        # Apply tags to the complete text
+        # 2nd step: apply tags to the page text
         for text, (is_bold, is_italic, is_underline) in formatted_blocks.items():
             # Try to find and replace exact text
-            if text in complete_text:
+            if text in page_text:
                 formatted_text = text
                 if keep_bold_tags and is_bold:
                     formatted_text = f" <BOLD-> {formatted_text} <-BOLD> "
@@ -282,16 +329,14 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
                     formatted_text = f" <ITALIC-> {formatted_text} <-ITALIC> "
                 if keep_underline_tags and is_underline:
                     formatted_text = f" <UNDERLINE-> {formatted_text} <-UNDERLINE> "
-                complete_text = complete_text.replace(text, formatted_text)
+                page_text = page_text.replace(text, formatted_text)
 
-        # Post-tagging cleanup      
-        complete_text = normalize_adjacent_uppercase_words(complete_text) # bring all names into title case
-        complete_text = normalize_punctuation(complete_text) # normalize punctuation
-        complete_text = tags_clean_up(complete_text) # remove duplicate tags and remove punctuation from bold tags
-        complete_text = re.sub(r'\s+', ' ', complete_text).strip() # remove extra spaces
+        # 3rd step: post-tagging cleanup      
+        page_text = optimize_word_tags(page_text) # optimize word tags
+        page_text = normalize_punctuation(page_text) # normalize punctuation
+        page_text = normalize_adjacent_uppercase_words(page_text)  # bring all names into title case
 
-        page_text = complete_text
-
+        # Add page with page break to full text
         if page_text:
             full_text += page_text + "\n<PAGE_BREAK>\n"
         else:
@@ -314,109 +359,196 @@ def extract_text_with_formatting(pdf_path, config_data, debug_mode=False):
 
 ### SPEAKER ATTRIBUTION EXTRACTION USING LLM ###
 
-def API_call(text, config_data, debug_mode=False):
+# Extract potential speaker names using SpaCy PERSON entities to support LLM extraction
+def get_spacy_person_tags(text, nlp, config_data, debug_mode=False):
+    # Process the text with SpaCy
+    doc = nlp(text)
+
+    # Extract all potential speaker names (PERSON entities)
+    potential_speakers = []
+    potential_attributions = []
+    spacy_patterns = ""
+
+    for ent in doc.ents:
+        if ent.label_ == "PERSON":
+            start_char = max(0, ent.start_char - 2)
+            name = text[start_char:ent.end_char]
+
+            potential_speakers.append({
+                "name": name,
+                "start": start_char,
+                "end": ent.end_char
+            })
+
+    formatting_tags = ["<TAG_2>", "<TAG_4>", "<TAG_3>", "<BOLD->"]
+    punctuation_marks = [":", " -", ",", ">"]
+    
+    for speaker in potential_speakers:
+        # Get pre- and post-context for finding attribution start and end
+        pre_context = text[max(0, speaker["start"] - 15):speaker["start"]]
+        post_context = text[speaker["end"]:min(len(text), speaker["end"] + 15)]
+        
+        has_tag_before = any(tag in pre_context for tag in formatting_tags)
+
+        if has_tag_before:
+            start_idx = speaker["start"]
+            for tag in formatting_tags:
+                tag_pos = pre_context.rfind(tag)
+                if tag_pos != -1: # if tag is found in pre-context
+                    start_idx = speaker["start"] - (len(pre_context) - tag_pos)
+                    break
+
+            # Find the end index, looking for colon
+            end_idx = speaker["end"]
+            for mark in punctuation_marks:
+                mark_pos = post_context.find(mark)
+                if mark_pos != -1: # if punctuation mark is found in post-context
+                    potential_end = speaker["end"] + mark_pos + 1  # Include the punctuation mark
+                    if end_idx == speaker["end"] or potential_end < end_idx:  # Take the earliest punctuation
+                        end_idx = potential_end
+                        break
+
+            potential_attribution = text[start_idx:end_idx]
+            potential_attributions.append(potential_attribution)
+
+    for i, attr in enumerate(potential_attributions):
+        spacy_patterns += f"Pattern {i+1}: {attr}\n"
+        context_start = max(0, text.find(attr) - 10)
+        context_end = min(len(text), text.find(attr) + len(attr) + 10)
+        context = text[context_start:context_end]
+        spacy_patterns += f"Context: \"{context}\"\n\n"
+        
+    if debug_mode:
+        print(f"Found {len(potential_speakers)} potential speakers")
+        print(f"Extracted {len(potential_attributions)} potential attributions")
+
+        diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]
+        if not os.path.exists(diagnostics_folder):
+            os.makedirs(diagnostics_folder)
+            print(f"Created directory: {diagnostics_folder}")
+        file_path = os.path.join(diagnostics_folder, 'spacy_patterns.txt')
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(str(spacy_patterns))
+
+    return potential_speakers, potential_attributions, spacy_patterns
+
+# API call to extract speaker attributions
+def API_call(text, spacy_patterns, config_data, debug_mode=False):
     # Construct the prompt according to the specified format
     prompt = f"""User: You are an AI assistant specialized in extracting speaker attributions from earning call transcripts.
 
     <goal>
-    Extract all variations of speaker attributions with formatting tags and call details from the transcript.    
+    Extract all speaker attributions and call details from the transcript.    
     </goal>
 
     Here is the transcript to analyze:
     <transcript>
     {text}
     </transcript>
-    
-    <task>
+
+    Here are the potential speaker attributions extracted by SpaCy:
+    <spacy_suggestions>
+    {spacy_patterns}
+    </spacy_suggestions>
+
+    <instructions>
     Follow these step by step instructions:
-    Step 1: Find the names of all call participants, including their variations.
+    Step 1: Find the names of all call participants, including variations and misspellings. Use the spacy suggestions to help you.
     Step 2: For each participant, find their job title and companies, including variations.
     Step 3: Go through the whole text in small overlapping chunks to idenitify all variants of speaker attributions including leading and tailing tags, names, titles and companies (if available), punctuation marks.
-    Step 4. Go throught the whole text paragraph by paragraph to idenitify speaker attributions that may appear in the middle, end, beginning of the paragraph.
+    Step 4. For each speaker with a single attribution check again for other attributions with different formatting.
     Step 5. Identify call details like bank name, call date and reporting period.
-    Step 6. Identify header and footer patterns
-    Step 7. Return results as a json object
-    </task>
+    Step 6. Identify header and footer patterns.
+    Step 7. Return results as a json object.
+    </instructions>
 
     <formatting_tags>
     Formatting tags should be treated as text and should be added to the attribution.
-    - Line breaks are marked as <LINE_BREAK>
-    - Bold text is marked as <BOLD-> [speaker attribution or text or punctuation] <-BOLD>
-    - Multispace is marked as <MULTI_SPACE>
-    - Paragraph break is marked as <PARAGRAPH_BREAK>
+    - Bold text is surrounded by <BOLD-> [speaker attribution or text or punctuation] <-BOLD>
+    - Line breaks are marked as <TAG_2>
+    - Paragraph breaks are marked as <TAG_4>
+    - Multispaces are marked as <TAG_3>
     </formatting_tags>
 
     <attribution_description>
-    The speaker attribution includes several elements and always follows this order:
-    1. Always starts with one or two formatting tags.
-    2. Always includes [Speaker Name and Surname] or [Name, Middle Name Initial and Surname].
-    3. Sometimes may include [only job title], [only company], [job title and company] separated from the speaker name and from each other by a punctuation mark or a formatting tag
-    4. Always ends with a punctuation mark or a formatting tag.
-    5. Never includes the text of the speech of the speaker.
+    The speaker attribution :
+    1. There are usually two or more variants of the attribution formats for the same speaker. Always include all variants in the output.
+    2. Attribution must start with a leading formatting tag like <TAG_2> or <BOLD-> or a combination of tags.
+    3. Attribution includes one of the following:
+        a) [Speaker Name and Surname] or [Name, Middle Name Initial and Surname]
+        b) [Speaker Name and Surname] or [Name, Middle Name Initial and Surname], followed by a [job title], [company], or [job title and company]
+    4. The job title and company, if present, can be separated from the speaker name and from each other by a punctuation mark like a colon or a dash, a formatting tag like <BOLD-> or <TAG_2> or <TAG_2>, or a combination.
+    5. Attribution must end with a punctuation mark like a colon or a dash, a formatting tag like <-BOLD> or <TAG_2>, or both.
+    6. Attribution never includes the text of the speech of the speaker.
     </attribution_description>
     
     <attribution_search_guidelines>
     Guidelines for searching for speaker attribution:
-    - IMPORTANT: always check the WHOLE transcript from the beginning to the end and look for attributions anywhere in paragraphs, particularly after sentence endings.
-    - IMPORTANT: alwayds include ALL attributions variations even if minor for EVERY name variation of EACH speaker.
-    - Attributions come in a variety of formats and are inconsistent within the same transcript.
-    - Always check variations of leading and trailing formatting tags and punctuation marks to identify the speaker attribution.
-    - Look for text segments anywhere in paragraphs, both at the beginning and at the end of paragraphs, particularly after sentence endings.   
+    - Always check the whole transcript from the beginning to the end.
+    - Always look for attributions everywhere in paragraphs, both at the beginning, middle and at the end of paragraphs, particularly after sentence endings.
+    - Always include all variations of attributions for each speaker even if the difference is in one character.   
     - Pay attention to the job title and company name variations.
-    - After speaker attribution there is always a text withthe speaker's speech.
+    - Speaker attributions always alternate with the speaker's speech.
     - Speaker attributions cannot appear next to each other. If they do, they are not speaker attributions. There should always be a speech between attributions.
-    - There cannot be two consecutive speeches from the same speaker.
-    - Attributions for operator should always contain the word "Operator" and variations of leading and trailing formatting tags.
-    
-    Here are potential variations in speaker's name, job title and company formatting:
-    - can have spelling variations in different parts of the transcript, including with/without middle initials, abbreviated names, inconsistent use of punctuation. 
-    - can be in normal, bold, italic, underlined text, upper and title case.
-    - can include punctuations marks like a dash, a colon, a period, an apostrophe, a a special symbol, formatting tags, or a combination of these.
-    - cannot be separated by a text segment that is not a formatting tag.
-    - can be followed by a punctuation and can be separated from it by a formatting tag or a space.
+    - If two adjacent speeches are from the same speaker, then there must be an attribution for another speaker between them. Find it.
+    - All variants of operator attibutions should always contain the word "Operator" and variations of leading and trailing formatting tags.
+    - Always include ALL attributions variants even if minor.
     
     Additionally:
     - If speaker's name is separated from the job title or company by a text segment that is not a formatting tag, then only speaker name should be a part of attribution.
     - If speaker's name is followed by a text segment that is not a formatting tag, then only speaker name should be a part of attribution.
     </attribution_search_guidelines>
-   
-    IMPORTANT: ALL variations of the attribution for all speakers should be included in the output.
-    <examples>    
-    Basic Speaker Attribution in different formats:
-    * "(attribution begins here) <PARAGRAPH_BREAK> John Smith: (speaker text begins here) Hello everyone, thank you for joining today's call."
-    * "(attribution begins here) <PARAGRAPH_BREAK> John Smith <LINE_BREAK> (speaker text begins here) Hello everyone, thank you for joining today's call."
-    * "(attribution begins here) <LINE_BREAK> <BOLD-> Mary Johnson : <-BOLD> (speaker text begins here) Thank you, John. I'd like to present our quarterly results."
-    * "(attribution begins here) <LINE_BREAK> <BOLD-> ROBERT JONES <-BOLD> - CEO, TechCorp: (speaker text begins here) We're pleased to announce our newest product line."
-    * "(attribution begins here) <LINE_BREAK> <BOLD-> Sarah Williams, CFO: <-BOLD> (speaker text begins here) The financial outlook remains strong despite market challenges."
-    * "(attribution begins here) <LINE_BREAK> <BOLD-> Thomas O'Hara • Senior VP: <-BOLD> (speaker text begins here) The merger will be finalized next month."
-    * "(attribution begins here) <PARAGRAPH_BREAK> Tom O'Hara <PARAGRAPH_BREAK> (speaker text begins here) As I previously stated, we expect synergies to be realized by Q4."
     
-    Inconsistent leading tags for the same speaker:
-    * "<LINE_BREAK> <LINE_BREAK> Thomas O'Hara:"
-    * "<LINE_BREAK> <BOLD-> Thomas O'Hara:"
-    * "<PARAGRAPH_BREAK> Thomas O'Hara:"
-    in this case all three should be included in the output.
+    <examples>    
+    Examples of attributions that contain speaker name only:
+    * "(attribution starts) <TAG_2> Name Surname (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_4> Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <BOLD-> Name Surname <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <BOLD-> Name Surname: <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Name Surname <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
+    If the same speaker has varios attributions, then all attributions should be included into the output.
 
-    Inconsistent leading and trailing tags for the operator:
-    * "<PARAGRAPH_BREAK> OPERATOR: <MULTI_SPACE>"
-    * "<PARAGRAPH_BREAK> <BOLD-> OPERATOR: <-BOLD>"
+    Examples of attributions that contain speaker name with job title, company, or job title and company:
+    * "(attribution starts) <BOLD-> Name Surname - Company - Job Title <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <BOLD-> Name Surname <-BOLD> - CEO, TechCorp: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> <BOLD-> Name Surname, CFO: <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Name Surname • Senior VP: <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
+
+    Example of complex attributions with multiple tags and punctuation:
+    * "(attribution starts) Jamie Dimon <TAG_3> <TAG_2> Chairman & Chief Executive Officer, JPMorgan Chase & Co. <TAG_3><TAG_2> (attribution ends)"
+    
+    There are often multiple attribution formatting variations of the same speaker, for example:
+    * "(attribution starts) <TAG_2> Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <BOLD-> Name Surname: <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <BOLD-> Name Surname <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Name Surname <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
+    In such cases all variants should be included in the output.
+
+    There are often multiple variations of the Operator attributions, for example:
+    * "<TAG_2> OPERATOR:"
+    * "<TAG_2> OPERATOR <TAG_2>"
+    * "<BOLD-> OPERATOR: <-BOLD>"
+    In such cases all variants should be included in the output.
     
     Spelling and Name Variations:
-    * "(attribution begins here) <PARAGRAPH_BREAK> Michael J. Thompson: <LINE_BREAK> (speaker text begins here) Our research team has made significant progress."
-    * "(attribution begins here) <PARAGRAPH_BREAK> Mike Thompson: <LINE_BREAK> (speaker text begins here) As I mentioned earlier, this breakthrough has been years in the making."
+    * "(attribution begins here) <TAG_4> Michael J. Thompson: <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
+    * "(attribution begins here) <TAG_4> Mike Thompson: <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
+    In such cases all variants should be included in the output.
     
-    Punctuation Inconsistencies:
-    * "(attribution begins here) <PARAGRAPH_BREAK> Dr. Jennifer Lee; Chief Scientific Officer: <LINE_BREAK> (speaker text begins here) The clinical trials show promising results."
-    * "(attribution begins here) <PARAGRAPH_BREAK> Dr. J. Lee: <LINE_BREAK> (speaker text begins here) These findings support our initial hypothesis about the treatment."
+    Job Title and Company Separation:
+    * "(attribution begins here) <TAG_4> Name Surname: <TAG_2> (attribution ends here) Thank you. I am (Job Title) and I'd like present our (Company Name) quarterly results."
+    In such cases only "<TAG_4> Name Surname: <TAG_2>" should be considered attribution because there is a text between the name and job title.
     
-    Job Title Separation:
-    * "(attribution begins here) <PARAGRAPH_BREAK> Amanda Chen: <LINE_BREAK> (speaker text begins here) I'm happy to share our (GlobalBrands) marketing strategy for the upcoming quarter." - Only "Amanda Chen" should be considered attribution.
-    
-    Case Sensitivity and Company Name Variations:
-    * "(attribution begins here) <PARAGRAPH_BREAK> MARK ROBERTSON (Google Cloud): <LINE_BREAK> (speaker text begins here) We're investing heavily in AI infrastructure."
-    * "(attribution begins here) <PARAGRAPH_BREAK> Mark Robertson (GCP): <LINE_BREAK> (speaker text begins here) The capabilities we're building will transform the industry."
+    Company Name Variations:
+    * "(attribution begins here) <TAG_2> Name Surname (Full company name) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
+    * "(attribution begins here) <TAG_2> Name Surname (Company name abbreviation) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
+    In such cases all variants should be included in the output.
     </examples>
 
+    REMEMBER: The output should include ALL variants of the attributions for every speaker.
+    
     Here's an example of the expected JSON structure (with generic placeholders):
     <jsonexample>
     {{
@@ -430,7 +562,7 @@ def API_call(text, config_data, debug_mode=False):
         "speaker_name_variants": ["John Doe", "Jon Doe", "John Do"],
         "speaker_title_variants": ["Chief Executive Officer", "CEO"],
         "speaker_company_variants": ["Example Bank", "Example Bank Inc.", "EB"],
-        "speaker_attributions": ["<LINE_BREAK> JOHN DOE:", "<LINE_BREAK> John Doe - CEO - Example Bank <LINE_BREAK>", "<LINE_BREAK> John Doe - EB - CEO <LINE_BREAK>"]
+        "speaker_attributions": ["<TAG_2> JOHN DOE:", "<BOLD-> John Doe - CEO - Example Bank <-BOLD>", "<TAG_2> John Doe - EB - CEO <TAG_2>"]
         }}
     ]
     }}
@@ -464,9 +596,9 @@ def API_call(text, config_data, debug_mode=False):
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            temperature=0,
-            top_p=0.5,
-            top_k=5
+            temperature=0.2,
+            top_p=0.8,
+            # top_k=20
         )
 
         # Get token counts from the API response and calculate cost
@@ -776,7 +908,7 @@ def clean_utterances(utterances: list, api_response: dict) -> list:
     # Remove header pattern from each utterance's text (not removing the whole utterance)
     header_pattern = api_response.get("header_pattern", None) if isinstance(api_response, dict) else None
     if header_pattern:  # Only process if header_pattern exists
-        cleaned_header_pattern = re.sub(r'<(?:LINE_BREAK|MULTI_SPACE|PARAGRAPH_BREAK|BOLD-|-BOLD)>', '', header_pattern)
+        cleaned_header_pattern = re.sub(r'<(?:TAG_2|TAG_3|TAG_4|BOLD-|-BOLD)>', '', header_pattern)
         for utterance in utterances:
             # Replace the matching pattern with an empty string, keeping the rest of the text
             cleaned_text = re.sub(cleaned_header_pattern, '', utterance['utterance'], flags=re.IGNORECASE)
@@ -788,7 +920,7 @@ def clean_utterances(utterances: list, api_response: dict) -> list:
     # Remove footer from all utterances
     footer_pattern = api_response.get("footer_pattern", None) if isinstance(api_response, dict) else None
     if footer_pattern:  # Only process if footer_pattern exists
-        cleaned_footer_pattern = re.sub(r'<(?:LINE_BREAK|MULTI_SPACE|PARAGRAPH_BREAK|BOLD-|-BOLD)>', '', footer_pattern)
+        cleaned_footer_pattern = re.sub(r'<(?:TAG_2|TAG_3|TAG_4|BOLD-|-BOLD)>', '', footer_pattern)
         for utterance in utterances:
             # Replace the matching pattern with an empty string, keeping the rest of the text
             cleaned_text = re.sub(cleaned_footer_pattern, '', utterance['utterance'], flags=re.IGNORECASE)
@@ -876,11 +1008,14 @@ def main():
 
     # Extract text from PDF
     print(f"Extracting text from {file_path}...")
-    full_text = extract_text_with_formatting(file_path, config_data, debug_mode)
+    full_text = text_processing_pipeline(file_path, config_data, debug_mode)
     
     # Make API call
     print("Sending text to API for analysis...")
-    api_response = API_call(full_text, config_data, debug_mode)
+    # nlp = spacy.load("en_core_web_trf")  # transformer model for better accuracy
+    nlp = spacy.load("en_core_web_sm")
+    potential_speakers, potential_attributions, spacy_patterns = get_spacy_person_tags(full_text, nlp, config_data, debug_mode)
+    api_response = API_call(full_text, spacy_patterns, config_data, debug_mode)
     
     # Check for errors in the API call result
     if "error" in api_response:

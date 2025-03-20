@@ -30,3 +30,8 @@ standardized_text - optional script outputs
 
 **Notes**:
 - Code requires anthropic API to be saved in .env file in the same folder
+
+**Next steps**:
+- Conversation structuring (e.g. by dialogue where question-answers are grouped by analyst)
+- Isolate multiple questions asked within the same analyst's utterance and align with specific parts of the bank response
+- Optimal chunking strategies, e.g. for RAG implementation, topic modelling etc.
