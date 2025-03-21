@@ -104,6 +104,9 @@ def optimize_text_tags(text):
     text = re.sub(r'<TAG_2>\s*[A-Za-z]\s*<TAG_2>', r' <TAG_2> ', text, flags=re.IGNORECASE)
     text = re.sub(r'<TAG_2>\s*(\d+)\s*<TAG_2>', r' <TAG_2>', text, flags=re.IGNORECASE)
     text = re.sub(r'<TAG_2>\s*[,.;:!?]\s*<TAG_2>', r' <TAG_2>', text, flags=re.IGNORECASE)
+    text = re.sub(r'<TAG_3>\s*[A-Za-z]\s*<TAG_3>', r' <TAG_3> ', text, flags=re.IGNORECASE)
+    text = re.sub(r'<TAG_3>\s*(\d+)\s*<TAG_3>', r' <TAG_3>', text, flags=re.IGNORECASE)
+    text = re.sub(r'<TAG_3>\s*[,.;:!?]\s*<TAG_3>', r' <TAG_3>', text, flags=re.IGNORECASE)
     text = re.sub(r'<TAG_4>\s*[A-Za-z]\s*<TAG_4>', r' <TAG_4> ', text, flags=re.IGNORECASE)
     text = re.sub(r'<TAG_4>\s*(\d+)\s*<TAG_4>', r' <TAG_4> ', text, flags=re.IGNORECASE)
 
@@ -129,8 +132,8 @@ def optimize_word_tags(text):
     
     # Optimize multiple WORD tags
     text = re.sub('<-BOLD>\s*<BOLD->', '', text)
-    text = re.sub('<-ITALIC>\s*<ITALIC->', '', text)
-    text = re.sub('<-UNDERLINE>\s*<UNDERLINE->', '', text)
+    #text = re.sub('<-ITALIC>\s*<ITALIC->', '', text)
+    #text = re.sub('<-UNDERLINE>\s*<UNDERLINE->', '', text)
 
     # Ensure single space between tags
     text = re.sub(r'>\s+<', '> <', text)
@@ -143,8 +146,8 @@ def optimize_word_tags(text):
 
 # Format spaced headers (from "Q 2 2 0 2 3 E A R N I N G S" to "Q2 2023 EARNINGS")
 def format_spaced_headers(text):
-    # Pattern to identify spaced headers - letters with spaces between them
-    spaced_header_pattern = r'(?<!\S)(?<!<)([A-Z](\s+[A-Z])+)(?![^<]*>)(?!\S)'
+    # Improved pattern to identify spaced headers - looks for sequences of 3+ uppercase letters with spaces
+    spaced_header_pattern = r'(?<!\S)(?<!<)(?<![\w-])([A-Z](?:\s+[A-Z]){2,})(?!\w)(?![^<]*>)(?!\S)'
 
     # Function to process each matched header
     def process_header(match):
@@ -160,10 +163,11 @@ def format_spaced_headers(text):
             condensed = re.sub(r'\s+', '', spaced_text)
 
             # Insert spaces before uppercase letters that follow lowercase or numbers
-            spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
+            #spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
 
             # For dates like "2 0 2 3", keep them together
-            spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)
+            # spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)
+            spaced = condensed # TEMPORARY
 
             return spaced
 
@@ -255,7 +259,29 @@ def add_text_tags(text):
 
     return text
 
-# Extract text with formatting from PDF, including text from images
+# Fix tag spacing
+def fix_tag_spacing(text):
+    """Fix tag spacing issues that commonly occur in Q/A sections"""
+    # Fix all TAG_# variations (TAG_2, TAG_3, TAG_4, etc.)
+    text = re.sub(r'<\s*T\s*A\s*G\s*_\s*(\d+)\s*>', r'<TAG_\1>', text)
+
+    # Fix BOLD tags
+    text = re.sub(r'<\s*B\s*O\s*L\s*D\s*-\s*>', r'<BOLD->', text)
+    text = re.sub(r'<\s*-\s*B\s*O\s*L\s*D\s*>', r'<-BOLD>', text)
+    return text
+
+# Check if a text span is a decorative marker (like large Q/A letters)
+def is_decorative_marker(span):
+    """Check if a text span is a decorative marker (like large Q/A letters)."""
+    # Check for characteristics of decorative Q/A markers
+    is_large_text = span.get("size", 0) > 20  # Q/A markers are typically very large
+    is_special_font = "Univers-Condensed" in str(span.get("font", ""))
+    is_single_letter = len(span.get("text", "").strip()) == 1
+    is_qa_letter = span.get("text", "").strip().upper() in ["Q", "A"]
+    
+    return is_large_text and is_special_font and is_single_letter and is_qa_letter
+
+# MAIN TEXT PROCESSING PIPELINE
 def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
     """Extract text with formatting from PDF, including text from images."""
 
@@ -267,82 +293,99 @@ def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
     keep_bold_tags = cleaning_params["keep_bold_tags"]
     keep_italics_tags = cleaning_params["keep_italics_tags"]
     keep_underline_tags = cleaning_params["keep_underline_tags"]
-    # keep_capitalization_tags = cleaning_params["keep_capitalization_tags"]
     
     for page_num in range(doc.page_count):
         page = doc[page_num]
+        page_text = ""
 
-        # Get all text including from images
-        page_text = page.get_text("text")
-
-        # 1st step: initial cleanup and TEXT tagging
-        page_text = add_text_tags(page_text)  # initial cleanup and TEXT tagging
-        page_text = optimize_text_tags(page_text) # optimize text tags
-        page_text = format_spaced_headers(page_text) # format spaced headers
-        page_text = remove_repeating_punctuation(page_text) # remove repeating punctuation
-        
-        # Get text with formatting information
+        # Get text with formatting information first
         page_dict = page.get_text("dict")
-        formatted_blocks = {}
-
-        # Process each block to capture formatting
+        
+        # Process each block to capture text while filtering decorative elements
         for block in page_dict["blocks"]:
             if block["type"] == 0:  # Text block
                 for line in block["lines"]:
+                    line_text = ""
                     for span in line["spans"]:
-                        # Get the text content
-                        text = span["text"]
-                        if not text.strip():
+                        # Skip decorative Q/A markers
+                        if is_decorative_marker(span):
                             continue
+                        line_text += span["text"]
+                    if line_text:
+                        page_text += line_text + " "
 
-                        # Check for formatting
-                        is_bold = False
-                        if "font" in span:
-                            is_bold = "bold" in span["font"].lower()
-                        if not is_bold and "flags" in span:
-                            is_bold = (span["flags"] & 2) > 0
-
-                        is_italic = False
-                        if "font" in span:
-                            is_italic = "italic" in span["font"].lower()
-                        if not is_italic and "flags" in span:
-                            is_italic = (span["flags"] & 4) > 0
-
-                        is_underline = False
-                        if "font" in span:
-                            is_underline = "underline" in span["font"].lower()
-                        if not is_underline and "flags" in span:
-                            is_underline = (span["flags"] & 8) > 0
-
-                        # Store formatting info for this text snippet
-                        if is_bold or is_italic or is_underline:
-                            formatted_blocks[text] = (is_bold, is_italic, is_underline)
-
-        # 2nd step: apply tags to the page text
-        for text, (is_bold, is_italic, is_underline) in formatted_blocks.items():
-            # Try to find and replace exact text
-            if text in page_text:
-                formatted_text = text
-                if keep_bold_tags and is_bold:
-                    formatted_text = f" <BOLD-> {formatted_text} <-BOLD> "
-                if keep_italics_tags and is_italic:
-                    formatted_text = f" <ITALIC-> {formatted_text} <-ITALIC> "
-                if keep_underline_tags and is_underline:
-                    formatted_text = f" <UNDERLINE-> {formatted_text} <-UNDERLINE> "
-                page_text = page_text.replace(text, formatted_text)
-
-        # 3rd step: post-tagging cleanup      
-        page_text = optimize_word_tags(page_text) # optimize word tags
-        page_text = normalize_punctuation(page_text) # normalize punctuation
-        page_text = normalize_adjacent_uppercase_words(page_text)  # bring all names into title case
-
-        # Add page with page break to full text
+        # Now process the filtered text
         if page_text:
+            # 1st step: initial cleanup and TEXT tagging
+            page_text = add_text_tags(page_text)  # initial cleanup and TEXT tagging
+            page_text = fix_tag_spacing(page_text)  # fix tag spacing
+            page_text = optimize_text_tags(page_text) # optimize text tags
+            page_text = remove_repeating_punctuation(page_text) # remove repeating punctuation
+            
+            # Get text with formatting information
+            formatted_blocks = {}
+
+            # Process each block to capture formatting
+            for block in page_dict["blocks"]:
+                if block["type"] == 0:  # Text block
+                    for line in block["lines"]:
+                        for span in line["spans"]:
+                            # Skip decorative markers
+                            if is_decorative_marker(span):
+                                continue
+                                
+                            # Get the text content
+                            text = span["text"]
+                            if not text.strip():
+                                continue
+
+                            # Check for formatting
+                            is_bold = False
+                            if "font" in span:
+                                is_bold = "bold" in span["font"].lower()
+                            if not is_bold and "flags" in span:
+                                is_bold = (span["flags"] & 2) > 0
+
+                            is_italic = False
+                            if "font" in span:
+                                is_italic = "italic" in span["font"].lower()
+                            if not is_italic and "flags" in span:
+                                is_italic = (span["flags"] & 4) > 0
+
+                            is_underline = False
+                            if "font" in span:
+                                is_underline = "underline" in span["font"].lower()
+                            if not is_underline and "flags" in span:
+                                is_underline = (span["flags"] & 8) > 0
+
+                            # Store formatting info for this text snippet
+                            if is_bold or is_italic or is_underline:
+                                formatted_blocks[text] = (is_bold, is_italic, is_underline)
+
+            # 2nd step: apply tags to the page text
+            for text, (is_bold, is_italic, is_underline) in formatted_blocks.items():
+                # Try to find and replace exact text
+                if text in page_text:
+                    formatted_text = text
+                    if keep_bold_tags and is_bold:
+                        formatted_text = f" <BOLD-> {formatted_text} <-BOLD> "
+                    if keep_italics_tags and is_italic:
+                        formatted_text = f" <ITALIC-> {formatted_text} <-ITALIC> "
+                    if keep_underline_tags and is_underline:
+                        formatted_text = f" <UNDERLINE-> {formatted_text} <-UNDERLINE> "
+                    page_text = page_text.replace(text, formatted_text)
+
+            # 3rd step: post-tagging cleanup      
+            page_text = optimize_word_tags(page_text) # optimize word tags
+            page_text = normalize_punctuation(page_text) # normalize punctuation
+            page_text = normalize_adjacent_uppercase_words(page_text)  # bring all names into title case
+            page_text = fix_tag_spacing(page_text)  # fix tag spacing again after all transformations
+
+            # Add page with page break to full text
             full_text += page_text + "\n<PAGE_BREAK>\n"
         else:
             print(f"Warning: No text extracted from page {page_num + 1} of {pdf_path}")
 
-    
     if debug_mode:
         diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]
         if not os.path.exists(diagnostics_folder):
@@ -380,7 +423,7 @@ def get_spacy_person_tags(text, nlp, config_data, debug_mode=False):
                 "end": ent.end_char
             })
 
-    formatting_tags = ["<TAG_2>", "<TAG_4>", "<TAG_3>", "<BOLD->"]
+    formatting_tags = ["<TAG_2>", "<TAG_3>", "<TAG_4>", "<BOLD->"]
     punctuation_marks = [":", " -", ",", ">"]
     
     for speaker in potential_speakers:
@@ -432,8 +475,22 @@ def get_spacy_person_tags(text, nlp, config_data, debug_mode=False):
 
     return potential_speakers, potential_attributions, spacy_patterns
 
+# Extract potential attributions for "Operator" with preceeding formatting tags
+def get_operator_attributions(text):
+    operator_pattern = r'(<[^>]+>)+\s*Operator'
+    operator_attributions = ""
+
+    for match in re.finditer(operator_pattern, text):
+        operator_with_tags = match.group(0)
+        operator_attributions += f"Operator with tags: {operator_with_tags}\n"
+
+    # remove duplicates
+    operator_attributions = list(set(operator_attributions))
+
+    return operator_attributions
+
 # API call to extract speaker attributions
-def API_call(text, spacy_patterns, config_data, debug_mode=False):
+def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mode=False):
     # Construct the prompt according to the specified format
     prompt = f"""User: You are an AI assistant specialized in extracting speaker attributions from earning call transcripts.
 
@@ -450,6 +507,11 @@ def API_call(text, spacy_patterns, config_data, debug_mode=False):
     <spacy_suggestions>
     {spacy_patterns}
     </spacy_suggestions>
+
+    Here are the potential operator attributions:
+    <operator_suggestions>
+    {operator_attributions}
+    </operator_suggestions>
 
     <instructions>
     Follow these step by step instructions:
@@ -727,6 +789,36 @@ def remove_unused_sections(metadata_file: str, debug_mode: bool) -> str:
 
     return selected_text
 """
+# De-duplicate leading tags in attributions (from <TAG_1> <TAG_1> to <TAG_1>)
+def remove_leading_duplicate_tags(attribution):
+    # Pattern to match any opening tag
+    tag_pattern = r'<[A-Z_0-9]+>'
+
+    # Find all tags at the beginning of the string
+    match = re.match(r'^(\s*(' + tag_pattern + r'\s*)+)', attribution)
+
+    if match:
+        # Get the entire matched section (all leading tags)
+        leading_tags_section = match.group(1)
+
+        # Find all individual tags in this section
+        tags = re.findall(tag_pattern, leading_tags_section)
+
+        # Remove duplicates while preserving order
+        unique_tags = []
+        for tag in tags:
+            if not unique_tags or tag != unique_tags[-1]:
+                unique_tags.append(tag)
+
+        # Create the new leading section with single space between tags
+        new_leading_section = ' '.join(unique_tags) + ' '
+
+        # Replace the original leading section with the deduplicated one
+        result = attribution.replace(leading_tags_section, new_leading_section, 1)
+        return result
+
+    return attribution
+
 
 def get_utterances(text, api_response, config_data, debug_mode=False):
     """
@@ -792,6 +884,12 @@ def get_utterances(text, api_response, config_data, debug_mode=False):
         
     if not all_attributions:
         return []
+
+    # De-duplicate leading tags in attributions
+    all_attributions = [{
+        "speaker_name": attr["speaker_name"],
+        "attribution": remove_leading_duplicate_tags(attr["attribution"])
+    } for attr in all_attributions]
     
     # Find all matches for all attributions directly in the text
     all_matches = []
@@ -1012,10 +1110,11 @@ def main():
     
     # Make API call
     print("Sending text to API for analysis...")
-    # nlp = spacy.load("en_core_web_trf")  # transformer model for better accuracy
+    # nlp = spacy.load("en_core_web_trf")  # optional: transformer model for better accuracy
     nlp = spacy.load("en_core_web_sm")
     potential_speakers, potential_attributions, spacy_patterns = get_spacy_person_tags(full_text, nlp, config_data, debug_mode)
-    api_response = API_call(full_text, spacy_patterns, config_data, debug_mode)
+    operator_attributions = get_operator_attributions(full_text)
+    api_response = API_call(full_text, spacy_patterns, operator_attributions, config_data, debug_mode)
     
     # Check for errors in the API call result
     if "error" in api_response:

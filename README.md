@@ -12,7 +12,8 @@ A demonstration of a workflow to transform earning call transcripts into a json 
 
 **Key Steps**:
 - Normalization of text imported from PDF
-- Enrichment of the text with formatting tags to help identifying speaker attributions
+- Enrichment of the text with non-semantic formatting tags to help finding speaker attributions
+- Collecting spacy PERSON tags to create additional focus for LLM
 - API call to LLM to extract call specs and attributions
 - Creation of a json obejct with clean representation of speakers and utterances
 - Optional: recreate the standardized text file with the content of the json file
@@ -32,6 +33,6 @@ standardized_text - optional script outputs
 - Code requires anthropic API to be saved in .env file in the same folder
 
 **Next steps**:
-- Conversation structuring (e.g. by dialogue where question-answers are grouped by analyst)
+- Structuring (e.g. by dialogue where question-answers are grouped by analyst)
 - Isolate multiple questions asked within the same analyst's utterance and align with specific parts of the bank response
 - Optimal chunking strategies, e.g. for RAG implementation, topic modelling etc.
