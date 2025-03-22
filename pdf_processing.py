@@ -1,6 +1,8 @@
 ### IMPORTS ###
 
 import spacy
+from spacy.matcher import Matcher
+from spacy.symbols import ORTH
 import argparse
 import pymupdf
 import anthropic
@@ -13,7 +15,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-### CONFIGURATION ###
+### 1. CONFIGURATION ###
 
 def load_config(config_path="config.json"):
     """
@@ -78,7 +80,7 @@ def get_cleaning_parameters(config_data):
     }
 
 
-### PDF IMPORT AND TEXT PRE-PROCESSING ###
+### 2. PDF IMPORT AND TEXT PRE-PROCESSING ###
 
 # Move punctuation outside of bold tags and adjust colons from "word :" to "word: "
 def normalize_punctuation(text):
@@ -103,10 +105,10 @@ def optimize_text_tags(text):
     # Remove TEXT tags with single letter, number or punctuation (from "<TAG> [char] <TAG>" to "<TAG>")
     text = re.sub(r'<TAG_2>\s*[A-Za-z]\s*<TAG_2>', r' <TAG_2> ', text, flags=re.IGNORECASE)
     text = re.sub(r'<TAG_2>\s*(\d+)\s*<TAG_2>', r' <TAG_2>', text, flags=re.IGNORECASE)
-    text = re.sub(r'<TAG_2>\s*[,.;:!?]\s*<TAG_2>', r' <TAG_2>', text, flags=re.IGNORECASE)
+    text = re.sub(r'<TAG_2>\s*[,.;:!?-]\s*<TAG_2>', r' <TAG_2>', text, flags=re.IGNORECASE)
     text = re.sub(r'<TAG_3>\s*[A-Za-z]\s*<TAG_3>', r' <TAG_3> ', text, flags=re.IGNORECASE)
     text = re.sub(r'<TAG_3>\s*(\d+)\s*<TAG_3>', r' <TAG_3>', text, flags=re.IGNORECASE)
-    text = re.sub(r'<TAG_3>\s*[,.;:!?]\s*<TAG_3>', r' <TAG_3>', text, flags=re.IGNORECASE)
+    text = re.sub(r'<TAG_3>\s*[,.;:!?-]\s*<TAG_3>', r' <TAG_3>', text, flags=re.IGNORECASE)
     text = re.sub(r'<TAG_4>\s*[A-Za-z]\s*<TAG_4>', r' <TAG_4> ', text, flags=re.IGNORECASE)
     text = re.sub(r'<TAG_4>\s*(\d+)\s*<TAG_4>', r' <TAG_4> ', text, flags=re.IGNORECASE)
 
@@ -163,11 +165,10 @@ def format_spaced_headers(text):
             condensed = re.sub(r'\s+', '', spaced_text)
 
             # Insert spaces before uppercase letters that follow lowercase or numbers
-            #spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
+            spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
 
             # For dates like "2 0 2 3", keep them together
-            # spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)
-            spaced = condensed # TEMPORARY
+            spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)           
 
             return spaced
 
@@ -259,7 +260,7 @@ def add_text_tags(text):
 
     return text
 
-# Fix tag spacing
+# Fix tag spacing (optional use only if you see issues with tag spacing)
 def fix_tag_spacing(text):
     """Fix tag spacing issues that commonly occur in Q/A sections"""
     # Fix all TAG_# variations (TAG_2, TAG_3, TAG_4, etc.)
@@ -287,7 +288,9 @@ def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
 
     doc = pymupdf.open(pdf_path)
     full_text = ""
-
+    interim_text_1 = ""
+    interim_text_2 = ""
+    
     # Get cleaning parameters
     cleaning_params = get_cleaning_parameters(config_data)
     keep_bold_tags = cleaning_params["keep_bold_tags"]
@@ -296,7 +299,7 @@ def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
     
     for page_num in range(doc.page_count):
         page = doc[page_num]
-        page_text = ""
+        page_text = ""        
 
         # Get text with formatting information first
         page_dict = page.get_text("dict")
@@ -318,7 +321,8 @@ def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
         if page_text:
             # 1st step: initial cleanup and TEXT tagging
             page_text = add_text_tags(page_text)  # initial cleanup and TEXT tagging
-            page_text = fix_tag_spacing(page_text)  # fix tag spacing
+            interim_text_1 += page_text + "\n<PAGE_BREAK>\n"
+            # page_text = fix_tag_spacing(page_text)  # optional: enforcing fix for tag spacing after adding text tags
             page_text = optimize_text_tags(page_text) # optimize text tags
             page_text = remove_repeating_punctuation(page_text) # remove repeating punctuation
             
@@ -375,11 +379,12 @@ def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
                         formatted_text = f" <UNDERLINE-> {formatted_text} <-UNDERLINE> "
                     page_text = page_text.replace(text, formatted_text)
 
-            # 3rd step: post-tagging cleanup      
+            # 3rd step: post-tagging cleanup
+            interim_text_2 += page_text + "\n<PAGE_BREAK>\n"
             page_text = optimize_word_tags(page_text) # optimize word tags
             page_text = normalize_punctuation(page_text) # normalize punctuation
             page_text = normalize_adjacent_uppercase_words(page_text)  # bring all names into title case
-            page_text = fix_tag_spacing(page_text)  # fix tag spacing again after all transformations
+            # page_text = fix_tag_spacing(page_text)  # optional: enforcing fix for tag spacing before final output
 
             # Add page with page break to full text
             full_text += page_text + "\n<PAGE_BREAK>\n"
@@ -391,27 +396,68 @@ def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
         if not os.path.exists(diagnostics_folder):
             os.makedirs(diagnostics_folder)
             print(f"Created directory: {diagnostics_folder}")
-        file_path = os.path.join(diagnostics_folder, 'extracted_text.txt')
+        file_path = os.path.join(diagnostics_folder, 'normalized_text.txt')
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(full_text)
         print(f"Formatted text saved to {file_path}")
+
+        # for diagnostics: saving text with text tags only and text with text and word tags before cleaning
+        file_path_interim_1 = os.path.join(diagnostics_folder, 'interim_text_1.txt')
+        with open(file_path_interim_1, 'w', encoding='utf-8') as f:
+            f.write(interim_text_1)
+        file_path_interim_2 = os.path.join(diagnostics_folder, 'interim_text_2.txt')
+        with open(file_path_interim_2, 'w', encoding='utf-8') as f:
+            f.write(interim_text_2)
 
     doc.close()
     return full_text
 
 
-### SPEAKER ATTRIBUTION EXTRACTION USING LLM ###
+### 3. EXTRACTING POTENTIAL SPEAKER ATTRIBUTIONS TO ENHANCE LLM ###
 
-# Extract potential speaker names using SpaCy PERSON entities to support LLM extraction
-def get_spacy_person_tags(text, nlp, config_data, debug_mode=False):
-    # Process the text with SpaCy
+# Helper function to extract context around a pattern
+def extract_pattern_context(text, pattern_text, context_chars=10):
+    """Extract surrounding context for a pattern in text."""
+    pattern_pos = text.find(pattern_text)
+    if pattern_pos == -1:
+        return "Not found in text"
+
+    context_start = max(0, pattern_pos - context_chars)
+    context_end = min(len(text), pattern_pos + len(pattern_text) + context_chars)
+    return text[context_start:context_end]
+
+# Helper function to format patterns with context
+def format_pattern_with_context(patterns, text):
+    """Format a list of patterns with their context into a string."""
+    formatted_output = ""
+    for i, pattern in enumerate(patterns):
+        formatted_output += f"Pattern {i+1}: {pattern}\n"
+        context = extract_pattern_context(text, pattern)
+        formatted_output += f"Context: \"{context}\"\n\n"
+    return formatted_output
+
+# Combined function to extract all potential speaker attributions
+def extract_speaker_attributions(text, nlp, config_data=None, debug_mode=False):
+    """
+    Extract potential speaker attributions using both SpaCy NER and custom matcher.
+    Returns both a list of unique attributions and a formatted string with context.
+    """
+    # Lists to collect all patterns
+    all_patterns = []
+    ner_patterns = []
+    matcher_patterns = []
+
+    # Add custom tags to SpaCy tokenizer
+    custom_tags = ["<TAG_2>", "<TAG_3>", "<TAG_4>", "<BOLD->", "<-BOLD>"]
+    for tag in custom_tags:
+        special_case = [{ORTH: tag}]
+        nlp.tokenizer.add_special_case(tag, special_case)
+    
+    # PART 1: Extract patterns using SpaCy NER
     doc = nlp(text)
-
-    # Extract all potential speaker names (PERSON entities)
     potential_speakers = []
-    potential_attributions = []
-    spacy_patterns = ""
 
+    # Get all PERSON entities
     for ent in doc.ents:
         if ent.label_ == "PERSON":
             start_char = max(0, ent.start_char - 2)
@@ -423,57 +469,105 @@ def get_spacy_person_tags(text, nlp, config_data, debug_mode=False):
                 "end": ent.end_char
             })
 
+    # Define tags and punctuation to look for
     formatting_tags = ["<TAG_2>", "<TAG_3>", "<TAG_4>", "<BOLD->"]
-    punctuation_marks = [":", " -", ",", ">"]
-    
-    for speaker in potential_speakers:
-        # Get pre- and post-context for finding attribution start and end
-        pre_context = text[max(0, speaker["start"] - 15):speaker["start"]]
-        post_context = text[speaker["end"]:min(len(text), speaker["end"] + 15)]
-        
-        has_tag_before = any(tag in pre_context for tag in formatting_tags)
+    punctuation_marks = [":", "-", ",", ">"]
 
-        if has_tag_before:
+    # Process each potential speaker
+    for speaker in potential_speakers:
+        pre_context = text[max(0, speaker["start"] - 10):speaker["start"]]
+        post_context = text[speaker["end"]:min(len(text), speaker["end"] + 15)]
+
+        if any(tag in pre_context for tag in formatting_tags):
+            # Find start position (first tag)
             start_idx = speaker["start"]
             for tag in formatting_tags:
                 tag_pos = pre_context.rfind(tag)
-                if tag_pos != -1: # if tag is found in pre-context
+                if tag_pos != -1:
                     start_idx = speaker["start"] - (len(pre_context) - tag_pos)
                     break
 
-            # Find the end index, looking for colon
+            # Find end position (first punctuation)
             end_idx = speaker["end"]
             for mark in punctuation_marks:
                 mark_pos = post_context.find(mark)
-                if mark_pos != -1: # if punctuation mark is found in post-context
-                    potential_end = speaker["end"] + mark_pos + 1  # Include the punctuation mark
-                    if end_idx == speaker["end"] or potential_end < end_idx:  # Take the earliest punctuation
+                if mark_pos != -1:
+                    potential_end = speaker["end"] + mark_pos + 1
+                    if end_idx == speaker["end"] or potential_end < end_idx:
                         end_idx = potential_end
                         break
 
-            potential_attribution = text[start_idx:end_idx]
-            potential_attributions.append(potential_attribution)
+            attribution = text[start_idx:end_idx]
+            if attribution and attribution not in ner_patterns:
+                ner_patterns.append(attribution)
+                all_patterns.append(attribution)
 
-    for i, attr in enumerate(potential_attributions):
-        spacy_patterns += f"Pattern {i+1}: {attr}\n"
-        context_start = max(0, text.find(attr) - 10)
-        context_end = min(len(text), text.find(attr) + len(attr) + 10)
-        context = text[context_start:context_end]
-        spacy_patterns += f"Context: \"{context}\"\n\n"
-        
-    if debug_mode:
-        print(f"Found {len(potential_speakers)} potential speakers")
-        print(f"Extracted {len(potential_attributions)} potential attributions")
+    # PART 2: Extract patterns using SpaCy matcher
+    matcher = Matcher(nlp.vocab)
+
+    # Pattern 1: <TAG> Name Surname <TAG>
+    matcher.add("TAG_NAME_SURNAME_TAG", [
+        [
+            {"TEXT": {"REGEX": "<[^>]+>"}},     # Opening tag
+            {"IS_TITLE": True},                  # First name
+            {"IS_TITLE": True, "OP": "?"},       # Optional middle initial
+            {"TEXT": ".", "OP": "?"},            # Optional period
+            {"IS_TITLE": False, "OP": "?"},      # Optional lowercase part
+            {"IS_TITLE": True},                  # Surname
+            {"TEXT": "-", "OP": "?"},            # Optional hyphen
+            {"IS_TITLE": True, "OP": "?"},       # Optional second surname
+            {"TEXT": {"REGEX": "<[^>]+>"}}       # Closing tag
+        ]
+    ])
+
+    # Pattern 2: <TAG> <TAG> Name Surname
+    matcher.add("TAG_TAG_NAME_SURNAME", [
+        [
+            {"TEXT": {"REGEX": "<[^>]+>"}},      # First tag
+            {"TEXT": {"REGEX": "<[^>]+>"}},      # Second tag
+            {"IS_TITLE": True},                  # First name
+            {"IS_TITLE": True, "OP": "?"},       # Optional middle initial
+            {"TEXT": ".", "OP": "?"},            # Optional period
+            {"IS_TITLE": False, "OP": "?"},      # Optional lowercase part
+            {"IS_TITLE": True},                  # Surname
+            {"TEXT": "-", "OP": "?"},            # Optional hyphen
+            {"IS_TITLE": True, "OP": "?"}        # Optional second surname
+        ]
+    ])
+
+    # Apply matcher
+    matches = matcher(doc)
+    for match_id, start, end in matches:
+        span = doc[start:end]
+        matched_text = span.text
+        clean_span = re.sub(r'<[^>]+>', '', matched_text).strip()
+
+        if clean_span and matched_text not in matcher_patterns:
+            matcher_patterns.append(matched_text)
+            if matched_text not in all_patterns:
+                all_patterns.append(matched_text)
+
+    # Format results
+    ner_formatted = format_pattern_with_context(ner_patterns, text)
+    matcher_formatted = format_pattern_with_context(matcher_patterns, text)
+    combined_formatted = ner_formatted + matcher_formatted
+
+    # Debug output if requested
+    if debug_mode and config_data:
+        print(f"Extracted {len(ner_patterns)} potential attributions from NER")
+        print(f"Extracted {len(matcher_patterns)} potential attributions from matcher")
+        print(f"Combined into {len(all_patterns)} unique attributions")
 
         diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]
         if not os.path.exists(diagnostics_folder):
             os.makedirs(diagnostics_folder)
             print(f"Created directory: {diagnostics_folder}")
+
         file_path = os.path.join(diagnostics_folder, 'spacy_patterns.txt')
         with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(str(spacy_patterns))
+            f.write(combined_formatted)
 
-    return potential_speakers, potential_attributions, spacy_patterns
+    return all_patterns, combined_formatted
 
 # Extract potential attributions for "Operator" with preceeding formatting tags
 def get_operator_attributions(text):
@@ -488,6 +582,9 @@ def get_operator_attributions(text):
     operator_attributions = list(set(operator_attributions))
 
     return operator_attributions
+
+
+### 4. SPEAKER ATTRIBUTION EXTRACTION USING LLM ###
 
 # API call to extract speaker attributions
 def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mode=False):
@@ -564,13 +661,14 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     <examples>    
     Examples of attributions that contain speaker name only:
     * "(attribution starts) <TAG_2> Name Surname (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_3> Name Surname - (attribution ends) Thank you. I'd like to present our quarterly results."
     * "(attribution starts) Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
     * "(attribution starts) <TAG_2> Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
     * "(attribution starts) <TAG_4> Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
     * "(attribution starts) <BOLD-> Name Surname <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
     * "(attribution starts) <BOLD-> Name Surname: <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <TAG_2> Name Surname <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
-    If the same speaker has varios attributions, then all attributions should be included into the output.
+    * "(attribution starts) <TAG_3> Name Surname <TAG_3> (attribution ends) Thank you. I'd like to present our quarterly results."
+    If the same speaker has various attributions, then all attributions should be included into the output.
 
     Examples of attributions that contain speaker name with job title, company, or job title and company:
     * "(attribution starts) <BOLD-> Name Surname - Company - Job Title <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
@@ -616,7 +714,7 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     {{
     "bank_name": "Example Bank",
     "call_date": "YYYY-MM-DD",
-    "reporting_period": "QX-YYYY",
+    "reporting_period": "Q-YYYY",
     "header_pattern": "HEADER_PATTERN",
     "footer_pattern": "FOOTER_PATTERN",
     "participants": [
@@ -645,7 +743,6 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     api_key_name, model, input_cost_per_million, output_cost_per_million = get_api_setup(config_data)
     api_key = os.getenv(api_key_name)
     client = anthropic.Anthropic(api_key=api_key)
-    # unique_prompt = f"{prompt}\n\n[Request timestamp: {time.time()}]"
 
     if debug_mode:
         print(f"Running API call using {model}...")
@@ -658,8 +755,8 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.2,
-            top_p=0.8,
+            temperature=0.1,
+            top_p=0.7,
             # top_k=20
         )
 
@@ -749,7 +846,7 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
         }
 
 
-### TEXT PARSING AND CLEANING ###
+### 5. TEXT PARSING AND CLEANING ###
 
 """
 def remove_unused_sections(metadata_file: str, debug_mode: bool) -> str:
@@ -819,7 +916,6 @@ def remove_leading_duplicate_tags(attribution):
 
     return attribution
 
-
 def get_utterances(text, api_response, config_data, debug_mode=False):
     """
     Extract utterances from transcript text using speaker attributions from API response.
@@ -869,7 +965,7 @@ def get_utterances(text, api_response, config_data, debug_mode=False):
 
     if debug_mode:
         print(f"Found {len(all_attributions)} speaker attributions")
-        print("Writing all attributions to all_attributions.txt...")
+        print("Writing all cleaned attributions to all_attributions.txt...")
         
         # Create a file to save all attributions for debugging
         diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]
@@ -911,9 +1007,6 @@ def get_utterances(text, api_response, config_data, debug_mode=False):
     # Sort matches by their position in the text
     all_matches.sort(key=lambda x: x["start"])
     
-    if debug_mode:
-        print(f"Found {len(all_matches)} total matches in the text")
-    
     if not all_matches:
         return []
     
@@ -941,8 +1034,6 @@ def get_utterances(text, api_response, config_data, debug_mode=False):
     
     if debug_mode:
         print(f"Extracted {len(utterances)} utterances")
-
-    #
     
     return utterances
 
@@ -1068,7 +1159,7 @@ def create_and_save_final_json(api_response, cleaned_utterances, output_path, de
     return final_json
 
 
-### MAIN FUNCTION ###
+### 6. MAIN FUNCTION ###
 
 def main():
     # Main function to process a PDF transcript and get AI analysis.
@@ -1108,12 +1199,18 @@ def main():
     print(f"Extracting text from {file_path}...")
     full_text = text_processing_pipeline(file_path, config_data, debug_mode)
     
-    # Make API call
-    print("Sending text to API for analysis...")
+
+    # Extract potential speaker attributions
+    print("Extracting speaker attributions using SpaCy...")
     # nlp = spacy.load("en_core_web_trf")  # optional: transformer model for better accuracy
     nlp = spacy.load("en_core_web_sm")
-    potential_speakers, potential_attributions, spacy_patterns = get_spacy_person_tags(full_text, nlp, config_data, debug_mode)
+
+    potential_attributions, formatted_patterns = extract_speaker_attributions(full_text, nlp, config_data, debug_mode)
+    spacy_patterns = (potential_attributions, formatted_patterns)
     operator_attributions = get_operator_attributions(full_text)
+
+    # Make API call
+    print("Sending text to API for analysis...")
     api_response = API_call(full_text, spacy_patterns, operator_attributions, config_data, debug_mode)
     
     # Check for errors in the API call result
