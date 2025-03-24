@@ -1,10 +1,11 @@
 [TRANSCRIPT SPECS]
 
-Created on: 2025-03-24 01:02:54
+Created on: 2025-03-24 01-47-02
 File Name: qec_deb_2023_1Q_final.json
-Utterance Count: 75
-Total Symbols: 100177
-Total Words: 17208
+Unique Speakers: 17
+Utterance Count: 76
+Total Symbols: 100163
+Total Words: 17206
 
 [CALL DETAILS]
 
@@ -222,7 +223,11 @@ Utterance: Thank you. I'll try to be quick, it's a couple of follow-ups on capit
 Speaker: James von Moltke
 Job Title: Chief Financial Officer
 Company: Deutsche Bank AG
-Utterance: Jeremy, I'll go in reverse order. Remember that in our capital plan we will be building to Basel III final framework. And in this plan, because of the model adjustments, higher LGD floors and various items, that 13.2% has been getting steadily more conservative in how we're capitalising our risks. We do think it's appropriate to continue to target that level. As you say, there'll be a bubble in 2024 that goes away on January 1, 2025, all things equal, that we need to build into our planning. But we feel comfortable with the buffer at 200 basis points above MDA. As I say, it's getting more conservative steadily. On capital management and the deliberate nature, to be fair, it actually wasn't deliberate. Are we looking at risk appetite carefully and extensions of balance sheet in this environment? Of course. But actually, the usual seasonality was a little bit less than we might otherwise have expected, both on leverage exposure and RWA. And we do think loan growth is probably a little slower in the coming quarters than we might've expected, given credit conditions, the possibility of recession and all of the features in the environment today. Jeremy Sigee That's very helpful, thank you.
+Utterance: Jeremy, I'll go in reverse order. Remember that in our capital plan we will be building to Basel III final framework. And in this plan, because of the model adjustments, higher LGD floors and various items, that 13.2% has been getting steadily more conservative in how we're capitalising our risks. We do think it's appropriate to continue to target that level. As you say, there'll be a bubble in 2024 that goes away on January 1, 2025, all things equal, that we need to build into our planning. But we feel comfortable with the buffer at 200 basis points above MDA. As I say, it's getting more conservative steadily. On capital management and the deliberate nature, to be fair, it actually wasn't deliberate. Are we looking at risk appetite carefully and extensions of balance sheet in this environment? Of course. But actually, the usual seasonality was a little bit less than we might otherwise have expected, both on leverage exposure and RWA. And we do think loan growth is probably a little slower in the coming quarters than we might've expected, given credit conditions, the possibility of recession and all of the features in the environment today.
+
+Speaker: Jeremy Sigee
+Company: BNP
+Utterance: That's very helpful, thank you.
 
 Speaker: James von Moltke
 Job Title: Chief Financial Officer

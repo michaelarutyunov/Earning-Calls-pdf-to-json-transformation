@@ -194,17 +194,18 @@ def remove_repeating_punctuation(text):
 # Change WORD1 WORD2 into Word1 Word2
 def normalize_adjacent_uppercase_words(text):
     """Convert likely names (adjacent uppercase words) to Title Case."""
+    # Change "OPERATOR" to "Operator"
+    text = re.sub(r'\bOPERATOR\b', 'Operator', text)
+
     # Pattern for two or more adjacent uppercase words, optionally with a middle initial
-    pattern = r'\b([A-Z][A-Z\'\-]+)(\s+[A-Z]\.?\s+)?(\s+[A-Z][A-Z\'\-]+)\b'
+    pattern = r'\b([A-Z][A-Z\'\-]+)(\s+[A-Z]\.?\s+)?(\s+[A-Z][A-Z\'\-]+)\b' # original
+    #pattern = r'\b([A-Z][A-Z\'\-]+)(?:\s+([A-Z]\.?)?\s+)?([A-Z][A-Z\'\-]+)\b'  # supposed to tackle apostrophes
 
     def convert_to_title(match):
         first = match.group(1).title()
         middle = match.group(2) if match.group(2) else ''
         last = match.group(3).title()
         return f"{first}{middle}{last}"
-
-    # Change "OPERATOR" to "Operator"
-    text = re.sub(r'\bOPERATOR\b', 'Operator', text)
     
     return re.sub(pattern, convert_to_title, text)
 
@@ -275,12 +276,36 @@ def fix_tag_spacing(text):
 def is_decorative_marker(span):
     """Check if a text span is a decorative marker (like large Q/A letters)."""
     # Check for characteristics of decorative Q/A markers
-    is_large_text = span.get("size", 0) > 20  # Q/A markers are typically very large
-    is_special_font = "Univers-Condensed" in str(span.get("font", ""))
-    is_single_letter = len(span.get("text", "").strip()) == 1
-    is_qa_letter = span.get("text", "").strip().upper() in ["Q", "A"]
+    is_large_text = span.get("size", 0) > 18  # Q/A markers are typically very large
+    # is_special_font = "Univers-Condensed" in str(span.get("font", ""))
+    #is_single_letter = len(span.get("text", "").strip()) == 1
+    #is_qa_letter = span.get("text", "").strip().upper() in ["Q", "A"]
     
-    return is_large_text and is_special_font and is_single_letter and is_qa_letter
+    return is_large_text #and is_special_font # and is_single_letter and is_qa_letter
+
+# Clean up after tagging
+def clean_special_characters(text):
+    """Clean text by handling encoding issues and removing problematic characters."""
+    # Dictionary common substitutions
+    replacements = {
+        '�': '',
+        '\ufffd': '',
+        '\u2022': '•',  # bullet point
+        '\u2018': "'",  # left single quote
+        '\u2019': "'",  # right single quote
+        '\u201c': '"',  # left double quote
+        '\u201d': '"',  # right double quote
+        '\u2013': '-',  # en-dash
+        '\u2014': '--',  # em-dash
+        '\u00a9': '',  # copyright symbol
+
+    }
+
+    # Apply all replacements
+    for char, replacement in replacements.items():
+        text = text.replace(char, replacement)
+
+    return text
 
 # MAIN TEXT PROCESSING PIPELINE
 def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
@@ -288,126 +313,49 @@ def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
 
     doc = pymupdf.open(pdf_path)
     full_text = ""
-    interim_text_1 = ""
-    interim_text_2 = ""
+
+    for page_num in range(doc.page_count):
+        page = doc.load_page(page_num)
+        page_text = page.get_text("text")
+        page_text = clean_special_characters(page_text)
+        lines = page_text.split('\n')
+        cleaned_lines = []
+        cleaned_lines_with_tags = []
+        for line in lines:
+            # Remove leading punctuation and spaces using regex
+            # ^ matches the beginning of the string
+            # [\s\p{P}]+ matches one or more spaces or punctuation characters
+            cleaned_line = re.sub(r'^[\s!"#$%&\'*+,-./:;<=>?@[\\\]^_`{|}~]+', '', line)  # ()
+            cleaned_line = normalize_adjacent_uppercase_words(cleaned_line)
+
+            # remove lines that contain only one symbol after removing extra spaces
+            if len(cleaned_line.strip()) > 1:
+                cleaned_lines.append(cleaned_line)
+            cleaned_lines_with_tags.append(cleaned_line + "<TAG_2>")
+            
+        # Cleaning
+        # page_text = normalize_adjacent_uppercase_words(page_text)  # bring all names into title case
+
+        # Collate lines and add to full text
+        page_text = '\n'.join(cleaned_lines_with_tags)
+        full_text += page_text + "\n<PAGE_BREAK>\n"
+
     
     # Get cleaning parameters
-    cleaning_params = get_cleaning_parameters(config_data)
-    keep_bold_tags = cleaning_params["keep_bold_tags"]
-    keep_italics_tags = cleaning_params["keep_italics_tags"]
-    keep_underline_tags = cleaning_params["keep_underline_tags"]
+    #cleaning_params = get_cleaning_parameters(config_data)
+    #keep_bold_tags = cleaning_params["keep_bold_tags"]
+    #keep_italics_tags = cleaning_params["keep_italics_tags"]
+    #keep_underline_tags = cleaning_params["keep_underline_tags"]
     
-    for page_num in range(doc.page_count):
-        page = doc[page_num]
-        page_text = ""        
-
-        # Get text with formatting information first
-        page_dict = page.get_text("dict")
-        
-        # Process each block to capture text while filtering decorative elements
-        for block in page_dict["blocks"]:
-            if block["type"] == 0:  # Text block
-                for line in block["lines"]:
-                    line_text = ""
-                    for span in line["spans"]:
-                        # Skip decorative Q/A markers
-                        if is_decorative_marker(span):
-                            continue
-                        line_text += span["text"]
-                    if line_text:
-                        page_text += line_text + " "
-
-        # Now process the filtered text
-        if page_text:
-            # 1st step: initial cleanup and TEXT tagging
-            page_text = add_text_tags(page_text)  # initial cleanup and TEXT tagging
-            interim_text_1 += page_text + "\n<PAGE_BREAK>\n"
-            # page_text = fix_tag_spacing(page_text)  # optional: enforcing fix for tag spacing after adding text tags
-            page_text = optimize_text_tags(page_text) # optimize text tags
-            page_text = remove_repeating_punctuation(page_text) # remove repeating punctuation
-            
-            # Get text with formatting information
-            formatted_blocks = {}
-
-            # Process each block to capture formatting
-            for block in page_dict["blocks"]:
-                if block["type"] == 0:  # Text block
-                    for line in block["lines"]:
-                        for span in line["spans"]:
-                            # Skip decorative markers
-                            if is_decorative_marker(span):
-                                continue
-                                
-                            # Get the text content
-                            text = span["text"]
-                            if not text.strip():
-                                continue
-
-                            # Check for formatting
-                            is_bold = False
-                            if "font" in span:
-                                is_bold = "bold" in span["font"].lower()
-                            if not is_bold and "flags" in span:
-                                is_bold = (span["flags"] & 2) > 0
-
-                            is_italic = False
-                            if "font" in span:
-                                is_italic = "italic" in span["font"].lower()
-                            if not is_italic and "flags" in span:
-                                is_italic = (span["flags"] & 4) > 0
-
-                            is_underline = False
-                            if "font" in span:
-                                is_underline = "underline" in span["font"].lower()
-                            if not is_underline and "flags" in span:
-                                is_underline = (span["flags"] & 8) > 0
-
-                            # Store formatting info for this text snippet
-                            if is_bold or is_italic or is_underline:
-                                formatted_blocks[text] = (is_bold, is_italic, is_underline)
-
-            # 2nd step: apply tags to the page text
-            for text, (is_bold, is_italic, is_underline) in formatted_blocks.items():
-                # Try to find and replace exact text
-                if text in page_text:
-                    formatted_text = text
-                    if keep_bold_tags and is_bold:
-                        formatted_text = f" <BOLD-> {formatted_text} <-BOLD> "
-                    if keep_italics_tags and is_italic:
-                        formatted_text = f" <ITALIC-> {formatted_text} <-ITALIC> "
-                    if keep_underline_tags and is_underline:
-                        formatted_text = f" <UNDERLINE-> {formatted_text} <-UNDERLINE> "
-                    page_text = page_text.replace(text, formatted_text)
-
-            # 3rd step: post-tagging cleanup
-            interim_text_2 += page_text + "\n<PAGE_BREAK>\n"
-            page_text = optimize_word_tags(page_text) # optimize word tags
-            page_text = normalize_punctuation(page_text) # normalize punctuation
-            page_text = normalize_adjacent_uppercase_words(page_text)  # bring all names into title case
-            # page_text = fix_tag_spacing(page_text)  # optional: enforcing fix for tag spacing before final output
-
-            # Add page with page break to full text
-            full_text += page_text + "\n<PAGE_BREAK>\n"
-        else:
-            print(f"Warning: No text extracted from page {page_num + 1} of {pdf_path}")
-
     if debug_mode:
         diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]
         if not os.path.exists(diagnostics_folder):
             os.makedirs(diagnostics_folder)
             print(f"Created directory: {diagnostics_folder}")
-        file_path = os.path.join(diagnostics_folder, 'normalized_text.txt')
+        file_path = os.path.join(diagnostics_folder, 'extracted_text.txt')
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(full_text)
         print(f"Formatted text saved to {file_path}")
-
-        # for diagnostics: saving text with text tags only and text with text and word tags before cleaning
-        file_path_interim_1 = os.path.join(diagnostics_folder, 'interim_text_1.txt')
-        with open(file_path_interim_1, 'w', encoding='utf-8') as f:
-            f.write(interim_text_1)
-        file_path_interim_2 = os.path.join(diagnostics_folder, 'interim_text_2.txt')
-        with open(file_path_interim_2, 'w', encoding='utf-8') as f:
-            f.write(interim_text_2)
 
     doc.close()
     return full_text
@@ -505,6 +453,40 @@ def extract_speaker_attributions(text, nlp, config_data=None, debug_mode=False):
     # PART 2: Extract patterns using SpaCy matcher
     matcher = Matcher(nlp.vocab)
 
+    # Pattern 1: Name and punctuation:
+    matcher.add("NAME_PUNCTUATION", [
+        [
+            {"POS": "PROPN"},
+            {"POS": "PROPN", "OP": "+"},
+            {"IS_SPACE": True, "OP": "*"},
+            {"IS_PUNCT": True}
+        ]
+    ])
+
+    # Pattern 2: Name and tag:
+    matcher.add("NAME_TAG", [
+        [
+            {"IS_SENT_START": True},
+            {"POS": "PROPN"},
+            {"POS": "PROPN", "OP": "+"},
+            {"IS_SPACE": True, "OP": "*"},
+            {"TEXT": {"REGEX": "<[^>]+>"}}
+        ]
+    ])
+
+    # Pattern 3: Name with non-name text:
+    matcher.add("NAME_von_NAME", [
+        [
+            {"IS_SENT_START": True},
+            {"POS": "PROPN", "OP": "+"},
+            {"POS": {"NOT_IN": ["PROPN"]}, "OP": "*"},
+            {"POS": "PROPN", "OP": "+"},
+            {"IS_SPACE": True, "OP": "*"},
+            {"TEXT": {"REGEX": "<[^>]+>"}}
+        ]
+    ])
+
+    """
     # Pattern 1: <TAG> Name Surname <TAG>
     matcher.add("TAG_NAME_SURNAME_TAG", [
         [
@@ -529,12 +511,46 @@ def extract_speaker_attributions(text, nlp, config_data=None, debug_mode=False):
             {"IS_TITLE": True, "OP": "?"},       # Optional middle initial
             {"TEXT": ".", "OP": "?"},            # Optional period
             {"IS_TITLE": False, "OP": "?"},      # Optional lowercase part
-            {"IS_TITLE": True},                  # Surname
+            {"TEXT": {"REGEX": "[A-Z][a-z]*'?[A-Z]?[a-z]+"}},  # Surname with possible apostrophe
             {"TEXT": "-", "OP": "?"},            # Optional hyphen
             {"IS_TITLE": True, "OP": "?"}        # Optional second surname
         ]
     ])
 
+    # Pattern 3: Name Letter(s) APOSTROPHE Surname SEPARATOR
+    matcher.add("NAME_LETTER_APOSTROPHE_SURNAME_TAG_SEPARATOR", [
+        [
+            {"IS_TITLE": True},                  # First name
+            {"IS_TITLE": True, "OP": "?"},       # Optional middle initial
+            {"TEXT": ".", "OP": "?"},            # Optional period
+            {"IS_TITLE": False, "OP": "?"},      # Optional lowercase part
+            {"SHAPE": {"REGEX": "Xx+(?:'Xx+)?"}}, # Surname with possible apostrophe
+            {"TEXT": "-", "OP": "?"},            # Optional hyphen
+            {"IS_TITLE": True, "OP": "?"},       # Optional second surname
+            {"TEXT": {"REGEX": ":|\\s-"}}        # Separator
+        ]
+    ])
+
+    # {"TEXT": {"REGEX": "[A-Za-z][a-z]*'[A-Za-z]+"}}, # Surname with possible apostrophe
+    
+    # Pattern 4: Name Surname - Company - Job Title <TAG>
+    matcher.add("NAME_SURNAME_COMPANY_JOB_TITLE_TAG", [
+        [
+            {"IS_TITLE": True},                  # First name
+            {"IS_TITLE": True, "OP": "?"},       # Optional middle initial
+            {"TEXT": ".", "OP": "?"},            # Optional period
+            {"IS_TITLE": False, "OP": "?"},      # Optional lowercase part
+            {"IS_TITLE": True},                  # Surname
+            {"TEXT": {"REGEX": "–|-|,"}},        # Separator
+            {"IS_ALPHA": True},                  # Company name (first word)
+            {"IS_ALPHA": True, "OP": "*"},       # Additional company words
+            {"TEXT": {"REGEX": "–|-|,"}},        # Another dash/separator
+            {"IS_ALPHA": True},                  # Position title (first word)
+            {"IS_ALPHA": True, "OP": "*"},       # Additional position word
+            {"TEXT": {"REGEX": "<[^>]+>"}}       # Closing tag
+        ]
+    ])
+    """
     # Apply matcher
     matches = matcher(doc)
     for match_id, start, end in matches:
@@ -542,7 +558,7 @@ def extract_speaker_attributions(text, nlp, config_data=None, debug_mode=False):
         matched_text = span.text
         clean_span = re.sub(r'<[^>]+>', '', matched_text).strip()
 
-        if clean_span and matched_text not in matcher_patterns:
+        if span and matched_text not in matcher_patterns:
             matcher_patterns.append(matched_text)
             if matched_text not in all_patterns:
                 all_patterns.append(matched_text)
@@ -617,8 +633,9 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     Step 3: Go through the whole text in small overlapping chunks to idenitify all variants of speaker attributions including leading and tailing tags, names, titles and companies (if available), punctuation marks.
     Step 4. For each speaker with a single attribution check again for other attributions with different formatting.
     Step 5. Identify call details like bank name, call date and reporting period.
-    Step 6. Identify header and footer patterns.
-    Step 7. Return results as a json object.
+    Step 6. Identify the last 10 tokens of the last utterance in the transcript.
+    Step 7. Identify header and footer that repeat throughout the transcript, if any.
+    Step 8. Return results as a json object.
     </instructions>
 
     <formatting_tags>
@@ -627,17 +644,19 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     - Line breaks are marked as <TAG_2>
     - Paragraph breaks are marked as <TAG_4>
     - Multispaces are marked as <TAG_3>
+    - Page breaks are marked as <PAGE_BREAK>
     </formatting_tags>
 
     <attribution_description>
     The speaker attribution :
     1. There are usually two or more variants of the attribution formats for the same speaker. Always include all variants in the output.
-    2. Attribution must start with a leading formatting tag like <TAG_2> or <BOLD-> or a combination of tags.
-    3. Attribution includes one of the following:
+    2. Attribution must start on a new line.
+    3. Attribution may be on the same line as the speaker's speech or on the next line.
+    4. Attribution includes one of the following:
         a) [Speaker Name and Surname] or [Name, Middle Name Initial and Surname]
         b) [Speaker Name and Surname] or [Name, Middle Name Initial and Surname], followed by a [job title], [company], or [job title and company]
-    4. The job title and company, if present, can be separated from the speaker name and from each other by a punctuation mark like a colon or a dash, a formatting tag like <BOLD-> or <TAG_2> or <TAG_2>, or a combination.
-    5. Attribution must end with a punctuation mark like a colon or a dash, a formatting tag like <-BOLD> or <TAG_2>, or both.
+    5. The job title and company, if present, can be separated from the speaker name and from each other by a punctuation mark like a colon or a dash, a formatting tag like <BOLD-> or <TAG_2> or <TAG_2>, or a combination.
+    6. Attribution must end with a punctuation mark like a colon or a dash, a formatting tag like <-BOLD> or <TAG_2>, or both.
     6. Attribution never includes the text of the speech of the speaker.
     </attribution_description>
     
@@ -660,50 +679,45 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     
     <examples>    
     Examples of attributions that contain speaker name only:
-    * "(attribution starts) <TAG_2> Name Surname (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <TAG_3> Name Surname - (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <TAG_2> Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <TAG_4> Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <BOLD-> Name Surname <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <BOLD-> Name Surname: <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <TAG_3> Name Surname <TAG_3> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name <TAG_2> (attribution ends) (new line) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name - (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name: <TAG_2>(attribution ends) (new line) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name: (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
     If the same speaker has various attributions, then all attributions should be included into the output.
 
     Examples of attributions that contain speaker name with job title, company, or job title and company:
-    * "(attribution starts) <BOLD-> Name Surname - Company - Job Title <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <BOLD-> Name Surname <-BOLD> - CEO, TechCorp: (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <TAG_2> <BOLD-> Name Surname, CFO: <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <TAG_2> Name Surname • Senior VP: <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name - Company - Job Title (attribution ends) (new line) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name - Company - Job Title (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name - CEO, TechCorp: (attribution ends) (new line) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name, CFO: (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name • Senior VP: (attribution ends) (new line) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name • Senior VP: (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
 
     Example of complex attributions with multiple tags and punctuation:
     * "(attribution starts) Jamie Dimon <TAG_3> <TAG_2> Chairman & Chief Executive Officer, JPMorgan Chase & Co. <TAG_3><TAG_2> (attribution ends)"
     
     There are often multiple attribution formatting variations of the same speaker, for example:
-    * "(attribution starts) <TAG_2> Name Surname: (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <BOLD-> Name Surname: <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <BOLD-> Name Surname <-BOLD> (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) <TAG_2> Name Surname <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
     In such cases all variants should be included in the output.
 
     There are often multiple variations of the Operator attributions, for example:
-    * "<TAG_2> OPERATOR:"
-    * "<TAG_2> OPERATOR <TAG_2>"
-    * "<BOLD-> OPERATOR: <-BOLD>"
+    * "OPERATOR:"
+    * "OPERATOR <TAG_2>"
     In such cases all variants should be included in the output.
     
     Spelling and Name Variations:
-    * "(attribution begins here) <TAG_4> Michael J. Thompson: <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
-    * "(attribution begins here) <TAG_4> Mike Thompson: <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
+    * "(attribution begins here) Michael J. Thompson: (attribution ends here)"
+    * "(attribution begins here)  Mike Thompson: (attribution ends here)"
     In such cases all variants should be included in the output.
     
     Job Title and Company Separation:
-    * "(attribution begins here) <TAG_4> Name Surname: <TAG_2> (attribution ends here) Thank you. I am (Job Title) and I'd like present our (Company Name) quarterly results."
-    In such cases only "<TAG_4> Name Surname: <TAG_2>" should be considered attribution because there is a text between the name and job title.
+    * "(attribution begins here) Full name: <TAG_2> (attribution ends here) Thank you. I am (Job Title) and I'd like present our (Company Name) quarterly results."
+    In such cases only "<TAG_4> Full name: <TAG_2>" should be considered attribution because there is a text between the name and job title.
     
     Company Name Variations:
-    * "(attribution begins here) <TAG_2> Name Surname (Full company name) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
-    * "(attribution begins here) <TAG_2> Name Surname (Company name abbreviation) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
+    * "(attribution begins here) Full name <TAG_2> (Full company name) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
+    * "(attribution begins here) Full name <TAG_2> (Company name abbreviation) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
     In such cases all variants should be included in the output.
     </examples>
 
@@ -717,12 +731,13 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     "reporting_period": "Q-YYYY",
     "header_pattern": "HEADER_PATTERN",
     "footer_pattern": "FOOTER_PATTERN",
+    "last_utterance_tokens": "LAST_10_TOKENS",
     "participants": [
         {{
         "speaker_name_variants": ["John Doe", "Jon Doe", "John Do"],
         "speaker_title_variants": ["Chief Executive Officer", "CEO"],
         "speaker_company_variants": ["Example Bank", "Example Bank Inc.", "EB"],
-        "speaker_attributions": ["<TAG_2> JOHN DOE:", "<BOLD-> John Doe - CEO - Example Bank <-BOLD>", "<TAG_2> John Doe - EB - CEO <TAG_2>"]
+        "speaker_attributions": ["<TAG_2> JOHN DOE:", "<BOLD-> John Doe - CEO - Example Bank <-BOLD>", "John Doe - EB - CEO <TAG_3>"]
         }}
     ]
     }}
@@ -755,7 +770,7 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.1,
+            temperature=0,
             top_p=0.7,
             # top_k=20
         )

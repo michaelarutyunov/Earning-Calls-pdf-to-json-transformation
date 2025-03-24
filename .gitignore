@@ -175,3 +175,5 @@ cython_debug/
 # Custom
 obsolete/
 diagnostics/
+spacy-layout-test.py
+test_spacy_tags.py

@@ -5,7 +5,7 @@
     },
     "test_mode": {
         "enabled": true,
-        "file_name": "qec_tdb_2023_1Q.pdf",
+        "file_name": "qec_ctg_2023_1Q.pdf",
         "debug_mode": true,
         "diagnostics_folder": "diagnostics"
     },
