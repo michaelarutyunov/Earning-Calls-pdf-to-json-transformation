@@ -182,10 +182,11 @@ def create_standard_text_file(config_data, selected_json_file):
             data = json.load(f)
         
         # Extract metadata
-        bank_name = data.get("bank_name", "Unknown Bank")
+        bank_name = data.get("hosting_bank_name", "Unknown Bank")
         reporting_period = data.get("reporting_period", "Unknown Period")
         call_date = data.get("call_date", "Unknown Date")
         unique_speaker_count = file_stats.get("unique_speaker_count")
+        utterance_number = 0
         # Get utterances and participants
         utterances = data.get("utterances", [])
         participants = data.get("participants", [])
@@ -227,13 +228,14 @@ def create_standard_text_file(config_data, selected_json_file):
             for utterance in utterances:
                 speaker_name = utterance.get("speaker", "Unknown Speaker")
                 speaker_data = speaker_info.get(speaker_name, {"title": "", "company": ""})
+                utterance_number += 1
                 
                 f.write(f"Speaker: {speaker_name}\n")
                 if speaker_data['title']:
                     f.write(f"Job Title: {speaker_data['title']}\n")
                 if speaker_data['company']:
                     f.write(f"Company: {speaker_data['company']}\n")
-                f.write(f"Utterance: {utterance.get('utterance', '')}\n\n")
+                f.write(f"Utterance {utterance_number}: {utterance.get('utterance', '')}\n\n")
 
             f.write("[TRANSCRIPT END]\n\n")
             

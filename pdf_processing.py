@@ -43,9 +43,6 @@ def get_folder_paths(config_data):
     folder_paths = config_data.get("folder_paths", {})
     return {
         "transcripts_pdf_folder": folder_paths.get("transcripts_pdf_folder", None),
-        #"transcripts_cleantxt_folder": folder_paths.get("transcripts_cleantxt_folder", None),
-        #"metadata_folder": folder_paths.get("metadata_folder", None),
-        #"utterances_folder": folder_paths.get("utterances_folder", None),
         "final_json_folder": folder_paths.get("final_json_folder", None),
     }
 
@@ -69,129 +66,10 @@ def get_api_setup(config_data):
     
     return api_key_name, model, input_cost_per_million, output_cost_per_million
 
-def get_cleaning_parameters(config_data):
-    """Extract cleaning parameters from config dictionary."""
-    cleaning_parameters = config_data.get("cleaning_parameters", {})
-    return {
-        "keep_bold_tags": cleaning_parameters.get("keep_bold_tags", False),
-        "keep_italics_tags": cleaning_parameters.get("keep_italics_tags", False),
-        "keep_underline_tags": cleaning_parameters.get("keep_underline_tags", False),
-        "keep_capitalization_tags": cleaning_parameters.get("keep_capitalization_tags", False)
-    }
-
 
 ### 2. PDF IMPORT AND TEXT PRE-PROCESSING ###
 
-# Move punctuation outside of bold tags and adjust colons from "word :" to "word: "
-def normalize_punctuation(text):
-    """Move punctuation outside of bold tags."""
-    # Manage colons
-    # text = re.sub(r'(\w):', r'\1 :', text) # add space before colon
-    text = re.sub(r':(\w)', r': \1', text)  # add space after colon
-    text = re.sub(r'(\w+)\s+:', r'\1:', text)  # remove space before colon
-
-    # Remove isolated punctuation marks like " : "
-    text = re.sub(r'\s+([,.;:!?])\s+', ' ', text)
-    
-    # Strip leading/trailing whitespace
-    text = text.strip()
-    
-    return text
-
-# Optimize TEXT tags (TAG_2, TAG_4, TAG_3)
-def optimize_text_tags(text):
-    """Optimize text tags by removing unnecessary formatting tags."""
-
-    # Remove TEXT tags with single letter, number or punctuation (from "<TAG> [char] <TAG>" to "<TAG>")
-    text = re.sub(r'<TAG_2>\s*[A-Za-z]\s*<TAG_2>', r' <TAG_2> ', text, flags=re.IGNORECASE)
-    text = re.sub(r'<TAG_2>\s*(\d+)\s*<TAG_2>', r' <TAG_2>', text, flags=re.IGNORECASE)
-    text = re.sub(r'<TAG_2>\s*[,.;:!?-]\s*<TAG_2>', r' <TAG_2>', text, flags=re.IGNORECASE)
-    text = re.sub(r'<TAG_3>\s*[A-Za-z]\s*<TAG_3>', r' <TAG_3> ', text, flags=re.IGNORECASE)
-    text = re.sub(r'<TAG_3>\s*(\d+)\s*<TAG_3>', r' <TAG_3>', text, flags=re.IGNORECASE)
-    text = re.sub(r'<TAG_3>\s*[,.;:!?-]\s*<TAG_3>', r' <TAG_3>', text, flags=re.IGNORECASE)
-    text = re.sub(r'<TAG_4>\s*[A-Za-z]\s*<TAG_4>', r' <TAG_4> ', text, flags=re.IGNORECASE)
-    text = re.sub(r'<TAG_4>\s*(\d+)\s*<TAG_4>', r' <TAG_4> ', text, flags=re.IGNORECASE)
-
-    # optimize multiple TEXT tags in a row, keep only one
-    text = re.sub(r'(<TAG_4>\s*){2,}', r'\1', text)
-    text = re.sub(r'(<TAG_3>\s*){2,}', r'\1', text)
-    text = re.sub(r'(<TAG_2>\s*){2,}', r'\1', text)
-
-    # Ensure single space between tags
-    text = re.sub(r'>\s+<', '> <', text)
-    text = re.sub(r'><', '> <', text)
-    
-    return text
-
-# Optimize WORD tags (BOLD, ITALIC, UNDERLINE)
-def optimize_word_tags(text):
-    """Clean up text by removing unnecessary formatting tags."""
-
-    # Remove WORD tags if they are around punctuation, numbers and single letters (from "<BOLD-> [char]] <-BOLD>" to "")
-    text = re.sub(r'<BOLD->\s*([:,.;?!])\s*<-BOLD>', r' \1 ', text)
-    text = re.sub(r'<BOLD->\s*([A-Za-z])\s*<-BOLD>', r' \1 ', text)
-    text = re.sub(r'<BOLD->\s*(\d+)\s*<-BOLD>', r' \1 ', text)
-    
-    # Optimize multiple WORD tags
-    text = re.sub('<-BOLD>\s*<BOLD->', '', text)
-    #text = re.sub('<-ITALIC>\s*<ITALIC->', '', text)
-    #text = re.sub('<-UNDERLINE>\s*<UNDERLINE->', '', text)
-
-    # Ensure single space between tags
-    text = re.sub(r'>\s+<', '> <', text)
-    text = re.sub(r'><', '> <', text)
-
-    # Normalize spaces
-    text = re.sub(r'\s+', ' ', text).strip()
-    
-    return text
-
-# Format spaced headers (from "Q 2 2 0 2 3 E A R N I N G S" to "Q2 2023 EARNINGS")
-def format_spaced_headers(text):
-    # Improved pattern to identify spaced headers - looks for sequences of 3+ uppercase letters with spaces
-    spaced_header_pattern = r'(?<!\S)(?<!<)(?<![\w-])([A-Z](?:\s+[A-Z]){2,})(?!\w)(?![^<]*>)(?!\S)'
-
-    # Function to process each matched header
-    def process_header(match):
-        spaced_text = match.group(0)
-
-        # First approach: Split by multiple spaces (2 or more)
-        if re.search(r'\s{2,}', spaced_text):
-            words = re.split(r'\s{2,}', spaced_text)
-            condensed_words = [re.sub(r'\s+', '', word) for word in words]
-            return ' '.join(condensed_words)
-        else:
-            # For headers with single spaces between letters but no clear word boundaries
-            condensed = re.sub(r'\s+', '', spaced_text)
-
-            # Insert spaces before uppercase letters that follow lowercase or numbers
-            spaced = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', condensed)
-
-            # For dates like "2 0 2 3", keep them together
-            spaced = re.sub(r'(\d)\s+(\d)', r'\1\2', spaced)           
-
-            return spaced
-
-    # Apply the regex substitution with the processing function
-    text = re.sub(spaced_header_pattern, process_header, text)
-
-    return text
-
-# Remove repeating punctuation characters
-def remove_repeating_punctuation(text):
-    """Remove repeating punctuation characters."""
-    # Handle cases where punctuation is separated by spaces
-    text = re.sub(r'([.!?](\s+))\1{2,}', '', text)
-    
-    # Handle continuous repeating punctuation (like "............")
-    text = re.sub(r'([.!?])\1{2,}', '', text)
-    
-    # Handle cases where dots are mixed with spaces in long sequences
-    text = re.sub(r'([.]\s*){2,}', '', text)
-    
-    return text
-
-# Change WORD1 WORD2 into Word1 Word2
+# Change case of adjacent uppercase words
 def normalize_adjacent_uppercase_words(text):
     """Convert likely names (adjacent uppercase words) to Title Case."""
     # Change "OPERATOR" to "Operator"
@@ -209,8 +87,8 @@ def normalize_adjacent_uppercase_words(text):
     
     return re.sub(pattern, convert_to_title, text)
 
-# Replace special characters, add TEXT tags
-def add_text_tags(text):
+# Clean special characters
+def clean_special_characters(text):
     """Clean text by handling encoding issues and removing problematic characters."""
     # Handle encoding issues with round-trip conversion
     try:
@@ -220,125 +98,122 @@ def add_text_tags(text):
     except (UnicodeError, AttributeError):
         pass
 
-    # Dictionary of other common substitutions for financial documents
-    replacements = {
-        '�': '',
-        '\ufffd': '',
-        '\u2022': '•',  # bullet point
-        '\u2018': "'",  # left single quote
-        '\u2019': "'",  # right single quote
-        '\u201c': '"',  # left double quote
-        '\u201d': '"',  # right double quote
-        '\u2013': '-',  # en-dash
-        '\u2014': '--',  # em-dash
-        '\u00a9': '',  # copyright symbol
-        '\u00a0': ' <NBSP> ',  # non-breaking space
-        '\f': ' <PAGEBREAK> ',  # form feed / page break
-        '\n': ' <TAG_2> ',  # line break
-        '\t': ' <TAB> ',  # tab
-    }
-
-    # Apply all replacements
-    for char, replacement in replacements.items():
-        text = text.replace(char, replacement)
-
-    # Preserve multiple spaces for regex pattern identification
-    text = re.sub(r'[ ]{2,}', ' <TAG_3> ', text)
-    
-    # Consolidate <TAG_3> <TAG_2> into <TAG_4>
-    text = re.sub(r'<TAG_3>\s*<TAG_2>', ' <TAG_4> ', text)
-    # text = re.sub(r'<TAG_2> <TAG_3>', '<TAG_4>', text) # optional
-
-    # Ensure single space between tags
-    text = re.sub(r'>\s+<', '> <', text)
-    text = re.sub(r'><', '> <', text)
-
-    # Normalize spaces
-    text = re.sub(r'\s+', ' ', text).strip()
-
-    # Strip leading/trailing whitespace
-    # text = text.strip()
-
-    return text
-
-# Fix tag spacing (optional use only if you see issues with tag spacing)
-def fix_tag_spacing(text):
-    """Fix tag spacing issues that commonly occur in Q/A sections"""
-    # Fix all TAG_# variations (TAG_2, TAG_3, TAG_4, etc.)
-    text = re.sub(r'<\s*T\s*A\s*G\s*_\s*(\d+)\s*>', r'<TAG_\1>', text)
-
-    # Fix BOLD tags
-    text = re.sub(r'<\s*B\s*O\s*L\s*D\s*-\s*>', r'<BOLD->', text)
-    text = re.sub(r'<\s*-\s*B\s*O\s*L\s*D\s*>', r'<-BOLD>', text)
-    return text
-
-# Check if a text span is a decorative marker (like large Q/A letters)
-def is_decorative_marker(span):
-    """Check if a text span is a decorative marker (like large Q/A letters)."""
-    # Check for characteristics of decorative Q/A markers
-    is_large_text = span.get("size", 0) > 18  # Q/A markers are typically very large
-    # is_special_font = "Univers-Condensed" in str(span.get("font", ""))
-    #is_single_letter = len(span.get("text", "").strip()) == 1
-    #is_qa_letter = span.get("text", "").strip().upper() in ["Q", "A"]
-    
-    return is_large_text #and is_special_font # and is_single_letter and is_qa_letter
-
-# Clean up after tagging
-def clean_special_characters(text):
-    """Clean text by handling encoding issues and removing problematic characters."""
     # Dictionary common substitutions
     replacements = {
-        '�': '',
-        '\ufffd': '',
-        '\u2022': '•',  # bullet point
-        '\u2018': "'",  # left single quote
-        '\u2019': "'",  # right single quote
+        '\u00a0': ' ',  # non-breaking space
+        '\ufffd': '',   # replacement character
+        '\u201a': ',',  # single low-9 quotation mark
+        '\u201b': ',',  # single high-reversed-9 quotation mark
         '\u201c': '"',  # left double quote
         '\u201d': '"',  # right double quote
         '\u2013': '-',  # en-dash
-        '\u2014': '--',  # em-dash
-        '\u00a9': '',  # copyright symbol
+        '\u2014': '--', # em-dash
+        '\u2015': '-',  # horizontal bar
+        '\u2016': '||', # double vertical bar
+        '\u2017': '_',  # underscore
+        '\u2018': "'",  # left single quote
+        '\u2019': "'",  # right single quote
+        '\u2026': '.', # ellipsis
+        
+        '�': '',       # unknown character
+        '\u2022': '•',  # bullet point
+        '\u00a9': '',   # copyright symbol
 
+        '\s+': ' ',     # replace multiple spaces with a single space
     }
 
     # Apply all replacements
     for char, replacement in replacements.items():
         text = text.replace(char, replacement)
+    
+    # Normalize line endings
+    text = text.replace('\r\n', '\n').replace('\r', '\n')
+
+    # Remove leading and trailing whitespace
+    text = text.strip()
 
     return text
 
-# MAIN TEXT PROCESSING PIPELINE
-def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
+# Remove lines that contain only numbers or only capital letters
+def remove_lines_with_only_numbers_or_capital_letters(text):
+    """Remove lines that contain only numbers or only capital letters."""
+    return re.sub(r'^[0-9]+$', '', text)
+
+# Remove page numbers
+def clean_page_numbers(text):
+    """Remove different formats of page numbers from text."""
+
+    # Define patterns for different page number formats
+    patterns = [
+        # r'\b\d+\b',                           # Simple numbers: 1, 2, 3
+        r'\bpage\s+\d+\b',                    # "page n": page 1, page 2
+        # r'\bp\.\s*\d+\b',                     # "p.n": p.1, p. 2
+        # r'\b[ivxlcdm]+\b',                    # Roman numerals: i, ii, iii, iv
+        # r'\b\d+\s*-\s*\d+\b',                 # Page ranges: 1-5, 10-15
+        # r'\b\d+\s*-\s*\d+\b',                 # Section numbering: 1-1, 1-2
+        # r'\b0*\d+\b',                         # Leading zeros: 001, 002
+        r'\bPage\s+\d+\s+of\s+\d+\b',         # "Page n of m": Page 1 of 10
+        # r'\b(?:Page|Pg\.?|P\.)\s+\d+\s+of\s+\d+\b'  # Variations: Pg 1 of 10, P. 1 of 10
+    ]
+
+    # Combine all patterns with OR operator and make case-insensitive
+    combined_pattern = '|'.join(patterns)
+
+    # Remove matched patterns from text
+    text = re.sub(combined_pattern, '', text, flags=re.IGNORECASE)
+
+    # Remove extra whitespace that might be left behind
+    text = re.sub(r'\s+', ' ', text)
+    text = text.strip()
+
+    return text
+
+# Main text processing pipeline
+def text_processing_pipeline(pdf_path, config_data=None, debug_mode=False):
     """Extract text with formatting from PDF, including text from images."""
 
     doc = pymupdf.open(pdf_path)
-    full_text = ""
+    interim_text = ""
+    document_text = ""
+    page_text = ""
 
     for page_num in range(doc.page_count):
         page = doc.load_page(page_num)
         page_text = page.get_text("text")
+        interim_text += page_text + "\n<PAGE_BREAK>\n"
+        
         page_text = clean_special_characters(page_text)
+        
         lines = page_text.split('\n')
         cleaned_lines = []
         cleaned_lines_with_tags = []
+        
         for line in lines:
-            # Remove leading punctuation and spaces using regex
-            # ^ matches the beginning of the string
-            # [\s\p{P}]+ matches one or more spaces or punctuation characters
-            cleaned_line = re.sub(r'^[\s!"#$%&\'*+,-./:;<=>?@[\\\]^_`{|}~]+', '', line)  # ()
-            cleaned_line = normalize_adjacent_uppercase_words(cleaned_line)
-
+            cleaned_line = clean_page_numbers(line)
+            cleaned_line = re.sub(r'^[\s!"#$%&\'*+,-./:;<=>?@[\\\]^_`{|}~]+', '', cleaned_line)  # (remove leading punctuation and spaces)
+            cleaned_line = normalize_adjacent_uppercase_words(cleaned_line) # (change WORD1 WORD2 into Word1 Word2)
+            cleaned_line = re.sub(r'\s+', ' ', cleaned_line).strip() # (normalize spaces)
+            
             # remove lines that contain only one symbol after removing extra spaces
-            if len(cleaned_line.strip()) > 1:
+            if len(cleaned_line.strip()) > 1: #or \
+                #not cleaned_line.strip().isdigit() or \
+                #not (cleaned_line.strip().isupper() or \
+                #not cleaned_line.strip().isalpha()) or \
+                #not "Page" in cleaned_line:
+
                 cleaned_lines.append(cleaned_line)
-            cleaned_lines_with_tags.append(cleaned_line + "<TAG_2>")
+                cleaned_lines_with_tags.append(cleaned_line)  # + " <TAG_2>"
+        
+            # Remove lines that contain tags only
+            if re.match(r'^\s*<[^>]+>\s*$', cleaned_line):
+                continue
             
         # Cleaning
         # page_text = normalize_adjacent_uppercase_words(page_text)  # bring all names into title case
 
         # Collate lines and add to full text
-        page_text = '\n'.join(cleaned_lines_with_tags)
-        full_text += page_text + "\n<PAGE_BREAK>\n"
+        page_text = ' <TAG_2> '.join(cleaned_lines_with_tags)
+        document_text += page_text + "\n<PAGE_BREAK> "
 
     
     # Get cleaning parameters
@@ -352,119 +227,92 @@ def text_processing_pipeline(pdf_path, config_data, debug_mode=False):
         if not os.path.exists(diagnostics_folder):
             os.makedirs(diagnostics_folder)
             print(f"Created directory: {diagnostics_folder}")
-        file_path = os.path.join(diagnostics_folder, 'extracted_text.txt')
+            
+        file_path = os.path.join(diagnostics_folder, 'interim_text.txt')
         with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(full_text)
+            f.write(interim_text)
+            
+        file_path = os.path.join(diagnostics_folder, 'document_text.txt')
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(document_text)
+
         print(f"Formatted text saved to {file_path}")
 
     doc.close()
-    return full_text
+    return document_text
 
 
-### 3. EXTRACTING POTENTIAL SPEAKER ATTRIBUTIONS TO ENHANCE LLM ###
+### 3. EXTRACTING POTENTIAL SPEAKER ATTRIBUTIONS USING SPACY NER AND MATCHER ###
 
-# Helper function to extract context around a pattern
-def extract_pattern_context(text, pattern_text, context_chars=10):
-    """Extract surrounding context for a pattern in text."""
-    pattern_pos = text.find(pattern_text)
-    if pattern_pos == -1:
-        return "Not found in text"
-
-    context_start = max(0, pattern_pos - context_chars)
-    context_end = min(len(text), pattern_pos + len(pattern_text) + context_chars)
-    return text[context_start:context_end]
-
-# Helper function to format patterns with context
-def format_pattern_with_context(patterns, text):
-    """Format a list of patterns with their context into a string."""
-    formatted_output = ""
-    for i, pattern in enumerate(patterns):
-        formatted_output += f"Pattern {i+1}: {pattern}\n"
-        context = extract_pattern_context(text, pattern)
-        formatted_output += f"Context: \"{context}\"\n\n"
-    return formatted_output
-
-# Combined function to extract all potential speaker attributions
+# Main function to extract speaker attributions
 def extract_speaker_attributions(text, nlp, config_data=None, debug_mode=False):
     """
     Extract potential speaker attributions using both SpaCy NER and custom matcher.
-    Returns both a list of unique attributions and a formatted string with context.
+    Returns formatted string to pass to LLM.
     """
-    # Lists to collect all patterns
-    all_patterns = []
-    ner_patterns = []
-    matcher_patterns = []
+    # Lists to collect attributions from different methods
+    attributions_ner = []
+    attributions_matcher = []
 
     # Add custom tags to SpaCy tokenizer
     custom_tags = ["<TAG_2>", "<TAG_3>", "<TAG_4>", "<BOLD->", "<-BOLD>"]
     for tag in custom_tags:
         special_case = [{ORTH: tag}]
         nlp.tokenizer.add_special_case(tag, special_case)
-    
+
     # PART 1: Extract patterns using SpaCy NER
-    doc = nlp(text)
-    potential_speakers = []
+    # Remove XML/HTML tags for better NER processing
+    untagged_text = re.sub(r'<[^>]+>', ' ', text)
+    untagged_text = re.sub(r'\s+', ' ', untagged_text)
+    doc = nlp(untagged_text)
 
     # Get all PERSON entities
     for ent in doc.ents:
         if ent.label_ == "PERSON":
-            start_char = max(0, ent.start_char - 2)
-            name = text[start_char:ent.end_char]
-
-            potential_speakers.append({
-                "name": name,
-                "start": start_char,
-                "end": ent.end_char
+            attributions_ner.append({
+                "name": ent.text,
+                "source": "NER"
             })
 
-    # Define tags and punctuation to look for
-    formatting_tags = ["<TAG_2>", "<TAG_3>", "<TAG_4>", "<BOLD->"]
-    punctuation_marks = [":", "-", ",", ">"]
-
-    # Process each potential speaker
-    for speaker in potential_speakers:
-        pre_context = text[max(0, speaker["start"] - 10):speaker["start"]]
-        post_context = text[speaker["end"]:min(len(text), speaker["end"] + 15)]
-
-        if any(tag in pre_context for tag in formatting_tags):
-            # Find start position (first tag)
-            start_idx = speaker["start"]
-            for tag in formatting_tags:
-                tag_pos = pre_context.rfind(tag)
-                if tag_pos != -1:
-                    start_idx = speaker["start"] - (len(pre_context) - tag_pos)
-                    break
-
-            # Find end position (first punctuation)
-            end_idx = speaker["end"]
-            for mark in punctuation_marks:
-                mark_pos = post_context.find(mark)
-                if mark_pos != -1:
-                    potential_end = speaker["end"] + mark_pos + 1
-                    if end_idx == speaker["end"] or potential_end < end_idx:
-                        end_idx = potential_end
-                        break
-
-            attribution = text[start_idx:end_idx]
-            if attribution and attribution not in ner_patterns:
-                ner_patterns.append(attribution)
-                all_patterns.append(attribution)
-
     # PART 2: Extract patterns using SpaCy matcher
+    doc = nlp(text)
     matcher = Matcher(nlp.vocab)
 
-    # Pattern 1: Name and punctuation:
-    matcher.add("NAME_PUNCTUATION", [
+    # Add various patterns to the matcher
+    # Pattern 1: Name and punctuation
+    matcher.add("NAME_opSPACE_PUNCT", [
+        [
+            {"POS": "PROPN"},
+            {"POS": "PROPN", "OP": "+"},
+            {"IS_SPACE": True, "OP": "?"},
+            {"IS_PUNCT": True, "TEXT": {"NOT_IN": [",", "."]}}
+        ]
+    ])
+
+    # Pattern 2: Name and tag
+    matcher.add("NAME_opSPACE_TAG", [
+        [
+            {"POS": "PROPN"},
+            {"POS": "PROPN", "OP": "+"},
+            {"IS_SPACE": True, "OP": "?"},
+            {"TEXT": "<TAG_2>"}
+        ]
+    ])
+
+    # Pattern 3: Name, punctuation, and tag
+    matcher.add("NAME_opSPACE_PUNCT_opSPACE_TAG", [
         [
             {"POS": "PROPN"},
             {"POS": "PROPN", "OP": "+"},
             {"IS_SPACE": True, "OP": "*"},
-            {"IS_PUNCT": True}
+            {"IS_PUNCT": True},
+            {"IS_SPACE": True, "OP": "*"},
+            {"TEXT": {"REGEX": "<[^>]+>"}}
         ]
     ])
 
-    # Pattern 2: Name and tag:
-    matcher.add("NAME_TAG", [
+    # Pattern 4: Newline name and tag
+    matcher.add("NEWLINE_NAME_opSPACE_TAG", [
         [
             {"IS_SENT_START": True},
             {"POS": "PROPN"},
@@ -474,116 +322,91 @@ def extract_speaker_attributions(text, nlp, config_data=None, debug_mode=False):
         ]
     ])
 
-    # Pattern 3: Name with non-name text:
-    matcher.add("NAME_von_NAME", [
+    # Pattern 5: Name with non-name text
+    matcher.add("NEWLINE_NAME_op-von_SURNAME_opSPACE_TAG", [
         [
             {"IS_SENT_START": True},
             {"POS": "PROPN", "OP": "+"},
-            {"POS": {"NOT_IN": ["PROPN"]}, "OP": "*"},
+            {"POS": {"NOT_IN": ["PROPN"]}, "LENGTH": {"<=": 3}, "OP": "{,3}"},
             {"POS": "PROPN", "OP": "+"},
             {"IS_SPACE": True, "OP": "*"},
             {"TEXT": {"REGEX": "<[^>]+>"}}
         ]
     ])
 
-    """
-    # Pattern 1: <TAG> Name Surname <TAG>
-    matcher.add("TAG_NAME_SURNAME_TAG", [
-        [
-            {"TEXT": {"REGEX": "<[^>]+>"}},     # Opening tag
-            {"IS_TITLE": True},                  # First name
-            {"IS_TITLE": True, "OP": "?"},       # Optional middle initial
-            {"TEXT": ".", "OP": "?"},            # Optional period
-            {"IS_TITLE": False, "OP": "?"},      # Optional lowercase part
-            {"IS_TITLE": True},                  # Surname
-            {"TEXT": "-", "OP": "?"},            # Optional hyphen
-            {"IS_TITLE": True, "OP": "?"},       # Optional second surname
-            {"TEXT": {"REGEX": "<[^>]+>"}}       # Closing tag
-        ]
-    ])
-
-    # Pattern 2: <TAG> <TAG> Name Surname
-    matcher.add("TAG_TAG_NAME_SURNAME", [
-        [
-            {"TEXT": {"REGEX": "<[^>]+>"}},      # First tag
-            {"TEXT": {"REGEX": "<[^>]+>"}},      # Second tag
-            {"IS_TITLE": True},                  # First name
-            {"IS_TITLE": True, "OP": "?"},       # Optional middle initial
-            {"TEXT": ".", "OP": "?"},            # Optional period
-            {"IS_TITLE": False, "OP": "?"},      # Optional lowercase part
-            {"TEXT": {"REGEX": "[A-Z][a-z]*'?[A-Z]?[a-z]+"}},  # Surname with possible apostrophe
-            {"TEXT": "-", "OP": "?"},            # Optional hyphen
-            {"IS_TITLE": True, "OP": "?"}        # Optional second surname
-        ]
-    ])
-
-    # Pattern 3: Name Letter(s) APOSTROPHE Surname SEPARATOR
-    matcher.add("NAME_LETTER_APOSTROPHE_SURNAME_TAG_SEPARATOR", [
-        [
-            {"IS_TITLE": True},                  # First name
-            {"IS_TITLE": True, "OP": "?"},       # Optional middle initial
-            {"TEXT": ".", "OP": "?"},            # Optional period
-            {"IS_TITLE": False, "OP": "?"},      # Optional lowercase part
-            {"SHAPE": {"REGEX": "Xx+(?:'Xx+)?"}}, # Surname with possible apostrophe
-            {"TEXT": "-", "OP": "?"},            # Optional hyphen
-            {"IS_TITLE": True, "OP": "?"},       # Optional second surname
-            {"TEXT": {"REGEX": ":|\\s-"}}        # Separator
-        ]
-    ])
-
-    # {"TEXT": {"REGEX": "[A-Za-z][a-z]*'[A-Za-z]+"}}, # Surname with possible apostrophe
-    
-    # Pattern 4: Name Surname - Company - Job Title <TAG>
-    matcher.add("NAME_SURNAME_COMPANY_JOB_TITLE_TAG", [
-        [
-            {"IS_TITLE": True},                  # First name
-            {"IS_TITLE": True, "OP": "?"},       # Optional middle initial
-            {"TEXT": ".", "OP": "?"},            # Optional period
-            {"IS_TITLE": False, "OP": "?"},      # Optional lowercase part
-            {"IS_TITLE": True},                  # Surname
-            {"TEXT": {"REGEX": "–|-|,"}},        # Separator
-            {"IS_ALPHA": True},                  # Company name (first word)
-            {"IS_ALPHA": True, "OP": "*"},       # Additional company words
-            {"TEXT": {"REGEX": "–|-|,"}},        # Another dash/separator
-            {"IS_ALPHA": True},                  # Position title (first word)
-            {"IS_ALPHA": True, "OP": "*"},       # Additional position word
-            {"TEXT": {"REGEX": "<[^>]+>"}}       # Closing tag
-        ]
-    ])
-    """
     # Apply matcher
     matches = matcher(doc)
     for match_id, start, end in matches:
         span = doc[start:end]
         matched_text = span.text
-        clean_span = re.sub(r'<[^>]+>', '', matched_text).strip()
 
-        if span and matched_text not in matcher_patterns:
-            matcher_patterns.append(matched_text)
-            if matched_text not in all_patterns:
-                all_patterns.append(matched_text)
+        if span.text:
+            # Create a pattern dictionary
+            pattern = {
+                "name": matched_text,
+                "source": "MATCHER"
+            }
 
-    # Format results
-    ner_formatted = format_pattern_with_context(ner_patterns, text)
-    matcher_formatted = format_pattern_with_context(matcher_patterns, text)
-    combined_formatted = ner_formatted + matcher_formatted
+            # Check if pattern is already in the ner list or matcher list
+            if not any(p["name"] == matched_text for p in attributions_ner):
+                if not any(p["name"] == matched_text for p in attributions_matcher):
+                    attributions_matcher.append(pattern)
+            
+            # Check if this pattern is already in the matcher list
+            #if not any(p["name"] == matched_text for p in attributions_matcher):
+            #    attributions_matcher.append(pattern)
+
+    # Combine attributions and remove duplicates
+    all_attributions = attributions_ner + attributions_matcher
+    unique_attributions = remove_duplicates_by_name(all_attributions)
+
+    # Format the unique attributions for LLM
+    formatted_output = format_attribution_list(unique_attributions)
 
     # Debug output if requested
     if debug_mode and config_data:
-        print(f"Extracted {len(ner_patterns)} potential attributions from NER")
-        print(f"Extracted {len(matcher_patterns)} potential attributions from matcher")
-        print(f"Combined into {len(all_patterns)} unique attributions")
+        print(f"{len(attributions_ner)} attributions found using NER")
+        print(f"{len(attributions_matcher)} attributions found using MATCHER")
+        print(f"{len(unique_attributions)} total unique attributions passed to LLM")
 
         diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]
         if not os.path.exists(diagnostics_folder):
             os.makedirs(diagnostics_folder)
             print(f"Created directory: {diagnostics_folder}")
 
-        file_path = os.path.join(diagnostics_folder, 'spacy_patterns.txt')
+        file_path = os.path.join(diagnostics_folder, 'attributions_from_spacy.txt')
         with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(combined_formatted)
+            f.write(formatted_output)
 
-    return all_patterns, combined_formatted
+    return formatted_output
+
+# Remove duplicate attributions based on name field.
+def remove_duplicates_by_name(attributions):
+    """
+    Remove duplicate attributions based on name field.
+    Returns a list of unique attributions.
+    """
+    seen_names = set()
+    unique_attributions = []
+
+    for attribution in attributions:
+        name = attribution["name"]
+        if name not in seen_names:
+            seen_names.add(name)
+            unique_attributions.append(attribution)
+
+    return unique_attributions
+
+# Format a list of attributions into a string for LLM.
+def format_attribution_list(attributions):
+    """
+    Format a list of attributions into a string for LLM.
+    """
+    formatted_output = ""
+    for i, attribution in enumerate(attributions):
+        formatted_output += f"Pattern {i+1}: {attribution['name']}\n"
+
+    return formatted_output
 
 # Extract potential attributions for "Operator" with preceeding formatting tags
 def get_operator_attributions(text):
@@ -600,26 +423,30 @@ def get_operator_attributions(text):
     return operator_attributions
 
 
-### 4. SPEAKER ATTRIBUTION EXTRACTION USING LLM ###
+### 4. ATTRIBUTION EXTRACTION USING LLM ###
 
 # API call to extract speaker attributions
-def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mode=False):
+def API_call(text, spacy_attributions, operator_attributions, config_data=None, debug_mode=False):
     # Construct the prompt according to the specified format
-    prompt = f"""User: You are an AI assistant specialized in extracting speaker attributions from earning call transcripts.
+    prompt = f"""User: You are an AI assistant specialized in extracting speaker attributions from a bank's earnings call transcripts.
 
     <goal>
     Extract all speaker attributions and call details from the transcript.    
     </goal>
 
-    Here is the transcript to analyze:
+    This transcript is comprised of:
+    - speaker attributions: attributions that identify the speaker of the speech
+    - speaker speech: speech delivered by the speaker
+    - other text: other text that is not speech by any participant
     <transcript>
     {text}
     </transcript>
-
-    Here are the potential speaker attributions extracted by SpaCy:
+    
+    Here is a list of potential speaker attributions extracted by SpaCy:
     <spacy_suggestions>
-    {spacy_patterns}
+    {spacy_attributions}
     </spacy_suggestions>
+    Some of these attributions may be incorrect, some may be correct, some may be missing.
 
     Here are the potential operator attributions:
     <operator_suggestions>
@@ -628,36 +455,36 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
 
     <instructions>
     Follow these step by step instructions:
-    Step 1: Find the names of all call participants, including variations and misspellings. Use the spacy suggestions to help you.
-    Step 2: For each participant, find their job title and companies, including variations.
+    Step 1: Find the names of all call participants, including variations and misspellings. Use the SpaCy suggestions to help you.
+    Step 2: For each participant, find all variations of their job title and companies.
     Step 3: Go through the whole text in small overlapping chunks to idenitify all variants of speaker attributions including leading and tailing tags, names, titles and companies (if available), punctuation marks.
     Step 4. For each speaker with a single attribution check again for other attributions with different formatting.
-    Step 5. Identify call details like bank name, call date and reporting period.
-    Step 6. Identify the last 10 tokens of the last utterance in the transcript.
-    Step 7. Identify header and footer that repeat throughout the transcript, if any.
-    Step 8. Return results as a json object.
+    Step 5. Make sure that for each speaker you identified attributions with different formatting, or a different spelling of the name, job title and company for each speaker.
+    Step 6. Make sure that you identified attributions for all speakers.
+    Step 6. Identify call bank name, call date and reporting period.
+    Step 7. Identify the first 3 non-speaker words of the last utterance in the transcript, if any.
+    Step 8. Identify header that repeat throughout the transcript, if any, and remove all tags and "\n" from it for use in the json.
+    Step 9. Identify footer that repeat throughout the transcript, if any, and remove all tags and "\n" from it for use in the json.
+    Step 10. Return results as a json object.
     </instructions>
 
     <formatting_tags>
-    Formatting tags should be treated as text and should be added to the attribution.
-    - Bold text is surrounded by <BOLD-> [speaker attribution or text or punctuation] <-BOLD>
-    - Line breaks are marked as <TAG_2>
-    - Paragraph breaks are marked as <TAG_4>
-    - Multispaces are marked as <TAG_3>
-    - Page breaks are marked as <PAGE_BREAK>
+    Tags like <TAG_2>, <PAGE_BREAK> should be added to the attribution if they are present and help to identify the speaker.
     </formatting_tags>
 
     <attribution_description>
     The speaker attribution :
-    1. There are usually two or more variants of the attribution formats for the same speaker. Always include all variants in the output.
-    2. Attribution must start on a new line.
-    3. Attribution may be on the same line as the speaker's speech or on the next line.
-    4. Attribution includes one of the following:
+    1. There may be two, three or more variants of the attribution formats for the same speaker. Always include all variants in the output.
+    2. Attribution should start with a tag like <TAG_2> or a speaker's name.
+    3. Attribution includes one of the following:
         a) [Speaker Name and Surname] or [Name, Middle Name Initial and Surname]
         b) [Speaker Name and Surname] or [Name, Middle Name Initial and Surname], followed by a [job title], [company], or [job title and company]
-    5. The job title and company, if present, can be separated from the speaker name and from each other by a punctuation mark like a colon or a dash, a formatting tag like <BOLD-> or <TAG_2> or <TAG_2>, or a combination.
-    6. Attribution must end with a punctuation mark like a colon or a dash, a formatting tag like <-BOLD> or <TAG_2>, or both.
-    6. Attribution never includes the text of the speech of the speaker.
+    4. The job title and company, if present, can be separated from the speaker name and from each other by a punctuation mark like a colon or a dash, a formatting tag like <TAG_2>, or a combination.
+    5. Attribution must end with a punctuation mark like a colon or a dash, a formatting tag like <TAG_2>, or both.
+    6. If a text that fits to the above description is found in the speech of some speaker, then it is not an attribution.
+    7. If attribution is followed by a speaker's job title or company, then attribution should be updated to include the job title or company.
+    8. Attribution never includes the text of the speech of the speaker.
+    9. Attribution never appears in the speech.
     </attribution_description>
     
     <attribution_search_guidelines>
@@ -667,10 +494,10 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     - Always include all variations of attributions for each speaker even if the difference is in one character.   
     - Pay attention to the job title and company name variations.
     - Speaker attributions always alternate with the speaker's speech.
-    - Speaker attributions cannot appear next to each other. If they do, they are not speaker attributions. There should always be a speech between attributions.
+    - Speaker attributions cannot appear one after another without any speech between them. If they do, they are not speaker attributions. There should always be a speech between attributions.
     - If two adjacent speeches are from the same speaker, then there must be an attribution for another speaker between them. Find it.
     - All variants of operator attibutions should always contain the word "Operator" and variations of leading and trailing formatting tags.
-    - Always include ALL attributions variants even if minor.
+    - Always include ALL attributions variants even if differences are minimal.
     
     Additionally:
     - If speaker's name is separated from the job title or company by a text segment that is not a formatting tag, then only speaker name should be a part of attribution.
@@ -678,29 +505,24 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     </attribution_search_guidelines>
     
     <examples>    
-    Examples of attributions that contain speaker name only:
-    * "(attribution starts) Full name <TAG_2> (attribution ends) (new line) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Full name - (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Full name: <TAG_2>(attribution ends) (new line) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Full name: (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
+    Often, there are multiple attribution formats for the same speaker, for example:
+    * "(attribution starts) Full name <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name: <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) Full name - (attribution ends) Thank you. I'd like to present our quarterly results."
     If the same speaker has various attributions, then all attributions should be included into the output.
 
     Examples of attributions that contain speaker name with job title, company, or job title and company:
-    * "(attribution starts) Full name - Company - Job Title (attribution ends) (new line) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Full name - Company - Job Title (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Full name - CEO, TechCorp: (attribution ends) (new line) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Full name, CFO: (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Full name • Senior VP: (attribution ends) (new line) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Full name • Senior VP: (attribution ends) (same line) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Full name - Company - Job Title (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Full name - Company - Job Title (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Full name - CEO, TechCorp: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Full name, CFO: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Full name • Senior VP: (attribution ends) Thank you. I'd like to present our quarterly results."
+    * "(attribution starts) <TAG_2> Full name • Senior VP: (attribution ends) Thank you. I'd like to present our quarterly results."
 
     Example of complex attributions with multiple tags and punctuation:
     * "(attribution starts) Jamie Dimon <TAG_3> <TAG_2> Chairman & Chief Executive Officer, JPMorgan Chase & Co. <TAG_3><TAG_2> (attribution ends)"
     
-    There are often multiple attribution formatting variations of the same speaker, for example:
-    * "(attribution starts) Full name: (attribution ends) Thank you. I'd like to present our quarterly results."
-    * "(attribution starts) Full name <TAG_2> (attribution ends) Thank you. I'd like to present our quarterly results."
-    In such cases all variants should be included in the output.
-
     There are often multiple variations of the Operator attributions, for example:
     * "OPERATOR:"
     * "OPERATOR <TAG_2>"
@@ -708,17 +530,40 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     
     Spelling and Name Variations:
     * "(attribution begins here) Michael J. Thompson: (attribution ends here)"
-    * "(attribution begins here)  Mike Thompson: (attribution ends here)"
+    * "(attribution begins here) Mike Thompson: (attribution ends here)"
     In such cases all variants should be included in the output.
-    
+       
+    Company Name Variations:
+    * "(attribution begins here) Full name - (Bank of America Securities) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
+    * "(attribution begins here) Full name - (BofA) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
+    * Transcript may contain mukltiple variants of the company name spelling, such as: "Company Name", "Company Name Bank", "Company Name Securities", "Company Name abbreviation"
+    In such cases all variants should be included in the output.
+
+    Job Title Variations:
+    * "(attribution begins here) Full name - Company Name - Group Head, Business Banking (attribution ends here) Thank you. I'd like to present our quarterly results."
+    * "(attribution begins here) Full name - Company Name - Group Head, Country Business Banking (attribution ends here) Thank you. I'd like to present our quarterly results."
+    In such cases all variants should be included in the output.
+
+    Example of creating attributions for speakers with variations in name, job title and company:
+    * Attribution found in the transcript: "<TAG_2> Full name - Company Name - Job Title <TAG_2>"
+    * Company name variants found in the text: "Company Name Securities", "Company Name abbreviation"
+    * In such case, create additional attributions and add them to the output for given speaker:
+        * "<TAG_2> Full name - Company Name Securities - Job Title <TAG_2>"
+        * "<TAG_2> Full name - Company Name abbreviation - Job Title <TAG_2>"        
+    Same method should be used for job title variations.
+         
     Job Title and Company Separation:
     * "(attribution begins here) Full name: <TAG_2> (attribution ends here) Thank you. I am (Job Title) and I'd like present our (Company Name) quarterly results."
-    In such cases only "<TAG_4> Full name: <TAG_2>" should be considered attribution because there is a text between the name and job title.
+    In such cases only "Full name: <TAG_2>" should be considered attribution because there is a text between the name and job title.
+
+    Non-speaker words in the last utterance
+    * In this utterance the first 3 non-speaker words are "Certain", "statements" and "in": "This does conclude First Quarter 2023 Earnings Review Call. You may now disconnect at any time. Certain statements in this document are \"forward looking statements\"",
+    * In this utterance the first 3 non-speaker words are "Disclaimer", "This" and "transcript": "Thank you very much for your questions. For any follow-up questions, please reach out to Investor Relations. Disclaimer This transcript contains forward-looking statements."
+    * In this utterance there are no non-speaker words: "This does conclude First Quarter 2023 Earnings Review Call. You may now disconnect at any time."
+    * Other examples of words that may indicate the beginning of a non-speaker text: "disclaimer", "cautionary statement", "forward-looking statements".
     
-    Company Name Variations:
-    * "(attribution begins here) Full name <TAG_2> (Full company name) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
-    * "(attribution begins here) Full name <TAG_2> (Company name abbreviation) <TAG_2> (attribution ends here) Thank you. I'd like to present our quarterly results."
-    In such cases all variants should be included in the output.
+    Examples of names that are part of speech and not attributions:
+    * This is not an attribution, this is a speech by some other speaker: "Thank you, Full name <TAG_2>"
     </examples>
 
     REMEMBER: The output should include ALL variants of the attributions for every speaker.
@@ -726,18 +571,27 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
     Here's an example of the expected JSON structure (with generic placeholders):
     <jsonexample>
     {{
-    "bank_name": "Example Bank",
-    "call_date": "YYYY-MM-DD",
-    "reporting_period": "Q-YYYY",
-    "header_pattern": "HEADER_PATTERN",
-    "footer_pattern": "FOOTER_PATTERN",
-    "last_utterance_tokens": "LAST_10_TOKENS",
+    "hosting_bank_name": "Example Bank",
+    "call_date": {{
+        "description": "The date of the earnings call in YYYY-MM-DD format",
+        "type": "string",
+        "format": "date",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$" 
+    }},
+    "reporting_period": {{
+        "description": "The reporting period of the earnings call in Q-YYYY format",
+        "type": "string",
+        "pattern": "^Q[1-4]-\\d{4}$"
+    }},
+    "header_pattern": "HEADER_PATTERN_WITHOUT_TAGS_AND_NEWLINES",
+    "footer_pattern": "FOOTER_PATTERN_WITHOUT_TAGS_AND_NEWLINES",
+    "first_3_non_speaker_words_in_last_utterance": "FIRST_3_NON_SPEAKER_WORDS_OF_LAST_UTTERANCE",
     "participants": [
         {{
         "speaker_name_variants": ["John Doe", "Jon Doe", "John Do"],
         "speaker_title_variants": ["Chief Executive Officer", "CEO"],
         "speaker_company_variants": ["Example Bank", "Example Bank Inc.", "EB"],
-        "speaker_attributions": ["<TAG_2> JOHN DOE:", "<BOLD-> John Doe - CEO - Example Bank <-BOLD>", "John Doe - EB - CEO <TAG_3>"]
+        "speaker_attributions": ["JOHN DOE: <TAG_2>", "John Doe - CEO - Example Bank", "John Doe - EB - CEO <TAG_2>"]
         }}
     ]
     }}
@@ -861,46 +715,8 @@ def API_call(text, spacy_patterns, operator_attributions, config_data, debug_mod
         }
 
 
-### 5. TEXT PARSING AND CLEANING ###
+### 5. API RESPONSE PROCESSING ###
 
-"""
-def remove_unused_sections(metadata_file: str, debug_mode: bool) -> str:
-    
-    Remove sections before the presentation start page.
-    
-    Args:
-        transcript_text (str): Full transcript text
-        metadata_file (str): Path to the metadata file
-        
-    Returns:
-        str: Transcript text starting from the presentation start page
-        
-    Raises:
-        KeyError: If required metadata fields are missing
-        ValueError: If page numbers are invalid
-    
-    if debug_mode:
-        print(f"Removing unused sections...")
-
-    metadata = load_metadata(metadata_file, debug_mode)
-    text = load_transcript(metadata['path_to_transcript_txt'], debug_mode)
-
-    try:
-        presentation_start_page = int(metadata['presentation_section_details'][0]['presentation_section_start_page_number'])
-    except (KeyError, IndexError) as e:
-        raise KeyError(f"Required metadata fields are missing: {str(e)}")
-
-    # print(presentation_start_page)
-
-    pages = text.split('<PAGE_BREAK>')
-    if presentation_start_page < 1 or presentation_start_page > len(pages):
-        raise ValueError(f"Invalid start page number: {presentation_start_page}, total pages={len(pages)}")
-
-    # Select pages starting from the presentation start page
-    selected_text = "<PAGE_BREAK>".join(pages[presentation_start_page - 1:])
-
-    return selected_text
-"""
 # De-duplicate leading tags in attributions (from <TAG_1> <TAG_1> to <TAG_1>)
 def remove_leading_duplicate_tags(attribution):
     # Pattern to match any opening tag
@@ -931,7 +747,8 @@ def remove_leading_duplicate_tags(attribution):
 
     return attribution
 
-def get_utterances(text, api_response, config_data, debug_mode=False):
+# Get utterances from API response
+def get_utterances(text, api_response, config_data=None, debug_mode=False):
     """
     Extract utterances from transcript text using speaker attributions from API response.
     
@@ -979,12 +796,11 @@ def get_utterances(text, api_response, config_data, debug_mode=False):
             })
 
     if debug_mode:
-        print(f"Found {len(all_attributions)} speaker attributions")
-        print("Writing all cleaned attributions to all_attributions.txt...")
+        print(f"{len(all_attributions)} speaker attributions found in LLM response")
         
         # Create a file to save all attributions for debugging
         diagnostics_folder = get_test_mode_info(config_data)["diagnostics_folder"]
-        file_path = os.path.join(diagnostics_folder, 'all_attributions.txt')
+        file_path = os.path.join(diagnostics_folder, 'attributions_from_LLM.txt')
         
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(f"Total attributions found: {len(all_attributions)}\n\n")
@@ -1048,16 +864,20 @@ def get_utterances(text, api_response, config_data, debug_mode=False):
     })
     
     if debug_mode:
-        print(f"Extracted {len(utterances)} utterances")
+        print(f"{len(utterances)} utterances created incl. empty")
     
     return utterances
 
-def clean_utterances(utterances: list, api_response: dict) -> list:
+# Clean utterances
+def clean_utterances(utterances: list, api_response: dict, debug_mode=False) -> list:
     cleaned_utterances = []
 
     # Remove empty utterances
     utterances = [utterance for utterance in utterances if utterance['utterance'].strip()]
 
+    # Remove utterances that only contain capital letters
+    utterances = [utterance for utterance in utterances if not utterance['utterance'].isupper()]
+    
     # Count for each cleaning type specificed below
     debug_counts = {
         'angle_brackets': 0,
@@ -1109,33 +929,159 @@ def clean_utterances(utterances: list, api_response: dict) -> list:
             
         cleaned_utterances.append(cleaned_utterance)
 
-    # Remove header pattern from each utterance's text (not removing the whole utterance)
-    header_pattern = api_response.get("header_pattern", None) if isinstance(api_response, dict) else None
-    if header_pattern:  # Only process if header_pattern exists
-        cleaned_header_pattern = re.sub(r'<(?:TAG_2|TAG_3|TAG_4|BOLD-|-BOLD)>', '', header_pattern)
-        for utterance in utterances:
-            # Replace the matching pattern with an empty string, keeping the rest of the text
-            cleaned_text = re.sub(cleaned_header_pattern, '', utterance['utterance'], flags=re.IGNORECASE)
-            # Create a new utterance with the cleaned text
-            cleaned_utterance = utterance.copy()  # Copy to preserve other fields
-            cleaned_utterance['utterance'] = cleaned_text
-            cleaned_utterances.append(cleaned_utterance)
+    if debug_mode:
+        print(f"{len(utterances)} utterances left after cleaning")
+        
+    return cleaned_utterances
 
-    # Remove footer from all utterances
-    footer_pattern = api_response.get("footer_pattern", None) if isinstance(api_response, dict) else None
-    if footer_pattern:  # Only process if footer_pattern exists
-        cleaned_footer_pattern = re.sub(r'<(?:TAG_2|TAG_3|TAG_4|BOLD-|-BOLD)>', '', footer_pattern)
-        for utterance in utterances:
-            # Replace the matching pattern with an empty string, keeping the rest of the text
-            cleaned_text = re.sub(cleaned_footer_pattern, '', utterance['utterance'], flags=re.IGNORECASE)
-            # Create a new utterance with the cleaned text
-            cleaned_utterance = utterance.copy()  # Copy to preserve other fields
-            cleaned_utterance['utterance'] = cleaned_text
-            cleaned_utterances.append(cleaned_utterance)
+# Clean last utterance from non-speaker text
+def clean_last_utterance(cleaned_utterances: list, api_response: dict) -> list:
+    # Check if cleaned_utterances is empty
+    if not cleaned_utterances:
+        print("No utterances to clean!")
+        return cleaned_utterances
 
+    # Get non-speaker text
+    parsed_json = api_response.get("parsed_json", {})
+    non_speaker_text = parsed_json.get("first_3_non_speaker_words_in_last_utterance")
+
+    if not non_speaker_text:
+        print("No non-speaker text to clean!")
+        return cleaned_utterances
+    
+    # clean last_utterance_tokens
+    #last_utterance_tokens_cleaned = last_utterance_tokens.replace("<TAG_2>", "").strip()
+    #last_utterance_tokens_cleaned = last_utterance_tokens_cleaned.split("\n")[0].strip()   
+
+    # Clean up the non-speaker text and last utterance for comparison
+    non_speaker_text = ' '.join(non_speaker_text.split()).lower()
+    last_utterance = cleaned_utterances[-1]['utterance']
+    last_utterance_lower = last_utterance.lower()
+    
+    # Find the position of non-speaker text
+    start_index = last_utterance_lower.find(non_speaker_text)
+    
+    if start_index != -1:
+        # Keep only the part of last_utterance that comes before the match
+        cleaned_text = last_utterance[:start_index].strip()
+        # Update the last utterance in the list
+        cleaned_utterances[-1]['utterance'] = cleaned_text
+    else:
+        print("No non-speaker text found")
+    
+    return cleaned_utterances
+
+# Clean header from each utterance
+def clean_header(cleaned_utterances: list, api_response: dict, debug_mode=False) -> list:
+    parsed_json = api_response.get("parsed_json", {})
+    header_pattern = parsed_json.get("header_pattern")
+
+    if not header_pattern:
+        print("No header pattern to clean!")
+        return cleaned_utterances
+
+    # Clean header pattern
+    header_pattern_normalized = ' '.join(header_pattern.split())
+
+    # Remove header text
+    for utterance in cleaned_utterances:
+        utterance_text = utterance['utterance']
+
+        # Simply replace the header pattern if found
+        if header_pattern_normalized in utterance_text:
+            utterance['utterance'] = utterance_text.replace(header_pattern_normalized, "").strip()
+        else:
+            # Try case-insensitive match as fallback
+            pattern_lower = header_pattern_normalized.lower()
+            text_lower = ' '.join(utterance_text.split()).lower()
+
+            if pattern_lower in text_lower:
+                # Find position in lowercase version
+                start_pos = text_lower.find(pattern_lower)
+                end_pos = start_pos + len(pattern_lower)
+
+                # Map the positions to original text
+                normalized_pos = 0
+                start_original = 0
+                end_original = len(utterance_text)
+
+                # Find start and end in original text
+                for i, char in enumerate(utterance_text):
+                    if normalized_pos == start_pos:
+                        start_original = i
+                    if normalized_pos == end_pos:
+                        end_original = i
+                        break
+
+                    if not char.isspace() or (i > 0 and utterance_text[i - 1].isspace() and not char.isspace()):
+                        normalized_pos += 1
+
+                # Remove header from original text
+                utterance['utterance'] = (
+                    utterance_text[:start_original].strip() +
+                    utterance_text[end_original:].strip()
+                ).strip()
 
     return cleaned_utterances
 
+# Reconcile repeated speaker attributions in adjacent utterances
+def reconcile_repeated_speaker_attributions(cleaned_utterances: list) -> list:
+    """
+    Reconcile repeated speaker attributions in adjacent utterances.
+    
+    If the same speaker appears in consecutive utterances, combine their utterances
+    and remove the duplicate speaker entry.
+    
+    Args:
+        cleaned_utterances (list): List of utterance dictionaries with 'speaker' and 'utterance' keys
+        
+    Returns:
+        list: Reconciled list of utterances with duplicates combined
+    """
+    if not cleaned_utterances or len(cleaned_utterances) < 2:
+        return cleaned_utterances
+    
+    # Create a new list to store reconciled utterances
+    reconciled_utterances = [cleaned_utterances[0]]
+    
+    # Start from the second utterance
+    i = 1
+    while i < len(cleaned_utterances):
+        current_utterance = cleaned_utterances[i]
+        previous_utterance = reconciled_utterances[-1]
+        
+        # Check if current speaker is the same as previous speaker
+        if current_utterance['speaker'] == previous_utterance['speaker']:
+            # Combine the utterances
+            combined_text = previous_utterance['utterance'] + " " + current_utterance['utterance']
+            previous_utterance['utterance'] = combined_text.strip()
+            # Skip adding this utterance since we combined it
+        else:
+            # Different speaker, add to reconciled list
+            reconciled_utterances.append(current_utterance)
+        
+        # Move to next utterance
+        i += 1
+    
+    return reconciled_utterances
+
+# Remove speaker job title and company from the utterance - TODO
+def remove_speaker_job_title_and_company_from_utterance(cleaned_utterances: list) -> list:
+    """
+    Remove speaker job title and company from the utterance.
+    
+    Args:
+        cleaned_utterances (list): List of utterance dictionaries with 'speaker' and 'utterance' keys
+        
+    Returns:
+        list: List of utterances with speaker job title and company removed
+    """
+    for utterance in cleaned_utterances:
+        utterance['utterance'] = utterance['utterance'].replace(utterance['speaker_job_title'], "").replace(utterance['speaker_company'], "")
+
+    return cleaned_utterances
+
+# Save final json
 def create_and_save_final_json(api_response, cleaned_utterances, output_path, debug_mode=False):
     """
     Combine the API response and cleaned utterances into a final JSON structure.
@@ -1164,7 +1110,7 @@ def create_and_save_final_json(api_response, cleaned_utterances, output_path, de
     final_json["utterances"] = cleaned_utterances
     
     if debug_mode:
-        print(f"Final JSON created with {len(cleaned_utterances)} utterances")
+        print(f"{len(cleaned_utterances)} utterances in the final JSON")
     
     # Save the final JSON to a file
     with open(output_path, 'w', encoding='utf-8') as f:
@@ -1218,15 +1164,13 @@ def main():
     # Extract potential speaker attributions
     print("Extracting speaker attributions using SpaCy...")
     # nlp = spacy.load("en_core_web_trf")  # optional: transformer model for better accuracy
-    nlp = spacy.load("en_core_web_sm")
-
-    potential_attributions, formatted_patterns = extract_speaker_attributions(full_text, nlp, config_data, debug_mode)
-    spacy_patterns = (potential_attributions, formatted_patterns)
+    nlp = spacy.load("en_core_web_md")
+    spacy_attributions = extract_speaker_attributions(full_text, nlp, config_data, debug_mode)
     operator_attributions = get_operator_attributions(full_text)
 
     # Make API call
-    print("Sending text to API for analysis...")
-    api_response = API_call(full_text, spacy_patterns, operator_attributions, config_data, debug_mode)
+    print("Sending text to LLM...")
+    api_response = API_call(full_text, spacy_attributions, operator_attributions, config_data, debug_mode)
     
     # Check for errors in the API call result
     if "error" in api_response:
@@ -1234,11 +1178,15 @@ def main():
         return
     
     # Get utterances
+    print("Processing utterances from API response...")
     utterances = get_utterances(full_text, api_response, config_data, debug_mode)
     
     # Clean utterances
-    cleaned_utterances = clean_utterances(utterances, api_response)
-    
+    cleaned_utterances = clean_utterances(utterances, api_response, debug_mode)
+    cleaned_utterances = clean_last_utterance(cleaned_utterances, api_response)
+    cleaned_utterances = clean_header(cleaned_utterances, api_response, debug_mode)
+    cleaned_utterances = reconcile_repeated_speaker_attributions(cleaned_utterances)
+    # cleaned_utterances = remove_speaker_job_title_and_company_from_utterance(cleaned_utterances)
     # Determine output path
     if args.output:
         output_path = args.output

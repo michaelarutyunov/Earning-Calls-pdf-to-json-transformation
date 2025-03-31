@@ -1,9 +1,10 @@
 {
-  "bank_name": "JPMorgan Chase",
+  "hosting_bank_name": "JPMorgan Chase",
   "call_date": "2023-04-14",
-  "reporting_period": "1Q23",
-  "header_pattern": "1Q23 FINANCIAL RESULTS\nEARNINGS CALL TRANSCRIPT",
-  "footer_pattern": "Disclaimer\nThis document contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995.",
+  "reporting_period": "Q1-2023",
+  "header_pattern": "Management Discussion SECTION",
+  "footer_pattern": "This document contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. These statements are based on the current beliefs and expectations of JPMorgan Chase & Co.'s management and are subject to significant risks and uncertainties. Actual results may differ from those set forth in the forward-looking statements. Factors that could cause JPMorgan Chase Co.'s actual results to differ materially from those described in the forward-looking statements can be found in JPMorgan Chase & Co.'s Annual Report on Form 10-K for the year ended December 31, 2022, which has been filed with the Securities and Exchange Commission and is available on JPMorgan Chase & Co.'s website (https://jpmorganchaseco.gcs-web.com/financial-information/sec-filings), and on the Securities and Exchange Commission's website (www.sec.gov). JPMorgan Chase & Co. does not undertake to update any forward-looking statements.",
+  "first_3_non_speaker_words_in_last_utterance": "This document contains",
   "participants": [
     {
       "speaker_name_variants": [
@@ -12,6 +13,7 @@
       "speaker_title_variants": [],
       "speaker_company_variants": [],
       "speaker_attributions": [
+        "<TAG_2> Operator:",
         "Operator:"
       ]
     },
@@ -26,9 +28,10 @@
         "JPMorgan Chase & Co."
       ],
       "speaker_attributions": [
-        "Jeremy Barnum\nChief Financial Officer, JPMorgan Chase & Co.",
-        "Jeremy Barnum",
-        "Jeremy:"
+        "<TAG_2> Jeremy Barnum <TAG_2>",
+        "<TAG_2> Jeremy Barnum <TAG_2> Chief Financial Officer, JPMorgan Chase & Co. <TAG_2>",
+        "Jeremy Barnum <TAG_2> Chief Financial Officer, JPMorgan Chase & Co. <TAG_2>",
+        "Jeremy Barnum <TAG_2>"
       ]
     },
     {
@@ -36,23 +39,21 @@
         "Jamie Dimon"
       ],
       "speaker_title_variants": [
-        "Chairman & Chief Executive Officer",
-        "Chairman and CEO"
+        "Chairman & Chief Executive Officer"
       ],
       "speaker_company_variants": [
-        "JPMorgan Chase & Co.",
-        "JPMorgan Chase"
+        "JPMorgan Chase & Co."
       ],
       "speaker_attributions": [
-        "Jamie Dimon\nChairman & Chief Executive Officer, JPMorgan Chase & Co.",
-        "Jamie Dimon",
-        "Jamie:"
+        "<TAG_2> Jamie Dimon <TAG_2>",
+        "<TAG_2> Jamie Dimon <TAG_2> Chairman & Chief Executive Officer, JPMorgan Chase & Co. <TAG_2>",
+        "Jamie Dimon <TAG_2> Chairman & Chief Executive Officer, JPMorgan Chase & Co. <TAG_2>",
+        "Jamie Dimon <TAG_2>"
       ]
     },
     {
       "speaker_name_variants": [
-        "Steven Chubak",
-        "Steve Chubak"
+        "Steven Chubak"
       ],
       "speaker_title_variants": [
         "Analyst"
@@ -61,8 +62,10 @@
         "Wolfe Research LLC"
       ],
       "speaker_attributions": [
-        "Steven Chubak\nAnalyst, Wolfe Research LLC",
-        "Steve:"
+        "<TAG_2> Steven Chubak <TAG_2>",
+        "<TAG_2> Steven Chubak <TAG_2> Analyst, Wolfe Research LLC <TAG_2>",
+        "Steven Chubak <TAG_2> Analyst, Wolfe Research LLC <TAG_2>",
+        "Steven Chubak <TAG_2>"
       ]
     },
     {
@@ -76,8 +79,10 @@
         "Jefferies LLC"
       ],
       "speaker_attributions": [
-        "Ken Usdin\nAnalyst, Jefferies LLC",
-        "Ken:"
+        "<TAG_2> Ken Usdin <TAG_2>",
+        "<TAG_2> Ken Usdin <TAG_2> Analyst, Jefferies LLC <TAG_2>",
+        "Ken Usdin <TAG_2> Analyst, Jefferies LLC <TAG_2>",
+        "Ken Usdin <TAG_2>"
       ]
     },
     {
@@ -91,8 +96,10 @@
         "Autonomous Research"
       ],
       "speaker_attributions": [
-        "John McDonald\nAnalyst, Autonomous Research",
-        "John:"
+        "<TAG_2> John McDonald <TAG_2>",
+        "<TAG_2> John McDonald <TAG_2> Analyst, Autonomous Research <TAG_2>",
+        "John McDonald <TAG_2> Analyst, Autonomous Research <TAG_2>",
+        "John McDonald <TAG_2>"
       ]
     },
     {
@@ -106,8 +113,10 @@
         "UBS Securities LLC"
       ],
       "speaker_attributions": [
-        "Erika Najarian\nAnalyst, UBS Securities LLC",
-        "Erika:"
+        "<TAG_2> Erika Najarian <TAG_2>",
+        "<TAG_2> Erika Najarian <TAG_2> Analyst, UBS Securities LLC <TAG_2>",
+        "Erika Najarian <TAG_2> Analyst, UBS Securities LLC <TAG_2>",
+        "Erika Najarian <TAG_2>"
       ]
     },
     {
@@ -121,8 +130,10 @@
         "Seaport Global Securities LLC"
       ],
       "speaker_attributions": [
-        "Jim Mitchell\nAnalyst, Seaport Global Securities LLC",
-        "Jim:"
+        "<TAG_2> Jim Mitchell <TAG_2>",
+        "<TAG_2> Jim Mitchell <TAG_2> Analyst, Seaport Global Securities LLC <TAG_2>",
+        "Jim Mitchell <TAG_2> Analyst, Seaport Global Securities LLC <TAG_2>",
+        "Jim Mitchell <TAG_2>"
       ]
     },
     {
@@ -136,14 +147,16 @@
         "RBC Capital Markets LLC"
       ],
       "speaker_attributions": [
-        "Gerard Cassidy\nAnalyst, RBC Capital Markets LLC",
-        "Gerard:"
+        "<TAG_2> Gerard Cassidy <TAG_2>",
+        "<TAG_2> Gerard Cassidy <TAG_2> Analyst, RBC Capital Markets LLC <TAG_2>",
+        "Gerard Cassidy <TAG_2> Analyst, RBC Capital Markets LLC <TAG_2>",
+        "Gerard Cassidy <TAG_2>"
       ]
     },
     {
       "speaker_name_variants": [
-        "Ebrahim Poonawala",
-        "Ebrahim H. Poonawala"
+        "Ebrahim H. Poonawala",
+        "Ebrahim Poonawala"
       ],
       "speaker_title_variants": [
         "Analyst"
@@ -152,8 +165,10 @@
         "Bank of America Merrill Lynch"
       ],
       "speaker_attributions": [
-        "Ebrahim H. Poonawala\nAnalyst, Bank of America Merrill Lynch",
-        "Ebrahim:"
+        "<TAG_2> Ebrahim H. Poonawala <TAG_2>",
+        "<TAG_2> Ebrahim H. Poonawala <TAG_2> Analyst, Bank of America Merrill Lynch <TAG_2>",
+        "Ebrahim H. Poonawala <TAG_2> Analyst, Bank of America Merrill Lynch <TAG_2>",
+        "Ebrahim H. Poonawala <TAG_2>"
       ]
     },
     {
@@ -167,14 +182,16 @@
         "Wells Fargo Securities LLC"
       ],
       "speaker_attributions": [
-        "Mike Mayo\nAnalyst, Wells Fargo Securities LLC",
-        "Mike:"
+        "<TAG_2> Mike Mayo <TAG_2>",
+        "<TAG_2> Mike Mayo <TAG_2> Analyst, Wells Fargo Securities LLC <TAG_2>",
+        "Mike Mayo <TAG_2> Analyst, Wells Fargo Securities LLC <TAG_2>",
+        "Mike Mayo <TAG_2>"
       ]
     },
     {
       "speaker_name_variants": [
-        "Betsy Graseck",
-        "Betsy L. Graseck"
+        "Betsy L. Graseck",
+        "Betsy Graseck"
       ],
       "speaker_title_variants": [
         "Analyst"
@@ -183,8 +200,10 @@
         "Morgan Stanley & Co. LLC"
       ],
       "speaker_attributions": [
-        "Betsy L. Graseck\nAnalyst, Morgan Stanley & Co. LLC",
-        "Betsy:"
+        "<TAG_2> Betsy L. Graseck <TAG_2>",
+        "<TAG_2> Betsy L. Graseck <TAG_2> Analyst, Morgan Stanley & Co. LLC <TAG_2>",
+        "Betsy L. Graseck <TAG_2> Analyst, Morgan Stanley & Co. LLC <TAG_2>",
+        "Betsy L. Graseck <TAG_2>"
       ]
     },
     {
@@ -198,8 +217,10 @@
         "Evercore ISI"
       ],
       "speaker_attributions": [
-        "Glenn Schorr\nAnalyst, Evercore ISI",
-        "Glenn:"
+        "<TAG_2> Glenn Schorr <TAG_2>",
+        "<TAG_2> Glenn Schorr <TAG_2> Analyst, Evercore ISI <TAG_2>",
+        "Glenn Schorr <TAG_2> Analyst, Evercore ISI <TAG_2>",
+        "Glenn Schorr <TAG_2>"
       ]
     },
     {
@@ -213,361 +234,578 @@
         "Deutsche Bank Securities, Inc."
       ],
       "speaker_attributions": [
-        "Matt O'Connor\nAnalyst, Deutsche Bank Securities, Inc.",
-        "Matt:"
+        "<TAG_2> Matt O'Connor <TAG_2>",
+        "<TAG_2> Matt O'Connor <TAG_2> Analyst, Deutsche Bank Securities, Inc. <TAG_2>",
+        "Matt O'Connor <TAG_2> Analyst, Deutsche Bank Securities, Inc. <TAG_2>",
+        "Matt O'Connor <TAG_2>"
       ]
     }
   ],
   "utterances": [
     {
       "speaker": "Operator",
-      "utterance": "Good morning, ladies and gentlemen. Welcome to JPMorgan Chase\u2019s First Quarter 2023 Earnings Call. This call is being recorded. Your line will be muted for the duration of the call. We will now go live to the presentation. Please stand by. At this time, I would like to turn the call over to JPMorgan Chase's Chairman and CEO,",
-      "uuid": "5777dc84-d701-4f5f-8dd8-ff8c8575d1d8"
-    },
-    {
-      "speaker": "Jamie Dimon",
-      "utterance": ", and Chief Financial Officer, Jeremy Barnum. Mr. Barnum, please go ahead.",
-      "uuid": "a8da877e-1aaa-4929-80e3-58ca828c29e0"
+      "utterance": "Good morning, ladies and gentlemen. Welcome to JPMorgan Chase's First Quarter 2023 Earnings Call. This call is being recorded. Your line will be muted for the duration of the call. We will now go live to the presentation. Please stand by. At this time, I would like to turn the call over to JPMorgan Chase's Chairman and CEO, Jamie Dimon, and Chief Financial Officer, Jeremy Barnum. Mr. Barnum, please go ahead.",
+      "uuid": "89ae45c8-541b-4d6f-92ef-0570075a2f84"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Thanks, and good morning, everyone. The presentation is available on our website, and please refer to the disclaimer on the back. Starting on page 1, the Firm reported net income of $12.6 billion, EPS of $4.10 on revenue of $39.3 billion and delivered an ROTCE of 23%. These results included $868 million of net investment securities losses in Corporate. Before reviewing our results for the quarter, let's talk about the recent bank failures. Jamie has addressed a number of the important themes in his shareholder letter and a recent televised interview so I will go straight to the specific impacts on the firm. As you would expect, we saw significant new account opening activity and meaningful deposit and money market fund inflows, most significantly in the Commercial Bank, Business Banking and AWM. Regarding the deposit inflows, at the Firmwide level, average deposits were down 3% quarter-on-quarter while end-of-period deposits were up 2% quarter-on-quarter \u2013 implying an intra-quarter reversal of the recent outflow trend as a consequence of the March events. We estimate that we have retained approximately $50 billion of these deposit inflows at quarter-end. It's important to note that while the sequential period-end deposit increase is higher than we would have otherwise expected, our current full year NII outlook \u2013 which I will address at the end \u2013 still assumes modest deposit outflows from here. We expect these outflows to be driven by the same factors as last quarter, as well as the expectation that we will not retain all of this quarter's inflows. Now back to the quarter, touching on a few highlights. We grew our IB fee wallet share, consumer spending remains solid with combined debit and credit card spend up 10% year-on-year, and credit continues to normalize, but actual performance remains strong across the company. On page 2, we have some more detail. Revenue of $39.3 billion was up $7.7 billion or 25% year-on-year. NII ex. Markets was up $9.2 billion or 78%, driven by higher rates, partially offset by lower deposit balances. NIR ex. Markets was down $1.1 billion or 10%, driven by the securities losses previously mentioned as well as lower IB fees and lower auto lease income on lower volume, and Markets revenue was down $371 million or 4% year-on-year. Expenses of $20.1 billion were up $916 million or 5% year-on-year, driven by compensation-related costs reflecting the annualization of last year's headcount growth and wage inflation. These results include the impact of the higher FDIC assessment I mentioned last quarter which, of course, is unrelated to recent events. And credit costs of $2.3 billion included net charge-offs of $1.1 billion, predominantly in Card. The net reserve build of $1.1 billion was largely driven by deterioration in our weighted-average economic outlook. On to balance sheet and capital on page 3. We ended the quarter with a CET1 ratio of 13.8%, up about 60 basis points, which was primarily driven by the benefit of net income less distributions and AOCI gains. And in line with what we previously said, we resumed stock buybacks this quarter and distributed a total of $1.9 billion in net repurchases back to shareholders. Now, let's go to our businesses starting with CCB on page 4. Touching quickly on the health of U.S. consumers and small businesses based on our data. Both continue to show resilience and remain on the path to normalization, as expected, but we continue to monitor their activity closely. Spend remains solid and we have not observed any notable pullback throughout the quarter. Moving to financial results, CCB reported net income of $5.2 billion, on revenue of $16.5 billion, which was up 35% year-on-year. In Banking and Wealth Management, revenue was up 67% year-on-year, driven by higher NII on higher rates. Average deposits were down 2% quarter- on-quarter, in line with recent trends. Throughout the quarter, we continued to see customer flows to higher yielding products as you would expect, but we're encouraged by what we are capturing in CDs and our wealth management offerings. Client investment assets were down 1% year-on-year, but up 7% quarter-on-quarter, driven by market performance as well as strong net inflows. In Home Lending, revenue was down 38% year-on-year, largely driven by lower net interest income from tighter loan spreads and lower production revenue. Moving to Card Services and Auto \u2013 revenue was up 14% year-on-year, largely driven by higher Card Services NII on higher revolving balances, partially offset by lower Auto lease income. Credit card spend was up 13% year-on-year. Card outstandings were up 21%, driven by strong new account growth and revolve normalization. And in Auto, originations were $9.2 billion, up 10% year-on-year. Expenses of $8.1 billion were up 5% year-on-year reflecting the impact of wage inflation and higher headcount. In terms of credit performance this quarter, credit costs were $1.4 billion, reflecting reserve builds of $300 million in Card and $50 million in Home Lending. Net charge-offs were $1.1 billion, up about $500 million year-on-year, in line with expectations as delinquency levels continue to normalize across portfolios. Next, the CIB on page 5. CIB reported net income of $4.4 billion on revenue of $13.6 billion. Investment Banking revenue of $1.6 billion was down 24% year-on-year. IB fees were down 19%. We ranked number one with first quarter wallet share of 8.7%. In advisory, fees were down 6% compared to a strong first quarter last year. Our underwriting businesses continued to be affected by market conditions with fees down 34% for debt and 6% for equity. In terms of the outlook, the dynamics remain the same: our pipeline is relatively robust, but conversion is sensitive to market conditions and the economic outlook. We expect the second quarter and the rest of the year to remain challenging. Moving to Markets, total revenue was $8.4 billion, down 4% year-on-year. Fixed Income was flat. Rates was strong during the rally early in the quarter, as well as through the elevated volatility in March. Credit was up on the back of higher client flows and Currencies & Emerging Markets was down relative to a very strong first quarter in the prior year. Equity Markets was down 12%, driven by lower revenues in derivatives relative to a strong first quarter in the prior year and lower client activity in Cash. Payments revenue was $2.4 billion, up 26% year-on-year. Excluding the net impact of equity investments, primarily a gain in the prior year, it was up 55%, with the growth driven by higher rates, partially offset by lower deposit balances. Securities Services revenue of $1.1 billion was up 7% year-on-year, driven by higher rates, partially offset by lower deposit balances and market levels. Expenses of $7.5 billion were up 2% year-on-year as higher headcount and wage inflation were largely offset by lower revenue-related compensation. Moving to the Commercial Bank on page 6. Commercial Banking reported net income of $1.3 billion. Revenue of $3.5 billion was up 46% year-on-year, driven by higher deposit margins. Payments revenue of $2 billion was up 98% year-on-year driven by higher rates, and gross Investment Banking revenue of $881 million was up 21% year-on-year on increased M&A and bond underwriting from large deal activity. Expenses of $1.3 billion were up 16% year-on-year, largely driven by higher compensation expense, including front office hiring and technology investments, as well as higher volume-related expense. Average deposits were down 16% year-on-year and 5% quarter-on- quarter, predominantly driven by continued attrition in non-operating deposits as well as seasonally lower balances. Loans were up 13% year-on-year and 1% sequentially. C&I loans were up 1% quarter-on-quarter, with somewhat different dynamics based on client size. In Middle Market Banking, higher rates and recession concerns have decreased new loan demand and utilization, which is also leading to weakness in capex spending. In Corporate Client Banking, utilization rates increased modestly quarter-on-quarter as capital market conditions led more clients to opt for bank debt. CRE loans were also up 1% sequentially, with higher rates creating headwinds from both originations and prepayments. And given the recent focus on commercial real estate, let me remind you that our office sector exposure is less than 10% of our portfolio and is focused in urban dense markets; and nearly two-thirds of our loans are multifamily, primarily in supply constrained markets. Finally, credit costs of 417 million included a net reserve build of $379 million predominantly driven by what I mentioned upfront. Then to complete our lines of business, AWM on page 7. Asset & Wealth Management reported net income of $1.4 billion with pre-tax margin of 35%. Revenue of $4.8 billion was up 11% year-on-year, driven by higher deposit margins on lower balances and a valuation gain on our initial investment triggered by taking full ownership of our Asset Management Joint Venture in China, partially offset by the impact of lower average market levels on management fees and lower performance fees. Expenses of $3.1 billion were up 8% year-on-year, predominantly driven by compensation, reflecting growth in our private banking advisor teams, higher revenue-related compensation and the run-rate impact of acquisitions. For the quarter, net long-term inflows were $47 billion, led by Fixed Income and Equities. And in liquidity, we saw net inflows of $93 billion, inclusive of our ongoing deposit migration. AUM of $3 trillion was up 2% year-on-year and overall client assets of $4.3 trillion were up 6% driven by continued net inflows into liquidity and long-term products. And finally, loans were down 1% quarter-on-quarter, driven by lower securities-based lending, while average deposits were down 5%. Turning to Corporate on page 8. Corporate reported net income of $244 million. Revenue was $985 million compared to a net loss of $881 million last year. NII was $1.7 billion, up $2.3 billion year-on-year, due to the impact of higher rates. NIR was a loss of $755 million compared with a loss of $345 million in the prior year, and included the net investment securities losses I mentioned earlier. Expenses of $160 million were down $24 million year-on-year. And credit costs of $370 million were driven by reserve builds on a couple of single name exposures. Next, the Outlook on page 9. We now expect 2023 NII and NII ex. Markets to be approximately $81 billion. This increase in guidance is primarily driven by lower rate paid assumptions across both consumer and wholesale in light of the expectation of Fed cuts later in the year, as well as slightly higher card revolving balances. Note that in line with my comments at the outset, recent deposit balance increases are not a meaningful contributor to the upward revision in the NII outlook given that we expect a meaningful portion of the recent inflows to reverse later in the year. I would point out that this outlook still embeds significant reprice lags: we think a more sustainable NII ex. Markets run-rate in the medium-term is well below this quarter's $84 billion, as well as below the $80 billion that is implied for the rest of the year by our full year guidance; and while we don't know exactly when this lower run-rate will be reached, when it happens, we believe it will be around the mid-70s. And, of course, as we mentioned last quarter, this NII outlook remains highly sensitive to the uncertainty associated with the timing and the extent of deposit reprice, investment portfolio decisions, the dynamics of QT and RRP, the trajectory of Fed funds, as well as the broader macroeconomic environment \u2013 including its impact on loan growth. Separately, it's worth noting that Markets NII may start to trend slightly positive towards the end of the year as a function of mix and rate effects. Moving to expenses, our outlook for 2023 continues to be about $81 billion. Importantly, this does not currently include the impact of the pending FDIC special assessment. And on credit, we continue to expect the 2023 Card net charge-off rate to be approximately 2.6%. So to wrap up, our strong results this quarter once again highlight the earnings power of this diversified franchise. We have benefited from our fortress principles and commitment to invest, which we will continue to do as we head into an increasingly uncertain environment. With that \u2013 operator please open the line for Q&A. QUESTION AND ANSWER SECTION",
-      "uuid": "fe49e2e9-099a-4f54-a679-339cd5f65000"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Thanks, and good morning, everyone. The presentation is available on our website, and please refer to the disclaimer on the back. Starting on , the Firm reported net income of $12.6 billion, EPS of $4.10 on revenue of $39.3 billion and delivered an ROTCE of 23%. These results included $868 million of net investment securities losses in Corporate. Before reviewing our results for the quarter, let's talk about the recent bank failures. Jamie has addressed a number of the important themes in his shareholder letter and a recent televised interview so I will go straight to the specific impacts on the firm. As you would expect, we saw significant new account opening activity and meaningful deposit and money market fund inflows, most significantly in the Commercial Bank, Business Banking and AWM. Regarding the deposit inflows, at the Firmwide level, average deposits were down 3% quarter-on-quarter while end-of-period deposits were up 2% quarter-on-quarter - implying an intra-quarter reversal of the recent outflow trend as a consequence of the March events. We estimate that we have retained approximately $50 billion of these deposit inflows at quarter-end. It's important to note that while the sequential period-end deposit increase is higher than we would have otherwise expected, our current full year NII outlook - which I will address at the end - still assumes modest deposit outflows from here. We expect these outflows to be driven by the same factors as last quarter, as well as the expectation that we will not retain all of this quarter's inflows. Now back to the quarter, touching on a few highlights. We grew our IB fee wallet share, consumer spending remains solid with combined debit and credit card spend up 10% year-on-year, and credit continues to normalize, but actual performance remains strong across the company. On , we have some more detail. Revenue of $39.3 billion was up $7.7 billion or 25% year-on-year. NII ex. Markets was up $9.2 billion or 78%, driven by higher rates, partially offset by lower deposit balances. NIR ex. Markets was down $1.1 billion or 10%, driven by the securities losses previously mentioned as well as lower IB fees and lower auto lease income on lower volume, and Markets revenue was down $371 million or 4% year-on-year. Expenses of $20.1 billion were up $916 million or 5% year-on-year, driven by compensation-related costs reflecting the annualization of last year's headcount growth and wage inflation. These results include the impact of the higher FDIC assessment I mentioned last quarter which, of course, is unrelated to recent events. And credit costs of $2.3 billion included net charge-offs of $1.1 billion, predominantly in Card. The net reserve build of $1.1 billion was largely driven by deterioration in our weighted-average economic outlook. On to balance sheet and capital on . We ended the quarter with a CET1 ratio of 13.8%, up about 60 basis points, which was primarily driven by the benefit of net income less distributions and AOCI gains. And in line with what we previously said, we resumed stock buybacks this quarter and distributed a total of $1.9 billion in net repurchases back to shareholders. Now, let's go to our businesses starting with CCB on . Touching quickly on the health of U.S. consumers and small businesses based on our data. Both continue to show resilience and remain on the path to normalization, as expected, but we continue to monitor their activity closely. Spend remains solid and we have not observed any notable pullback throughout the quarter. Moving to financial results, CCB reported net income of $5.2 billion, on revenue of $16.5 billion, which was up 35% year-on-year. In Banking and Wealth Management, revenue was up 67% year-on-year, driven by higher NII on higher rates. Average deposits were down 2% quarter- on-quarter, in line with recent trends. Throughout the quarter, we continued to see customer flows to higher yielding products as you would expect, but we're encouraged by what we are capturing in CDs and our wealth management offerings. Client investment assets were down 1% year-on-year, but up 7% quarter-on-quarter, driven by market performance as well as strong net inflows. In Home Lending, revenue was down 38% year-on-year, largely driven by lower net interest income from tighter loan spreads and lower production revenue. Moving to Card Services and Auto - revenue was up 14% year-on-year, largely driven by higher Card Services NII on higher revolving balances, partially offset by lower Auto lease income. Credit card spend was up 13% year-on-year. Card outstandings were up 21%, driven by strong new account growth and revolve normalization. And in Auto, originations were $9.2 billion, up 10% year-on-year. Expenses of $8.1 billion were up 5% year-on-year reflecting the impact of wage inflation and higher headcount. In terms of credit performance this quarter, credit costs were $1.4 billion, reflecting reserve builds of $300 million in Card and $50 million in Home Lending. Net charge-offs were $1.1 billion, up about $500 million year-on-year, in line with expectations as delinquency levels continue to normalize across portfolios. Next, the CIB on . CIB reported net income of $4.4 billion on revenue of $13.6 billion. Investment Banking revenue of $1.6 billion was down 24% year-on-year. IB fees were down 19%. We ranked number one with first quarter wallet share of 8.7%. In advisory, fees were down 6% compared to a strong first quarter last year. Our underwriting businesses continued to be affected by market conditions with fees down 34% for debt and 6% for equity. In terms of the outlook, the dynamics remain the same: our pipeline is relatively robust, but conversion is sensitive to market conditions and the economic outlook. We expect the second quarter and the rest of the year to remain challenging. Moving to Markets, total revenue was $8.4 billion, down 4% year-on-year. Fixed Income was flat. Rates was strong during the rally early in the quarter, as well as through the elevated volatility in March. Credit was up on the back of higher client flows and Currencies & Emerging Markets was down relative to a very strong first quarter in the prior year. Equity Markets was down 12%, driven by lower revenues in derivatives relative to a strong first quarter in the prior year and lower client activity in Cash. Payments revenue was $2.4 billion, up 26% year-on-year. Excluding the net impact of equity investments, primarily a gain in the prior year, it was up 55%, with the growth driven by higher rates, partially offset by lower deposit balances. Securities Services revenue of $1.1 billion was up 7% year-on-year, driven by higher rates, partially offset by lower deposit balances and market levels. Expenses of $7.5 billion were up 2% year-on-year as higher headcount and wage inflation were largely offset by lower revenue-related compensation. Moving to the Commercial Bank on . Commercial Banking reported net income of $1.3 billion. Revenue of $3.5 billion was up 46% year-on-year, driven by higher deposit margins. Payments revenue of $2 billion was up 98% year-on-year driven by higher rates, and gross Investment Banking revenue of $881 million was up 21% year-on-year on increased M&A and bond underwriting from large deal activity. Expenses of $1.3 billion were up 16% year-on-year, largely driven by higher compensation expense, including front office hiring and technology investments, as well as higher volume-related expense. Average deposits were down 16% year-on-year and 5% quarter-on- quarter, predominantly driven by continued attrition in non-operating deposits as well as seasonally lower balances. Loans were up 13% year-on-year and 1% sequentially. C&I loans were up 1% quarter-on-quarter, with somewhat different dynamics based on client size. In Middle Market Banking, higher rates and recession concerns have decreased new loan demand and utilization, which is also leading to weakness in capex spending. In Corporate Client Banking, utilization rates increased modestly quarter-on-quarter as capital market conditions led more clients to opt for bank debt. CRE loans were also up 1% sequentially, with higher rates creating headwinds from both originations and prepayments. And given the recent focus on commercial real estate, let me remind you that our office sector exposure is less than 10% of our portfolio and is focused in urban dense markets; and nearly two-thirds of our loans are multifamily, primarily in supply constrained markets. Finally, credit costs of 417 million included a net reserve build of $379 million predominantly driven by what I mentioned upfront. Then to complete our lines of business, AWM on . Asset & Wealth Management reported net income of $1.4 billion with pre-tax margin of 35%. Revenue of $4.8 billion was up 11% year-on-year, driven by higher deposit margins on lower balances and a valuation gain on our initial investment triggered by taking full ownership of our Asset Management Joint Venture in China, partially offset by the impact of lower average market levels on management fees and lower performance fees. Expenses of $3.1 billion were up 8% year-on-year, predominantly driven by compensation, reflecting growth in our private banking advisor teams, higher revenue-related compensation and the run-rate impact of acquisitions. For the quarter, net long-term inflows were $47 billion, led by Fixed Income and Equities. And in liquidity, we saw net inflows of $93 billion, inclusive of our ongoing deposit migration. AUM of $3 trillion was up 2% year-on-year and overall client assets of $4.3 trillion were up 6% driven by continued net inflows into liquidity and long-term products. And finally, loans were down 1% quarter-on-quarter, driven by lower securities-based lending, while average deposits were down 5%. Turning to Corporate on . Corporate reported net income of $244 million. Revenue was $985 million compared to a net loss of $881 million last year. NII was $1.7 billion, up $2.3 billion year-on-year, due to the impact of higher rates. NIR was a loss of $755 million compared with a loss of $345 million in the prior year, and included the net investment securities losses I mentioned earlier. Expenses of $160 million were down $24 million year-on-year. And credit costs of $370 million were driven by reserve builds on a couple of single name exposures. Next, the Outlook on . We now expect 2023 NII and NII ex. Markets to be approximately $81 billion. This increase in guidance is primarily driven by lower rate paid assumptions across both consumer and wholesale in light of the expectation of Fed cuts later in the year, as well as slightly higher card revolving balances. Note that in line with my comments at the outset, recent deposit balance increases are not a meaningful contributor to the upward revision in the NII outlook given that we expect a meaningful portion of the recent inflows to reverse later in the year. I would point out that this outlook still embeds significant reprice lags: we think a more sustainable NII ex. Markets run-rate in the medium-term is well below this quarter's $84 billion, as well as below the $80 billion that is implied for the rest of the year by our full year guidance; and while we don't know exactly when this lower run-rate will be reached, when it happens, we believe it will be around the mid-70s. And, of course, as we mentioned last quarter, this NII outlook remains highly sensitive to the uncertainty associated with the timing and the extent of deposit reprice, investment portfolio decisions, the dynamics of QT and RRP, the trajectory of Fed funds, as well as the broader macroeconomic environment - including its impact on loan growth. Separately, it's worth noting that Markets NII may start to trend slightly positive towards the end of the year as a function of mix and rate effects. Moving to expenses, our outlook for 2023 continues to be about $81 billion. Importantly, this does not currently include the impact of the pending FDIC special assessment. And on credit, we continue to expect the 2023 Card net charge-off rate to be approximately 2.6%. So to wrap up, our strong results this quarter once again highlight the earnings power of this diversified franchise. We have benefited from our fortress principles and commitment to invest, which we will continue to do as we head into an increasingly uncertain environment. With that - operator please open the line for Q&A. Question And Answer Section",
+      "uuid": "fa88629a-4e8a-4311-a57b-96bad6e766ce"
     },
     {
       "speaker": "Operator",
-      "utterance": "Please stand by. The first question is coming from the line of Steve Chubak with Wolfe Research, now open. Steven Chubak Analyst, Wolfe Research LLC Hey, good morning.",
-      "uuid": "11187dd8-a26c-4593-827f-7b0d39a40c3d"
+      "utterance": "Please stand by. The first question is coming from the line of Steve Chubak with Wolfe Research, now open.",
+      "uuid": "7bebb649-8642-4f3e-af38-f278079fedf0"
+    },
+    {
+      "speaker": "Steven Chubak",
+      "utterance": "Analyst, Wolfe Research LLC Hey, good morning.",
+      "uuid": "c0c6677e-6c3e-47ac-ad0a-17f5bdb340cc"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Good morning, Steve. Steven Chubak Analyst, Wolfe Research LLC So, Jamie, I was actually hoping to get your perspective on how you see the recent developments with SVB impacting the regulatory landscape for the big banks. In your letter you spent a fair amount of time highlighting the consequences of overly stringent capital requirements, the risk of steering more activities to the less regulated nonbanks. But what are some of the changes that you're scenario planning for \u2013 whether it's higher capital, increase in FDIC assessment fees? And along those same lines, how you're thinking about the buyback given continued strong capital build, but a lot of macro uncertainty at the moment.",
-      "uuid": "f37e3292-7d4e-417b-a22d-f49467a61ac3"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Good morning, Steve.",
+      "uuid": "7f398cc9-8657-45fb-bbe8-eb1d3e5bdd99"
+    },
+    {
+      "speaker": "Steven Chubak",
+      "utterance": "Analyst, Wolfe Research LLC So, Jamie, I was actually hoping to get your perspective on how you see the recent developments with SVB impacting the regulatory landscape for the big banks. In your letter you spent a fair amount of time highlighting the consequences of overly stringent capital requirements, the risk of steering more activities to the less regulated nonbanks. But what are some of the changes that you're scenario planning for - whether it's higher capital, increase in FDIC assessment fees? And along those same lines, how you're thinking about the buyback given continued strong capital build, but a lot of macro uncertainty at the moment.",
+      "uuid": "81a73f6b-1882-4a2c-a4ab-0e74ce053756"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Well, I think you were already kind of complete with answering your own question there. Look, we're hoping that everyone just takes a deep breath and looks at what happened and the breadth and depth of regulations already in place. Obviously, when something happens like this, you should adjust, think about it. So I think down the road there may be some limitations on held-to-maturity, maybe more TLAC for certain type-size banks, and more scrutiny on interest rate exposure, and stuff like that. But it doesn't have to be a revamp of the whole system, just recalibrating things the right way. And I think it should be done knowing what you want the outcome to be. The outcome you should want is very strong community and regional banks. And certain actions are taken which are drastic \u2013 it could actually make them weaker. So, that's all it is. We do expect higher capital from Basel IV, effectively and, obviously there's going to be an FDIC assessment \u2013 that'll be what it is. Steven Chubak Analyst, Wolfe Research LLC Got it. And just in terms of appetite for the buyback, just given some of the...",
-      "uuid": "16e1b988-bf2b-4f0c-9125-5fc42cf64ac9"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Well, I think you were already kind of complete with answering your own question there. Look, we're hoping that everyone just takes a deep breath and looks at what happened and the breadth and depth of regulations already in place. Obviously, when something happens like this, you should adjust, think about it. So I think down the road there may be some limitations on held-to-maturity, maybe more TLAC for certain type-size banks, and more scrutiny on interest rate exposure, and stuff like that. But it doesn't have to be a revamp of the whole system, just recalibrating things the right way. And I think it should be done knowing what you want the outcome to be. The outcome you should want is very strong community and regional banks. And certain actions are taken which are drastic - it could actually make them weaker. So, that's all it is. We do expect higher capital from Basel IV, effectively and, obviously there's going to be an FDIC assessment - that'll be what it is.",
+      "uuid": "b1717a75-1210-4e69-a893-18d894a9fb5b"
+    },
+    {
+      "speaker": "Steven Chubak",
+      "utterance": "Analyst, Wolfe Research LLC Got it. And just in terms of appetite for the buyback, just given some of the...",
+      "uuid": "6e20cfcf-1ca8-4004-aab5-6e4f861c777e"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Oh, yeah. Steven Chubak Analyst, Wolfe Research LLC elevated macro uncertainties.",
-      "uuid": "29505296-0966-4579-8f17-33ca1204b2ab"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Oh, yeah.",
+      "uuid": "ad1608e5-55eb-45f3-94f9-648f0d9ed55d"
+    },
+    {
+      "speaker": "Steven Chubak",
+      "utterance": "Analyst, Wolfe Research LLC elevated macro uncertainties.",
+      "uuid": "c89ae100-395f-4194-b39c-97ad67f28bbd"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Well, we've told you that we're kind of penciling in $12 billion for this year. Obviously, capital is more than that, but \u2013 and we did a little bit of buyback this quarter. We're going to wait and see. We don't mind keeping our powder dry, and you've seen us do that with investment portfolios, and we're also going to do that with capital. Steven Chubak Analyst, Wolfe Research LLC That's great. I'll hop back into the queue. Thanks so much for taking my questions.",
-      "uuid": "0c2ed663-3fe3-412b-a80e-cca31a5c9ce5"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Well, we've told you that we're kind of penciling in $12 billion for this year. Obviously, capital is more than that, but - and we did a little bit of buyback this quarter. We're going to wait and see. We don't mind keeping our powder dry, and you've seen us do that with investment portfolios, and we're also going to do that with capital.",
+      "uuid": "9486048a-6c89-4b8b-acc3-52234b2ed6d9"
+    },
+    {
+      "speaker": "Steven Chubak",
+      "utterance": "Analyst, Wolfe Research LLC That's great. I'll hop back into the queue. Thanks so much for taking my questions.",
+      "uuid": "05c0d480-eec0-4ca3-b83a-9b6fb048d5e9"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Okay.",
-      "uuid": "17f4e406-1488-4dc3-9a33-e40e1cb81227"
+      "uuid": "cf843c1e-a767-4976-bf61-74c5d5024227"
     },
     {
       "speaker": "Operator",
-      "utterance": "Thank you. The next question comes from the line of Ken Usdin with Jefferies. You may proceed. Ken Usdin Analyst, Jefferies LLC Hey, thanks. Good morning. Hey, Jeremy, I was just wondering if you can just give us a little bit more detail on those lower funding expectation points that you made, just in terms of is it because of what you can offer the client that might allow you to kind of keep that beta lower? And maybe you can just kind of wrap it into what your overall beta expectations are in that revised update? Thank you.",
-      "uuid": "1fc45a04-b5af-4ffe-9051-7f7d6a438c83"
+      "utterance": "Thank you. The next question comes from the line of Ken Usdin with Jefferies. You may proceed.",
+      "uuid": "83012229-13b7-44b4-90d8-a7bb25bc37a3"
+    },
+    {
+      "speaker": "Ken Usdin",
+      "utterance": "Analyst, Jefferies LLC Hey, thanks. Good morning. Hey, Jeremy, I was just wondering if you can just give us a little bit more detail on those lower funding expectation points that you made, just in terms of is it because of what you can offer the client that might allow you to kind of keep that beta lower? And maybe you can just kind of wrap it into what your overall beta expectations are in that revised update? Thank you.",
+      "uuid": "4af21254-aaa0-4eb2-a819-b475a5269782"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah, sure. So let me just summarize the drivers of the change in the outlook. So the primary driver really is lower deposit rate paid expectations across both consumer and wholesale, which, as you mentioned, is driven by a couple factors. So, the change in the rate environment, with cuts coming sooner in the outlook, all else equal, does take some pressure off the reprice. And as you said, we're getting a lot of positive feedback from the field on our product offerings. The short-term CD, in particular, is really getting a lot of positive feedback from our folks in the branches. It's been very attractive to yield-seeking customers. So that's kind of working well. And then on the asset side, we are seeing a little bit higher Card revolve, which is helping. And I'll just remind you that at a conference in February, I suggested that we were already starting to feel like some of the uncertainties we mentioned when giving the guidance had started all moving in the same direction, and that was one of the things that contributed to the upward revision, like all of the uncertainty kind of went the same way. But as Jamie's pointed out \u2013 those uncertainties are all still there, we highlight them on the page, and as we look forward to this year and to next year and the medium-term we remain very focused on those. Ken Usdin Analyst, Jefferies LLC Yeah, and as a follow-up on the point about rate expectations coming now in, and potentially getting cut sooner \u2013 how do you take a look at what that might mean just for the broader economy? Do you think it's more just because inflation's coming down? Do you think it's because the Fed's just got to react to an even tougher economy and still some of those storm clouds that might be out there? Just kind of your general thinking about the other read-throughs of what lower rates quicker will mean for the broader economy.",
-      "uuid": "f1792ad9-94cf-449b-9952-d7e0294ac83b"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah, sure. So let me just summarize the drivers of the change in the outlook. So the primary driver really is lower deposit rate paid expectations across both consumer and wholesale, which, as you mentioned, is driven by a couple factors. So, the change in the rate environment, with cuts coming sooner in the outlook, all else equal, does take some pressure off the reprice. And as you said, we're getting a lot of positive feedback from the field on our product offerings. The short-term CD, in particular, is really getting a lot of positive feedback from our folks in the branches. It's been very attractive to yield-seeking customers. So that's kind of working well. And then on the asset side, we are seeing a little bit higher Card revolve, which is helping. And I'll just remind you that at a conference in February, I suggested that we were already starting to feel like some of the uncertainties we mentioned when giving the guidance had started all moving in the same direction, and that was one of the things that contributed to the upward revision, like all of the uncertainty kind of went the same way. But as Jamie's pointed out - those uncertainties are all still there, we highlight them on the page, and as we look forward to this year and to next year and the medium-term we remain very focused on those.",
+      "uuid": "b8aa1ee9-21fa-4757-ba85-da02cf856fd1"
+    },
+    {
+      "speaker": "Ken Usdin",
+      "utterance": "Analyst, Jefferies LLC Yeah, and as a follow-up on the point about rate expectations coming now in, and potentially getting cut sooner - how do you take a look at what that might mean just for the broader economy? Do you think it's more just because inflation's coming down? Do you think it's because the Fed's just got to react to an even tougher economy and still some of those storm clouds that might be out there? Just kind of your general thinking about the other read-throughs of what lower rates quicker will mean for the broader economy.",
+      "uuid": "f0f1565d-fd5b-4713-9dd1-aa000b51ed62"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Well first of all, I don't quite believe it. So the Fed has the rate curve, the forward short-term rate curve, almost at 1% higher than what the market has. So one of the things you got to always prepare for is \u2013 it could be anything, we don't know what the rate curve is going to be in a year. And so we're quite cautious in that and quite thoughtful about that. Obviously, the short-term read is higher recessionary risk and then inflation coming down. So I think inflation will come down a little bit, but it could easily be stickier than people think and therefore, the rate curve will have to go up a little bit. Ken Usdin Analyst, Jefferies LLC Okay. Thank you very much.",
-      "uuid": "ad74fe3b-2dfa-43e9-b665-57bdab9b18df"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Well first of all, I don't quite believe it. So the Fed has the rate curve, the forward short-term rate curve, almost at 1% higher than what the market has. So one of the things you got to always prepare for is - it could be anything, we don't know what the rate curve is going to be in a year. And so we're quite cautious in that and quite thoughtful about that. Obviously, the short-term read is higher recessionary risk and then inflation coming down. So I think inflation will come down a little bit, but it could easily be stickier than people think and therefore, the rate curve will have to go up a little bit.",
+      "uuid": "b35a045d-6d3f-4de6-bee0-748d2d0dcf5f"
+    },
+    {
+      "speaker": "Ken Usdin",
+      "utterance": "Analyst, Jefferies LLC Okay. Thank you very much.",
+      "uuid": "eae441d6-d9ad-4302-ab5b-91f34721c77e"
     },
     {
       "speaker": "Operator",
-      "utterance": "Thank you. The next question comes from the line of John McDonald with Autonomous Research. You may proceed. John McDonald Analyst, Autonomous Research Hi, thanks. Jeremy, wanted to follow up again on the drivers of the NII revision and the lower rates paid assumption. You mentioned the Fed cuts coming sooner and positive feedback on the customer offers. What about the March events? Do the bank failures there that happened in March \u2013 in your view, do they slow the reprice intensity because folks are moving other than price reasons? Or they intensify it industry-wide because smaller banks have to reprice to keep their deposits? How do those events influence your view of the reprice?",
-      "uuid": "74d48288-7ed4-47cf-8a86-42cc8b5d928a"
+      "utterance": "Thank you. The next question comes from the line of John McDonald with Autonomous Research. You may proceed.",
+      "uuid": "68ae8bd6-5852-4c7b-99f4-a517a0f1aa9d"
+    },
+    {
+      "speaker": "John McDonald",
+      "utterance": "Analyst, Autonomous Research Hi, thanks. Jeremy, wanted to follow up again on the drivers of the NII revision and the lower rates paid assumption. You mentioned the Fed cuts coming sooner and positive feedback on the customer offers. What about the March events? Do the bank failures there that happened in March - in your view, do they slow the reprice intensity because folks are moving other than price reasons? Or they intensify it industry-wide because smaller banks have to reprice to keep their deposits? How do those events influence your view of the reprice?",
+      "uuid": "3e5b6b3e-e344-4793-8823-8724b0813ab8"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. John, it's a really good question, and we've obviously thought about that. But as we sit here today, I guess I have two answers to that. One is it's not meaningfully affecting our current outlook \u2013 we don't see it as a major driver. And I think in terms of the larger dynamics that you lay out, it's just a little too early to tell. But from where we are right now, the base case is no real impact. John McDonald Analyst, Autonomous Research Okay. And then I wanted to ask Jamie \u2013 there's a narrative out there that the industry could see a credit crunch \u2013 banks are going to stop lending, even Jay Powell mentioned that as a risk. Do you see that in terms of anything you look at in terms of lending and is that a reaction that makes sense \u2013 that banks might be retrenching a lot here? Do you worry about that for the economy in terms of credit crunch? Thanks.",
-      "uuid": "ab5c2e2d-3530-4d7b-99af-37d2300a88fc"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. John, it's a really good question, and we've obviously thought about that. But as we sit here today, I guess I have two answers to that. One is it's not meaningfully affecting our current outlook - we don't see it as a major driver. And I think in terms of the larger dynamics that you lay out, it's just a little too early to tell. But from where we are right now, the base case is no real impact.",
+      "uuid": "80df9cc4-2f88-4427-845b-daeb193b9d38"
+    },
+    {
+      "speaker": "John McDonald",
+      "utterance": "Analyst, Autonomous Research Okay. And then I wanted to ask Jamie - there's a narrative out there that the industry could see a credit crunch - banks are going to stop lending, even Jay Powell mentioned that as a risk. Do you see that in terms of anything you look at in terms of lending and is that a reaction that makes sense - that banks might be retrenching a lot here? Do you worry about that for the economy in terms of credit crunch? Thanks.",
+      "uuid": "9228e46b-bc8b-444f-b6f2-5867b6c3b7d9"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah. I wouldn't use the word credit crunch if I were you. Obviously, there's going to be a little bit of tightening, and most of that will be around certain real estate things. And you've heard it from real estate investors already, so I just look at that as a kind of thumb on the scale. It just makes the Fed's conditions be a little bit tighter, it increases the odds of a recession \u2013 that's what that is. It's not like a credit crunch.",
-      "uuid": "5cf4113f-aa7c-4af5-82a3-fb569a7b9a88"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah. I wouldn't use the word credit crunch if I were you. Obviously, there's going to be a little bit of tightening, and most of that will be around certain real estate things. And you've heard it from real estate investors already, so I just look at that as a kind of thumb on the scale. It just makes the Fed's conditions be a little bit tighter, it increases the odds of a recession - that's what that is. It's not like a credit crunch.",
+      "uuid": "b674b24b-c066-4a0f-8cb7-38201efac971"
     },
     {
       "speaker": "Operator",
-      "utterance": "Thank you. Our next question comes from Erika Najarian with UBS. You may proceed. Erika Najarian Analyst, UBS Securities LLC Hi. Good morning. My first question is you mentioned that your reserve build was driven mostly by worse economic assumptions. I'm wondering if you could update us on what unemployment rate you're assuming in your reserve.",
-      "uuid": "986a5bbc-e17b-4d09-981f-5f0620020c01"
+      "utterance": "Thank you. Our next question comes from Erika Najarian with UBS. You may proceed.",
+      "uuid": "603335b7-39b1-4883-aeea-fdbde8136a8f"
+    },
+    {
+      "speaker": "Erika Najarian",
+      "utterance": "Analyst, UBS Securities LLC Hi. Good morning. My first question is you mentioned that your reserve build was driven mostly by worse economic assumptions. I'm wondering if you could update us on what unemployment rate you're assuming in your reserve.",
+      "uuid": "ea0920a7-6149-44c0-8e2f-244a8b57d350"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. So, Erika, as you know, we take \u2013 not going to go into a lot of detail here \u2013 but we take the outlook from our economists, we run a bunch of different scenarios and we probability-weight those. The central case outlook from our research team hasn't actually changed, but we felt that in line with what Jamie just said in terms of a little bit of tightening as a result of the events of March, it made sense to add a little bit of weight to our relative adverse case. So we did that, which changed the weighted-average expectation. And I think that the weighted-average peak unemployment that we're using now is something like 5.8%. Erika Najarian Analyst, UBS Securities LLC So, as you think about all of what you've just told us \u2013 so $81 billion of NII this year, and who knows when medium-term is going to happen of mid-70s, the clear strength of the franchise producing 23% ROTCE in a quarter where your CET1 is 13.8% and a reserve that already reflects 5.8% unemployment. As we think about recession and what JPMorgan can earn in a recession, do you think you can hit 17% ROTCE even in 2024 \u2013 assuming we do have a recession in 2024 as everybody is expecting \u2013 given all these revenue dynamics and how prepared you are on the reserve?",
-      "uuid": "6a6cc4ad-5342-464f-a369-2ec335d4ab85"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. So, Erika, as you know, we take - not going to go into a lot of detail here - but we take the outlook from our economists, we run a bunch of different scenarios and we probability-weight those. The central case outlook from our research team hasn't actually changed, but we felt that in line with what Jamie just said in terms of a little bit of tightening as a result of the events of March, it made sense to add a little bit of weight to our relative adverse case. So we did that, which changed the weighted-average expectation. And I think that the weighted-average peak unemployment that we're using now is something like 5.8%.",
+      "uuid": "a4f11ae7-7cc9-43e2-8ba3-fa7df5ad2acd"
+    },
+    {
+      "speaker": "Erika Najarian",
+      "utterance": "Analyst, UBS Securities LLC So, as you think about all of what you've just told us - so $81 billion of NII this year, and who knows when medium-term is going to happen of mid-70s, the clear strength of the franchise producing 23% ROTCE in a quarter where your CET1 is 13.8% and a reserve that already reflects 5.8% unemployment. As we think about recession and what JPMorgan can earn in a recession, do you think you can hit 17% ROTCE even in 2024 - assuming we do have a recession in 2024 as everybody is expecting - given all these revenue dynamics and how prepared you are on the reserve?",
+      "uuid": "6fa1ffbe-3dcf-4b7c-bf97-55afc7487dc7"
     },
     {
       "speaker": "Jeremy Barnum",
       "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. I mean that's an interesting question, Erika. I guess I'll say a couple things.",
-      "uuid": "45e6c8bb-252f-4651-b98d-50f3a1e9cb8c"
+      "uuid": "c8c96c85-1abf-4275-9959-f1605faeb020"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. It's a great question, so I want to see how Jeremy answers it.",
-      "uuid": "d1cbbbc4-4eb2-4849-988c-5b561df2bdfc"
+      "uuid": "5bc31e21-332d-4a7c-865c-6ba899fc917b"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Okay. Let's take a crack. Let's see what the boss thinks. I think number one, we believe, have said, and continue to believe that this is fundamentally a 17% through the cycle ROTCE franchise, so number one. Number two, as Jamie always says, we run this company for all different scenarios and to have it be as resilient as possible across all different scenarios. On the particular question of ROTCE expectations in 2024 contingent on the particular economic outlook, obviously it depends a lot on the nature of the recession. I think we feel really good about how the company is positioned for a recession, but we're a bank. A very serious recession is of course going to be a headwind for returns, but we think even in a fairly severe recession, we'll deliver very good returns \u2013 whether that's 17% or not is too much detail for now. Erika Najarian Analyst, UBS Securities LLC Thank you.",
-      "uuid": "f6e8e1a9-c1b7-45ab-9863-91d7503c2622"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Okay. Let's take a crack. Let's see what the boss thinks. I think number one, we believe, have said, and continue to believe that this is fundamentally a 17% through the cycle ROTCE franchise, so number one. Number two, as Jamie always says, we run this company for all different scenarios and to have it be as resilient as possible across all different scenarios. On the particular question of ROTCE expectations in 2024 contingent on the particular economic outlook, obviously it depends a lot on the nature of the recession. I think we feel really good about how the company is positioned for a recession, but we're a bank. A very serious recession is of course going to be a headwind for returns, but we think even in a fairly severe recession, we'll deliver very good returns - whether that's 17% or not is too much detail for now.",
+      "uuid": "aa9b7294-683c-488e-be12-c4ba96f2f742"
+    },
+    {
+      "speaker": "Erika Najarian",
+      "utterance": "Analyst, UBS Securities LLC Thank you.",
+      "uuid": "e1bbfc3e-9216-4c6d-a244-8ac00b8240ed"
     },
     {
       "speaker": "Operator",
-      "utterance": "The next question comes from the line of Jim Mitchell from Seaport Global Securities. You may proceed. Jim Mitchell Analyst, Seaport Global Securities LLC Hey. Good morning. Maybe just a little bit on the deposit, your thought process there. You've seen some inflows. Why do you think that you lose them going forward? And just maybe talk a little bit about the dynamic in pricing \u2013 do you feel like given the inflows, do you see some pricing power for the larger banks?",
-      "uuid": "27908cbd-6a37-4b98-aed9-d22a699c3550"
+      "utterance": "The next question comes from the line of Jim Mitchell from Seaport Global Securities. You may proceed.",
+      "uuid": "19b19ff4-a8b1-439c-8a71-5f241917a925"
+    },
+    {
+      "speaker": "Jim Mitchell",
+      "utterance": "Analyst, Seaport Global Securities LLC Hey. Good morning. Maybe just a little bit on the deposit, your thought process there. You've seen some inflows. Why do you think that you lose them going forward? And just maybe talk a little bit about the dynamic in pricing - do you feel like given the inflows, do you see some pricing power for the larger banks?",
+      "uuid": "51e59a1a-d4a2-416b-9d4d-980dcc18ba8b"
     },
     {
       "speaker": "Jeremy Barnum",
       "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. A couple things there. So, first of all, we don't know. Right? The deposits just came in. We don't know. We're guessing. Number two, the deposits just came in. So, by definition, these are somewhat flighty deposits because they just came into us, so it's prudent and appropriate for us to assume that they won't be particularly stable. Number three, there's a natural amount of internal migration of deposits to money funds so you have to overlay that and that's embedded in our assumptions. And number four, it's a competitive market, and it's entirely possible that people temporarily come to us and then over time decide to go elsewhere. So, for all of those reasons, we're just being realistic about the stickiness of it.",
-      "uuid": "206c3912-3a04-4f32-a27f-b40caf4260f8"
+      "uuid": "63d31e1a-e781-4986-b1ac-58492013e453"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. If I add, I would say, categorically, there's no pricing power that the bigger banks have because if you look at the pricing \u2013 and we look at pricing sheets all the time \u2013 every bank is in a slightly different position and every bank is competing in three-month, six-month, nine-month savings rates. And then you have the online banks, you got treasury bills, you got money market funds. There's no pricing power for the bank, but obviously we all have different franchises and we're all in a slightly different position. Jim Mitchell Analyst, Seaport Global Securities LLC No, fair \u2013 all fair points. And maybe just a follow-up on John's question on the lending environment. You talked about the industry likely pulling back. Are you changing your underwriting standards in any way? Just trying to think through is there potential for some market share gains given your strength of capital and liquidity? Or how you're thinking about the loan environment?",
-      "uuid": "1765e574-ff35-4fdf-83a8-ae8924c11d82"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. If I add, I would say, categorically, there's no pricing power that the bigger banks have because if you look at the pricing - and we look at pricing sheets all the time - every bank is in a slightly different position and every bank is competing in three-month, six-month, nine-month savings rates. And then you have the online banks, you got treasury bills, you got money market funds. There's no pricing power for the bank, but obviously we all have different franchises and we're all in a slightly different position.",
+      "uuid": "f67219bd-8986-4035-aec5-a07f31892fe1"
+    },
+    {
+      "speaker": "Jim Mitchell",
+      "utterance": "Analyst, Seaport Global Securities LLC No, fair - all fair points. And maybe just a follow-up on John's question on the lending environment. You talked about the industry likely pulling back. Are you changing your underwriting standards in any way? Just trying to think through is there potential for some market share gains given your strength of capital and liquidity? Or how you're thinking about the loan environment?",
+      "uuid": "6df56443-a143-48fb-84c3-019f86001c1c"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. I'd say very modestly, but we look at that all the time.",
-      "uuid": "e0ebb3d0-7344-4b4d-947a-d5b240a51d94"
+      "uuid": "08c0e048-c46d-4dc5-8ea4-d084caf59978"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. And we always say, right, we underwrite through the cycle. And I think notably, we didn't loosen our underwriting standards when all the numbers looked crazy good during the pandemic, and we're not going to overreact now and tighten unreasonably. Some of that correction happens naturally \u2013 credit metrics deteriorate for borrowers whether in consumer or wholesale, and that might make them leave our pre- existing risk appetite, but we're not running around aggressively tightening standards right now. Jim Mitchell Analyst, Seaport Global Securities LLC Okay. Great. Thanks.",
-      "uuid": "bba1e526-97b2-4d37-8034-dc790a3abaab"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. And we always say, right, we underwrite through the cycle. And I think notably, we didn't loosen our underwriting standards when all the numbers looked crazy good during the pandemic, and we're not going to overreact now and tighten unreasonably. Some of that correction happens naturally - credit metrics deteriorate for borrowers whether in consumer or wholesale, and that might make them leave our pre- existing risk appetite, but we're not running around aggressively tightening standards right now.",
+      "uuid": "9b473aa0-82a9-4d46-b9eb-92f16884fbf1"
+    },
+    {
+      "speaker": "Jim Mitchell",
+      "utterance": "Analyst, Seaport Global Securities LLC Okay. Great. Thanks.",
+      "uuid": "5906f364-e22d-41d2-82e7-6cf8753dfc82"
     },
     {
       "speaker": "Operator",
-      "utterance": "The next question comes from the line of Gerard Cassidy with RBC Capital Markets. You may proceed. Gerard Cassidy Analyst, RBC Capital Markets LLC Thank you. Hi, Jeremy.",
-      "uuid": "edd1f647-7939-44a4-97b2-867632d2cf04"
+      "utterance": "The next question comes from the line of Gerard Cassidy with RBC Capital Markets. You may proceed.",
+      "uuid": "e1125695-8d3b-4fdd-8087-3f351d550d5f"
+    },
+    {
+      "speaker": "Gerard Cassidy",
+      "utterance": "Analyst, RBC Capital Markets LLC Thank you. Hi, Jeremy.",
+      "uuid": "3d7a9b8f-da78-40c7-882f-24ed2c747023"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Hey, Gerard. Gerard Cassidy Analyst, RBC Capital Markets LLC In your comments about your CET1 ratio, obviously it came in strong at 13.8%. You've got the GSIB buffer obviously going up next year, and we have the stress test coming this summer or in June \u2013 the results \u2013 which maybe will lead to banks, including yours, having a higher Stress Capital Buffer. Where should we think about that CET1 ratio being by the end of the year, do you think?",
-      "uuid": "d09c52a2-f997-4009-98a4-e70f078ab013"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Hey, Gerard.",
+      "uuid": "ad5db203-92ac-4157-8f6b-92c26142b6e3"
+    },
+    {
+      "speaker": "Gerard Cassidy",
+      "utterance": "Analyst, RBC Capital Markets LLC In your comments about your CET1 ratio, obviously it came in strong at 13.8%. You've got the GSIB buffer obviously going up next year, and we have the stress test coming this summer or in June - the results - which maybe will lead to banks, including yours, having a higher Stress Capital Buffer. Where should we think about that CET1 ratio being by the end of the year, do you think?",
+      "uuid": "4893e066-2a12-4391-bae2-def318bd910f"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. So a few things on there, Gerard. So we have previously said that we were targeting 13.5% in the first quarter of 2024 as a function of assuming an unchanged SCB, the increased GSIB step and operating with a 50-basis-point buffer. So, the point that Jamie made a second ago, in light of the environment, Basel IV, dry powder, you know, who knows how we'll tweak that going forward. But that's still our base case assumption. Specifically on the stress test, contrary to what I've heard some people argue, our ability to predict the SCB ahead of time from running our own process is actually quite limited. And you'll remember last year that even though we did predict an increase, we were off by almost a factor of two in terms of how big it wound up being, and that was a big surprise for the whole industry. So, we want to be quite humble about our ability to predict the SCB. But having said that, for right now we are assuming it will be unchanged. There are some tailwinds in there through the OCI, but we believe there will likely be some offsets and harsher credit shocks in the number, so for planning purposes right now we're assuming flat for SCB, and we'll know soon enough what that actual number is. Gerard Cassidy Analyst, RBC Capital Markets LLC Sure. And then just as a follow-up, if I heard you correctly, can you give us a little more color \u2013 I think you mentioned in building the loan loss reserve this quarter you identified some one-off credits? I don't know if that's how you said it \u2013 there's some larger credits. Were they commercial real estate oriented? Were they commercial? Any more color there?",
-      "uuid": "4854b2e5-419e-45c3-8c8e-bf33a17d34d0"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. So a few things on there, Gerard. So we have previously said that we were targeting 13.5% in the first quarter of 2024 as a function of assuming an unchanged SCB, the increased GSIB step and operating with a 50-basis-point buffer. So, the point that Jamie made a second ago, in light of the environment, Basel IV, dry powder, you know, who knows how we'll tweak that going forward. But that's still our base case assumption. Specifically on the stress test, contrary to what I've heard some people argue, our ability to predict the SCB ahead of time from running our own process is actually quite limited. And you'll remember last year that even though we did predict an increase, we were off by almost a factor of two in terms of how big it wound up being, and that was a big surprise for the whole industry. So, we want to be quite humble about our ability to predict the SCB. But having said that, for right now we are assuming it will be unchanged. There are some tailwinds in there through the OCI, but we believe there will likely be some offsets and harsher credit shocks in the number, so for planning purposes right now we're assuming flat for SCB, and we'll know soon enough what that actual number is.",
+      "uuid": "03b4a880-2190-43c8-9a4e-d53242acd05d"
+    },
+    {
+      "speaker": "Gerard Cassidy",
+      "utterance": "Analyst, RBC Capital Markets LLC Sure. And then just as a follow-up, if I heard you correctly, can you give us a little more color - I think you mentioned in building the loan loss reserve this quarter you identified some one-off credits? I don't know if that's how you said it - there's some larger credits. Were they commercial real estate oriented? Were they commercial? Any more color there?",
+      "uuid": "4d5173dc-6d5c-484f-a9f3-2a57edbd409a"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. No, it wasn't commercial real estate. It was just a couple of single name items in the Corporate segment. Gerard Cassidy Analyst, RBC Capital Markets LLC Leverage loan-type items or just regular Corporate credits?",
-      "uuid": "0bc63656-250e-4e4b-ab58-da354bcc616d"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. No, it wasn't commercial real estate. It was just a couple of single name items in the Corporate segment.",
+      "uuid": "9906b4d6-162c-4133-b9a6-2eff4700e880"
+    },
+    {
+      "speaker": "Gerard Cassidy",
+      "utterance": "Analyst, RBC Capital Markets LLC Leverage loan-type items or just regular Corporate credits?",
+      "uuid": "bf7c26d8-7272-4b2d-aec0-e25d27f2691f"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Regular Corporate credits. I'd rather not get into too much detail... 10 Gerard Cassidy Analyst, RBC Capital Markets LLC Okay, very good.",
-      "uuid": "fbf174cf-c3d3-40d2-8025-eb8faefc9f8a"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Regular Corporate credits. I'd rather not get into too much detail... 10",
+      "uuid": "aa2284de-db27-49bf-bdc0-728424f31706"
+    },
+    {
+      "speaker": "Gerard Cassidy",
+      "utterance": "Analyst, RBC Capital Markets LLC Okay, very good.",
+      "uuid": "d5d972f3-0528-405f-8ede-de43162592d5"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. \u2026Gerard. Sorry. Thanks. Gerard Cassidy Analyst, RBC Capital Markets LLC Thank you.",
-      "uuid": "9f7bda1c-b630-430c-aedb-a064b5d5d341"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Gerard. Sorry. Thanks.",
+      "uuid": "09d96af5-9cb2-4b86-ba88-f46bf430a981"
+    },
+    {
+      "speaker": "Gerard Cassidy",
+      "utterance": "Analyst, RBC Capital Markets LLC Thank you.",
+      "uuid": "8be492f2-ba89-4a69-99c5-509c1cf03aa3"
     },
     {
       "speaker": "Operator",
-      "utterance": "The next question comes from the line of Ebrahim Poonawala with Bank of America Merrill Lynch. You may proceed. Ebrahim H. Poonawala Analyst, Bank of America Merrill Lynch Hi, good morning. I guess, maybe one question, Jeremy. You reminded us of the relatively low office exposure for JPM. But, obviously, you're big players in the CRE market. Just give us a sense of when you look at the two pressure points on CRE, one, how much is oversupply \u2013 and that probably goes beyond office into apartments \u2013 how much of a issue is oversupply in the market as we think about the next few years going into a weakening economy? And how much of a risk is higher for longer rates in that if the central banks can't cut rates in the next year or two, we will see a ton of more pain because of the re-fi wall that's coming up?",
-      "uuid": "ad83e26c-f629-42ba-8292-b1d80944b409"
+      "utterance": "The next question comes from the line of Ebrahim Poonawala with Bank of America Merrill Lynch. You may proceed.",
+      "uuid": "7e35bcab-33bd-4ce7-8b4e-b9c6eb73819c"
+    },
+    {
+      "speaker": "Ebrahim H. Poonawala",
+      "utterance": "Analyst, Bank of America Merrill Lynch Hi, good morning. I guess, maybe one question, Jeremy. You reminded us of the relatively low office exposure for JPM. But, obviously, you're big players in the CRE market. Just give us a sense of when you look at the two pressure points on CRE, one, how much is oversupply - and that probably goes beyond office into apartments - how much of a issue is oversupply in the market as we think about the next few years going into a weakening economy? And how much of a risk is higher for longer rates in that if the central banks can't cut rates in the next year or two, we will see a ton of more pain because of the re-fi wall that's coming up?",
+      "uuid": "1da28aff-d065-4826-983a-4eb6142f794f"
     },
     {
       "speaker": "Jeremy Barnum",
       "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah, so Ebrahim let me sort of respond narrowly in connection with our portfolio and our exposure, right? So, really, the large majority of our commercial real estate exposure is multi-family lending in supply constrained markets. And I think it's quite important to recognize the difference between that and sort of higher end, higher price point, non-rent controlled, not supply constrained markets. So, our space is really quite different in that respect, and I think that's a big part of the reason the performance has been so good for so long. So, of course, we watch it very carefully and we don't assume that past performance predicts future results here, but I think our multi-family lending portfolio is quite low risk in the scheme of things.",
-      "uuid": "11f40b56-b5ac-49c8-88a8-ade1bc34c538"
+      "uuid": "3831b891-3fa8-4803-9dd3-2d752adc98d0"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Can I just add also, housing is in short supply in America. It's not massively oversupplied like you saw in 2008.",
-      "uuid": "a07c9516-3cfa-475f-90bb-d5132d403e84"
+      "uuid": "71cda824-a111-4aa3-b560-14525918cc7a"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. And then in terms of the office space, as you know, our exposure is quite small. Yes, Jamie, has also mentioned all the re-fi dynamics that you mentioned too are something that the office space is processing one way or the other. Our office exposure is quite modest, very concentrated in Class A buildings in sort of dense urban locations where the return to the office narrative is one of the drivers \u2013 is generally in favor of high occupancy. So, again, watching it. There are obviously specific things here and there to pay attention to, but in the scheme of things for us, not a big issue. Ebrahim H. Poonawala Analyst, Bank of America Merrill Lynch And just as a follow up, I think the other risk from higher for longer rates, I think, is this \u2013 the ability of the economy, the financial markets to sustain a 5% less Fed fund for a long period of time? Like, what are the other areas you're watching if duration mismatch and bank balance 11 Ebrahim H. Poonawala Analyst, Bank of America Merrill Lynch sheets being one, CRE market being one, are you worrying \u2013 worried about non-banks that have grown exponentially over the last decade in terms of risks at the non-banks if rates don't get cut? And if you can talk to the transmission mechanism of that coming back and hitting banks given the leverage that banks provide to the non-banks.",
-      "uuid": "ab533975-1d9a-4425-89f8-06862a6f1039"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. And then in terms of the office space, as you know, our exposure is quite small. Yes, Jamie, has also mentioned all the re-fi dynamics that you mentioned too are something that the office space is processing one way or the other. Our office exposure is quite modest, very concentrated in Class A buildings in sort of dense urban locations where the return to the office narrative is one of the drivers - is generally in favor of high occupancy. So, again, watching it. There are obviously specific things here and there to pay attention to, but in the scheme of things for us, not a big issue.",
+      "uuid": "43a90164-5039-4ed5-a8a6-0c998ff9df72"
+    },
+    {
+      "speaker": "Ebrahim H. Poonawala",
+      "utterance": "Analyst, Bank of America Merrill Lynch And just as a follow up, I think the other risk from higher for longer rates, I think, is this - the ability of the economy, the financial markets to sustain a 5% less Fed fund for a long period of time? Like, what are the other areas you're watching if duration mismatch and bank balance 11 Analyst, Bank of America Merrill Lynch sheets being one, CRE market being one, are you worrying - worried about non-banks that have grown exponentially over the last decade in terms of risks at the non-banks if rates don't get cut? And if you can talk to the transmission mechanism of that coming back and hitting banks given the leverage that banks provide to the non-banks.",
+      "uuid": "3b7be501-a098-4184-ae76-d245fe2adee5"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah, so I'd like to answer that. So there is a risk of higher rates for longer. And don't just think of just the Fed Funds rate, because I think you should \u2013 for our planning \u2013 I'd be thinking more about it could be 6%. And then think about the five- and ten-year rate which could be 5%, and I think if those things happen \u2013 I'm not saying they're going to happen \u2013 I just think people should prepare for them, they saw what just happened when rates went up beyond people's expectations. You had the gilt problem in London, you had some of the banks here. People need to be prepared for the potential of higher rates for longer. If and when that happens, it will undress problems in the economy for those who are too exposed to floating rates, for those who are too exposed to re-fi risk. Those exposures will be in multiple parts of the economy. I say to all of our clients \u2013 now would be the time to fix it. Do not put yourself in a position where that risk is excessive for your company, your business, your investment pools, et cetera. That's answer number one. Number two is, it will not come back to JPMorgan. Okay? While we do provide credit to what you call shadow banks, it is very \u2013 we think \u2013 it's very, very secure. That does not mean it won't come back to other credit providers. Ebrahim H. Poonawala Analyst, Bank of America Merrill Lynch Got it. Very helpful. Thank you.",
-      "uuid": "c299d032-bb08-4841-839e-4da427dc90ca"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah, so I'd like to answer that. So there is a risk of higher rates for longer. And don't just think of just the Fed Funds rate, because I think you should - for our planning - I'd be thinking more about it could be 6%. And then think about the five- and ten-year rate which could be 5%, and I think if those things happen - I'm not saying they're going to happen - I just think people should prepare for them, they saw what just happened when rates went up beyond people's expectations. You had the gilt problem in London, you had some of the banks here. People need to be prepared for the potential of higher rates for longer. If and when that happens, it will undress problems in the economy for those who are too exposed to floating rates, for those who are too exposed to re-fi risk. Those exposures will be in multiple parts of the economy. I say to all of our clients - now would be the time to fix it. Do not put yourself in a position where that risk is excessive for your company, your business, your investment pools, et cetera. That's answer number one. Number two is, it will not come back to JPMorgan. Okay? While we do provide credit to what you call shadow banks, it is very - we think - it's very, very secure. That does not mean it won't come back to other credit providers.",
+      "uuid": "63dfbf1d-1afa-43db-8634-ff13f022b43b"
+    },
+    {
+      "speaker": "Ebrahim H. Poonawala",
+      "utterance": "Analyst, Bank of America Merrill Lynch Got it. Very helpful. Thank you.",
+      "uuid": "8f2b3466-c6a3-458a-8029-5fa695509e91"
     },
     {
       "speaker": "Operator",
-      "utterance": "The next question comes from the line of Mike Mayo with Wells Fargo Securities. You may proceed. Mike Mayo Analyst, Wells Fargo Securities LLC Hey Jeremy, you mentioned a degree of reintermediation to the lending markets. You said capital markets activity has gone to bank lending, and I'm just wondering, as part of your $7 billion increased NII guide, are you assuming better loan spreads? And on the topic of loan pricing, why aren't your credit card yields going higher than where they are today? Thanks.",
-      "uuid": "ee933aaf-574d-4c88-8b0b-bfdd60bebee6"
+      "utterance": "The next question comes from the line of Mike Mayo with Wells Fargo Securities. You may proceed.",
+      "uuid": "d1c0959f-6932-49ca-a90e-678305907f53"
+    },
+    {
+      "speaker": "Mike Mayo",
+      "utterance": "Analyst, Wells Fargo Securities LLC Hey Jeremy, you mentioned a degree of reintermediation to the lending markets. You said capital markets activity has gone to bank lending, and I'm just wondering, as part of your $7 billion increased NII guide, are you assuming better loan spreads? And on the topic of loan pricing, why aren't your credit card yields going higher than where they are today? Thanks.",
+      "uuid": "a2a86ae0-2d03-4fad-a422-bcb7ac0e11f5"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah, Mike. So I think, yeah, you're referring to my comments that I made in the Commercial Bank about the fact that the larger Corporate segment within the Commercial Bank that would generally have access to capital markets but also access to bank lending, at the margin is choosing to draw down revolvers right now rather than access the capital markets. That is not a particularly meaningful driver of the increase in NII guidance. There's a lot of odds and ends in there, but the major drivers are the ones that I called out. And to be honest, I haven't actually specifically checked what's happening with Card yields. I would imagine that they've gone up a little bit in line with rates, but I don't know. We should follow up here. Mike Mayo Analyst, Wells Fargo Securities LLC All right. And then one for you, Jamie. I guess taking the 10,000 foot level, I guess, when you look at asset liability management, or ALM \u2013 you could call this nightmare on ALM street, and you've seen some big problems at banks, and I guess how would you evaluate yourself, I guess, with this $7 billion higher NII guide? It probably is good, but to what degree are you willing to sacrifice JPM shareholder money to help rescue problem banks that did not get their asset liability management correctly? 12",
-      "uuid": "715a0976-8549-4142-8aaf-484ddcd26aa3"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah, Mike. So I think, yeah, you're referring to my comments that I made in the Commercial Bank about the fact that the larger Corporate segment within the Commercial Bank that would generally have access to capital markets but also access to bank lending, at the margin is choosing to draw down revolvers right now rather than access the capital markets. That is not a particularly meaningful driver of the increase in NII guidance. There's a lot of odds and ends in there, but the major drivers are the ones that I called out. And to be honest, I haven't actually specifically checked what's happening with Card yields. I would imagine that they've gone up a little bit in line with rates, but I don't know. We should follow up here.",
+      "uuid": "5d485434-adcb-464e-ad13-c56951cb38b4"
+    },
+    {
+      "speaker": "Mike Mayo",
+      "utterance": "Analyst, Wells Fargo Securities LLC All right. And then one for you, Jamie. I guess taking the 10,000 foot level, I guess, when you look at asset liability management, or ALM - you could call this nightmare on ALM street, and you've seen some big problems at banks, and I guess how would you evaluate yourself, I guess, with this $7 billion higher NII guide? It probably is good, but to what degree are you willing to sacrifice JPM shareholder money to help rescue problem banks that did not get their asset liability management correctly? 12",
+      "uuid": "d5167c85-8ebf-4402-bd77-ead1e1b1e0ce"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Well, it's two really different questions. So we've been quite cautious on interest rates for quite a while, and how we invest our portfolio, what our expectations are, our stress testing. The stress test \u2013 the CCAR stress test, as you know, had rates going down. I always looked at rates going up and being prepared \u2013 whether or not anything is going to happen. So we've been quite conservative ourselves and we don't mind continuing to do that because I remind people that having excess capital, you haven't lost it. It's kind of earnings in store \u2013 you get to deploy it later and maybe at a more opportune time, when the time comes. And look, we like to help the system when it needs help, if we can reasonably. And we're not the only ones, you saw a lot of banks do that, and I was proud of them. I think all of us did the right thing. Whether ultimately it works out or not, well, you could second-guess that when it happens. But the fact is, I think people want to help the system. And this whole banking thing was bad for banks. And I knew that the second I saw the headline, and then you had Credit Suisse. We want healthy community banks. We want healthy regional banks. We want to help them get through this. We have, you'll remember, Mike, as you point out, we have the best financial system the world's ever seen. That does not mean it won't have problems, doesn't mean there shouldn't be changes made, but I think it's reasonable for people to help each other in times of need. And we all did that \u2013 all of us \u2013 did that during COVID. All of us did that \u2013 if you could, those who could \u2013 did it during the Great Financial Crisis, and I would expect people to do that going forward. Mike Mayo Analyst, Wells Fargo Securities LLC Hey Jamie, your CEO letter said the banking crisis isn't over. So, what do you mean by that? Or was that dated two weeks later? Are you talking contagion or what?",
-      "uuid": "80e54c96-f30c-47b4-9bb1-91ade30671bf"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Well, it's two really different questions. So we've been quite cautious on interest rates for quite a while, and how we invest our portfolio, what our expectations are, our stress testing. The stress test - the CCAR stress test, as you know, had rates going down. I always looked at rates going up and being prepared - whether or not anything is going to happen. So we've been quite conservative ourselves and we don't mind continuing to do that because I remind people that having excess capital, you haven't lost it. It's kind of earnings in store - you get to deploy it later and maybe at a more opportune time, when the time comes. And look, we like to help the system when it needs help, if we can reasonably. And we're not the only ones, you saw a lot of banks do that, and I was proud of them. I think all of us did the right thing. Whether ultimately it works out or not, well, you could second-guess that when it happens. But the fact is, I think people want to help the system. And this whole banking thing was bad for banks. And I knew that the second I saw the headline, and then you had Credit Suisse. We want healthy community banks. We want healthy regional banks. We want to help them get through this. We have, you'll remember, Mike, as you point out, we have the best financial system the world's ever seen. That does not mean it won't have problems, doesn't mean there shouldn't be changes made, but I think it's reasonable for people to help each other in times of need. And we all did that - all of us - did that during COVID. All of us did that - if you could, those who could - did it during the Great Financial Crisis, and I would expect people to do that going forward.",
+      "uuid": "f4e60853-932c-470c-a81f-07d0b96dc6e6"
+    },
+    {
+      "speaker": "Mike Mayo",
+      "utterance": "Analyst, Wells Fargo Securities LLC Hey Jamie, your CEO letter said the banking crisis isn't over. So, what do you mean by that? Or was that dated two weeks later? Are you talking contagion or what?",
+      "uuid": "0085b8ab-41ce-4d87-86db-f27420989706"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah. So it's just \u2013 the number of banks offsides you can count on your hands, in terms of too much interest rate exposure, too much ATM, too much uninsured deposits. And so there may be additional bank failures, something like that, which we don't know. But you're going to see next week regional banks have pretty good numbers. A lot of people are going to have \u2013 can take \u2013 actions to remediate some of the issues they may have going forward. You've already seen things calm down quite a bit, particularly in deposit flows. Warren Buffett was on TV talking about that he would bet $1 million \u2013 I don't know if you saw that \u2013 that no depositor will lose money in America. That he's willing to bet his own money. And of course, you know he's a very bright man. So, this crisis is not 2008. It will pass. And the one thing I pointed out is, when I answered the question just before about interest rates \u2013 people need to be prepared. They shouldn't pray that they don't go up. They should prepare for them going up. And if it doesn't happen, serendipity. Mike Mayo Analyst, Wells Fargo Securities LLC All right. Thank you.",
-      "uuid": "67f05ff3-1bba-490f-bc39-23651be18d44"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah. So it's just - the number of banks offsides you can count on your hands, in terms of too much interest rate exposure, too much ATM, too much uninsured deposits. And so there may be additional bank failures, something like that, which we don't know. But you're going to see next week regional banks have pretty good numbers. A lot of people are going to have - can take - actions to remediate some of the issues they may have going forward. You've already seen things calm down quite a bit, particularly in deposit flows. Warren Buffett was on TV talking about that he would bet $1 million - I don't know if you saw that - that no depositor will lose money in America. That he's willing to bet his own money. And of course, you know he's a very bright man. So, this crisis is not 2008. It will pass. And the one thing I pointed out is, when I answered the question just before about interest rates - people need to be prepared. They shouldn't pray that they don't go up. They should prepare for them going up. And if it doesn't happen, serendipity.",
+      "uuid": "06b7eea9-802a-4f7a-b758-5e209b742112"
+    },
+    {
+      "speaker": "Mike Mayo",
+      "utterance": "Analyst, Wells Fargo Securities LLC All right. Thank you.",
+      "uuid": "f995179f-dc7d-4443-a2b1-04afd9b37b31"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah.",
-      "uuid": "1fd0b99a-3354-4684-bda2-04cb5044be50"
+      "uuid": "3fce916d-d1a3-4b93-8ef8-3104fba04f12"
     },
     {
       "speaker": "Operator",
-      "utterance": "The next question comes from the line of Betsy Graseck with Morgan Stanley. You may proceed. Betsy L. Graseck Analyst, Morgan Stanley & Co. LLC Hi. Good morning. 13",
-      "uuid": "8c385c65-bf20-4278-8c6a-a9691303c623"
+      "utterance": "The next question comes from the line of Betsy Graseck with Morgan Stanley. You may proceed.",
+      "uuid": "9796216a-fe80-4d3f-9eaf-ed8d35afd7b6"
+    },
+    {
+      "speaker": "Betsy L. Graseck",
+      "utterance": "Analyst, Morgan Stanley & Co. LLC Hi. Good morning. 13",
+      "uuid": "2ada796e-9c38-4870-bd78-9a841bb9187c"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Hey, Betsy. Betsy L. Graseck Analyst, Morgan Stanley & Co. LLC I do want to unpack the question here on the possibility of higher for longer rates and how that impacts you in your non-Markets NII...",
-      "uuid": "5f42f8ec-fbc1-4503-85f9-cf6f9e677864"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Hey, Betsy.",
+      "uuid": "4bd7c073-e880-4e53-bd69-55bb18b012af"
+    },
+    {
+      "speaker": "Betsy L. Graseck",
+      "utterance": "Analyst, Morgan Stanley & Co. LLC I do want to unpack the question here on the possibility of higher for longer rates and how that impacts you in your non-Markets NII...",
+      "uuid": "0e6ad082-183d-4d60-8894-d607ecef4368"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Betsy, did we just lose you? I feel like you just dropped. Betsy L. Graseck Analyst, Morgan Stanley & Co. LLC No, hear me? Hello?",
-      "uuid": "6ae1bb1b-1cb2-451c-8563-a5e2e24c76eb"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Betsy, did we just lose you? I feel like you just dropped.",
+      "uuid": "75b192f6-5f06-4fb7-8c07-3412edc0e11e"
+    },
+    {
+      "speaker": "Betsy L. Graseck",
+      "utterance": "Analyst, Morgan Stanley & Co. LLC No, hear me? Hello?",
+      "uuid": "f10bff0d-12e4-4c0c-ae91-e7346373c8df"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Go ahead.",
-      "uuid": "2cec2312-901c-4e2c-b436-7cb9c9feb40f"
+      "uuid": "6ae2dde7-f3d9-4b6a-84a9-acb8ae47c2d8"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. You're back now. Betsy L. Graseck Analyst, Morgan Stanley & Co. LLC Okay. So I just wanted to unpack the higher for longer rate possibility as to how it impacts your NII because your NII guide is assuming the forward curve, if I understand correctly. So, in the event that you get that higher for longer, just how much does that impact NII ex. Markets because I'm trying to triangulate here about \u2013 maybe you lose some deposits, but if we have higher for longer, shouldn't we expect the trajectory goes up from this quarter as opposed to down? Is that \u2013 that's the question.",
-      "uuid": "6f34c4b4-d7d1-47df-a798-b6ceecae2e74"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. You're back now.",
+      "uuid": "bd8bbd5f-db8f-4f2f-891b-7d66dc48594e"
+    },
+    {
+      "speaker": "Betsy L. Graseck",
+      "utterance": "Analyst, Morgan Stanley & Co. LLC Okay. So I just wanted to unpack the higher for longer rate possibility as to how it impacts your NII because your NII guide is assuming the forward curve, if I understand correctly. So, in the event that you get that higher for longer, just how much does that impact NII ex. Markets because I'm trying to triangulate here about - maybe you lose some deposits, but if we have higher for longer, shouldn't we expect the trajectory goes up from this quarter as opposed to down? Is that - that's the question.",
+      "uuid": "cf2a9948-ded3-464e-a3b1-6260a6e54097"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Go ahead, Jeremy. And then I'll go.",
-      "uuid": "531c0196-0662-4a86-bf42-4f9d2f01a6ec"
+      "uuid": "c3a024bb-6e45-49aa-9b11-22eaaf0f182a"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Sure. So, Betsy, your question is very good. And I would say that if you look at the evolution of our outlook last year, it was pretty clear that we were very asset-sensitive, certainly in terms of the sort of one year forward EaR type measure. You also obviously know that our current EaR actually shows a slight negative number, so a tiny bit liability sensitive, and I won't get into all the nuances about why that may or may not be a great predictor in the short-term. But the point is that the level of rates now is of course very different from what it was last year. And at this level of rates, the relationship between our short-term NII evolution and the curve is not always going to be clear in any given moment. It's quite tricky, and it can behave in somewhat wonky ways as a function of, again, what I've alluded to a couple times on this call \u2013 the competitive environment for deposits, which is not, in fact, a sort of mathematically predictable thing as a function of the rate curve. So, that's why we're emphasizing all the different drivers of uncertainty in the NII outlook. Yeah. 14",
-      "uuid": "d66a0a0e-5bac-4b78-bd60-6e6aa7b2d909"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Sure. So, Betsy, your question is very good. And I would say that if you look at the evolution of our outlook last year, it was pretty clear that we were very asset-sensitive, certainly in terms of the sort of one year forward EaR type measure. You also obviously know that our current EaR actually shows a slight negative number, so a tiny bit liability sensitive, and I won't get into all the nuances about why that may or may not be a great predictor in the short-term. But the point is that the level of rates now is of course very different from what it was last year. And at this level of rates, the relationship between our short-term NII evolution and the curve is not always going to be clear in any given moment. It's quite tricky, and it can behave in somewhat wonky ways as a function of, again, what I've alluded to a couple times on this call - the competitive environment for deposits, which is not, in fact, a sort of mathematically predictable thing as a function of the rate curve. So, that's why we're emphasizing all the different drivers of uncertainty in the NII outlook. Yeah. 14",
+      "uuid": "c95871bf-369e-4d39-80e8-d6283a4c1bbd"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah. So I'll just add, so next quarter we all kind of know already. Two quarters out, we know a little bit less. Three quarters out, we know a little bit less. And 2024, we know very little. That number, you could imagine \u2013 this is a little inside baseball now \u2013 the number that we're talking about for 2024 is not based upon an implied curve. It's based upon us looking at multiple potential scenarios, leveling them kind of out and saying this is kind of a range. And you're absolutely correct. You could have an environment of higher for longer that might be better than that, but remember, higher for longer comes with a lot of other things attached to it \u2013 like maybe a recession, stagflation, lower volumes. So I wouldn't look at that as higher for longer is a positive. It might be a slight positive on that line. It would probably would be a negative on other lines. Betsy L. Graseck Analyst, Morgan Stanley & Co. LLC Yeah. Got it. Okay, that's super helpful to understand how you think through that. And then the follow-up is just on the buybacks. So do I take your comments to mean that you're on pause now? And if that's the case, what would be the driver of restarting?",
-      "uuid": "7cf90696-6ec0-4b82-af1a-419b6ac5eb6b"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah. So I'll just add, so next quarter we all kind of know already. Two quarters out, we know a little bit less. Three quarters out, we know a little bit less. And 2024, we know very little. That number, you could imagine - this is a little inside baseball now - the number that we're talking about for 2024 is not based upon an implied curve. It's based upon us looking at multiple potential scenarios, leveling them kind of out and saying this is kind of a range. And you're absolutely correct. You could have an environment of higher for longer that might be better than that, but remember, higher for longer comes with a lot of other things attached to it - like maybe a recession, stagflation, lower volumes. So I wouldn't look at that as higher for longer is a positive. It might be a slight positive on that line. It would probably would be a negative on other lines.",
+      "uuid": "43598314-530f-4c43-ae6d-ee6b873afcd7"
+    },
+    {
+      "speaker": "Betsy L. Graseck",
+      "utterance": "Analyst, Morgan Stanley & Co. LLC Yeah. Got it. Okay, that's super helpful to understand how you think through that. And then the follow-up is just on the buybacks. So do I take your comments to mean that you're on pause now? And if that's the case, what would be the driver of restarting?",
+      "uuid": "00dab211-1343-4628-87a5-e967866cd913"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah. No. We're not on pause now. We're doing a little bit now. We obviously have a lot of excess capital. We also like to buy our stock when it's cheap, not just when it's available. And we're also peering ahead, looking at those little bit of storm clouds so we're going to be kind of cautious. So we're going to make this decision every day. We also don't like to tell the market what we're doing, just so you know. Betsy L. Graseck Analyst, Morgan Stanley & Co. LLC Yeah. And then can you give us any sense of what Basel IV endgame means to you in your RWAs? How much should we be baking in for those?",
-      "uuid": "39a293a1-0087-4dcc-8abb-54f53330f3ae"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah. No. We're not on pause now. We're doing a little bit now. We obviously have a lot of excess capital. We also like to buy our stock when it's cheap, not just when it's available. And we're also peering ahead, looking at those little bit of storm clouds so we're going to be kind of cautious. So we're going to make this decision every day. We also don't like to tell the market what we're doing, just so you know.",
+      "uuid": "1e1fcfe3-9b74-485f-9a62-4d59b8185c14"
+    },
+    {
+      "speaker": "Betsy L. Graseck",
+      "utterance": "Analyst, Morgan Stanley & Co. LLC Yeah. And then can you give us any sense of what Basel IV endgame means to you in your RWAs? How much should we be baking in for those?",
+      "uuid": "ec566ea0-1fae-4e23-8e40-749e3ade01a6"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah, Betsy, we really don't have any new information there, right? I mean, I think clearly if you go back like a year, we were maybe a little bit more optimistic that it might be across all the different levers and all the different pieces of it, closer to capital neutral. I think now it feels like it\u2019s likely to be worse than that. Hopefully, it\u2019s not too much worse than that. And I would just remind you that there are a lot of different levers, so when the NPR comes, that's only going to be a part of it, there's going to be other pieces \u2013 the holistic review. And it's going to take a lot of time to phase in and we're going to have time to adjust. So we'll know when we know. Betsy L. Graseck Analyst, Morgan Stanley & Co. LLC Got it.",
-      "uuid": "1bcba5b1-0247-496d-9a90-f7fcf1fd5719"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah, Betsy, we really don't have any new information there, right? I mean, I think clearly if you go back like a year, we were maybe a little bit more optimistic that it might be across all the different levers and all the different pieces of it, closer to capital neutral. I think now it feels like it's likely to be worse than that. Hopefully, it's not too much worse than that. And I would just remind you that there are a lot of different levers, so when the NPR comes, that's only going to be a part of it, there's going to be other pieces - the holistic review. And it's going to take a lot of time to phase in and we're going to have time to adjust. So we'll know when we know.",
+      "uuid": "1a687d59-987a-4f8c-aa2f-81b850cc74d7"
+    },
+    {
+      "speaker": "Betsy L. Graseck",
+      "utterance": "Analyst, Morgan Stanley & Co. LLC Got it.",
+      "uuid": "71da68fa-21ec-44cd-b968-c72fb32c7ef5"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. And there were supposed \u2013 I just remembered, there were supposed to be pauses in there about how they looked at banks relative to the global economy, which are getting smaller. The G-SIFI was supposed to be adjusted for that. So, it may very \u2013 we're expecting it go up, but there are a lot of reasons why it shouldn't go up. And JPMorgan \u2013 there's so much capital. I mean, so you can't look at JPMorgan and say, well, it's a capital issue. And even the banks, by the way, when you look at it \u2013 even though some of the banks that are in trouble, they have plenty of capital. Their issue wasn't capital, it was other things. And so I'm just hoping regulators are very thoughtful. And the other thing is they should a priori decide what they want out of the banking system at this point because I've made it clear \u2013 I can look at the banking system and say that no bank should keep a loan, if possible. That's how much capital is now being required for loans. 15 Betsy L. Graseck Analyst, Morgan Stanley & Co. LLC This is based on the current rule set.",
-      "uuid": "d9c6a5de-95b8-4f8f-b1ef-e9fae65bf65f"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. And there were supposed - I just remembered, there were supposed to be pauses in there about how they looked at banks relative to the global economy, which are getting smaller. The G-SIFI was supposed to be adjusted for that. So, it may very - we're expecting it go up, but there are a lot of reasons why it shouldn't go up. And JPMorgan - there's so much capital. I mean, so you can't look at JPMorgan and say, well, it's a capital issue. And even the banks, by the way, when you look at it - even though some of the banks that are in trouble, they have plenty of capital. Their issue wasn't capital, it was other things. And so I'm just hoping regulators are very thoughtful. And the other thing is they should a priori decide what they want out of the banking system at this point because I've made it clear - I can look at the banking system and say that no bank should keep a loan, if possible. That's how much capital is now being required for loans. 15",
+      "uuid": "9c93989d-076a-4716-8bfd-879377e59e71"
+    },
+    {
+      "speaker": "Betsy L. Graseck",
+      "utterance": "Analyst, Morgan Stanley & Co. LLC This is based on the current rule set.",
+      "uuid": "f75b31ed-69a3-4258-bdf3-d29e7a625a99"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah, because the market is pricing holds. The market would take loans at much lower capital ratio than banks are being forced to hold for them. I'm talking about just loans only. So that's why you're seeing a lot of capital go to \u2013 I mean a lot of credit go to non-banks, and dramatically, by the way. Rapidly and dramatically. And so if you're a regulator, you should be looking at it and saying, do I want that? Is that a good thing for the system? If you believe it's a good thing for the system, raise the capital and more credit will go out of the system. That's fine. If that's what they want, that's fine. But they should do it with a forethought, not accidentally. Betsy L. Graseck Analyst, Morgan Stanley & Co. LLC I like the NII from loans better than the gain on sale, so I'll prefer the former not the latter. But thanks, appreciate it.",
-      "uuid": "21403d03-5844-4751-84c9-183f5bc22493"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yeah, because the market is pricing holds. The market would take loans at much lower capital ratio than banks are being forced to hold for them. I'm talking about just loans only. So that's why you're seeing a lot of capital go to - I mean a lot of credit go to non-banks, and dramatically, by the way. Rapidly and dramatically. And so if you're a regulator, you should be looking at it and saying, do I want that? Is that a good thing for the system? If you believe it's a good thing for the system, raise the capital and more credit will go out of the system. That's fine. If that's what they want, that's fine. But they should do it with a forethought, not accidentally.",
+      "uuid": "565983e4-0767-49a5-adb0-9351e4df405a"
+    },
+    {
+      "speaker": "Betsy L. Graseck",
+      "utterance": "Analyst, Morgan Stanley & Co. LLC I like the NII from loans better than the gain on sale, so I'll prefer the former not the latter. But thanks, appreciate it.",
+      "uuid": "f145f8d2-75c6-432c-bc10-c1a15cc4a80d"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Yes.",
-      "uuid": "66b3ec95-0906-4db1-96b7-cd1c2464ede4"
+      "uuid": "0af255ec-f2c5-46c6-8d0b-df3720535734"
     },
     {
       "speaker": "Operator",
-      "utterance": "Thank you. The next question comes from the line of Glenn Schorr with Evercore ISI. Your line is now open. Glenn Schorr Analyst, Evercore ISI Thank you. So you talked about in your letter about regulators avoiding the knee-jerk reaction, which you addressed earlier. I'm curious on your thoughts around how customers have reacted and should react. Now my point, my question is \u2013 consumers can move excess cash balances if they want more insurance. They can do that in a lot of different ways: move it, treasuries, money market, extra accounts, whatever. The issue, the question I have for you is on the corporate side. Have you seen big changes in how corporate treasurers or CFOs are adapting their cash balances and working capital \u2013 and should they need to? And I appreciate your Warren Buffett comments.",
-      "uuid": "3e48f9f8-2398-4f03-9da6-dbdb19e983e3"
+      "utterance": "Thank you. The next question comes from the line of Glenn Schorr with Evercore ISI. Your line is now open.",
+      "uuid": "ec8d2ac2-9238-4032-8969-fdfceac35de9"
+    },
+    {
+      "speaker": "Glenn Schorr",
+      "utterance": "Analyst, Evercore ISI Thank you. So you talked about in your letter about regulators avoiding the knee-jerk reaction, which you addressed earlier. I'm curious on your thoughts around how customers have reacted and should react. Now my point, my question is - consumers can move excess cash balances if they want more insurance. They can do that in a lot of different ways: move it, treasuries, money market, extra accounts, whatever. The issue, the question I have for you is on the corporate side. Have you seen big changes in how corporate treasurers or CFOs are adapting their cash balances and working capital - and should they need to? And I appreciate your Warren Buffett comments.",
+      "uuid": "2022f61e-0249-46d3-8af3-a304ef8de8fd"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah, Glenn, in short, we really haven't seen big changes to speak of. And I do think it's just worth saying \u2013 I think you're sort of hinting at this a little bit when you talk about the behavior of corporates \u2013 that when we talk about responses to the recent events through the lens of uninsured deposits, that's obviously very different if you're talking about large balances of non-operating uninsured deposits from financial institutions or de facto financial institutions versus normal large corporate operating balances, which is, of course, like core banking business for all of us.",
-      "uuid": "c1a0fa64-7071-4d68-acac-323e6587a7cd"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah, Glenn, in short, we really haven't seen big changes to speak of. And I do think it's just worth saying - I think you're sort of hinting at this a little bit when you talk about the behavior of corporates - that when we talk about responses to the recent events through the lens of uninsured deposits, that's obviously very different if you're talking about large balances of non-operating uninsured deposits from financial institutions or de facto financial institutions versus normal large corporate operating balances, which is, of course, like core banking business for all of us.",
+      "uuid": "c9f05e0b-ee68-4e91-b6eb-2a1c40d38cad"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. When we saw it in Commercial Banking, Payments, Investment Banking and Custody, you did see money move \u2013 or I would call excess cash was moved out. But they have options. What I would call more like operational cash \u2013 so think even of a small companies, middle market companies, et cetera \u2013 that tends to be fairly sticky because you have your loans there, you have your money there, you're getting more and more competitive in rates. And that's why I think you see lot of regional banks \u2013 they've got sticky middle market deposits. If I lent you $30 million and you have $10 million, you're probably going to leave it at my bank. And they also are more competitive on the rate for that. So, I think you shouldn't be looking at deposit like one class \u2013 there's a whole bunch of different types, and analytically you go through each one and try to figure out what the stickiness is, and what the stickiness is and et cetera and so on. But I think they have already \u2013 as the Fed has raised rates, you've already seen \u2013 that's the reason we expected outflows both from consumers and corporate customers. 16 Glenn Schorr Analyst, Evercore ISI Interesting. Just follow-up, the other thing that caught my eye in the letter is you mentioned that you're exploring new capital optimization strategies including partnerships and securitizations. What's different than what you've already been doing for the last 30 years?",
-      "uuid": "6c617e3c-38eb-490c-8398-9129579d077f"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. When we saw it in Commercial Banking, Payments, Investment Banking and Custody, you did see money move - or I would call excess cash was moved out. But they have options. What I would call more like operational cash - so think even of a small companies, middle market companies, et cetera - that tends to be fairly sticky because you have your loans there, you have your money there, you're getting more and more competitive in rates. And that's why I think you see lot of regional banks - they've got sticky middle market deposits. If I lent you $30 million and you have $10 million, you're probably going to leave it at my bank. And they also are more competitive on the rate for that. So, I think you shouldn't be looking at deposit like one class - there's a whole bunch of different types, and analytically you go through each one and try to figure out what the stickiness is, and what the stickiness is and et cetera and so on. But I think they have already - as the Fed has raised rates, you've already seen - that's the reason we expected outflows both from consumers and corporate customers. 16",
+      "uuid": "8227b4ba-fcbe-4ecb-8217-0e8b110502a8"
+    },
+    {
+      "speaker": "Glenn Schorr",
+      "utterance": "Analyst, Evercore ISI Interesting. Just follow-up, the other thing that caught my eye in the letter is you mentioned that you're exploring new capital optimization strategies including partnerships and securitizations. What's different than what you've already been doing for the last 30 years?",
+      "uuid": "0e05165d-9083-424c-aed3-ba1b29bd9a01"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. We've got our smartest people, we\u2019re going to figure out every angle to reduce capital requirements for JPMorgan. That's the difference. And we've been doing it, but there's securitizations, there are partnerships. You're seeing a lot of the private equity do the life insurance companies, and I expect that we're going to come up with a whole bunch of different things over time. And we'll shed certain assets, too. Glenn Schorr Analyst, Evercore ISI Yeah. Thanks, Jamie.",
-      "uuid": "b056c267-c018-4acf-bec4-61652eda2a47"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. We've got our smartest people, we're going to figure out every angle to reduce capital requirements for JPMorgan. That's the difference. And we've been doing it, but there's securitizations, there are partnerships. You're seeing a lot of the private equity do the life insurance companies, and I expect that we're going to come up with a whole bunch of different things over time. And we'll shed certain assets, too.",
+      "uuid": "b96bb241-837a-437b-9f3d-1d02cf53d3bc"
+    },
+    {
+      "speaker": "Glenn Schorr",
+      "utterance": "Analyst, Evercore ISI Yeah. Thanks, Jamie.",
+      "uuid": "28f5c1d3-dd51-48bc-ba44-2c670a31ef0b"
     },
     {
       "speaker": "Operator",
-      "utterance": "Our final question comes from the line of Matt O'Connor with Deutsche Bank. You may proceed. Matt O'Connor Analyst, Deutsche Bank Securities, Inc. Good morning. You guys talked about one of the drivers of the higher net interest income guide this year is due to likely higher credit card balances. And I was just wondering if you could flush out what changed there on the outlook today versus three months ago. And I guess, is it a good or bad thing that those balances will be higher than you thought?",
-      "uuid": "1c25850f-c85d-49c9-ab46-8190daafe286"
+      "utterance": "Our final question comes from the line of Matt O'Connor with Deutsche Bank. You may proceed.",
+      "uuid": "a0295507-87f7-41f1-b8f5-6e9fb27590fb"
+    },
+    {
+      "speaker": "Matt O'Connor",
+      "utterance": "Analyst, Deutsche Bank Securities, Inc. Good morning. You guys talked about one of the drivers of the higher net interest income guide this year is due to likely higher credit card balances. And I was just wondering if you could flush out what changed there on the outlook today versus three months ago. And I guess, is it a good or bad thing that those balances will be higher than you thought?",
+      "uuid": "7ce21642-c1d3-4054-a597-08c486309c66"
     },
     {
       "speaker": "Jeremy Barnum",
       "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. So the story there is kind of the same story we've been talking about for a while. It's just a matter of degree. So we had revolving balances obviously drop a lot during the pandemic period and then we talked about having them recover in absolute dollar terms to the same level as we'd had pre-pandemic, which I think happened last quarter. And then the remaining narrative is just the further normalization of the revolve per-account, because we also have seen some account growth, and that continues to happen. And so also, to Mike's question earlier, we're seeing a higher yield there as well. So, and on your question of whether it's good or bad, obviously there's a point at which the consumers have too much leverage. We don't see that yet, so.",
-      "uuid": "0ccbe590-70e7-460e-9987-236369a48438"
+      "uuid": "151b137d-e352-4404-b1fe-e6ea8478cc31"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. It's normalization.",
-      "uuid": "0baf703e-11d8-41f8-a65c-31f00909aebf"
+      "uuid": "85e24723-48c6-410f-bcf6-09200d968f27"
     },
     {
       "speaker": "Jeremy Barnum",
       "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah.",
-      "uuid": "5847366c-aeff-405d-b3e6-753ff64c6c9d"
+      "uuid": "0f9b6971-3b4e-4b4b-816a-ba2c6f1c7870"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. It's a good thing for us. 17",
-      "uuid": "a69c50e0-bab8-4b75-a839-0b34b5cba250"
+      "uuid": "d5478bc8-a567-4fdb-be3d-1cf40b37a374"
     },
     {
       "speaker": "Jeremy Barnum",
-      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah. Matt O'Connor Analyst, Deutsche Bank Securities, Inc. Okay. And then just separately to squeeze in \u2013 you guys took some securities losses again this quarter. And in the past you've talked about really just going security-by-security looking for, kind of, pricing opportunities. Is that kind of what drove it again this quarter, or is there some kind of broader, overarching\u2026",
-      "uuid": "3a7be865-5231-4311-ba13-2aa7b09db812"
+      "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Yeah.",
+      "uuid": "3897ef7e-6514-48e9-8e1a-c0998612f2f3"
+    },
+    {
+      "speaker": "Matt O'Connor",
+      "utterance": "Analyst, Deutsche Bank Securities, Inc. Okay. And then just separately to squeeze in - you guys took some securities losses again this quarter. And in the past you've talked about really just going security-by-security looking for, kind of, pricing opportunities. Is that kind of what drove it again this quarter, or is there some kind of broader, overarching.",
+      "uuid": "add4de3e-392e-4444-97fa-028d12a40d6b"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. That'll be every quarter for the rest of our lives. Sell what we find rich, and we buy what we think is dear...",
-      "uuid": "0a82e5ad-62c8-47a2-92f2-5dd16d0279b5"
+      "uuid": "7f244a6d-614c-4b7e-a477-62a59fb86bb0"
     },
     {
       "speaker": "Jeremy Barnum",
       "utterance": "Chief Financial Officer, JPMorgan Chase & Co. Cheap.",
-      "uuid": "49089c26-fd19-478d-ae0a-3ca4b8255f52"
+      "uuid": "a7264fe4-07a7-4bdf-96c2-e058d27db8d9"
     },
     {
       "speaker": "Jamie Dimon",
-      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Cheap. Matt O'Connor Analyst, Deutsche Bank Securities, Inc. Okay. All right. Thank you.",
-      "uuid": "12e5f336-615c-4d43-be9f-4764e069db1e"
+      "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Cheap.",
+      "uuid": "99ed491b-4f53-4066-b431-c75601104f8a"
+    },
+    {
+      "speaker": "Matt O'Connor",
+      "utterance": "Analyst, Deutsche Bank Securities, Inc. Okay. All right. Thank you.",
+      "uuid": "fef9f10c-a1c9-4277-a624-c83454e93f18"
     },
     {
       "speaker": "Operator",
       "utterance": "We have no further questions.",
-      "uuid": "48a8ed0a-b050-4128-9ebd-0a609b2667ba"
+      "uuid": "f39699db-396d-41ba-aeed-577c54d15163"
     },
     {
       "speaker": "Jamie Dimon",
       "utterance": "Chairman & Chief Executive Officer, JPMorgan Chase & Co. Excellent. Folks, thank you very much.",
-      "uuid": "e5974c96-2368-4de7-b07a-3eab2e70c45a"
+      "uuid": "0dc5810c-ec35-4d06-9fea-042da8244723"
     },
     {
       "speaker": "Operator",
-      "utterance": "That concludes today's conference. Thank you all for your participation. You may disconnect at this time. Disclaimer This document contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. These statements are based on the current beliefs and expectations of JPMorgan Chase & Co.\u2019s management and are subject to significant risks and uncertainties. Actual results may differ from those set forth in the forward-looking statements. Factors that could cause JPMorgan Chase Co.\u2019s actual results to differ materially from those described in the forward-looking statements can be found in JPMorgan Chase & Co.\u2019s Annual Report on Form 10-K for the year ended December 31, 2022, which has been filed with the Securities and Exchange Commission and is available on JPMorgan Chase & Co.\u2019s website , and on the Securities and Exchange Commission\u2019s website . JPMorgan Chase & Co. does not undertake to update any forward-looking statements.",
-      "uuid": "bea1998c-d6c7-4129-911c-d3e3538ebf66"
+      "utterance": "That concludes today's conference. Thank you all for your participation. You may disconnect at this time. Disclaimer",
+      "uuid": "8584991f-e650-4e69-81ed-71aae35fe515"
     }
   ]
 }
