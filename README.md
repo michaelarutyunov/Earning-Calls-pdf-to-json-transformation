@@ -13,7 +13,7 @@ A demonstration of a workflow to transform earning call transcripts into a json 
 **Key Steps**:
 - Normalization of text imported from PDF
 - Enrichment of the text with non-semantic formatting tags to help finding speaker attributions
-- Collecting spacy PERSON tags to create additional focus for LLM
+- Capturing potential attributions using SpaCy to create additional focus for LLM
 - API call to LLM to extract call specs and attributions
 - Creation of a json object with clean representation of speakers and utterances
 - Optional: creation of the standardized text file with the content of the json file
@@ -26,9 +26,6 @@ transcript_pdf - source documents
 final_json - main script outputs
 standardized_text - optional script outputs
 
-**To-dos**:
-- Clean up header and footer
-
 **Notes**:
 - Code requires anthropic API to be saved in .env file in the same folder
 
@@ -37,5 +34,5 @@ standardized_text - optional script outputs
 - Isolate multiple questions asked within the same analyst's utterance and align with specific parts of the bank response
 - Optimal chunking strategies, e.g. for RAG implementation, topic modelling etc.
 - Maintaining a consolidated list of real examples of attributions and use that instead of LLM
-- Output validation
-- Agentic solution that is capable to adjust extraction parameters and validate outputs
+- More robust LLM output validation
+- Testing possibiity to run SLM with structured outputs instead of API call
