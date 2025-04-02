@@ -177,3 +177,7 @@ obsolete/
 diagnostics/
 spacy-layout-test.py
 test_spacy_tags.py
+tests/__init__.py
+tests/test_pdf_processing.py
+.github/workflows/ci.yml
+.gitignore

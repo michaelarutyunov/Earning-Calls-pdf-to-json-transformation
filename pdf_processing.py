@@ -609,16 +609,16 @@ def API_call(text, spacy_attributions, operator_attributions, config_data=None, 
     It should be possible to parse the JSON object from the response.
     Provide only the JSON object as your final response, with no additional text or explanations.
     """
-    api_key_name, model, input_cost_per_million, output_cost_per_million = get_api_setup(config_data)
+    api_key_name, model_name, input_cost_per_million, output_cost_per_million = get_api_setup(config_data)
     api_key = os.getenv(api_key_name)
     client = anthropic.Anthropic(api_key=api_key)
 
     if debug_mode:
-        print(f"Running API call using {model}...")
+        print(f"Running API call using {model_name}...")
 
     try:
         message = client.messages.create(
-            model="claude-3-7-sonnet-20250219",  # claude-3-opus-20240229 claude-3-7-sonnet-20250219
+            model=model_name,  # claude-3-opus-20240229 claude-3-7-sonnet-20250219
             max_tokens=4096,
             system="You are an expert in finding speaker attributions in the earnings call transcripts.",
             messages=[
