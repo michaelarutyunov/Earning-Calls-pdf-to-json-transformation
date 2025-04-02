@@ -11,12 +11,12 @@ A demonstration of a workflow to transform earning call transcripts into a json 
 **Guardrails**: Keep API call costs to a minimum, particularly reduce the count of output tokens.
 
 **Key Steps**:
-- Normalization of text imported from PDF
-- Enrichment of the text with non-semantic formatting tags to help finding speaker attributions
-- Capturing potential attributions using SpaCy to create additional focus for LLM
+- Normalize the text imported from PDF
+- Enrich of the text with formatting tags
+- Capture potential attributions using SpaCy to create additional focus for LLM
 - API call to LLM to extract call specs and attributions
-- Creation of a json object with clean representation of speakers and utterances
-- Optional: creation of the standardized text file with the content of the json file
+- Create json object with clean speakers and utterances
+- Optional: create clean text file from JSON
 
 **Files and Folders**
 config.json - configuration for the main script
