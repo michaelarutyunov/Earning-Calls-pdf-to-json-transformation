@@ -5,7 +5,7 @@
     },
     "test_mode": {
         "enabled": true,
-        "file_name": "qec_ubs_2023_1Q.pdf",
+        "file_name": "qec_hsbc_2025_1Q.pdf",
         "debug_mode": true,
         "diagnostics_folder": "diagnostics"
     },

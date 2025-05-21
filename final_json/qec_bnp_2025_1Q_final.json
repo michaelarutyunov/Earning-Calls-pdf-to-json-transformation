@@ -1,0 +1,583 @@
+{
+  "hosting_bank_name": "BNP Paribas",
+  "call_date": "2025-04-24",
+  "reporting_period": "Q1-2025",
+  "header_pattern": "BNP Paribas: First Quarter 2025 results Edited transcript 24 April 2025",
+  "footer_pattern": "The figures included in this document are unaudited.",
+  "first_3_non_speaker_words_in_last_utterance": "The figures included",
+  "participants": [
+    {
+      "speaker_name_variants": [
+        "Jean-Laurent Bonnaf\u00e9",
+        "Jean-Laurent"
+      ],
+      "speaker_title_variants": [
+        "Group CEO",
+        "Chief Executive Officer"
+      ],
+      "speaker_company_variants": [
+        "BNP Paribas"
+      ],
+      "speaker_attributions": [
+        "Jean-Laurent Bonnaf\u00e9 (Group CEO) <TAG_2>",
+        "Jean-Laurent Bonnaf\u00e9 <TAG_2> Chief Executive Officer <TAG_2>",
+        "Jean-Laurent Bonnaf\u00e9:",
+        "<TAG_2> Jean-Laurent Bonnaf\u00e9 <TAG_2>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Lars Machenil",
+        "Lars"
+      ],
+      "speaker_title_variants": [
+        "Group CFO",
+        "Group Chief Financial Officer",
+        "Chief Financial Officer"
+      ],
+      "speaker_company_variants": [
+        "BNP Paribas"
+      ],
+      "speaker_attributions": [
+        "Lars Machenil (Group CFO)",
+        "Lars Machenil <TAG_2> Group Chief Financial Officer <TAG_2>",
+        "Lars Machenil:",
+        "<TAG_2> Lars Machenil:",
+        "Lars Machenil <TAG_2>"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Tarik El Mejjad"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Bank of America"
+      ],
+      "speaker_attributions": [
+        "Tarik El Mejjad (Bank of America):",
+        "<TAG_2> Tarik El Mejjad (Bank of America):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Delphine Lee"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "JP Morgan"
+      ],
+      "speaker_attributions": [
+        "Delphine Lee (JP Morgan):",
+        "<TAG_2> Delphine Lee (JP Morgan):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Giulia Miotto"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Morgan Stanley"
+      ],
+      "speaker_attributions": [
+        "Giulia Miotto (Morgan Stanley):",
+        "<TAG_2> Giulia Miotto (Morgan Stanley):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Jacques-Henri Gaulard"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Kepler Cheuvreux"
+      ],
+      "speaker_attributions": [
+        "Jacques-Henri Gaulard (Kepler Cheuvreux):",
+        "<TAG_2> Jacques-Henri Gaulard (Kepler Cheuvreux):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Joseph Dickerson"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Jefferies"
+      ],
+      "speaker_attributions": [
+        "Joseph Dickerson (Jefferies):",
+        "<TAG_2> Joseph Dickerson (Jefferies):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Flora Bocahut"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Barclays"
+      ],
+      "speaker_attributions": [
+        "Flora Bocahut (Barclays):",
+        "<TAG_2> Flora Bocahut (Barclays):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Andrew Coombs"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Citi"
+      ],
+      "speaker_attributions": [
+        "Andrew Coombs (Citi):",
+        "<TAG_2> Andrew Coombs (Citi):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Stefan Stalmann"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Autonomous Research"
+      ],
+      "speaker_attributions": [
+        "Stefan Stalmann (Autonomous Research):",
+        "<TAG_2> Stefan Stalmann (Autonomous Research):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Sharath Kumar"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Deutsche Bank"
+      ],
+      "speaker_attributions": [
+        "Sharath Kumar (Deutsche Bank):",
+        "<TAG_2> Sharath Kumar (Deutsche Bank):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Anke Reingen"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "RBC"
+      ],
+      "speaker_attributions": [
+        "Anke Reingen (RBC):",
+        "<TAG_2> Anke Reingen (RBC):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Chris Hallam",
+        "Christopher Hallam"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Goldman Sachs"
+      ],
+      "speaker_attributions": [
+        "Chris Hallam (Goldman Sachs):",
+        "<TAG_2> Chris Hallam (Goldman Sachs):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Kiri Vijayarajah"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "HSBC",
+        "HSBC, CIB"
+      ],
+      "speaker_attributions": [
+        "Kiri Vijayarajah (HSBC, CIB):",
+        "<TAG_2> Kiri Vijayarajah (HSBC, CIB):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Matthew Clark",
+        "Matt Clark"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "Mediobanca"
+      ],
+      "speaker_attributions": [
+        "Matthew Clark (Mediobanca):",
+        "<TAG_2> Matthew Clark (Mediobanca):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Pierre Ch\u00e9deville"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [
+        "CM-CIC Market Solutions"
+      ],
+      "speaker_attributions": [
+        "Pierre Ch\u00e9deville (CM-CIC Market Solutions):",
+        "<TAG_2> Pierre Ch\u00e9deville (CM-CIC Market Solutions):"
+      ]
+    },
+    {
+      "speaker_name_variants": [
+        "Operator"
+      ],
+      "speaker_title_variants": [],
+      "speaker_company_variants": [],
+      "speaker_attributions": [
+        "Operator:",
+        "<TAG_2> Operator:"
+      ]
+    }
+  ],
+  "utterances": [
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "RESULTS 1ST QUARTER 2025",
+      "uuid": "d0b25357-10d3-4fd7-8fc1-d8ad650129f4"
+    },
+    {
+      "speaker": "Jean-Laurent Bonnaf\u00e9",
+      "utterance": "Good afternoon, ladies and gentlemen. We are pleased to present a summary of our strong first quarter results and to have the opportunity to reiterate our 2024-2026 trajectory. But before I start, let me provide a brief commentary on the current environment. Of course, we acknowledge elevated uncertainties in the markets and the economic environment, but the best way to face them is to be ready, first, to support our clients. And in that respect, our focus is on high-quality customers, and our readiness to help them to redirect or adjust their investment plans is our top priority. Ready to monitor our risk: credit and market risks are monitored very closely, and we still have S1 and S2 provision to help absorb some of the deterioration should it materialise. And of note, investment- grade clients represent 78% of our credit exposure. Ready also to grasp investment opportunities: the first quarter marked an acceleration in funding commitments by European governments. What is new is the wake-up call for Europe. The German EUR 1-1.5 trillion investment plan and the EUR 800 billion EU readiness program are just first steps. Finally, we need to capitalise on the likely changes to come in the European capital markets, including SIU. We advocate with European authorities to ensure a level playing field, particularly with regards to the FRTB. And we are already ready, thanks to our originate-and-distribute platform and SRT capabilities to accelerate the financing of Europe investment needs in a capital-light way. So now let me turn to our results. Moving to slide four. 1ST QUARTER 2025 Our operating divisions delivered a very strong performance Our revenues are up 3.8% this quarter, with our operating divisions up 6.1% in line with the trajectory we set for 2026. During the quarter, CIB posted an impressive 12.5% revenue growth, including more than 17% at global markets. It was a record quarter for the division. CPBS was up 1.2% despite lower used car sales results at Arval, which are in line with our trajectory. The quarter confirmed the gradual inflection at our eurozone commercial banks, which are up 1% year on year, but also a strong 19% increase at Europe-Med thanks to a much-improved performance in Turkey and Poland. Finally, IPS posted a strong 6.6% growth, particularly driven by Wealth Management and Insurance. Our commitment to cost control remains strong and we are on track to deliver cost savings of EUR600 million this year, with 190 million of cost savings already implemented in Q1. Our cost of risk remains moderate at 33 bps, marginally up on the first quarter of 2024, but still well below our guidance of below 40 bps. Our S3 provisions are stable year on year, but 2024 benefitted from releases.  Overall, our operating divisions generated positive jaws effect of 1.9 points and an operating income growth of 6.7%, very close to our Group net income growth target of 7% 2024-2026 CAGR. All in all, our net profit was down 4.9% without compromising our trajectory of profitability. The gap between the operating income of the divisions and the net profit is explained by higher positive exceptional last year, and a lower contribution from the Corporate Centre this quarter, which will be rebalanced before year-end starting with the second quarter. As a reminder, last year's first quarter benefited from high positive exceptional elements, mostly the EUR 226 million benefit from the reconsolidation in Ukraine. Our CET1 is down 50 bps quarter on quarter to 12.4%, but is stable compared with the 1st of January, reflecting finalisation of Basel for 50 bps. This is in line with what we guided for. Finally, we obviously confirm our policy distribution of 60%. We have already received the approval of our share buyback program of EUR 1 billion, and we will launch it in the second quarter. OUTLOOK We confirm our 2024-2026 growth and profitability trajectory Moving now to slide five on our growth trajectory. Of course, we acknowledge the scale of the challenges relating to US tariffs and policy shifts. Nonetheless, in this context, we believe that our diversified model and the growth levels we have implemented will enable us to meet our targets. So our ambition remains to reach a return on tangible equity of 11.5% in 2025, 12% in 2026, leading to more than 7% Group net income growth CAGR, and more precisely, our internal target for 2025 is currently much higher than current market expectations. This should result in more than 8% EPS growth CAGR. Our 2026 return on tangible equity is only a stepping stone towards further improvement. Our targets will be achieved thanks to five key levers that you should have in mind: starting with CIB. We will continue to grow market share in a capital-conscious manner, thanks to our state-of-the-art CIB platforms that are uniquely positioned to deliver the highest added-value products to clients. Moving to CPBF. We launched a new strategic plan for CPBF and extended the one for Personal Finance. We intend to lift the return on notional equity of these businesses to a minimum of 17% by 2028, adding about one percentage point to group return on tangible equity, and we will present these plans in two deep dive sessions in June. Our revenues in the eurozone commercial banks should also benefit from normalisation of the yield curve. We will prioritise protecting commercial margins in competitive environments. We expect the second half of this year to show pronounced rebound of NII. Moving to IPS. We will continue the dynamic organic growth of Insurance, Asset Management and Wealth Management. This organic growth will be amplified by the acquisitions of HSBC Wealth Management in Germany and of course, Axa Im. Finally, we will continue our efficiency efforts with EUR 600 million additional cost savings in both 2025 and 2026.  OUTLOOK Our three divisions contribute to our growth trajectory by perfectly positioning us to support a Europe that is reinvesting On slide 6, you can see our positioning. We believe that our revenue trajectory for 2024-2026 is underpinned by the growth levers just detailed. Some of those levers are self-created, such as Axa Im and the recovery of NII in the eurozone, but also thanks to significant cross-selling between our businesses, which account for a third of our total revenues. Our trajectory should also benefit from the acceleration of investment spending by European governments and the private sector to fund the significant investments we all know Europe needs in infrastructure, energy transition and defence, to name a few. The German growth plan voted in March, and Europe's readiness program represent significant amounts of around EUR 2 trillion, which should contribute to buffer GDP growth and trigger significant borrowing that we can facilitate thanks to our originate-and-distribute model. All in all, we remain confident in our ability to deliver CAGR revenue growth of more than 5% by 2026, including external growth. OUTLOOK Our through-the-cycle resilience and our prudent risk management are advantages in an uncertain environment Let me now move to our resilient profiles throughout the cycle. Our diversified profile, both in terms of sectors, geographies and business lines, enables us to find the right balance between growing distribution to shareholders and growing our tangible Net Asset Value per share. This, of course, fuels our organic and external growth. We continue to benefit from a low credit and market risk profile, a key feature of our DNA. You can see that our cost of risk remains low and absorbs only 16% of our gross operating income. One of the main reasons for this is our very granular sectoral diversification, with no sector accounting for more than 4% of our overall exposures. Our selective origination also ensures we are basically exposed to the most resilient corporates. I'll now hand over to Lars, who will remind you of the achievements of the quarter. REVENUES 1Q25 is driven by solid business performance in each division",
+      "uuid": "972e11c0-8b82-493a-8994-7f470e76a7b4"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Group Chief Financial Officer Thanks, Jean-Laurent. On slide 11, you can see that the first quarter of 2025 was driven by solid business performances within each division. You will have noticed in our slides this morning that we introduced a summary dashboard for each of our operating divisions so you can analyse in a more straightforward way our operational performance. Overall, Group revenues were up 3.8% year on year, including 6.1% step-up for our operating divisions. If we look at them, for example, starting with CIB. As mentioned by Jean-Laurent, it had a record quarter - up 12.5% year on year - driven by a very good performance in all three sub businesses.  If we look at them, first, Global Banking was up 4.5%, supported by Capital Markets. Transaction Banking showed dynamism as volumes managed to offset the impact of lower rates. If we then look at Global Markets, activities were up 17.3%, driven by a very strong 42% growth in Equity and Prime Services, and a robust performance for FICC, which was up 4.4%, and particularly driven by macro, particularly foreign exchange. Rates benefited from modest growth, and Credit was down as a primary activity did not offset weaker credit trading flows. The third, Security Services, was up 13.4%, driven by a sustained growth in fees thanks to balances and transactions, as well as resilient interest margin. If we then turn to the second division, CPBS. It had a resilient performance, up 1.2%, supported by Commercial and Personal Banking activities. A few points are worth highlighting. If we look at our commercial banks, they were up 4.2% this quarter, consistent with our trajectory for the next two years and supported in particular by solid fee growth. Within this commercial banking concept, the commercial banks in the eurozone grew 0.6%, which is consistent with our trajectory of 3% growth over the year. Let me clarify, because on one hand, the positive impact of higher rates will accelerate in the second half of 2025 as the lag from deposit mix tapers off. So the shift from side deposits into paying deposits, is tapering off. Moreover, the ECB rates environment should be supportive of stabilising this deposit mix. And moreover, the shape of the yield curve should enable us to continue our reinvestment on the long end of the curve with a progressive net interest income rebound. Furthermore, fee growth was strong at around 5% in all eurozone banks, including a strong performance in financial fees. Then the other part within the [Commercial and Personal Banking ] division is Europe-Med, where the revenues were up 19%. This was due to the margin improvement in Poland and T\u00fcrkiye, as well as fees, particularly in payments in T\u00fcrkiye. Of course, the environment in T\u00fcrkiye going forward might be less favourable due to the slower decrease in interest rates. So that is the Commercial Banking section of CPBS. If we now turn to the second part, Specialised Businesses. They were down 3.6% year on year, impacted by the ongoing normalisation of used car prices, as we have flagged previously. Organically, Arval performed extremely well again this quarter, up 12% even when excluding a positive one-off of around EUR 50 million. So outperforming our guidance of 10% in growth this year. This P&L growth is supported by fleet growth of 5% and Outstandings of 14%. The other part in Specialised Businesses is Personal Finance Core. I remind you that the non-core part, which is basically ramping off, is in Corporate Centre, and so the Personal Finance Core is driven by a solid commercial performance. Let me name some examples: the deployment of Apple partnership in France, the regular progression of the B2C, the good performance of mobility, especially in the partnership with Stellantis. There is also an increased margin at production, at Personal Finance, with the main effect coming from repricing, which should lead to acceleration of revenues throughout the year. Last, a very good performance from the new digital businesses and personal investors. Up an organic 13% this quarter thanks to further growth in client acquisition as well as a high level of transactions. But note the disposal of an activity in the fourth quarter of 2024, which impacted both the revenues and costs this quarter. So these are two of the three divisions.  Let's end with the third one, not the least - it's IPS. We saw strong growth in fees thanks to a high level of transactions. If we look at assets under management, they were boosted by strong inflows but were impacted by negative forex, and towards the end of the quarter, lower market levels. IPS is about to become an even more sizeable driver of our growth with the acquisition of Axa Im, which we expect to close early July. Now, if we look at the divisions within IPS, insurance revenues were up 4%, driven particularly by healthy savings activities in France. Then, Wealth Management was up nearly 11% on strong fee growth, and Asset Management was up 6% thanks to good fee growth and good performance of financial investments. Let me add a comment next to those three divisions on the Corporate Centre, basically complementing what Jean-Laurent said. It was impacted, this quarter, by the valuation of a few items at fair value, but nevertheless, we do not change our guidance for the Corporate Centre of revenues close to zero, excluding IFRS 17, as Jean-Laurent mentioned. Operational Efficiency Positive jaws effect at Commercial & Personal Banking, CIB and IPS If with this, we turn to slide 12, which shows that our cost discipline is paying off. At the Group level, the jaws are slightly negative this quarter but stand at 1.9 points at the level of our operating divisions and are consistent with our stated trajectory running into 2026. We continue to allocate cost growth to fund development while we intend to continue to offset inflation by cost savings. If we look at the divisions, CIB reported positive jaws of 4.4 points, with cost growth driven mainly by increased activity. I remind you that Global Markets had significant accrual of variable compensation, which basically reflects the business momentum. CPBS posted negative jaws of 0.7 points. This includes positive jaws effect at Personal Finance, Leasing Solutions and New digital businesses and Personal Investors, so all businesses bar Arval. We also highlighted the positive jaws of about one point at the commercial banks in the eurozone. Finally, IPS, positive jaws 3.9 points. Operational Efficiency Cost savings achieved are in line with the announced trajectory With this, if we go to slide 13, which focuses on our cost savings and efficiency measures. This quarter we implemented EUR 190 million of new cost savings, consistent - even ahead a bit - of our full target, which was EUR 600 million to offset the inflation.  Cost Of RISK Cost of risk is kept under control thanks to the quality and diversification of the credit portfolio If with this, we turn to slide 14, where we focus on our excellent risk management. And on this slide, you can see that our diversified balance sheet enables us to protect profitability. Once again, in the first quarter, only 16% of our gross operating income - revenues minus cost - was absorbed by provisions. Our cost of risk remains low, 33 basis points, up on the first quarter of 2024, but still at a low level and well below our guidance of being below 40 basis points. It is mostly the cost of risk composed of Stage 3 loans with limited releases this quarter. Overall, our stock of Stage 1 and 2 provisions is comfortable at above EUR 4 billion, equivalent to more than a year's worth of current Stage 3 run rate. By division, we note a particularly low level at BNL and a normalisation at a low level, in Global Banking. Despite the increase in Personal Finance, we continue to see a positive mix evolution that supports our structural improvement going forward. Capital And LIQUIDITY Our financial structure and liquidity position are robust Let me now address our Capital Management, on slide 16. Our Common Equity Tier 1 is down 50 basis points, clocking in at 12.4% due to the finalisation of Basel and is stable versus January 1st. You know the impact of the 50 basis points of the finalisation of Basel which happened in the night of the 31st to the first. So within the quarter itself it's basically stable. This figure is fully loaded, but before FRTB. If we look at the drivers, basically we have the typical: organic capital which after setting aside a generous 60% for the distribution generates ten basis points. This quarter, it was offset by the impact of model updates, typically that we do every year, and this is in line also with our guidance. And so our CET1 remains comfortably above our SREP requirement and is above our 12.3% target before FRTB. With this, I will rapidly skim through the remaining slides. CIB 1Q25 is a record-breaking quarter If I look at slide 20 and 21, you see the track record of our CIB division reaching a record level this quarter. The key message I want you to take away today is that our CIB is stronger than it ever was and is well positioned with corporate and institutional clients to face the challenges and opportunities that today's environment represents. Our capital cost and risk discipline are key assets to ensure a sustainable shareholder value growth.  CPBS Good business performance across all business lines in 1Q25, driving growth in pre-tax income If we move to slide 22 and 23 on CPBS. First, as we indicated last quarter, we are working hard to improve the divisions not delivering adequate returns. More colour will be provided during two deep dives that will take place in June. Secondly, you will see that the deposit evolution and the anticipated yield curve underpin our top line outlook for CPBS this year. IPS Good dynamic in net asset inflows and strong increase in revenues in 1Q25 And finally, if I can ask you to look at slides 24 and 25 on IPS. This division will represent the biggest growth driver for the Group in the next few years, and we are looking forward to completing in early July the Axa Im deal. I remind you, a deal which is both strategically and industrially very, very important. As you would have seen recently, the ECB has communicated its interpretation of the prudential treatment concerning deals with asset managers, independent of whether they belong to insurance activities. If the stance by the SSM were to prevail, the impact on our Common Equity Tier 1 would be slightly higher than the expected 25 basis points and would gravitate to 35 basis points. We will finalise these numbers in July after the closing while we do the Price Purchase Adjustment, but one should know that the AXA deal that we have signed consists actually of two different items. On the one hand, it consists of a long-term contract with AXA and on the other hand, the acquisition of Axa Im which require a different handling. And a read of that handling is that the Common Equity Tier 1 impact will not be 25bps but would in that case be 35bps. But this evolution would not endanger our capital or profitability trajectories. The expected return on invested capital would be, in any case, significant at 14% in 2028 and above 20% in 2029. So if the 35 basis points would prevail, it would basically delay the full savings by a year. As we said, we will provide more details on the synergies later in the year. In either case, the strategic appeal of this transaction and the positioning it will have on long-term savings solutions make this acquisition a cornerstone for IPS and our ambition to increase the share of earnings from this division to 20% medium term - 20% of the overall bank - and 25% longer term. With this, I think I've highlighted most of the things.  Questions And ANSWERS",
+      "uuid": "f3bcfd05-5a81-49dc-9612-6b3bcf911726"
+    },
+    {
+      "speaker": "Tarik El Mejjad",
+      "utterance": "Hi. Good afternoon, everyone. Two questions from my side, please. First, on the saving investment union, or capital markets union. It's clearly central to your medium- and long-term story. I published quite a lot on this topic, but I must admit I get lots of pushback on this. So, it sounds interesting, clearly a game changer to your profitability, but I would be really interested to hear from you why do you think this time is different? Why, despite the clear EU member states will to progress that project, once we get into the details of securitisation, prudential impacts and so on, regulation and taxes, why do you think that there will be still a consensus that would emerge? Linked to that, could you start to put some numbers on the building blocks for the RoTE going into 2028? Or another way, are you actually doing an update on your 2028 targets within this year? And then the second question is on the Danish Compromise. I have two questions here. Just to be clear: have you received a notification from the ECB specific to the treatment of the Danish Compromise for your deal - Axa Im, BNP Cardif - or was it just the interpretation of what was publicly said by Claudia Buch? And then the second one, if you can help me understand how you get to only ten basis points benefit from the Danish Compromise. In my estimation, it's more 40 to 50 difference between the two methodologies. But I must admit I don't have all the data to do the calculation outside. Thank you.",
+      "uuid": "6e2b4bec-f32e-40db-a480-88197d9563ef"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Tarik, thank you for your questions. If I take them one at a time. So on the SIU, I agree with you. I mean, before it was called SIU, it was basically Capital Markets Union, and it has been in the wings for several years. Now, I observe a change. Since the change has been happening in particular in the US, whenever I pick up the words used by the Commission, they are now working on a very tangible kind of approach. We see them working on the evolution, tangible things on how to have more capital flowing in, how it can be redeployed at a European level instead of country-by- country basis. That's what they're working on. I agree with you that that is the Commission. It has then to go through the Parliament and to the Council. So that is why it can take time and why we have said it is probably in the wave 2028 to 2030 where we will see it. Talking about that, we are not giving an update. We have said that we are working on a plan to 2026 where we will get to 12%. Then we have an ambition beyond 2026 basically with the changes we are doing on Personal Finance, on CPBF, and what we are doing with Axa Im, and that our ambition, if you look at what is in the wings today, that could lead to an improvement of, say, one point. But that is just an orientation. It is not an update on our ambition. Then when it comes to the Danish Compromise. As you know, we consider the deal to be insurance - it's AXA Insurance to Cardif Insurance - it's an insurance-to-insurance deal. That means that insurance regulation would continue to apply. We are having discussions with the ECB where the ECB is triggering the question, \"Is this not an asset management kind of deal?\" So that's the discussion we're having. And then on the impact: the numbers you mentioned is because you consider this a single deal, which is the acquisition of Axa Im. What I mentioned, is that the transaction we agreed on with AXA consists  10 of two deals. There is, on the one hand, a deal on a long-term transaction that we have with AXA and on the other hand, the acquisition of Axa Im. It's two different deals. And if you look at it, that's how we come to a step-up of ten basis points, if this would be applicable.",
+      "uuid": "b4fe263d-d623-4234-b021-b2dcb3b355c9"
+    },
+    {
+      "speaker": "Tarik El Mejjad",
+      "utterance": "So the ten basis points is a fully-loaded impact? There is no two- phase impact with an additional impact?",
+      "uuid": "a2e79859-f237-4285-a919-aa907b0bae3f"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "No, the 25 turns into 35 if you apply what I just mentioned.",
+      "uuid": "0bbf3258-8c77-4255-8779-a158256eb3fb"
+    },
+    {
+      "speaker": "Tarik El Mejjad",
+      "utterance": "Okay. Thank you very much, Lars.",
+      "uuid": "86943b52-f503-453e-abdf-3d8dd48975ff"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Delphine Lee, JP Morgan. Please go ahead.",
+      "uuid": "e96bde69-eca6-4d27-98fe-4ca51024c9f5"
+    },
+    {
+      "speaker": "Delphine Lee",
+      "utterance": "Good afternoon. Thank you for taking my questions. I've got two. First of all, thanks for your comments earlier on, Lars, on the eurozone revenues that are still on track for the 3%. But can you maybe just elaborate a little bit more on the momentum that you're expecting more for the second half of the year? Are you expecting more deposit volume as well, not just the stabilisation of the deposit mix? Just wondering, because clearly NII, it appears a slow start with minus almost 4% in Belgium and Italy, and it's only flat in France. So just trying to understand a little bit, what is the expectation for NII within that revenue growth of more than 3%? And the second question is on Personal Finance. I think you had a target of growth for core Personal Finance of more than 5% for revenue growth, and the start of the year is 2%. Are you also expecting an acceleration? And is that acceleration related to volumes or improving margins? If you could also elaborate on this, that would be great. Thank you very much.",
+      "uuid": "e502eeab-d6c7-4bc6-bf67-5f4c363c7c0e"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Delphine, thank you for your questions. So, in the eurozone looking at what are the main drivers. Or let's put it this way: what are our hypothesis with respect to getting to 3%? On one hand, we suppose that the deposit mix is to stabilise. And we see that basically in France it has stabilised. It is stabilising in Belgium. But we expect the allocation between sight deposit, term, and so forth is stabilised. That is the basic thing that we assume. That is then going to drive the pickup in the rest of the year. Moreover, we anticipate, not on deposits but on the other side of the balance sheet, on loans, that we can continue to reprice. And then thirdly, as you mentioned, we have this excess in deposits that we will redeploy at the longer term. Those are basically the three drivers that give us confidence that we'll get to a 3% increase year on year within the eurozone banks. And then, on Personal Finance, we stick to the guidance that we've given for Personal Finance Core of 5%. It is in this quarter 2%. Let's not forget, a lot depends on the evolution of the rollover of the business. On average, I oversimplify, but the majority of the business has been originated within the year. And so the repricing that is going on is what we will see in the rest of the year. That is why we are at a pivotal point and we will see the pick up during the rest of the year.",
+      "uuid": "96b2a203-35b3-49f6-8b87-da8ffa061283"
+    },
+    {
+      "speaker": "Delphine Lee",
+      "utterance": "Thank you very much.",
+      "uuid": "bf6b4ec3-056d-40ee-b0b3-264f82e09038"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Giulia Miotto, Morgan Stanley. Please go ahead.",
+      "uuid": "1446fb25-3159-4638-b337-8b40e65fa042"
+    },
+    {
+      "speaker": "Giulia Miotto",
+      "utterance": "Good afternoon, everyone. A couple of questions from me as well, please. So, the first one: we have seen some market dislocation, or a lot of volatility at the beginning of April post the Liberation Day. How has this impacted BNP's business, if at all? I would say both from a volume perspective in terms of trading, but also from a corporate engagement. That's the first question.  11 Secondly, I know you provided the impact to a parallel shift in the curve, but how should we think about the impact of steepening? I don't know if you have any sensitivity or if you provide any sensitivity to, let's say, a 50-basis-points steepening of the curve. And then, if I can just go back to the Axa Im transaction. In order to extract the synergies with your Asset Management business, I guess you would have to book Axa Im in Asset Management. But I don't know how that works if you get the Danish Compromise. So if you can perhaps expand on how the decision to get, or not, the Danish Compromise would impact your ability to extract synergies with your Asset Management and Cardif as well. Thank you.",
+      "uuid": "f164c945-93a8-4e8a-bd02-832ed4a3b031"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Giulia, thank you for your questions. We don't give any intra-quarter kind of updates, but I'll answer on what we see in the market, and then you can assume that we continue to have our fraction of that market. So what we basically saw at the beginning of April is that in the market, the demand for volumes were higher. That leads to a lot of volatility. That is basically what we saw in terms of transactions. That means there was a lot of volatility when it came to equities and also some other currency-related activities. And then at the same time, that volatility led on the side of corporates, on acquisitions and the likes to a bit of wait and see. So that's basically what we saw in the market. Then on the curve, what we have given, is for a parallel shift, with sensitivity applying when the rates are between 1.5% and 3.5%. Then, if it goes into the steepening, we haven't given any numbers. But yes, I agree with you that if the yield curve steepens, that is intrinsically a positive effect. And when it comes to Axa Im, intrinsically the Danish Compromise, as I mentioned, applies considering it's an insurance-to-insurance deal. It is the activity of AXA the insurer going into Cardif. If at that time, one would merge also the Asset Manager into that environment, that would remain that kind of deal that would allow us to capture the synergies.",
+      "uuid": "07e71397-b6a6-432f-be4b-2d0c47ed2db5"
+    },
+    {
+      "speaker": "Giulia Miotto",
+      "utterance": "Thanks.",
+      "uuid": "b5e8acb2-6538-499e-aab2-f2f0de02e033"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Jacques-Henri Gaulard, Kepler Cheuvreux. Please go ahead.",
+      "uuid": "99c0260f-f56e-4883-9b77-200b6a84d925"
+    },
+    {
+      "speaker": "Jacques-Henri Gaulard",
+      "utterance": "Yes. Good afternoon. Just two very quick ones. On your slide 13, on the cost base: obviously, you had your savings of 190 million, which corresponds roughly to a 2% gain on the cost growth. So it's 4% year on year; it would have been 6% without that. Is it a good way to look at it for the full year? And lastly, on the interest rate sensitivity bouncing back. We're trying to look at reasonably worst- case scenario. Intuitively you would be better protected than others if the monetary policy of the ECB was to become deflationary, i.e. interest rates going back to 1%. Would you agree with that in terms of your own ability to actually sustain that? Thank you.",
+      "uuid": "9526fe85-2f8e-404c-855a-2857de495ad9"
+    },
+    {
+      "speaker": "Jean-Laurent Bonnaf\u00e9",
+      "utterance": "So on the cost base: for the year, the guidance is basically 2-2.5 points, knowing that top line is 4%, aside from external growth. If you look at the first quarter, we had some specific impacts. One coming from the extremely high results from Global Markets, related to which we had to book variable compensation. Second, T\u00fcrkiye and inflation, and the perimeter effect and the currency effect globally. The US dollar in the first quarter is extremely high on average. All this amounts to around 1.5 percentage points. So in reality, the first quarter is just 2.5%. And you will see progressively the euro normalisation. And ultimately at year end, we should be at 2.5, even slightly lower than 2.5. This is the first element.  12 Of course, if the ECB were to opt for something slightly more aggressive in terms of decreasing short- term rates, looking at the diversification of our model, we are going to be, I would say, favoured by this evolution. Obviously, Personal Finance, Arval would benefit very rapidly from such an evolution. But also, our domestic banks in the eurozone have fixed-term rates for mortgages, and the steepening of the curve drive margins higher. So in the two dimensions, we should get additional support in terms of margins, both in the specialised factories, Personal Finance Arval and the eurozone domestic banks. So, in a nutshell, yes, the new scenario is probably much more in favour of a business model like CPBS compared to other floating rates type of domestic banks.",
+      "uuid": "1547956f-ed9c-4d85-837f-025c4ad9d36c"
+    },
+    {
+      "speaker": "Jacques-Henri Gaulard",
+      "utterance": "Thank you.",
+      "uuid": "3a1eddaf-2cf7-4eb4-8bad-2e433070b2c2"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Joseph Dickerson, Jefferies. Please go ahead.",
+      "uuid": "3542497b-0dc1-4017-a16d-2147853c496f"
+    },
+    {
+      "speaker": "Joseph Dickerson",
+      "utterance": "Hi. Thank you for taking my questions. Just on the CIB, I'd like to re-ask the question Giulia asked a little bit differently. In terms of engagement with customers since the 2nd of April, is there any colour you can give in terms of the nature of queries from the corporate base, either as regards the US or as regards future savings and investment union, which would perhaps help corporate lending and corporate securitizations? That would be very helpful. And similarly, on the CIB, one of the benefits in addition to your own investment, particularly in prime services, has been that some of the US banks were hitting up against their SLR constraints. Do you see that playing field shifting a little bit if some of the proposed changes to the SLR in the US go through that would favour maybe the US banks? Any thoughts on that? And then lastly, on French retail, did you kind of pull away consciously from mortgage production in the first quarter, or is this just something that's been a little bit more de-emphasised in the context of some of the broader strategic initiatives elsewhere in IPS? Because it looked like actually all lending was kind of down year on year in France, but in particular mortgages. Is that something you're backing away from? And how should we think about that as it impacts NII going forward in that business? Thank you.",
+      "uuid": "dc1c3e6a-22e4-429f-8cc0-2af8aeeb8d1a"
+    },
+    {
+      "speaker": "Jean-Laurent Bonnaf\u00e9",
+      "utterance": "Looking at the corporate universe, especially large caps and mid-caps, the fact is those companies, they are assessing the situation. They are global, clearly. They are, one way or the other, impacted by the new environment. The fact is that you don't know what's going to be the final end game. . So you can assess, you can have scenarios, you can rebalance a little bit, you can adapt the level of investments, but for the time being, I would say there is nothing that is really new. What you can see is that, on average, companies, corporates are going to invest slightly less than anticipated. They're going to onboard slightly less newcomers. This will have an impact on the global economy. If you look at the most recent projections, this is going to impact the global economy in between half a percentage point, up to one percentage point in the 12 months to come. This is a hit and the global economy is going to suffer. A large part of it is going to take place in the US, another part in emerging countries, obviously, and a bit of this is within the eurozone and within Asia and China in particular. So this is the situation. This is more a macro impact than something that is precisely having specific consequences on certain sectors. Then, the day we have a clearer picture, those companies probably will rebalance their business model one way or the other because they will have no choice. But it's too early to say. For us, looking at the risk profile, I said in the presentation that 78%, close to 80%, of our books are extremely well positioned in terms of rating. They are excellent. Those companies are able to rebalance, able to invest,  13 able to move. Probably there's a lot to come in terms of restructuring, refinancing, deleveraging, mergers and acquisitions, and so on. I'm not saying this is an opportunity for us because this is a situation that globally is a bit bumpy, but obviously there is a lot to come, especially in Europe, because Europe is going to reinvest massively. Basically, Europe has no choice but to reinvest. So not only the risk profile and the ability of most of our large corporates, large counterparts to redeploy; it is nice because we can support them in any dimension. And second, most of this will take place in Europe. For us, it's a potential. All in all, I would imagine that maybe not in the coming months, but in the two, three, four, five years to come, there will be much more for us to deliver throughout Europe and in between US/Europe and between US/Asia for all that nice franchise we have, and we have accumulated through the past ten, 15 years. So it's rather a positive situation for us. And of course, we can support those companies in so many different dimensions, including, I would say, financial markets. We're patient. We stick to our risk policy, of course. We keep our eyes open, but probably there is a lot to come. On mortgages, I will leave Lars--",
+      "uuid": "52944d63-a784-4ba1-9690-f586be5985ee"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "So, there's mortgages and then there is the leverage ratio when it comes to prime. I'll take that one first. Indeed, on prime brokerage, the prudential constraint, because it hardly consumes any capital, is the leverage ratio. If indeed in the US there is a review of the whole regulation and therefore also the supplementary leverage ratio, you could be tempted that for them there is less of a constraint. However, if you look at the day to day, what is basically the constraint is the clients who are using prime brokerage. And for them the constraint is the counterparty risk. They need different players to be in line with their counterparty exposure. And on the Atlantic side, in the US side, you have several options to offer the full product, whereas on Europe you don't. And that is one of the key drivers also for us, stepping up market share, so we feel that we will continue to be well positioned. In mortgages, particularly in some of the areas we are, we are indeed focusing in general on profitability. And if the mortgages are not necessarily where they have to be in profitability, we will therefore reprice and eventually have somewhat of a lower market share. That's the stance we have always taken. And so in some moments when the pricing is right, we participate fully. If the pricing is less appropriate, we are a bit more conservative.",
+      "uuid": "9ffbc529-ac46-442c-9619-9e7c4ed9f7f3"
+    },
+    {
+      "speaker": "Joseph Dickerson",
+      "utterance": "Thank you very much.",
+      "uuid": "0824fb60-de4c-4cc1-9ba0-68e36a4dcd10"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Flora Bocahut, Barclays. Please go ahead.",
+      "uuid": "7fc59b02-e124-41c6-a8b1-1efe397c70a1"
+    },
+    {
+      "speaker": "Flora Bocahut",
+      "utterance": "Yes. Thank you. The first question I wanted to ask you is on cost, because I saw in the pre-Q1 information note that you published two or three weeks ago, there was a mention in there of potentially additional costs beyond the EUR 400 million usual run rate for restructuring, IT, and adaptation costs because of the acquisitions that are coming this year, especially, obviously AXA IM. I know the deal is not yet closed, so I guess this is something you want to discuss more in Q2, but this combined to, obviously, the cost-cutting plan you have in Personal Finance and in CPB France, I just wanted to ask if you can at least give us a kind of magnitude of how much potentially more cost there could be. I understand these are one-offs, but are we talking like potentially another EUR 200? Another EUR 400 million? Because actually the run rate was much more than EUR 400 million the past two years.  14 The second question is on capital. I wanted to ask you about FRTB simply because, obviously, you target 12.3 CET1 at the end of this year and at the end of next year. Supposedly as of today, FRTB is still costing 30 basis points to BNP. So have you had any news on this, how the European authorities are thinking about it? I think there's a consultation phase that started in March. So anything you can give us on the timeline, any deadline we need to have in mind, any progress that you feel is being made would be helpful. Thank you.",
+      "uuid": "884880b8-dfdb-4d19-a894-df86719e5c90"
+    },
+    {
+      "speaker": "Jean-Laurent Bonnaf\u00e9",
+      "utterance": "On the FRTB, clearly, I would say the European level has progressively changed its approach and probably the idea is to implement the FRTB but in a more neutral way. It's too early to say technically exactly what that means, but this is basically the new approach. There were a number of public communications around the FRTB recently, and one of them is to not refrain European banks that are involved in financial markets because of the FRTB at the moment in which obviously the US universe is not going to implement it. There is a consultation being launched. It was launched two weeks ago. Clearly, it's new, and probably before year end you will get the result. One could be a new year in terms of postponing the implementation. Probably this is the first step. And in a parallel way, a new approach to implement so that the final impact could be to some extent neutralised or minimised. So probably those 30 bps are not only maximum but probably more than the ultimate impact. But it's too early to say. This is the evolution we're seeing at the European level, implementing, but probably in a way that is much more neutral than the previous approach.",
+      "uuid": "4bff106e-4e29-4d6c-9d13-0fa6549a940d"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "And on the cost, indeed, it is just a tad too early. As long as we haven't closed, we cannot go in and shine a light on what we would do. We will give you some update after the closing on what kind of cost it would be and eventually to what degree we could offset it with capital gains. So we will have to see. But it is not something which should weigh on our overall outlook.",
+      "uuid": "621a275e-1572-4825-8871-ab6f00b68809"
+    },
+    {
+      "speaker": "Flora Bocahut",
+      "utterance": "Okay. Thank you.",
+      "uuid": "9c1f47b6-5375-4156-8568-1c75f1dbfa76"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Andrew Coombs, Citi. Please go ahead.",
+      "uuid": "ea20620f-e00e-4313-8f51-9337d7805882"
+    },
+    {
+      "speaker": "Andrew Coombs",
+      "utterance": "Thank you for taking my questions. I just have one on jaws and cost plans and the second on IFRS 9 and cost of risk. So on the first question, on jaws, if you look at your Group jaws year on year, -0.2; operating division jaws, +1.9, obviously, given some of this Corporate Centre distortions which are outside your control on ALM and fair value movements. So when we think about the 1.5 points target, do you think about that at a Group level or at an operating division level? That's the first part of the jaws question. The second part would be that I'd imagine markets both in Q1, and probably April too, have been much stronger than you would have budgeted on at the start of the year. It looks like you've elected to reinvest some of that strength in support of growth. So is that the mindset? Given it's a jaws-based cost target, you will take the revenue strength in CIB and some of that will be used to reinvest in the franchise. And then a separate question on IFRS 9. We saw JP Morgan with a slightly higher weighting on its downside scenarios in light of the economic uncertainty. Nordea did something similar last week. Can you just talk us through your thoughts on the scenario weightings under IFRS 9? Thank you.",
+      "uuid": "c1bbc4c9-af30-4301-9cce-79ce412394e5"
+    },
+    {
+      "speaker": "Jean-Laurent Bonnaf\u00e9",
+      "utterance": "On jaws, the 1.5 target is at Group level for this year and next year. And this is a cornerstone of the ability to grow the return on tangible equity. This is not only operational division; this is Group level. Through the cycle, most often it's just the same at the operational level, at Group level, but looking at a certain quarter it can be slightly different, especially this one. But the target is at Group level for sure.  15 Looking at CIB Global Markets: on one side, the platform is gaining market share. This is the momentum. Anytime the cycle is more favourable, you can grab additional market share. This is the way it goes. So for sure if you look at the first part of the year, it went that way. And not only Global Markets but also the corporate banks and capital markets. We are continuously investing in that business. It cannot be managed like a more domestic bank. It's a different type of approach. When it's the time to move and it's time to grow, you need to take the cycle. It's not something you can decide in advance. When the market is there, you have to follow the curve. You cannot just say I was not prepared to invest, or I do not have enough people or whatever. I mean, you need to follow up and if possible, to anticipate. And this is the momentum we are seeing at CIB.",
+      "uuid": "494fa286-bb64-45fb-8ab7-f7a8f10c2c88"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Maybe as one complement, Andrew, on the costs: indeed, the operating divisions have the jaws that we need. And so the fact that at Group level it's different is due to the Corporate Centre. And what we mentioned is the Corporate Centre, a year ago in the first quarter, had a positive event that ironed out back to zero over the year. Whereas in the first quarter in 2025, it has a negative effect. So that delta weighed on the jaws. However, as we said, those two elements of the year will go back to zero. You can clearly see that having the operating divisions with positive jaws will also lead that at the Group level. So that's on the cost. And on the cost of risk and IFRS 9: IFRS 9, and particularly the models, yes, it depends which bank you look at, depending on which geography it's in and in which business model it's in. Now, I'm going to answer with respect to BNP Paribas. Being exposed for a part into Europe and having exposure mainly on the corporates and the affluents; you have to take a stance on what scenario we are going to face. The scenario as Jean-Laurent mentioned, is that there will be impacts of tariffs which will slow down a bit the scenario, but then there are the massive investments that are following from the wake-up call in Europe that will basically step it up. For us, before that, we were on a growth rate of around 1%, Europe-wide I mean, and that's what we stick to. Why do we feel comfortable to stick with that? Looking at the front-loading indicators for the cost of risk, for corporate and institutional, I look on their liquidity needs. So if a corporate, instead of coming for an investment loan needs a liquidity loan, that's not a good sign. If a fund has problems paying their initial margins, that's an issue. Today, for clients of BNP Paribas, I don't see this. I don't see corporates coming for liquidity needs, and I don't see funds having initial margin issues. So that is where we stand in the outlook of the cost of risk under IFRS 9, Andrew.",
+      "uuid": "80da3567-7074-4b2f-9d56-bc76708f07f0"
+    },
+    {
+      "speaker": "Andrew Coombs",
+      "utterance": "That's very helpful, thank you.",
+      "uuid": "133cd8a0-ec36-45dd-b020-d79f999c4c61"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Stefan Stalmann, Autonomous Research. Please go ahead.",
+      "uuid": "5e2ef2e1-837c-42a6-b399-6ee1fd13acbe"
+    },
+    {
+      "speaker": "Stefan Stalmann",
+      "utterance": "Good afternoon. I have two questions, please. The first one on Arval: you disclosed the results from car sales for each quarter last year. Thank you very much for that. Could you also maybe give us a number for the first quarter 2025? That would be great. And then beyond the results, the EBA actually created a bit of waves during the early parts of April when they were discussing the dollar-based NSFR ratios of European banks. I was wondering if you could actually give us the US dollar NSFR ratio of BNP. But if not, could you maybe indicate whether your dollar NSFR ratio is higher or lower than the average of the French banks that was mentioned in this report, which was 99%? That would be great. Thank you.  16",
+      "uuid": "e7fbdba3-8db4-4223-820f-07b711e90818"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Stefan, thank you for your question. If I can be quick, on Arval. In the first quarter, it's EUR 28 million. You know that we've guided for it to go to zero. So you can see we're just a tad above that. When it comes to the dollar base, what I can tell you is that you should not forget that in the end, if you look at our dollar funding, we have access in particularly on long-term funding, because that market is very deep. Then, moreover, let's not forget a big chunk of our dollar exposure is not US based. There is a lot in Asia, for example. If you look at our deposit base, it is long. If you look at it, it's approximately 50 billion that we have in the US, and then you have a multiple of that outside of the US base. From that point, it's very diversified. It is also diversified over all the terms. And so we feel comfortable with the ratios that we have.",
+      "uuid": "faf98af0-e71a-4e7e-bd3f-4e536c621bac"
+    },
+    {
+      "speaker": "Stefan Stalmann",
+      "utterance": "Thank you.",
+      "uuid": "14975933-9b4d-45cf-bdf1-e1c059c64536"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Sharath Kumar, Deutsche Bank. Please go ahead.",
+      "uuid": "921046be-4326-4511-90ff-1a8e4f072a07"
+    },
+    {
+      "speaker": "Sharath Kumar",
+      "utterance": "Good afternoon. Thank you for taking my questions. First one that I have is on capital. If I look at the evolution from the year, I have acquisitions costing 30 or 40 basis points depending on what the outcome of the AXA deal is; potentially some positive SRT effects coming later in the year. Can you clarify if the ongoing sale of non-core Personal Finance would add anything to capital? And is there a possibility that you could be operating at below 12.3% CET1 at the end of the year if you were not to get a favourable environment for SRT? So what is the plan B if we were to get more negative surprises on capital? So that is the first one. The second one is on Europe-Med. Again, how would you look at the outlook and the sustainability of strong revenues in this division? Because I believe this is one of the divisions that consistently is being underestimated by consensus. Also, if you could provide any sensitivity of Turkish NII rising rates, that would be helpful. And finally, a clarification on your USD exposure. I noted the CET1 sensitivity to euro appreciation or rather USD depreciation. Can you also provide the P&L sensitivity? Thank you.",
+      "uuid": "288b6611-2214-4217-9622-9ec93a6f576b"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "If I go on capital, I will simplify the roll forward, to explain why we feel comfortable to be at 12.3%. First of all, we're at 12.4%. Now taking all the deals we are closing or we will close over the summer like Axa Im, HSBC ... rounding the numbers, it consumes 40 basis points. So we fall to 12%. And then every quarter we generate ten basis points. So two times that makes 12.2%. And then we will have three quarters of securitisation which will add another ten basis points. That's basically where we stand at 12.3%. So there is no need for us to sell anything. In the run of the mill, we stand where we have to be and we are well capitalised. We are ready. And as we mentioned, we've guided to be at 12.3% to be ready for, if FRTB would come next year and if it would come at 30 basis points - and you've heard Jean-Laurent - it's probably not going to be 30 basis points and it's probably not going to be next year. But nevertheless, we want to be at 12.3%. Then, if we look at Europe-Med, I suppose you are probing about T\u00fcrkiye because the Poland and the Moroccan activities are basically in an environment which is more stable. We saw an impact the past year in T\u00fcrkiye, which indeed is reflecting hyperinflation, and that was driven by the fact that the rates and the inflation were on different scales. And then we anticipate that it would come down and that it would gravitate towards 25%. Today, it doesn't look like, given the uncertainties, it's probably not going to be 25%. It's probably going to stick to something like 35%. So that will be something that on the fringe changes.  17 Then if you look at the US sensitivity on P&L. Let's look at it this way: it represents the US activities, or the US dollar activities on the top line represent something like 10%. I'll let you compute what the sensitivity is.",
+      "uuid": "4a31c22e-e9b4-4a80-80b5-798fcea019f2"
+    },
+    {
+      "speaker": "Sharath Kumar",
+      "utterance": "Thank you, Lars.",
+      "uuid": "e1a887ad-9bc8-45fc-aec1-91e85933760c"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Anke Reingen, RBC. Please go ahead.",
+      "uuid": "6eb3e84f-8f37-493d-93a3-f92f1b22e51f"
+    },
+    {
+      "speaker": "Anke Reingen",
+      "utterance": "Thank you for taking my questions. I just have two follow-up questions. The first is on capital. You reiterate the 12.3%, in spite of the ten basis points higher hit from the AXA deal. And I'm just trying to understand what the source of the capital flexibility is. Is it more securitisation? Just so we get an idea to see if there's any more flexibility needed where the source of that generally is. And then secondly, I understand on the economic outlook it's all very much uncertain. But when you described the potential GDP impact, 0.5% - 1%, would that already be incorporated in your 2025 and 2026 RoTE targets, the lower GDP growth, or is it all very much too uncertain? Thank you very much.",
+      "uuid": "70a1da94-84a8-49bb-88e0-e799ef978ba9"
+    },
+    {
+      "speaker": "Jean-Laurent Bonnaf\u00e9",
+      "utterance": "On the 0.5% - 1% impact, this is an average number. If you look at the eurozone, we are talking maybe at something that is in the range of 0.3%. Our economic research published last Friday, a report, which moved the growth projection in 2025 from 1.3% down to 1%. This was already 1%, the scenario internally for our roadmap in 2025, and the projection for 2026 ended up at the same level we picked up already for 2026. So I would rather say that we already have a robust, quite prudent scenario for that 2025/2026 roadmap. As of now, we do not see the need to go further. Away from that, the rate scenario, we already commented, should be even more favourable compared to the initial scenario we were having in mind at the beginning of the year. And ultimately looking at the CIB platform, not only Global Markets but also corporate bank, there's a lot to do in the context. So it's not going to be immediate, but probably a lot to do and to deliver if that universe should be constrained to rebalance. And to some extent, this universe will rebalance, especially because Europe will reinvest more in its own perimeter. And this is an opportunity to us. Looking at the landscape today, we believe that we have already in our roadmap the room to manoeuvre in terms of targets. There is no need to change our targets. This is why we are confirming our targets and probably some additional support coming from the rates scenario comparing to the initial of the year and probably additional businesses in the global universe of corporate large cap, mid-caps, and probably also financial institutions. So not mentioning the fact that this is the first time that we are looking at a Europe that is really willing to unlock at least part of the former capital market union. It was just a conversation for many, many years, and now we are having a consultation. This is something that is really moving and we are ready for that. And even if the first phase is not going to be perfection, there will be something very different and we are prepared for that. And to some extent, the CIB platform we built from many years is the platform that is needed in that context. Looking at the economic scenario, looking at the rates scenario, looking at the type of platform we're having in our hands, looking at the diversification, there is something that is much more positive for us as a model business compared to other types of banking platforms.",
+      "uuid": "25771a7e-90e9-417c-bd3b-0c8f04718ac7"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Anke, on your first question on the toolbox with respect to capital: we will continue to use the toolbox that we have been using over the last ten years. It will be securitisation, it will be insurance, it will be optimising through focus, it can be eventually sale of a sub-activity. So that's the kind of toolbox that we have that we will keep on using. And that's why we feel comfortable with our trajectory.  18",
+      "uuid": "2c8b0edd-1ce3-4b44-b088-7b7d32720722"
+    },
+    {
+      "speaker": "Anke Reingen",
+      "utterance": "Thank you very much.",
+      "uuid": "1e0a455a-5e91-43a0-8f64-fe6f9bae846a"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "Next question is from Chris Hallam, Goldman Sachs. Please go ahead.",
+      "uuid": "011e4550-6c5c-4b3e-ac09-4cfe8eaa0b18"
+    },
+    {
+      "speaker": "Chris Hallam",
+      "utterance": "Good afternoon, everybody, and thank you for taking my questions. So first of all on jaws: if I exclude Arval, it looks like you did around 100 basis points of positive jaws in the first quarter. And I think you've been pretty clear on the revenue moving parts for Arval. But just through the rest of the year, how should we expect costs to trend in that business? And then also, are there any other businesses within the group where we would expect to see a better run rate in terms of operating leverage or jaws through the next nine months? And then secondly, on provisioning, a bit of a follow-up to Andy's question earlier. You mentioned sort of lower growth assumptions for the euro area for 2025. I think in the URD, you talked about 1.1% real GDP growth for this year. So I just wanted to sort of clarify: is it the case that you could adjust those growth rates lower without that mechanically leading to higher cost of risk or a change in the scenario assumptions? I.e. do the specific triggers you mentioned around usage of revolving credit facilities or margin calls, do those act as more of a trigger to an IFRS 9 reassessment than just a negative growth revision? Thank you.",
+      "uuid": "de79dbff-1c87-4de5-8903-94ffcdb605d1"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Chris, on your question: intrinsically, let me repeat: the jaws for the year that we will have at the Group level is basically 1.5%. And on the one hand, the negative effect of the Corporate Centre will taper off; that's one thing. Then, as you mentioned, there is Arval, where you have seen part of the impact in the result. The contribution of the revaluation last year was highest in the first quarter, lower in the second quarter, and basically tapered off in the third and the fourth. Then, if you look at the evolution in the networks where our top line will further grow, that should also intrinsically support the jaws that we target. On the jaws, intrinsically it is 1.5. The dynamics on where it will further improve, as I mentioned, is CPB, Arval and the Corporate Centre. If you look at the GDP: the intrinsic way to apply it, is that you have to take a forward model. So you have to assume what the economy will do going forward, and then apply this projection onto your books, onto your models. So something that you see might be different from a bank in a different region, or for a bank with a different setup. And we see, what I mentioned on the initial margins and the likes, making us comfortable with the clients we have whether there is growth of 1%, or 0.7%, or 1.3%. Given the moving parts, and the fact that we are diversified, it does not make us suppose that the cost of risk will materially deteriorate going forward.",
+      "uuid": "51836f2d-fb8c-4884-99a2-230d7ca064e8"
+    },
+    {
+      "speaker": "Chris Hallam",
+      "utterance": "Okay. Thanks very much.",
+      "uuid": "e50bc2c9-1a25-44d5-8c6a-d1a4e75986ba"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Kiri Vijayarajah, HSBC, CIB. Please go ahead. Kiri Vijayarajah : Good afternoon, everyone. A couple of questions from my side. Firstly, on your trade finance business, and drilling down a little bit there - I appreciate some of your comments earlier on the outlook for corporate decision making, etc. - but I wondered, are there kind of any metrics you can share with us in terms of what's really Europe to Europe within your trade finance business? Because I think versus some of the more global players, I sense that part of your business should be maybe more insulated from trade dislocation, perhaps. So just your kind of thoughts there on your trade finance. And then secondly, on Arval, I see you're still growing the outstandings there at a mid-teens growth rate, much faster than peers. And so, my question is really, at what point does that growth rate start to normalise? And linked to that, when you take out the used car sales result, how do you see the core  19 lease contract servicing revenue margin evolving, particularly if you maintain that kind of volume growth orientation at Arval. Thank you.",
+      "uuid": "e4cc8340-1b80-40a3-9b27-904da2308cf2"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Kiri, I'll start on Arval. So indeed, we are very diversified. We are in many countries. If you look at our revenue streams, on one hand we have financing, if I exclude for the moment the resale value, and then there is the whole servicing around it. And if you look at our overall model, it's very interesting for our corporate clients. Let's not forget that Arval is serving the corporates for their fleet for their employees. That's what we have projected, what we see now is 10. So you clearly see that we are well on track to deliver this. And then on your question on trade finance, indeed, if you look at it, we are in particular a European activity. And what is interesting is that with the interest rates coming down, you would have assumed that that activity, the P&L contribution would be going down. But at the same time, given the uncertainties and whatever you have, you see that there is basically higher volumes that are coming over to us. That is why even with the interest rates tapering off, the volumes are higher. That's what you see in Q1, and that's why you see the evolution that you see. So that's a bit the dynamic that you see there on those two, Kiri. Kiri Vijayarajah : Okay, thank you.",
+      "uuid": "83ba23b2-449f-4822-b82c-67c35294ffd2"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Matt Clark, Mediobanca. Please go ahead.",
+      "uuid": "64d9545e-b134-4cf8-8841-e3522ca76353"
+    },
+    {
+      "speaker": "Matthew Clark",
+      "utterance": "Hi. A couple of questions please. Firstly, on interest rates and slide 23, the table in the bottom right-hand corner. I'm just trying to understand what that 2.3% for 2025 and 2.2% for 2026 represent. Is that what was embedded in your plan in terms of STR rates? Because obviously that's some way above where forward curves would seem to be now. So just to understand what that number is specifically. Second question is on the duration of the contract that you're signing with AXA. And I guess I'm interested to try and work out whether the 20% return on investment in year four is still going to be burdened by the amortisation of that contract, so economically there could be a higher return on investment even than that 20% that you've guided. And then final question is just when will the buybacks start and what's delaying that? Thank you.",
+      "uuid": "567d775e-283b-45b2-8249-eb0871c504c2"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "On rates: yes, your interpretation on the slide is basically there. That is the assumption. Of course, as we mentioned earlier, most likely the yield curve is going to be steeper. When it comes to the share buyback. What we have is that we have the approval of the ECB to basically do the buyback. We've clarified that we will do it in the second quarter. I'll tell you a certain morning that we launched it and you'll see it happening. For AXA, intrinsically, the contract runs over 15 years. So that's the duration, and every five years it has a kind of a review in volumes and pricing. But intrinsically, that's the duration of the contract.",
+      "uuid": "4842892c-df99-41cd-9285-ee914a7068ec"
+    },
+    {
+      "speaker": "Matthew Clark",
+      "utterance": "And so am I right to think that the 20% return on investment that you guided for year four is still burdened by the amortisation of that?",
+      "uuid": "7732af3f-b9ab-4fde-8cdb-12e12e3595f2"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "It's included. Everything is in there.",
+      "uuid": "767d1fab-0a39-48d5-a2bd-20ae936e136f"
+    },
+    {
+      "speaker": "Matthew Clark",
+      "utterance": "Okay, but if you didn't have that amortisation, it would be a higher return, right? Just to make sure--",
+      "uuid": "da0fcdc7-ed95-4a6c-9a38-2b7122bee4f5"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "Indeed, yes.  20",
+      "uuid": "df63e4e1-50b7-486e-9d6c-edb77acaea95"
+    },
+    {
+      "speaker": "Matthew Clark",
+      "utterance": "Understood. Thank you.",
+      "uuid": "453096db-a34c-4ab5-88bc-087107eac737"
+    },
+    {
+      "speaker": "Operator",
+      "utterance": "The next question is from Pierre Ch\u00e9deville, CM-CIC Market Solutions. Please go ahead.",
+      "uuid": "a93a0fc3-8062-4ed0-80fa-e1a4cdf0f1a4"
+    },
+    {
+      "speaker": "Pierre Ch\u00e9deville",
+      "utterance": "Good afternoon. One question. Maybe it's a little bit premature, but I was thinking, due to the evolution of the relationship between the US and Asia, more globally, not only with China, I was wondering if you see in the future opportunity for BNP to develop more intensely there, due maybe to a more difficult environment for US banks, which are very present in this area. Do you think it would be interesting for you to invest more in terms of teams or risk- weighted assets in this area in the coming months? And my second question is maybe a little bit marginal, but I was wondering where you stand regarding your partnership with Matmut PNC? Because we know that Cardif is very strong in life insurance and creditor insurance. But in terms of PNC, you are not very vocal. And yet, it's a way to develop. So can you tell us about these two questions, please?",
+      "uuid": "db20edd0-0521-4ce2-9f3a-c1c1baa5606f"
+    },
+    {
+      "speaker": "Jean-Laurent Bonnaf\u00e9",
+      "utterance": "Well, around China, we do not see any kind of retrenchment from US banks. Looking at mainland China, BNP Paribas is involved through a number of joint ventures: life insurance, car financing, asset management. This is very much the domestic way. We're having good, strong, solid partners. We invest some equity. We do not have strictly speaking risk weights because the funding is local. We are not having the majority. These are joint venture corporations. They are domestic, locally funded and they are investments for us for the mid, long term. So it's very much based upon regional kind of developments. This is nothing that is new in China away maybe from the asset management partnership. It's a local approach. And again, we do not see US banks retrenching. And we are quite satisfied by the quality of those partnerships, the ability to grow, and the value we are creating progressively to those platforms that most often we do not control. And there is no plan to change this approach that is very much domestic with local partners.",
+      "uuid": "6049a667-df51-4bb3-b058-05ba170665ea"
+    },
+    {
+      "speaker": "Lars Machenil",
+      "utterance": "On your other question: indeed on insurance, it is true that we focus a lot now on the Axa Im deal, with the long-term savings plan. The non-life part is also an important part that grows. And so here also we team up with a lot of partners, in France with Matmut, but also in other areas, in other geographical zones we have partnerships and we're very pleased with that. If I can come back to a question by Kiri, because I misunderstood your question. I interpreted your question as transaction banking, but it was on trade finance. On trade finance, the role Europe versus the US, 60% of our activities are European based. So sorry for that, Kiri, I misunderstood your question.",
+      "uuid": "9367d710-0912-49eb-b92c-7e329b4050d4"
+    },
+    {
+      "speaker": "Jean-Laurent Bonnaf\u00e9",
+      "utterance": "Thank you very much for your attention, and we can conclude the presentation with that last question. See you soon. And we remain at your disposal if you need some clarification on some items. Thank you so much.  21",
+      "uuid": "c040683e-5289-431c-8e0c-65bc144e39fb"
+    }
+  ]
+}
